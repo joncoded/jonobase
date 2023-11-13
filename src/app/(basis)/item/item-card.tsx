@@ -151,7 +151,7 @@ export default function ItemCard({lang, item, view} : ItemProps) {
           text-left
         `}
       > 
-        <Paragraph className="!mb-0 md:mb">{item.summary}</Paragraph>
+        <Paragraph>{item.summary}</Paragraph>
       </div>
     )
   }
