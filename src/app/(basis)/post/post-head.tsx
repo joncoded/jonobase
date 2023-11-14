@@ -46,7 +46,7 @@ export default function PostHead({lang, post}: PostHeadProps) {
         >
           {post.url &&
             <Link 
-              className={`button ${post.thumbnail && `!border-white !text-white`}`} 
+              className={`button`} 
               href={post.url} 
               target={post.url_newtab ? '_blank' : '_top'}
             >
