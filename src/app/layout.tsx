@@ -13,7 +13,10 @@ import Head from '@/app/(basis)/head/head'
 import Tail from '@/app/(basis)/tail/tail'
 import { getImageURL, getThemeLink, getTheme } from './(basis)/util/func'
 
-export const revalidate = 600
+export const dynamic = 'auto'
+export const revalidate = 10
+export const fetchCache = 'auto'
+
 
 export const metadata: Metadata = {
   title: '',
