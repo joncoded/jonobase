@@ -7,9 +7,10 @@ access to the database and other variables
 
 import PocketBase from 'pocketbase'
 
-export async function getBase() {
+const pb = new PocketBase(process.env.PBDOMAIN) 
+pb.autoCancellation(false)
 
-  const pb = new PocketBase(process.env.PBDOMAIN) 
+export async function getBase() {
 
   const app = await pb.collection('bases')
     .getFirstListItem(`slug='${process.env.PBSLUG}'`)
@@ -23,8 +24,6 @@ export async function getBase() {
 
 export async function getBaseID() {
 
-  const pb = new PocketBase(process.env.PBDOMAIN)
-
   const { id } = await pb.collection('bases')
     .getFirstListItem(`slug='${process.env.PBSLUG}'`)
 
@@ -35,8 +34,6 @@ export async function getBaseID() {
 export async function getHomePage() {
 
   try {
-
-    const pb = new PocketBase(process.env.PBDOMAIN)
 
     const app = await pb.collection('bases')
       .getFirstListItem(`slug='${process.env.PBSLUG}'`, { "expand": "homepage_content" })
@@ -56,8 +53,6 @@ export async function getUnpagedPostsCount(
   kind: string = '',
   list: string = '',   
 ) {
-
-  const pb = new PocketBase(process.env.PBDOMAIN)
 
   const base = await getBaseID()
 
@@ -80,8 +75,6 @@ export async function getPosts(
   limit: number = 6,
   descending: 'asc' | 'desc' | '' = 'desc'
 ) {
-
-  const pb = new PocketBase(process.env.PBDOMAIN)
 
   const base = await getBaseID() 
 
@@ -109,8 +102,6 @@ export async function getPost(
 ) {
 
   try {
-
-    const pb = new PocketBase(process.env.PBDOMAIN)
 
     const post = await pb.collection('posts')
       .getFirstListItem(`
@@ -144,9 +135,7 @@ export async function getAdjacentPost(
   let filtering = '', sorting = ''
   
   try {
-
-    const pb = new PocketBase(process.env.PBDOMAIN) 
-    
+ 
     const base = await getBaseID()
 
     if (base !== '') 
@@ -202,8 +191,6 @@ export async function getTake(
 
   try {
 
-    const pb = new PocketBase(process.env.PBDOMAIN)
-
     const take = await pb.collection('takes')
       .getFirstListItem(`slug='${slug}'`,
         { expand: 'views' }
@@ -255,7 +242,7 @@ export async function getQueryFilter({ pb, base, find, kind, list }: any ) {
   
   if (list !== 'all') {
   
-      // search for the list in the lists table
+    // search for the list in the lists table
     const { items: lists } = await pb.collection('lists')
       .getList(1, 1, { filter: `slug='${list}' || id='${list}'`})
 
