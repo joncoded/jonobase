@@ -95,7 +95,7 @@ export default function ItemCard({lang, item, view} : ItemProps) {
     return (
       <div 
         className={`item-card-meat 
-          mx-5 lg:mx-auto my-5 px-5 py-2 
+          flex flex-col gap-5
           ${item.thumbnail && `
             backdrop-opacity-70 bg-gray-900/90 max-w-fit
           `}
