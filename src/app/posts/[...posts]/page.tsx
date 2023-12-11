@@ -76,9 +76,8 @@ export default async function Main({
       <SectionDiv 
         className={`page-posts-head
           dark:border-gray-500
-          bg-gradient-to-r 
-          from-slate-100 to-slate-400 
-          dark:from-emerald-900 dark:to-emerald-800
+          bg-gray-200
+          dark:bg-gray-800
           py-5 drop-shadow-md 
         `}
         style={{ 
@@ -103,10 +102,8 @@ export default async function Main({
         <SectionDiv 
           className={`page-posts-tags
             border-y dark:border-gray-500
-            bg-gradient-to-r 
-            from-slate-100 to-slate-400 
-            dark:from-emerald-900 dark:to-emerald-800
-            drop-shadow-md py-5
+            bg-gray-200 dark:bg-gray-800
+            drop-shadow-md py-5 text-center
           `}
         >
           <PostTags lang={lang} post={post} />
