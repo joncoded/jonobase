@@ -23,7 +23,7 @@ export default function ItemDrop({item, lang, view} : ItemProps) {
   const ItemDropMain = ({children}: ChildrenProps) => {
     return (
       <SuperFlex 
-        className={`item-drop-main`}
+        className={`item-drop-main mb-5 md:mb-0`}
         justify="start" 
         items="start"
       >
