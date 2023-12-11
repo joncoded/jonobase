@@ -135,7 +135,7 @@ export default function ItemCard({lang, item, view} : ItemProps) {
     return (
       <SuperFlex         
         className={`item-card-tail 
-          text-center mt-2 gap-5 flex-col md:flex-row
+          text-center mt-5 mb-10 sm:mb-0 gap-x-5 gap-y-0   
         `}
         text="center"
         items="start"
@@ -147,7 +147,7 @@ export default function ItemCard({lang, item, view} : ItemProps) {
     return (
       <div 
         className={`item-card-summary 
-          mt-2 font-serif text-sm text-gray-800 dark:text-gray-200 
+          font-serif text-sm text-gray-800 dark:text-gray-200 
           text-left
         `}
       > 
