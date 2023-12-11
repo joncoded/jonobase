@@ -9,7 +9,6 @@ with paginated lists plus paginated tag filtered lists
 import { getBase, getHomePage, getPosts, getTake, getUnpagedPostsCount } from '@/app/(basis)/util/data'
 import { LoopHead } from './loop/loop-head'
 import { LoopApex } from './loop/loop-apex'
-import { LoopCount } from '@/app/(basis)/loop/loop-count'
 import ViewShow from './view/view-show'
 import NotFound from '@/app/not-found'
 import { SectionDiv } from '@/app/(basis)/util/tidy-html'
@@ -81,11 +80,7 @@ export default async function Main({ params }: MainProps) {
             lang={lang}
             params={params}
             current={1}
-          />
-          <LoopCount
-            label={lang.posts}
-            resultsCount={resultsCount}
-          />
+          />          
         </LoopHead>
         
       </SectionDiv>
