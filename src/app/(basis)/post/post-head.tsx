@@ -8,6 +8,7 @@ head (hero) for single "post" pages
 import { getFormattedDateTime } from "@/app/(basis)/util/func"
 import { SuperFlex, Paragraph } from "@/app/(basis)/util/tidy-html"
 import Link from "next/link"
+import { Span } from "@/app/(basis)/util/tidy-html"
 
 interface PostHeadProps {
   lang: { [x: string]: string},
@@ -27,7 +28,7 @@ export default function PostHead({lang, post}: PostHeadProps) {
             uppercase text-4xl sm:text-5xl lg:text-6xl
           `}
         >
-          {post.thumbnail ? '' : post.emoji} 
+          <Span className="mr-2" ariaHidden={true}>{post.thumbnail ? '' : post.emoji} </Span>
           {post.title}
         </h2>
 
