@@ -7,9 +7,12 @@ access to the database and other variables
 
 import PocketBase from 'pocketbase'
 
-export async function getBase() {
+const pb = new PocketBase(process.env.PBDOMAIN) 
+pb.autoCancellation(false)
 
-  const pb = new PocketBase(process.env.PBDOMAIN) 
+// this gets the metadata of the web app
+
+export async function getBase() {
 
   const app = await pb.collection('bases')
     .getFirstListItem(`slug='${process.env.PBSLUG}'`)
@@ -21,9 +24,12 @@ export async function getBase() {
 
 }
 
+// this gets only the ID of the web app
+
 export async function getBaseID() {
 
-  const pb = new PocketBase(process.env.PBDOMAIN) 
+  
+  
 
   const { id } = await pb.collection('bases')
     .getFirstListItem(`slug='${process.env.PBSLUG}'`)
@@ -32,11 +38,12 @@ export async function getBaseID() {
 
 }
 
+// this gets the home page content
+
 export async function getHomePage() {
 
   try {
 
-    const pb = new PocketBase(process.env.PBDOMAIN) 
 
     const app = await pb.collection('bases')
       .getFirstListItem(`slug='${process.env.PBSLUG}'`, { "expand": "homepage_content" })
@@ -51,13 +58,13 @@ export async function getHomePage() {
 
 }
 
+// this gets the number of posts (with or without filters) without pagination
+
 export async function getUnpagedPostsCount(
   find: string = '', 
   kind: string = '',
   list: string = '',   
 ) {
-
-  const pb = new PocketBase(process.env.PBDOMAIN) 
 
   const base = await getBaseID()
 
@@ -72,6 +79,8 @@ export async function getUnpagedPostsCount(
   return items.length
 }
 
+// this gets a set of posts
+
 export async function getPosts(
   find: string = '%',
   kind: string = '%',
@@ -80,8 +89,6 @@ export async function getPosts(
   limit: number = 6,
   descending: 'asc' | 'desc' | '' = 'desc'
 ) {
-
-  const pb = new PocketBase(process.env.PBDOMAIN) 
 
   const base = await getBaseID() 
 
@@ -104,13 +111,13 @@ export async function getPosts(
 
 }
 
+// this gets a single post
+
 export async function getPost(
   slug: string,
 ) {
 
   try {
-
-    const pb = new PocketBase(process.env.PBDOMAIN) 
 
     const post = await pb.collection('posts')
       .getFirstListItem(`
@@ -135,6 +142,8 @@ export async function getPost(
 
 }
 
+// this gets a single older or newer post 
+
 export async function getAdjacentPost(
   post: any,
   direction: "newer" | "older",
@@ -145,8 +154,6 @@ export async function getAdjacentPost(
   
   try {
     
-    const pb = new PocketBase(process.env.PBDOMAIN) 
- 
     const base = await getBaseID()
 
     if (base !== '') 
@@ -196,13 +203,13 @@ export async function getAdjacentPost(
 
 }
 
+// this gets a "take": a set of one or more *views* 
+
 export async function getTake(
   slug: string
 ) {
 
   try {
-
-    const pb = new PocketBase(process.env.PBDOMAIN) 
 
     const take = await pb.collection('takes')
       .getFirstListItem(`slug='${slug}'`,
@@ -221,7 +228,7 @@ export async function getTake(
 
 }
 
-// helper for the getUnpagedPostsCount and getPosts
+// a helper for the getUnpagedPostsCount and getPosts
 
 export async function getQueryFilter({ pb, base, find, kind, list }: any ) {
 
