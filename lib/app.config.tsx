@@ -1,0 +1,1 @@
+export const filterList = [ 'all', 'frontend', 'backend', 'fullstack', 'documentation', 'other' ]
