@@ -16,14 +16,46 @@ const schema = {
       options: { source: 'title' }
     },
     {
+      name: 'subtitle', 
+      title: 'Subtitle',
+      type: 'string'      
+    },
+    {
       name: 'posts',
-      title: 'posts',
+      title: 'Posts',
       type: 'array',       
       of: [{
         type: 'reference', 
         to: [{ type: 'post'}]
       }]
-    }
+    },
+    {
+      name: 'content',
+      title: 'Content',       
+      type: 'array',      
+      of: [
+        {
+          type: 'block'
+        },
+        {
+          type: 'image',
+          fields: [
+            {
+              type: 'text',
+              name: 'alt',
+              title: 'Alternative text',
+              description: `Screen reader text for low-sighted users`,
+              options: {
+                isHighlighted: true
+              }
+            }
+          ]
+        },
+        {
+          type: 'code'
+        }
+      ] 
+    },
   ]
 }
 

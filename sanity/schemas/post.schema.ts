@@ -1,3 +1,15 @@
+import {defineType, defineField} from 'sanity'
+
+defineType({  
+  fields: [
+    defineField({
+      type: 'code',
+      name: 'myCodeField',
+      title: 'My code field',
+    }),
+  ],
+})
+
 const schema = {
   name: 'post',
   title: 'Post', 
@@ -28,9 +40,19 @@ const schema = {
       type: 'string'             
     },
     {
+      name: 'category',
+      title: 'Category',
+      type: 'string',      
+      validation: (Rule: any) => Rule.required(),
+      options: {
+        list: ['coded', 'noted']
+      }
+    },
+    {
       name: 'content',
-      title: 'Content', 
+      title: 'Content',       
       type: 'array',
+      validation: (Rule: any) => Rule.required(),
       of: [
         {
           type: 'block'
@@ -55,13 +77,10 @@ const schema = {
       ] 
     },
     {
-      name: 'links',
-      title: 'Links', 
-      description: 'external links',
-      type: 'array',
-      of: [
-        {type: 'url'}
-      ],      
+      name: 'link',
+      title: 'Link', 
+      description: 'external link',
+      type: 'string',      
     },
     {
       name: 'moods',
@@ -93,16 +112,13 @@ const schema = {
       validation: (Rule: any) => Rule.required(),      
     },
   ],
-  initialValue: {
-    date: Date.now()
-  },
   preview: {
     select: {
       title: 'title',
       subtitle: 'date',
       media: 'image',     
     },
- },
+  },
 }
 
 export default schema
