@@ -24,7 +24,7 @@ export const getBase = async () => {
 
 }
 
-export const getList = async () => {
+export const getLists = async () => {
  
   try {
     const list = await readClient.fetch(
@@ -36,7 +36,6 @@ export const getList = async () => {
           _id,
           link,
           "image" : image.asset->url,
-          views,
           category
         }        
       }`    
@@ -67,7 +66,6 @@ export const getPosts = async (params: GetPostParams) => {
         _id,
         link,
         "image": image.asset->url,
-        views,
         slug,
         category
       }`    
