@@ -20,7 +20,7 @@ const Tail = () => {
   }
 
   return (
-    <footer className="w-full border-t border-gray-200 px-10 py-10 bg-black-100 text-white-800 font-mono">
+    <footer className="w-full border-t border-black px-10 py-10">
       <div className="flex justify-between max-md:flex-col gap-y-10 max-w-screen-2xl mx-auto">
         <Colophon1 />
         <Colophon2 />
