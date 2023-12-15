@@ -8,7 +8,7 @@ import FindFilters from './find-filters'
 import ItemCard from './item-card'
 import ListHead from './list-head'
 
-export default function Find({resources, urlParams} : any ) {
+export default function Find({posts, urlParams} : any ) {
 
   const intro = 'Intro message!'
   const subintro = 'What would you like to look at today?'
@@ -79,14 +79,14 @@ export default function Find({resources, urlParams} : any ) {
         )}
 
         <div className="w-full mt-5 sm:justify-start">
-          {resources?.length > 0 ? (
+          {posts?.length > 0 ? (
             <>
               {(urlParams?.query || urlParams.category) && ( 
-                <p className="text-3xl text-gray-400 text-center mb-10">{resources.length} result(s) found</p>
+                <p className="text-3xl text-gray-400 text-center mb-10">{posts.length} result(s) found</p>
               )}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-center mt-0">
-                {resources.map((resource: any) => (
-                  <ItemCard key={resource._id} resource={resource} />
+                {posts.map((post: any) => (
+                  <ItemCard key={post._id} post={post} />
                 ))}
               </div>
             </>

@@ -3,8 +3,8 @@ import { filterList } from "@/lib/app.config"
 const categoryList = filterList.slice(1)
 
 const schema = {
-  name: 'resource',
-  title: 'Resource', 
+  name: 'post',
+  title: 'Post', 
   type: 'document', 
   fields: [
     {
@@ -24,12 +24,6 @@ const schema = {
       name: 'link',
       title: 'Link', 
       type: 'url'      
-    },
-    {
-      name: 'views', 
-      title: 'Views', 
-      type: 'number', 
-      initialValue: 0
     },
     {
       name: 'image', 

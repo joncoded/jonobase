@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { ChildrenProps } from '@/lib/types'
+import { DOMChildrenProps } from '@/lib/types'
 import { getBase } from '@/sanity/actions'
 
 export default async function Head() {
@@ -15,7 +15,7 @@ export default async function Head() {
     { "label": "docs", "url": "/docs" }
   ]
 
-  const HeadWrap = ({children}: ChildrenProps) => {
+  const HeadWrap = ({children}: DOMChildrenProps) => {
     return (
       <nav className="flex sticky top-0 z-50 w-full border-b-2 border-black-200 p-5 bg-black text-white">
         <div className="flex items-center justify-between mx-auto w-full max-w-screen-2xl">

@@ -1,7 +1,7 @@
-import resource from './resource.schema'
-import resourcePlaylist from './resource-playlist.schema'
 import base from './base.schema'
+import list from './list.schema'
+import post from './post.schema'
 
-const schemas = [resource, resourcePlaylist, base]
+const schemas = [base, list, post]
 
 export default schemas

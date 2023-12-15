@@ -3,9 +3,9 @@ import { Card, CardHeader, CardTitle, CardContent } from './ui/card'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const ItemCard = ({resource : { _id, image, title, category}}: ItemProps) => {
+const ItemCard = ({post : { _id, image, title, category}}: ItemProps) => {
   return (
-    <Link href={`/resource/${_id}`}>
+    <Link href={`/post/${_id}`}>
       <Card className="w-full border-2 !bg-transparent">
         <CardHeader className="flex flex-col justify-center gap-5">
           <div className="w-full h-full relative">

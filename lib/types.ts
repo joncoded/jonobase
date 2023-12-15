@@ -1,15 +1,15 @@
-export interface ChildrenProps {
+export interface DOMChildrenProps {
   children: JSX.Element[] | JSX.Element, 
 }
 
-export interface GetResourceParams {
+export interface GetPostParams {
   query: string;
   category: string;
   page: string;
 }
 
 export interface ItemProps {
-  resource: {
+  post: {
     _id: string;
     link: string;    
     image: string;
