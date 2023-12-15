@@ -3,6 +3,27 @@ import { readClient } from './lib/client'
 import { buildQuery } from './utils'
 import { GetResourceParams } from '@/lib/types'
 
+export const getBase = async () => {
+
+  try {
+    const base = await readClient.fetch(
+      groq`*[_type == "base"]{
+        _id,
+        title,
+        intro
+      }`
+    )
+
+    return base
+  
+  } catch (error) {
+  
+    console.log(error)
+
+  }
+
+}
+
 export const getResourcesPlaylist = async () => {
  
   try {

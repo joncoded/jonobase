@@ -1,10 +1,14 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { ChildrenProps } from '@/lib/types'
+import { getBase } from '@/sanity/actions'
 
-export default function Head() {
+export default async function Head() {
 
-  const title = 'Joncoded'
+  const base = await getBase()
+
+  const { title, intro } = base[0]  
+  
   const links = [ 
     { "label": "home", "url": "/" },
     { "label": "code", "url": "/code" },
@@ -22,6 +26,7 @@ export default function Head() {
   }
 
   const HeadBranding = () => {
+  
     return (
       <div className="head-branding flex justify-between items-center gap-5">
         <Link href="/">

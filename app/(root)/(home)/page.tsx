@@ -16,9 +16,7 @@ export default async function Home({ searchParams }: Props) {
     page: '1'
   })
 
-  const resourcesPlaylist = await getResourcesPlaylist()
-
-  console.log(resourcesPlaylist)
+  const resourcesPlaylist = await getResourcesPlaylist()  
 
   return (
     <main className="w-full flex flex-col justify-center mx-auto">
