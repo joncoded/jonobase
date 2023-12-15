@@ -1,5 +1,6 @@
 export interface DOMChildrenProps {
   children: JSX.Element[] | JSX.Element, 
+  className?: string,
 }
 
 export interface GetPostsParams {

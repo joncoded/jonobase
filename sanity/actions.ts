@@ -19,6 +19,27 @@ export const getBase = async (slug: string) => {
   
   } catch (error) {
   
+    console.log("could not get base")
+
+  }
+
+}
+
+export const getList = async (slug: string) => {
+
+  try {
+
+    const lists = await readClient.fetch(
+      groq`*[_type == "list" && slug.current == '${slug}']{
+        _id,
+        title
+      }`
+    )
+
+    return lists[0] 
+
+  } catch (error) {
+
     console.log(error)
 
   }
@@ -49,6 +70,7 @@ export const getLists = async () => {
     console.log(error)
 
   }
+
 }
 
 export const getPosts = async (params: GetPostsParams) => {
@@ -79,4 +101,26 @@ export const getPosts = async (params: GetPostsParams) => {
     console.log(error)
 
   }
+
+}
+
+export const getPost = async (slug: string) => {
+
+  try {
+
+    const posts = await readClient.fetch(
+      groq`*[_type == "post" && slug.current == '${slug}']{
+        _id,
+        title
+      }`
+    )
+
+    return posts[0] 
+
+  } catch (error) {
+
+    console.log(error)
+
+  }
+
 }
