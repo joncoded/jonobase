@@ -1,6 +1,6 @@
 const schema = {
-  name: 'list', 
-  title: 'List',   
+  name: 'heap', 
+  title: 'Heap',   
   type: 'document',
   fields: [
     {
@@ -16,12 +16,12 @@ const schema = {
       options: { source: 'title' }
     },
     {
-      name: 'posts',
-      title: 'posts',
+      name: 'lists',
+      title: 'lists',
       type: 'array',       
       of: [{
         type: 'reference', 
-        to: [{ type: 'post'}]
+        to: [{ type: 'list'}]
       }]
     }
   ]

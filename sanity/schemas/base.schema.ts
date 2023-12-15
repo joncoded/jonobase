@@ -14,7 +14,7 @@ const schema = {
       title: 'Slug', 
       type: 'slug', 
       options: { source: 'title' }
-    },
+    },    
     {
       name: 'intro',
       title: 'Intro',

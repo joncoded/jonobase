@@ -1,7 +1,3 @@
-import { filterList } from "@/lib/app.config"
-
-const categoryList = filterList.slice(1)
-
 const schema = {
   name: 'post',
   title: 'Post', 
@@ -21,26 +17,92 @@ const schema = {
       options: { source: 'title' }
     },
     {
-      name: 'link',
-      title: 'Link', 
-      type: 'url'      
+      name: 'emoji',
+      description: 'for casual categorization purposes', 
+      title: 'Emoji', 
+      type: 'string',      
+    },
+    {
+      name: 'subtitle',
+      title: 'Subtitle', 
+      type: 'string'             
+    },
+    {
+      name: 'content',
+      title: 'Content', 
+      type: 'array',
+      of: [
+        {
+          type: 'block'
+        },
+        {
+          type: 'image',
+          fields: [
+            {
+              type: 'text',
+              name: 'alt',
+              title: 'Alternative text',
+              description: `Screen reader text for low-sighted users`,
+              options: {
+                isHighlighted: true
+              }
+            }
+          ]
+        },
+        {
+          type: 'code'
+        }
+      ] 
+    },
+    {
+      name: 'links',
+      title: 'Links', 
+      description: 'external links',
+      type: 'array',
+      of: [
+        {type: 'url'}
+      ],      
+    },
+    {
+      name: 'moods',
+      title: 'Moods', 
+      description: 'the topics of the posts (aka tags)',
+      type: 'array',
+      of: [
+        {type: 'string'}      
+      ],
+      options: {
+        layout: 'tags',
+      }
     },
     {
       name: 'image', 
       title: 'Image', 
-      type: 'image',
-      validation: (Rule: any) => Rule.required()
+      type: 'image'      
     },
-    {
-      name: 'category', 
-      title: 'Category',
-      type: 'string', 
-      validation: (Rule: any) => Rule.required(),
+    { 
+      name: 'date',
+      title: 'Date', 
+      description: 'back-dating or future-dating allowed',
+      type: 'datetime',
       options: {
-        list: categoryList
-      }
-    }
-  ]
+        dateFormat: 'YYYY-MM-DD', 
+        timeFormat: 'HH:mm',
+        calendarTodayLabel: 'Today'
+      },
+      validation: (Rule: any) => Rule.required(),      
+    },
+  ],
+  initialValue: {
+    date: Date.now()
+  },
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'date',
+      media: 'image',     
+    },
+ },
 }
 
 export default schema
