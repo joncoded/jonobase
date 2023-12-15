@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-// import { filterList as filters } from '@/lib/app.config'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { formUrlQuery } from '@/sanity/utils'
 

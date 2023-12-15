@@ -41,7 +41,7 @@ export default async function Head() {
     return (
       <ul className="flex justify-center gap-x-5 max-md:hidden md:gap-x-10">
         {links.map(link => (
-          <li>
+           <li key={link.label}>
             <Link href={link.url} target="_blank">{link.label}</Link>
           </li>
         ))}          

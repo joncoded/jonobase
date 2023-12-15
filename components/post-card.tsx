@@ -3,9 +3,9 @@ import { Card, CardHeader, CardTitle, CardContent } from './ui/card'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const PostCard = ({post : { _id, image, title, category}}: PostProps) => {
+const PostCard = ({post : { slug, image, title, category}}: PostProps) => {
   return (
-    <Link href={`/post/${_id}`}>
+    <Link href={`/posts/${slug.current}`}>
       <Card className="w-full border-2 !bg-transparent">
         <CardHeader className="flex flex-col justify-center gap-5">
           <div className="w-full h-full relative">

@@ -27,12 +27,12 @@ export default async function Home({ searchParams }: Props) {
       </section> 
       
       {/* stash this for later */}
-      {/* {list.map((item: any) => (
-        <section key={item._id} className="w-full bg-emerald-200 p-5 flex flex-col justify-center items-center">
+      {/* {lists.map((list: any) => (
+        <section key={list._id} className="w-full bg-emerald-200 p-5 flex flex-col justify-center lists-center">
           <div className="max-w-screen-2xl mx-auto my-10">
-            <h2 className="text-5xl text-center">{item.title}</h2>
+            <h2 className="text-5xl text-center">{list.title}</h2>
             <div className="mt-5 w-full grid grid-cols-1 md:grid-cols-2 justify-center gap-5 sm:justify-start">
-            {item.posts.map((post: any) => (
+            {list.posts.map((post: any) => (
               <PostCard key={post._id} post={post} />
             ))}
             </div>
