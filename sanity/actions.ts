@@ -25,6 +25,53 @@ export const getBase = async (slug: string) => {
 
 }
 
+export const getCategories = async (slug: string) => {
+
+  try {
+
+    const base = await readClient.fetch(
+      groq`*[_type == "base" && slug.current == '${slug}']{
+        filters
+      }`
+    )
+
+    return base[0].filters
+
+  } catch (error) {
+
+    console.log("could not get categories")
+
+  }
+
+}
+
+export const getHeap = async (slug: string) => {
+  
+  try {
+
+    const heap = await readClient.fetch(
+      groq`*[_type == "heap" && slug.current == '${slug}']{
+        _id,
+        title,
+        lists->{
+          title,
+          subtitle,
+          posts,
+          content          
+        }
+      }`
+    )
+
+    return heap
+
+  } catch (error) {
+
+    console.log(error)
+
+  }
+
+}
+
 export const getList = async (slug: string) => {
 
   try {
@@ -32,7 +79,15 @@ export const getList = async (slug: string) => {
     const lists = await readClient.fetch(
       groq`*[_type == "list" && slug.current == '${slug}']{
         _id,
-        title
+        title,
+        posts[0...12]->{
+          title,
+          _id, 
+          content,
+          link,
+          "image" : image.asset->url,
+          category
+        }
       }`
     )
 
@@ -49,11 +104,11 @@ export const getList = async (slug: string) => {
 export const getLists = async () => {
  
   try {
-    const list = await readClient.fetch(
+    const lists = await readClient.fetch(
       groq`*[_type == "list"]{        
         _id,
         title,
-        posts[0...6]->{
+        posts[0...12]->{
           title,
           _id,
           link,
@@ -63,7 +118,7 @@ export const getLists = async () => {
       }`    
     )
 
-    return list
+    return lists
 
   } catch (error) {
 
@@ -111,7 +166,15 @@ export const getPost = async (slug: string) => {
     const posts = await readClient.fetch(
       groq`*[_type == "post" && slug.current == '${slug}']{
         _id,
-        title
+        title,
+        emoji,
+        subtitle,
+        category,
+        content,
+        link,
+        moods,
+        image,
+        date
       }`
     )
 
