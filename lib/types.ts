@@ -8,7 +8,7 @@ export interface GetPostParams {
   page: string;
 }
 
-export interface ItemProps {
+export interface PostProps {
   post: {
     _id: string;
     link: string;    

@@ -5,7 +5,7 @@ import { useSearchParams, useRouter } from 'next/navigation'
 import { Input } from './ui/input'
 import { formUrlQuery } from '@/sanity/utils'
 import FindFilters from './find-filters'
-import ItemCard from './item-card'
+import PostCard from './post-card'
 import ListHead from './list-head'
 
 export default function Find({posts, urlParams} : any ) {
@@ -86,7 +86,7 @@ export default function Find({posts, urlParams} : any ) {
               )}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-center mt-0">
                 {posts.map((post: any) => (
-                  <ItemCard key={post._id} post={post} />
+                  <PostCard key={post._id} post={post} />
                 ))}
               </div>
             </>

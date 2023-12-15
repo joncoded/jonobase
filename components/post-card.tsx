@@ -1,9 +1,9 @@
-import { ItemProps } from '@/lib/types'
+import { PostProps } from '@/lib/types'
 import { Card, CardHeader, CardTitle, CardContent } from './ui/card'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const ItemCard = ({post : { _id, image, title, category}}: ItemProps) => {
+const PostCard = ({post : { _id, image, title, category}}: PostProps) => {
   return (
     <Link href={`/post/${_id}`}>
       <Card className="w-full border-2 !bg-transparent">
@@ -28,4 +28,4 @@ const ItemCard = ({post : { _id, image, title, category}}: ItemProps) => {
   )
 }
 
-export default ItemCard
+export default PostCard
