@@ -2,7 +2,7 @@ export interface DOMChildrenProps {
   children: JSX.Element[] | JSX.Element, 
 }
 
-export interface GetPostParams {
+export interface GetPostsParams {
   query: string;
   category: string;
   page: string;
