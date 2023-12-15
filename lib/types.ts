@@ -1,6 +1,7 @@
 export interface DOMChildrenProps {
   children: JSX.Element[] | JSX.Element, 
   className?: string,
+  marginTop?: string
 }
 
 export interface GetPostsParams {
@@ -15,7 +16,10 @@ export interface PostProps {
     link: string;    
     image: string;
     views: number;
-    slug: string;
+    slug: {
+      current: string;
+    }
+    content: JSX.Element[] | JSX.Element;
     category: string;
     title: string;
   }
