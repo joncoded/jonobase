@@ -1,11 +1,15 @@
 'use client'
 
 import { useState } from 'react'
-import { filterList as filters } from '@/lib/app.config'
+// import { filterList as filters } from '@/lib/app.config'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { formUrlQuery } from '@/sanity/utils'
 
-const FindFilters = () => {
+interface FiltersProps {
+  filters: string[]
+}
+
+const FindFilters = ({filters}: FiltersProps) => {
 
   const [active, setActive] = useState('all')
   const searchParams = useSearchParams()
@@ -36,6 +40,13 @@ const FindFilters = () => {
 
   return (
     <ul className="flex flex-wrap justify-center gap-5 mx-auto">
+      <li key="all">
+        <button 
+          onClick={() => handleFilter('all')}
+          className={`rounded-lg font-sans text-xl ${active === 'all' ? `bg-green-800` : `bg-gray-600`} hover:bg-black text-white px-5 py-2`}>
+          all
+        </button>
+      </li>
       {filters.map((filter) => (
         <li key={filter}>
           <button             

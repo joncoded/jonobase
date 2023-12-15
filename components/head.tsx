@@ -4,10 +4,10 @@ import { DOMChildrenProps } from '@/lib/types'
 import { getBase } from '@/sanity/actions'
 
 export default async function Head() {
-
-  const base = await getBase()
-
-  const { title, intro } = base[0]  
+  
+  const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)  
+  
+  const { title } = base
   
   const links = [ 
     { "label": "home", "url": "/" },
@@ -17,11 +17,11 @@ export default async function Head() {
 
   const HeadWrap = ({children}: DOMChildrenProps) => {
     return (
-      <nav className="flex sticky top-0 z-50 w-full border-b-2 border-black-200 p-5 bg-black text-white">
-        <div className="flex items-center justify-between mx-auto w-full max-w-screen-2xl">
-          {children}
-        </div>
-      </nav>
+      <header className="flex sticky top-0 z-50 w-full border-b-2 border-black-200 p-5 bg-black text-white">
+        <nav className="flex items-center justify-between mx-auto w-full max-w-screen-2xl">          
+          {children}          
+        </nav>
+      </header>
     )
   }
 

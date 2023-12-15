@@ -3,18 +3,19 @@ import { readClient } from './lib/client'
 import { buildQuery } from './utils'
 import { GetPostsParams } from '@/lib/types'
 
-export const getBase = async () => {
+export const getBase = async (slug: string) => {
 
   try {
     const base = await readClient.fetch(
-      groq`*[_type == "base"]{
+      groq`*[_type == "base" && slug.current == '${slug}']{
         _id,
         title,
-        intro
+        intro,
+        filters
       }`
     )
 
-    return base
+    return base[0]
   
   } catch (error) {
   

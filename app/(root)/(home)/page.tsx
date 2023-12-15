@@ -1,5 +1,5 @@
 import Find from "@/components/find"
-import { getPosts } from "@/sanity/actions"
+import { getBase, getPosts } from "@/sanity/actions"
 
 export const revalidate = 30
 
@@ -9,6 +9,9 @@ interface Props {
 
 export default async function Home({ searchParams }: Props) {
 
+  const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
+
+  const { filters } = base
   const posts = await getPosts({
     query: searchParams?.query || '', 
     category: searchParams?.category || '', 
@@ -19,7 +22,7 @@ export default async function Home({ searchParams }: Props) {
     <main className="w-full flex flex-col justify-center mx-auto">
       <section className="w-full bg-gradient-to-b from-sky-50 to-sky-200 p-5">
         <div className="max-w-screen-2xl mx-auto">
-          <Find posts={posts} urlParams={searchParams} />
+          <Find filters={filters} posts={posts} urlParams={searchParams} />
         </div>
       </section> 
       

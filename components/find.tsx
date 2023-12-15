@@ -8,7 +8,7 @@ import FindFilters from './find-filters'
 import PostCard from './post-card'
 import ListHead from './list-head'
 
-export default function Find({posts, urlParams} : any ) {
+export default function Find({filters, posts, urlParams} : any ) {
 
   const intro = 'Intro message!'
   const subintro = 'What would you like to look at today?'
@@ -68,7 +68,7 @@ export default function Find({posts, urlParams} : any ) {
         </label>      
       </form>
     
-      <FindFilters />
+      <FindFilters filters={filters} />
     
       <section className="flex justify-center mt-5 w-full flex-col">
 
