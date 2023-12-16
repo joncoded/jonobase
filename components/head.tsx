@@ -7,7 +7,7 @@ export default async function Head() {
   
   const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)  
   
-  const { title } = base
+  const { title } = base || ""
   
   const links = [ 
     { "label": "home", "url": "/" },
