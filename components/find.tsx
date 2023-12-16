@@ -2,17 +2,14 @@
 
 import { useEffect, useState } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
-import { Input } from './ui/input'
 import { formUrlQuery } from '@/sanity/utils'
+import { Input } from './ui/input'
 import FindFilters from './find-filters'
 import PostCard from './post-card'
 import ListHead from './list-head'
+import { text } from '@/lib/app.config'
 
 export default function Find({filters, posts, urlParams} : any ) {
-
-  const intro = 'Intro message!'
-  const subintro = 'What would you like to look at today?'
-  const placeholder = `🔎  find`
 
   const searchParams = useSearchParams()  
   const router = useRouter()  
@@ -42,30 +39,18 @@ export default function Find({filters, posts, urlParams} : any ) {
     setQuery(event.target.value)
   }
 
-  const FindIntro = () => {
-    return (
-      <div className="w-full flex flex-col gap-5 text-center">
-        <h1 className="font-sans font-bold text-5xl sm:text-6xl lg:text-7xl">{intro}</h1>
-        <p className="font-serif text-xl sm:text-3xl">{subintro}</p>
-      </div>      
-    )
-  }
-
   return (
     <div className="flex flex-col gap-5 mx-auto py-10">
     
-      <FindIntro />
-    
       <form className="w-full flex mt-10 text-center">
-        <label className="w-full max-w-full md:max-w-screen-md mx-auto">        
-          <Input 
-            type="text"
-            placeholder={placeholder}
-            className="border-0 bg-gray-200 p-10 placeholder:text-black placeholder:font-sans text-3xl placeholder:text-3xl focus:!ring-4"
-            value={query}
-            onChange={handleQuery}
-          />
-        </label>      
+        <label className="w-full max-w-full md:max-w-screen-md mx-auto sr-only"></label>        
+        <Input 
+          type="text"
+          placeholder={text['search']} 
+          className="border-0 bg-gray-200 p-10 placeholder:text-black placeholder:font-sans text-3xl placeholder:text-3xl focus:!ring-4"
+          value={query}
+          onChange={handleQuery}
+        />
       </form>
     
       <FindFilters filters={filters} />

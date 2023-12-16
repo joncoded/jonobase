@@ -10,7 +10,9 @@ export const getBase = async (slug: string) => {
       groq`*[_type == "base" && slug.current == '${slug}']{
         _id,
         title,
-        intro,
+        slug, 
+        intro,        
+        tagline,
         filters
       }`
     )

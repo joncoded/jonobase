@@ -29,10 +29,10 @@ export default async function Head() {
   
     return (
       <div className="head-branding flex justify-between items-center gap-5">
-        <Link href="/">
-          <Image className="head-logo rounded-full border-4 border-white drop-shadow" src="/images/logo.png" alt="logo" width={50} height={40} />
-        </Link>        
-        <h1 className="head-title text-4xl uppercase font-sans">{title}</h1>
+        <Link href="/" className="flex items-center">
+          <Image className="head-logo rounded-full border-4 border-white drop-shadow mr-5" src="/images/logo.png" alt="logo" width={50} height={40} />
+          <h1 className="head-title text-4xl uppercase font-sans">{title}</h1>
+        </Link>                
       </div>      
     )
   }  
