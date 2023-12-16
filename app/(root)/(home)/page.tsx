@@ -21,7 +21,7 @@ export default async function Home({ searchParams }: Props) {
   return (
     <main className="w-full flex flex-col justify-center mx-auto">
       <section className="w-full bg-gradient-to-b from-sky-50 to-sky-200 p-5">
-        <div className="max-w-screen-2xl mx-auto">
+        <div className="max-w-screen-xl mx-auto">
           <Find filters={filters} posts={posts} urlParams={searchParams} />
         </div>
       </section> 

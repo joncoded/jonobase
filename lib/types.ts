@@ -1,7 +1,6 @@
 export interface DOMChildrenProps {
   children: JSX.Element[] | JSX.Element, 
-  className?: string,
-  marginTop?: string
+  className?: string
 }
 
 export interface GetPostsParams {
