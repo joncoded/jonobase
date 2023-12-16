@@ -4,6 +4,12 @@ export interface DOMChildrenProps {
   bgImage?: string;
 }
 
+export interface HomeProps {
+  searchParams: {
+    [key: string] : string | undefined;
+  }
+}
+
 export interface GetPostsParams {
   query: string;
   category: string;
