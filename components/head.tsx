@@ -8,16 +8,10 @@ export default async function Head() {
   const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)  
   
   const { title } = base || ""
-  
-  const links = [ 
-    { "label": "home", "url": "/" },
-    { "label": "code", "url": "/code" },
-    { "label": "docs", "url": "/docs" }
-  ]
 
   const HeadWrap = ({children}: DOMChildrenProps) => {
     return (
-      <header className="flex sticky top-0 z-50 w-full border-b-2 border-black-200 p-5 bg-gradient-to-t from-gray-900 to-gray-600 text-white shadow-xl">
+      <header className="head-wrapper flex sticky top-0 z-50 w-full border-b-2 border-black-200 p-5 bg-gradient-to-t from-gray-900 to-gray-600 text-white shadow-xl">
         <nav className="flex items-center justify-between mx-auto w-full max-w-screen-xl">          
           {children}          
         </nav>
@@ -40,11 +34,7 @@ export default async function Head() {
   const HeadNavi = () => {
     return (
       <ul className="head-navi flex justify-center gap-x-5 max-md:hidden md:gap-x-10">
-        {links.map(link => (
-           <li key={link.label}>
-            <Link href={link.url} target="_blank">{link.label}</Link>
-          </li>
-        ))}          
+         
       </ul>
     )
   }

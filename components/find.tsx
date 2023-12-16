@@ -67,7 +67,9 @@ export default function Find({filters, posts, urlParams} : any ) {
           {posts?.length > 0 ? (
             <>
               {(urlParams?.query || urlParams.category) && ( 
-                <p className="text-3xl text-gray-400 text-center mb-10">{posts.length} result(s) found</p>
+                <p className="text-3xl text-gray-400 text-center mb-10">
+                  {posts.length} {posts.length === 1 ? text['result_found'] : text['results_found']}
+                </p>
               )}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-center mt-0">
                 {posts.map((post: any) => (
@@ -76,7 +78,7 @@ export default function Find({filters, posts, urlParams} : any ) {
               </div>
             </>
           ) : (
-            <p className="text-3xl text-gray-400 text-center">0 results found</p>
+            <p className="text-3xl text-gray-400 text-center">0 {text['results_found']}</p>
           )}
         </div>
 

@@ -28,14 +28,19 @@ export default async function Home({ searchParams }: HomeProps) {
   }
 
   return (
+    
     <main>
-      <Sect bgClasses="bg-gradient-to-b from-sky-50 to-sky-200 p-20 drop-shadow-md">
+
+      <Sect className="bg-gradient-to-b from-sky-50 to-sky-200 p-20 drop-shadow-md">
         <HomeHead />
       </Sect>
-      <Sect bgClasses="bg-white text-black">
+      
+      <Sect className="bg-white text-black">
         <Find filters={filters} posts={posts} urlParams={searchParams} />
       </Sect>          
+    
     </main>
+
   )
 
 }

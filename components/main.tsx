@@ -1,17 +1,33 @@
 
 interface SectProps {
   children: JSX.Element | JSX.Element[];
-  bgClasses: string;
+  className?: string;  
+  bgImage?: string;
 }
 
-export const Sect = ({children, bgClasses}: SectProps) => {
+export const Sect = ({children, className, bgImage}: SectProps) => {
+
+  const background = bgImage 
+    ? {  
+        backgroundImage: `url('${(bgImage) ? bgImage : ''}')`, 
+        backgroundSize: 'cover', 
+        backgroundRepeat: 'no-repeat', 
+        backgroundPosition: 'center center', 
+        backgroundAttachment: 'fixed'            
+      }
+    : {}
+    
   return (
     
-    <section className={`w-full ${bgClasses}`}>
+    <section 
+      style={background}
+      className={`${className} w-full`}
+    >
       <div className="max-w-screen-xl mx-auto">
         {children}
       </div>
     </section>
   
   )
+
 }

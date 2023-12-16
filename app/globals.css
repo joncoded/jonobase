@@ -7,8 +7,9 @@
 
 body {
   scroll-padding-top: 5.5rem;
+  font-size: 18px;
 }
 
-.post-arch p {
+.post-main p {
   margin: 20px 0;
 }

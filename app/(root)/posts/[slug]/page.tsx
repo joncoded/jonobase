@@ -1,18 +1,19 @@
 import Link from "next/link"
 import { getPost } from "@/sanity/actions"
-import { DOMChildrenProps } from "@/lib/types"
 import BlockContent from "@sanity/block-content-to-react"
 import SyntaxHighlighter from "react-syntax-highlighter"
 import { monokaiSublime } from "react-syntax-highlighter/dist/cjs/styles/hljs"
+import { Sect } from "@/components/main"
+import { text } from "@/lib/app.config"
 
-export const revalidate = 30
+export const revalidate = 600
 
 export default async function Main({ params } : any) {
 
   const { slug } = params  
   const post = await getPost(slug)  
 
-
+  /* def syntax highlighting stuff */
   const serializers = {
     types: {
         code: ({node}: any) => {
@@ -26,23 +27,13 @@ export default async function Main({ params } : any) {
         }
     }
   }
+  /* end syntax highlighting stuff */
 
-  const PostArch = ({children, className = '', bgImage = ''}: DOMChildrenProps) => {
+  if (!post) {
     return (
-      <section 
-        style={{  
-          backgroundImage: `url('${(bgImage === null || bgImage === '') ? '' : bgImage}')`, 
-          backgroundSize: 'cover', 
-          backgroundRepeat: 'no-repeat', 
-          backgroundPosition: 'center center', 
-          backgroundAttachment: 'fixed'            
-        }}
-        className={`${className} w-full`}
-      >        
-        <div className={`max-w-screen-xl mx-auto py-10 px-10 text-2xl`}>          
-          {children}          
-        </div>      
-      </section>        
+      <Sect>
+        <h1 className="text-5xl md:text-7xl text-black">404</h1>
+      </Sect>
     )
   }
 
@@ -51,10 +42,10 @@ export default async function Main({ params } : any) {
   const PostHead = () => {
     return (
       <div className={`post-head ${image ? 'py-10 bg-zinc-900/60 text-white' : 'text-black dark:text-white'} text-center`}>
-        <div className="post-head-emoji text-7xl pb-5" aria-hidden="true">{emoji}</div>
-        <h1 className="post-head-title text-7xl font-bold">{title}</h1> 
-        { subtitle && <p className="post-head-subtitle text-3xl mt-2">{subtitle}</p>}
-        <p className="post-head-data font-serif text-xl mt-6">
+        <div className="post-head-emoji hidden md:block text-7xl pb-5" aria-hidden="true">{emoji}</div>
+        <h1 className="post-head-title text-5xl md:text-7xl font-bold">{title}</h1> 
+        { subtitle && <p className="post-head-subtitle text-xl md:text-3xl mt-2">{subtitle}</p>}
+        <p className="post-head-data font-serif text-sm md:text-xl mt-6">
           <span className="post-head-cats">{category}</span>
           <span className="post-head-bull mx-2" aria-hidden="true">&bull;</span>
           <span className="post-head-date">{date.substring(0,10)} {date.substring(11,16)}</span> 
@@ -63,48 +54,50 @@ export default async function Main({ params } : any) {
     )
   }
 
-  if (!post) {
+  const PostLink = () => {
     return (
-      <PostArch>
-        <h1 className="text-7xl text-black">404</h1>
-      </PostArch>
+      link && <Link href={link} className="post-url px-5 py-2 bg-black text-white text-2xl">{text['visit url']}</Link>
     )
   }
 
-  
+  const PostMood = () => {
+    return (
+      <>
+        <span className="mr-5">{text['moods']}</span> 
+        {moods.map((mood: any) => {
+          return (
+            <Link key={mood} href="#" className="mr-5 p-2 px-5 bg-black text-white">{mood}</Link>
+          )
+        })}
+      </>
+    )
+  }
 
-  
   return (
+
     <main>
 
-      <PostArch 
-        className={`post-arch-head ${!image && `!bg-gradient-to-b from-sky-100 to-sky-200`} font-sans`}        
-        bgImage={image}
-      > 
+      <Sect className={`post-head ${!image && `!bg-gradient-to-b from-sky-100 to-sky-200`} p-10 font-sans`} bgImage={image}> 
         <PostHead />
-      </PostArch>
+      </Sect>
 
-      <PostArch 
-        className={`post-arch-link !bg-zinc-50 text-center`}
-      >
-        {link && <Link href={link} className="post-url px-5 py-2 bg-black text-white">visit URL</Link>}
-      </PostArch>
+      <Sect className={`post-link !bg-zinc-50 text-center p-10`}>
+        <PostLink />
+      </Sect>
       
-      <PostArch className={`border-t`}>        
-        <BlockContent blocks={content} serializers={serializers} projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID} dataset="production" /> 
-      </PostArch>
+      <Sect className={`post-main border-t p-10`}>        
+        <BlockContent 
+          blocks={content} 
+          serializers={serializers} 
+          dataset="production"
+          projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}  
+        /> 
+      </Sect>
 
       { moods && 
-        <PostArch 
-          className={`!bg-gradient-to-r from-gray-100 to-gray-300`}          
-        >
-          <span className="mr-5">moods:</span> 
-          {moods.map((mood: any) => {
-            return (
-              <Link key={mood} href="#" className="mr-5 p-2 px-5 bg-black text-white">{mood}</Link>
-            )
-          })}
-        </PostArch>
+      <Sect className={`post-mood !bg-gradient-to-r from-gray-100 to-gray-300 p-10 text-2xl`}>
+        <PostMood />
+      </Sect>
       }
     
     </main>

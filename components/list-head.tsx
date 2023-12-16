@@ -1,14 +1,15 @@
+import { text } from "@/lib/app.config";
 
-interface Props {
+interface ListProps {
   query: string;
   category: string;
 }
 
-const ListHead = ({query, category}: Props) => {
+const ListHead = ({query, category}: ListProps) => {
   if (query && category) {
     return (
       <h2 className="text-3xl">
-        results for <strong>{query}</strong> in <strong>{category}</strong>
+        {text['results']} <strong>{query}</strong> (<strong>{category}</strong>)
       </h2>
     )
   }
@@ -16,7 +17,7 @@ const ListHead = ({query, category}: Props) => {
   if (query) {
     return (
       <h2 className="text-3xl">
-        results for query: <strong>{query}</strong>
+         {text['results_query']} : <strong>{query}</strong>
       </h2>
     )
   }
@@ -24,7 +25,7 @@ const ListHead = ({query, category}: Props) => {
   if (category) {
     return (
       <h2 className="text-3xl">
-        results for category: <strong>{category}</strong>
+        {text['results_category']} : <strong>{category}</strong>
       </h2>
     )
   }
