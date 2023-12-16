@@ -1,15 +1,3 @@
-import {defineType, defineField} from 'sanity'
-
-defineType({  
-  fields: [
-    defineField({
-      type: 'code',
-      name: 'myCodeField',
-      title: 'My code field',
-    }),
-  ],
-})
-
 const schema = {
   name: 'post',
   title: 'Post', 
