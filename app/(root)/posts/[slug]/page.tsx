@@ -99,7 +99,7 @@ export default async function Main({ params } : any) {
           <span className="mr-5">moods:</span> 
           {moods.map((mood: any) => {
             return (
-              <Link href="#" className="mr-5 p-2 px-5 bg-black text-white">{mood}</Link>
+              <Link key={mood} href="#" className="mr-5 p-2 px-5 bg-black text-white">{mood}</Link>
             )
           })}
         </PostArch>

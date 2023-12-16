@@ -46,7 +46,7 @@ const FindFilters = ({filters}: FiltersProps) => {
           all
         </button>
       </li>
-      {filters.map((filter) => (
+      {filters.length > 0 && filters.map((filter) => (
         <li key={filter}>
           <button             
             onClick={() => handleFilter(filter)}

@@ -11,7 +11,8 @@ export default async function Home({ searchParams }: Props) {
 
   const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
 
-  const { filters } = base
+  
+  const { filters } = base || [] 
   const posts = await getPosts({
     query: searchParams?.query || '', 
     category: searchParams?.category || '', 
