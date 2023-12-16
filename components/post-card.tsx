@@ -8,6 +8,7 @@ const PostCard = ({post : { slug, image, title, category}}: PostProps) => {
     <Link href={`/posts/${slug.current}`}>
       <Card className="w-full border-2 !bg-transparent">
         <CardHeader className="flex flex-col justify-center gap-5">
+          {image && 
           <div className="w-full h-full relative">
             <Image               
               src={image} 
@@ -17,7 +18,8 @@ const PostCard = ({post : { slug, image, title, category}}: PostProps) => {
               sizes="100vw"
               className="w-full h-auto"
             />
-          </div>
+          </div> 
+          }
           <CardTitle className="text-white paragraph-semibold line-clamp-1 w-full text-left">{title}</CardTitle>          
         </CardHeader>
         <CardContent className="flex justify-between">

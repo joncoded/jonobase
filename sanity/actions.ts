@@ -173,7 +173,7 @@ export const getPost = async (slug: string) => {
         content,
         link,
         moods,
-        image,
+        "image": image.asset->url,
         date
       }`
     )

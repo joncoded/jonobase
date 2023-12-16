@@ -10,13 +10,37 @@ export default async function Main({ params } : any) {
   const { slug } = params  
   const post = await getPost(slug)  
 
-  const PostArch = ({children, className = ''}: DOMChildrenProps) => {
+  const PostArch = ({children, className = '', bgImage = ''}: DOMChildrenProps) => {
     return (
-      <section className={`w-full ${className}`}>
-        <div className={`max-w-screen-xl mx-auto py-10 px-5 text-2xl`}>          
+      <section 
+        style={{  
+          backgroundImage: `url('${(bgImage === null || bgImage === '') ? '' : bgImage}')`, 
+          backgroundSize: 'cover', 
+          backgroundRepeat: 'no-repeat', 
+          backgroundPosition: 'center center', 
+          backgroundAttachment: 'fixed'            
+        }}
+        className={`${className} w-full`}
+      >        
+        <div className={`max-w-screen-xl mx-auto py-10 px-10 text-2xl`}>          
           {children}          
-        </div>
+        </div>      
       </section>        
+    )
+  }
+
+  const PostHead = () => {
+    return (
+      <div className={`post-head ${image ? 'py-10 bg-zinc-900/60 text-white' : 'text-black dark:text-white'} text-center`}>
+        <div className="post-head-emoji text-7xl pb-5" aria-hidden="true">{emoji}</div>
+        <h1 className="post-head-title text-7xl font-bold">{title}</h1> 
+        { subtitle && <p className="post-head-subtitle text-3xl mt-2">{subtitle}</p>}
+        <p className="post-head-data font-serif text-xl mt-6">
+          <span className="post-head-cats">{category}</span>
+          <span className="post-head-bull mx-2" aria-hidden="true">&bull;</span>
+          <span className="post-head-date">{date.substring(0,10)} {date.substring(11,16)}</span> 
+        </p>          
+      </div>
     )
   }
 
@@ -34,31 +58,30 @@ export default async function Main({ params } : any) {
     <main>
 
       <PostArch 
-        className={`bg-gradient-to-b from-sky-100 dark:from-sky-800 to-sky-200 dark:to-sky-900 font-sans`}          
+        className={`post-arch-head ${!image && `!bg-gradient-to-b from-sky-100 to-sky-200`} font-sans`}        
+        bgImage={image}
       > 
-        <div className="post-meta text-center bg-white/50 py-5">
-          <div className="post-meta-emoji text-7xl pb-5" aria-hidden="true">{emoji}</div>
-          <h1 className="post-meta-title text-7xl font-bold">{title}</h1> 
-          { subtitle && <p className="post-meta-subtitle text-3xl mt-2">{subtitle}</p>}
-          <p className="post-meta-data text-xl mt-6">
-            <span className="post-meta-cats">{category}</span>
-            <span className="post-meta-bull mx-2" aria-hidden="true">&bull;</span>
-            <span className="post-meta-date">{date.substring(0,10)} {date.substring(11,16)}</span> 
-          </p>
-        </div>
+        <PostHead />
+      </PostArch>
+
+      <PostArch 
+        className={`post-arch-link !bg-zinc-50 text-center`}
+      >
+        {link && <Link href={link} className="post-url px-5 py-2 bg-black text-white">visit URL</Link>}
       </PostArch>
       
-      <PostArch className={`max-w-screen-lg mx-auto`}>
+      <PostArch className={`border-t`}>        
         <PortableText value={content} />
       </PostArch>
 
       { moods && 
         <PostArch 
-          className={`bg-gradient-to-r from-gray-100 to-gray-300`}          
+          className={`!bg-gradient-to-r from-gray-100 to-gray-300`}          
         >
+          <span className="mr-5">moods:</span> 
           {moods.map((mood: any) => {
             return (
-              <Link href="" className="mr-5 p-2 px-5 bg-black text-white">{mood}</Link>
+              <Link href="#" className="mr-5 p-2 px-5 bg-black text-white">{mood}</Link>
             )
           })}
         </PostArch>
