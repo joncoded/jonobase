@@ -1,7 +1,9 @@
 import Link from "next/link"
 import { getPost } from "@/sanity/actions"
 import { DOMChildrenProps } from "@/lib/types"
-import { PortableText } from "@portabletext/react"
+import BlockContent from "@sanity/block-content-to-react"
+import SyntaxHighlighter from "react-syntax-highlighter"
+import { monokaiSublime } from "react-syntax-highlighter/dist/cjs/styles/hljs"
 
 export const revalidate = 30
 
@@ -9,6 +11,21 @@ export default async function Main({ params } : any) {
 
   const { slug } = params  
   const post = await getPost(slug)  
+
+
+  const serializers = {
+    types: {
+        code: ({node}: any) => {
+            const { code, language } = node
+            if (!code){
+                return null
+            }
+            return <SyntaxHighlighter style={monokaiSublime} language={language ||'text'} showLineNumbers={true} wrapLines={true}>
+            {code}
+          </SyntaxHighlighter>
+        }
+    }
+  }
 
   const PostArch = ({children, className = '', bgImage = ''}: DOMChildrenProps) => {
     return (
@@ -53,6 +70,7 @@ export default async function Main({ params } : any) {
   }
 
   const { title, emoji, subtitle, category, content, link, moods, image, date } = post 
+
   
   return (
     <main>
@@ -71,7 +89,7 @@ export default async function Main({ params } : any) {
       </PostArch>
       
       <PostArch className={`border-t`}>        
-        <PortableText value={content} />
+        <BlockContent blocks={content} serializers={serializers} projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID} dataset="production" /> 
       </PostArch>
 
       { moods && 
