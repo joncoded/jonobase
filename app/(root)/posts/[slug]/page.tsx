@@ -46,6 +46,8 @@ export default async function Main({ params } : any) {
     )
   }
 
+  const { title, emoji, subtitle, category, content, link, moods, image, date } = post 
+
   const PostHead = () => {
     return (
       <div className={`post-head ${image ? 'py-10 bg-zinc-900/60 text-white' : 'text-black dark:text-white'} text-center`}>
@@ -69,7 +71,7 @@ export default async function Main({ params } : any) {
     )
   }
 
-  const { title, emoji, subtitle, category, content, link, moods, image, date } = post 
+  
 
   
   return (
