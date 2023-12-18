@@ -44,10 +44,10 @@ export default function Find({filters, posts, urlParams} : any ) {
     
       <form className="w-full flex mt-10 text-center">
         <label className="w-full max-w-full md:max-w-screen-md mx-auto sr-only"></label>        
-        <Input 
+        <input 
           type="text"
           placeholder={text['search']} 
-          className="border-0 bg-gray-200 p-10 placeholder:text-black placeholder:font-sans text-3xl placeholder:text-3xl focus:!ring-4"
+          className="border-0 bg-gray-200 w-full px-5 py-2 placeholder:text-black placeholder:font-sans text-2xl placeholder:text-3xl focus:!ring-2"
           value={query}
           onChange={handleQuery}
         />
