@@ -23,7 +23,7 @@ export const Sect = ({children, className, bgImage}: SectProps) => {
       style={background}
       className={`${className} w-full`}
     >
-      <div className="max-w-screen-xl mx-auto">
+      <div className="max-w-screen-lg mx-auto">
         {children}
       </div>
     </section>

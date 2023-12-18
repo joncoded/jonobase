@@ -16,15 +16,20 @@ const schema = {
       options: { source: 'title' }
     },           
     {
-      name: 'intro',
-      title: 'Intro',       
-      type: 'string', 
-    },
-    {
       name: 'tagline',
       title: 'Tagline',
       type: 'string',      
     }, 
+    {
+      name: 'intro',
+      title: 'Intro',
+      type: 'array', 
+      of: [
+        {
+          type: 'block'
+        }
+      ]
+    },
     {
       name: 'filters',
       title: 'Filters',

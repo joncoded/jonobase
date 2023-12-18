@@ -1,7 +1,9 @@
 import Find from "@/components/find"
+import { PortableText } from '@portabletext/react'
 import { getBase, getPosts } from "@/sanity/actions"
 import { HomeProps } from "@/lib/types"
 import { Sect } from "@/components/main"
+
 export const revalidate = 30
 
 export default async function Home({ searchParams }: HomeProps) {
@@ -10,7 +12,6 @@ export default async function Home({ searchParams }: HomeProps) {
 
   const { filters } = base || [] 
   const { intro } = base || ''
-  const { tagline } = base || ''
 
   const posts = await getPosts({
     query: searchParams?.query || '', 
@@ -20,9 +21,13 @@ export default async function Home({ searchParams }: HomeProps) {
 
   const HomeHead = () => {
     return (
-      <div className="w-full flex flex-col gap-5 text-center">
-        <h1 className="font-sans font-bold text-5xl sm:text-6xl lg:text-7xl">{intro}</h1>
-        <p className="font-serif text-xl sm:text-3xl">{tagline}</p>
+      <div className={`w-full flex flex-col gap-5 text-center`}>
+        <div className={`
+          max-w-screen-lg mx-auto font-sans 
+          prose prose-h2:text-5xl prose-h2:mb-5 prose-p:text-3xl`
+        }>
+          <PortableText value={intro} />        
+        </div>
       </div>
     )
   }

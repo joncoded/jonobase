@@ -16,7 +16,8 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/images/logo.png" />
       </head>
-      <body className="flex flex-col h-screen justify-between font-serif">
+      <body 
+        className="flex flex-col h-screen justify-between font-serif">
         {children}
       </body>
     </html>

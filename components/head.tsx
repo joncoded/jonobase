@@ -12,7 +12,7 @@ export default async function Head() {
   const HeadWrap = ({children}: DOMChildrenProps) => {
     return (
       <header className="head-wrapper flex sticky top-0 z-50 w-full border-b-2 border-black-200 p-5 bg-gradient-to-t from-gray-900 to-gray-600 text-white shadow-xl">
-        <nav className="flex items-center justify-between mx-auto w-full max-w-screen-xl">          
+        <nav className="flex items-center justify-between mx-auto w-full max-w-screen-lg">          
           {children}          
         </nav>
       </header>
