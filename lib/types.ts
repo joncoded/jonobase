@@ -4,7 +4,7 @@ export interface DOMChildrenProps {
   bgImage?: string;
 }
 
-export interface HomeProps {
+export interface FindProps {
   searchParams: {
     [key: string] : string | undefined;
   }
