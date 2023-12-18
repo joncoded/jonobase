@@ -11,7 +11,7 @@ export default async function Head() {
 
   const HeadWrap = ({children}: DOMChildrenProps) => {
     return (
-      <header className="head-wrapper flex sticky top-0 z-50 w-full border-b-2 border-black-200 p-5 bg-gradient-to-t from-gray-900 to-gray-600 text-white shadow-xl">
+      <header className="head-wrapper flex sticky top-0 z-50 w-full border-b-2 border-black-200 bg-gradient-to-t from-gray-900 to-gray-600 text-white shadow-xl p-5 xl:py-5">
         <nav className="flex items-center justify-between mx-auto w-full max-w-screen-lg">          
           {children}          
         </nav>
@@ -33,7 +33,7 @@ export default async function Head() {
 
   const HeadNavi = () => {
     return (
-      <ul className="head-navi flex justify-center gap-x-5 max-md:hidden md:gap-x-10">
+      <ul className="head-navi flex justify-center max-md:hidden gap-x-5 md:gap-x-10">
          
       </ul>
     )

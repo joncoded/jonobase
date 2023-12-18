@@ -71,7 +71,7 @@ export default function Find({filters, posts, urlParams} : any ) {
                   {posts.length} {posts.length === 1 ? text['result_found'] : text['results_found']}
                 </p>
               )}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-center mt-0">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 justify-center mt-0">
                 {posts.map((post: any) => (
                   <PostCard key={post._id} post={post} />
                 ))}
