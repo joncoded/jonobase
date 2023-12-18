@@ -19,14 +19,19 @@ export interface GetPostsParams {
 export interface PostProps {
   post: {
     _id: string;
-    link: string;    
-    image: string;
-    views: number;
     slug: {
       current: string;
     }
-    content: JSX.Element[] | JSX.Element;
-    category: string;
+    image: string;
     title: string;
+    emoji: string;
+    subtitle?: string;
+    category?: string;
+    moods?: string[];
+    link?: URL | undefined;        
+    date: string;
+    content: JSX.Element[] | JSX.Element;
+    
+    
   }
 }

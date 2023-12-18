@@ -144,12 +144,16 @@ export const getPosts = async (params: GetPostsParams) => {
         category,
         page: parseInt(page),
       })}{
-        title,
         _id,
-        link,
-        "image": image.asset->url,
         slug,
-        category
+        "image": image.asset->url,
+        title,
+        emoji,
+        subtitle,
+        category,
+        link,
+        moods,
+        date
       }`    
     )
 
@@ -170,14 +174,15 @@ export const getPost = async (slug: string) => {
     const posts = await readClient.fetch(
       groq`*[_type == "post" && slug.current == '${slug}']{
         _id,
+        slug,
+        "image": image.asset->url,
         title,
         emoji,
         subtitle,
         category,
         content,
         link,
-        moods,
-        "image": image.asset->url,
+        moods,        
         date
       }`
     )
