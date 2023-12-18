@@ -43,7 +43,29 @@ const schema = {
       options: {
         layout: 'tags',
       }
-    }
+    },
+    {
+      name: 'colophon1',
+      title: 'Colophon 1',
+      description: 'footer (tail) content, left side for desktop, at the top for mobile - good for copyright messages',
+      type: 'array', 
+      of: [
+        {
+          type: 'block'
+        }
+      ]
+    },
+    {
+      name: 'colophon2',
+      title: 'Colophon 2',
+      description: 'footer (tail) content, right side for desktop, at the bottom for mobile - good for social media links or whatever',
+      type: 'array', 
+      of: [
+        {
+          type: 'block'
+        }
+      ]
+    },
   ]
 }
 

@@ -26,7 +26,7 @@ export default async function Home({ searchParams }: HomeProps) {
           max-w-screen-lg mx-auto font-sans 
           prose prose-h2:text-5xl prose-h2:mb-5 prose-p:text-3xl`
         }>
-          <PortableText value={intro} />        
+          <PortableText value={intro} />
         </div>
       </div>
     )
