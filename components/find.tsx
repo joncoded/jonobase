@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { formUrlQuery } from '@/sanity/utils'
-import { Input } from './ui/input'
 import FindFilters from './find-filters'
 import PostCard from './post-card'
 import ListHead from './list-head'
