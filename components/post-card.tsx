@@ -37,7 +37,9 @@ const PostCard = ({post : { slug, image, title, category, subtitle, link, date}}
   const CardTitle = () => {
     return (
       <div className="card-title">
-        <h3 className="font-sans text-xl md:text-3xl">{title}</h3>
+        <h3 className="font-sans text-2xl md:text-4xl font-semibold">
+          <Link href={`/posts/${slug.current}`}>{title}</Link>
+        </h3>
       </div>      
     )
   }
