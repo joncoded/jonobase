@@ -1,4 +1,7 @@
 export const text = {  
+
+  "close menu"
+  : "close menu", 
     
   "go to the home page" 
   : "go to the home page",
@@ -8,6 +11,9 @@ export const text = {
   
   "loading message"
   : "Page is loading shortly ... thanks for your patience!",
+
+  "menu"
+  : "Menu", 
 
   "moods"         
   : "moods",
@@ -32,6 +38,15 @@ export const text = {
 
   "search"        
   : "search",
+
+  "skip to main content" 
+  : "skip to main content", 
+
+  "switch to dark mode"
+  : "switch to dark mode",
+
+  "switch to light mode"
+  : "switch to light mode",
 
   "visit url"     
   : "visit URL",

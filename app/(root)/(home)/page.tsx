@@ -45,7 +45,7 @@ export default async function Home({ searchParams }: FindProps) {
 
   return (
     
-    <main>
+    <main id="main" tabIndex={-1}>
 
       <Sect className="bg-gradient-to-b from-sky-50 to-sky-200 py-5 sm:py-10 xl:py-20 drop-shadow-md">
         <HomeHead />

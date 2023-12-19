@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { DOMChildrenProps } from '@/lib/types'
 import { getBase } from '@/sanity/actions'
+import Menu from './menu'
 
 export default async function Head() {
   
@@ -31,25 +32,16 @@ export default async function Head() {
     )
   }  
 
-  const HeadNavi = () => {
-    return (
-      <ul className="head-navi flex justify-center max-md:hidden gap-x-5 md:gap-x-10">
-         
-      </ul>
-    )
-  }
-
   const HeadMenu = () => {
     return (
-      <Image className="head-menu block md:hidden" src="/images/menu.svg" alt="menu" width={30} height={30} />
+      <Menu base={base} />
     )
   }
 
   return (
     <HeadWrap>
       <HeadBranding />
-      <HeadMenu />      
-      <HeadNavi />      
+      <HeadMenu />          
     </HeadWrap>
   )
 

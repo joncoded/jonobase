@@ -19,6 +19,17 @@ const schema = {
       name: 'tagline',
       title: 'Tagline',
       type: 'string',      
+    },
+    {
+      name: 'menu',
+      title: 'Menu',
+      description: 'navigational menu in rich text (use WYSIWYG or HTML!)',
+      type: 'array', 
+      of: [
+        {
+          type: 'block'
+        }
+      ]
     }, 
     {
       name: 'intro',

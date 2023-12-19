@@ -5,6 +5,13 @@ interface SectProps {
   bgImage?: string;
 }
 
+interface SpanProps {
+  children: JSX.Element | JSX.Element[] | string;
+  className?: string;  
+  ariaHidden?: boolean;
+  ariaLabel?: string;
+}
+
 export const Sect = ({children, className, bgImage}: SectProps) => {
 
   const background = bgImage 
@@ -30,4 +37,22 @@ export const Sect = ({children, className, bgImage}: SectProps) => {
   
   )
 
+}
+
+export const Span = ({
+  ariaLabel = '', 
+  ariaHidden = false, 
+  className = '', 
+  children}: SpanProps) => {
+
+  return (
+    <span 
+      aria-label={ariaLabel}
+      aria-hidden={ariaHidden}
+      className={className}
+    >
+      {children}
+    </span>
+  )
+  
 }

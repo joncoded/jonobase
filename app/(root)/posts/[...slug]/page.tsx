@@ -91,7 +91,7 @@ export default async function Main({ params } : any) {
 
   return (
 
-    <main>
+    <main id="main" tabIndex={-1}>
 
       <Sect className={`post-head ${!image && `!bg-gradient-to-b from-sky-100 to-sky-200`} p-10 font-sans`} bgImage={image}> 
         <PostHead />
