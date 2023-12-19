@@ -1,5 +1,4 @@
 import Find from "@/components/find"
-import { PortableText } from '@portabletext/react'
 import { getBase, getPosts } from "@/sanity/actions"
 import { FindProps } from "@/lib/types"
 import { Sect } from "@/components/main"
