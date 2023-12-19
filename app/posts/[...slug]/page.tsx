@@ -14,7 +14,7 @@ export async function generateMetadata({params}: any) {
   const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!) || {}
   const post = await getPost(slug)       
 
-  if (Object.keys(post).indexOf('title') > -1) {
+  if (post) {
     return {
       title: `${post.title} @ ${base?.title}`,
       description: `${post.subtitle}`,

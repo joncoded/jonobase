@@ -1,10 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
-
-export const metadata: Metadata = {
-  title: '',
-  description: '',
-}
+import Head from '@/components/head'
+import Tail from '@/components/tail'
 
 export default function RootLayout({
   children,
@@ -18,7 +15,9 @@ export default function RootLayout({
       </head>
       <body 
         className="flex flex-col h-screen justify-between font-serif">
-        {children}
+          <Head />
+            {children}
+          <Tail />
       </body>
     </html>
   )
