@@ -7,7 +7,7 @@ export const getBase = async (slug: string) => {
 
   try {
     const base = await readClient.fetch(
-      groq`*[_type == "base" && slug.current == '${slug}']{
+      groq`*[_type == "base" && slug.current == '${slug}'] {
         _id,
         title,
         slug, 
@@ -144,7 +144,7 @@ export const getPosts = async (params: GetPostsParams) => {
         query,
         category,
         page: parseInt(page),
-      })}{
+      })} | order(date desc) {
         _id,
         slug,
         "image": image.asset->url,
