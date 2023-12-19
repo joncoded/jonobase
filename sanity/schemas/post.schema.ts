@@ -4,8 +4,9 @@ const schema = {
   type: 'document', 
   fields: [
     {
-      name: 'title',
-      title: 'Title', 
+      name: 'title',      
+      title: 'Title',
+      description: 'the post\'s name - will factor into the SEO metadata', 
       type: 'string', 
       require: true,
       validation: (Rule: any) => Rule.required()
@@ -13,23 +14,26 @@ const schema = {
     {
       name: 'slug', 
       title: 'Slug', 
-      type: 'slug', 
+      description: 'alphanumeric and dashes-only - will factor into the SEO',
+      type: 'slug',       
       options: { source: 'title' }
     },
     {
       name: 'emoji',
-      description: 'for casual categorization purposes', 
       title: 'Emoji', 
+      description: 'for casual categorization purposes',       
       type: 'string',      
     },
     {
       name: 'subtitle',
       title: 'Subtitle', 
+      description: 'a tagline for the post - will factor into the SEO metadata',
       type: 'string'             
     },
     {
       name: 'category',
       title: 'Category',
+      description: 'for post-list filtering purposes',
       type: 'string',      
       validation: (Rule: any) => Rule.required(),
       options: {
@@ -38,7 +42,8 @@ const schema = {
     },
     {
       name: 'content',
-      title: 'Content',       
+      title: 'Content',
+      description: 'rich text and code allowed',      
       type: 'array',
       validation: (Rule: any) => Rule.required(),
       of: [

@@ -9,9 +9,7 @@ export const revalidate = 10
 export async function generateMetadata() {
 
   const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)   
-
-  console.log(base)
-  
+    
   return {
     title: base.title,
     description: base.tagline,

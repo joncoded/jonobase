@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { getPost } from "@/sanity/actions"
+import { getBase, getPost } from "@/sanity/actions"
 import BlockContent from "@sanity/block-content-to-react"
 import SyntaxHighlighter from "react-syntax-highlighter"
 import { monokaiSublime } from "react-syntax-highlighter/dist/cjs/styles/hljs"
@@ -7,6 +7,22 @@ import { Sect } from "@/components/main"
 import { text } from "@/lib/app.config"
 
 export const revalidate = 600
+
+export async function generateMetadata({params}: any) {
+
+  const { slug } = params  
+  const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!) || {}
+  const post = await getPost(slug)       
+
+  if (Object.keys(post).indexOf('title') > -1) {
+    return {
+      title: `${post.title} @ ${base?.title}`,
+      description: `${post.subtitle}`,
+      keywords: `${post.moods}`,
+    }
+  } 
+
+}
 
 export default async function Main({ params } : any) {
 
