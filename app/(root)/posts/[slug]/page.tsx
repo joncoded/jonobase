@@ -72,20 +72,20 @@ export default async function Main({ params } : any) {
 
   const PostLink = () => {
     return (
-      link && <Link href={link} className="post-url px-5 py-2 bg-black text-white text-2xl">{text['visit url']}</Link>
+      <Link href={link} className="post-url px-5 py-2 bg-black text-white text-2xl">{text['visit url']}</Link>
     )
   }
 
   const PostMood = () => {
     return (
-      <>
-        <span className="mr-5">{text['moods']}</span> 
+      <div className="flex flex-wrap items-center gap-5">
+        {text['moods']}
         {moods.map((mood: any) => {
           return (
-            <Link key={mood} href="#" className="mr-5 p-2 px-5 bg-black text-white">{mood}</Link>
+            <Link key={mood} href="#" className="mr-5 p-2 px-5 border border-black dark:border-white bg-white text-black hover:bg-black hover:text-white">{mood}</Link>
           )
         })}
-      </>
+      </div>
     )
   }
 
@@ -97,11 +97,11 @@ export default async function Main({ params } : any) {
         <PostHead />
       </Sect>
 
-      <Sect className={`post-link !bg-zinc-50 text-center p-10`}>
+      { link && <Sect className={`post-link !bg-zinc-50 text-center p-10`}>
         <PostLink />
-      </Sect>
+      </Sect>}
       
-      <Sect className={`post-main border-t p-10`}>        
+      <Sect className={`post-main border-t`}>        
         <BlockContent 
           blocks={content} 
           serializers={serializers} 
@@ -111,7 +111,7 @@ export default async function Main({ params } : any) {
       </Sect>
 
       { moods && 
-      <Sect className={`post-mood !bg-gradient-to-r from-gray-100 to-gray-300 p-10 text-2xl`}>
+      <Sect className={`post-mood !bg-gradient-to-r from-gray-100 to-gray-300 p-5 text-2xl`}>
         <PostMood />
       </Sect>
       }
