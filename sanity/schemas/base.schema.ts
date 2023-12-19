@@ -45,6 +45,20 @@ const schema = {
       }
     },
     {
+      name: 'metakeywords',
+      title: 'Meta keywords', 
+      description: 'site keywords for SEO purposes',
+      type: 'array',
+      of: [
+        {
+          type: 'string', 
+        }
+      ],
+      options: {
+        layout: 'tags',
+      }
+    },
+    {
       name: 'colophon1',
       title: 'Colophon 1',
       description: 'footer (tail) content, left side for desktop, at the top for mobile - good for copyright messages',

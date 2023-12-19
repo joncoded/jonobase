@@ -4,7 +4,20 @@ import { getBase, getPosts } from "@/sanity/actions"
 import { FindProps } from "@/lib/types"
 import { Sect } from "@/components/main"
 
-export const revalidate = 30
+export const revalidate = 10
+
+export async function generateMetadata() {
+
+  const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)   
+
+  console.log(base)
+  
+  return {
+    title: base.title,
+    description: base.tagline,
+    keywords: base.metakeywords  
+  }
+}
 
 export default async function Home({ searchParams }: FindProps) {
 

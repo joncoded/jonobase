@@ -14,6 +14,7 @@ export const getBase = async (slug: string) => {
         intro,        
         tagline,
         filters,
+        metakeywords, 
         colophon1,
         colophon2
       }`
