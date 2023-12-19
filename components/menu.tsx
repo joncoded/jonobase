@@ -30,8 +30,8 @@ export default function Menu({base} : any) {
   const { theme, setTheme } = useTheme()
 
   const handleTheme = (event: React.FormEvent<HTMLButtonElement>): void => {
-    event.preventDefault()
-    setTheme(theme === 'dark' ? 'light' : 'dark')
+    event.preventDefault()    
+    setTheme(theme === 'dark' ? 'light' : 'dark')    
   }
   /* end dark mode */
   

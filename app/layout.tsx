@@ -1,3 +1,4 @@
+import { ThemeProvider } from '@/components/lite-dark'
 import './globals.css'
 
 export default function RootLayout({
@@ -12,7 +13,9 @@ export default function RootLayout({
       </head>
       <body 
         className="flex flex-col h-screen justify-between font-serif">                          
-        {children}
+        <ThemeProvider attribute={`class`} defaultTheme={`light`} enableSystem>
+          {children}
+        </ThemeProvider>        
       </body>
     </html>
   )
