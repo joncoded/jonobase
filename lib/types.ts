@@ -14,6 +14,11 @@ export interface ListProps {
   category: string;
 }
 
+export interface MoodPostGetterProps {
+  slug: string;
+  page?: string;
+}
+
 export interface PostProps {
   post: {
     _id: string;

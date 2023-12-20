@@ -82,7 +82,7 @@ export default async function Main({ params } : any) {
         {text['moods']}
         {moods.map((mood: any) => {
           return (
-            <Link key={mood} href="#" className="mr-5 p-2 px-5 border border-black dark:border-white bg-white text-black hover:bg-black hover:text-white">{mood}</Link>
+            <Link key={mood} href={`/moods/${mood}`} className="mr-5 p-2 px-5 border border-black dark:border-white bg-white text-black hover:bg-black hover:text-white">{mood}</Link>
           )
         })}
       </div>

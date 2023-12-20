@@ -1,7 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async redirects() {
+    return [   
+      {
+        source: '/moods',
+        destination: '/',
+        permanent: true
+      }      
+    ]
+  },
   images: {
-    domains: ['cdn.sanity.io']
+    remotePatterns: [{
+      hostname: 'cdn.sanity.io'
+    }]
   }
 }
 

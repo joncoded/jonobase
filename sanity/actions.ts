@@ -1,7 +1,7 @@
 import { groq } from 'next-sanity'
 import { readClient } from './lib/client'
 import { buildQuery } from './utils'
-import { PostGetterProps } from '@/lib/types'
+import { MoodPostGetterProps, PostGetterProps } from '@/lib/types'
 
 export const getBase = async (slug: string) => {
 
@@ -134,6 +134,31 @@ export const getLists = async () => {
 
 }
 
+const postFields = `
+_id,
+slug,
+"image": image.asset->url,
+title,
+emoji,
+subtitle,
+category,
+content,
+link,
+moods,        
+date`
+
+const postCardFields = `
+_id,
+slug,
+"image": image.asset->url,
+title,
+emoji,
+subtitle,
+category,
+link,
+moods,        
+date`
+
 export const getPosts = async (params: PostGetterProps) => {
   
   const { query, category, page } = params
@@ -145,18 +170,27 @@ export const getPosts = async (params: PostGetterProps) => {
         query,
         category,
         page: parseInt(page),
-      })} | order(date desc) {
-        _id,
-        slug,
-        "image": image.asset->url,
-        title,
-        emoji,
-        subtitle,
-        category,
-        link,
-        moods,
-        date
-      }`    
+      })} | order(date desc) { ${postFields} }`    
+    )
+
+    return posts
+
+  } catch (error) {
+
+    console.log(error)
+
+  }
+
+}
+
+
+export const getPostsByMood = async (params: MoodPostGetterProps) => {
+  
+  const { slug } = params
+  
+  try {
+    const posts = await readClient.fetch(
+      groq`*[_type == "post" && "${slug}" in moods] | order(date desc) {${postCardFields}}`    
     )
 
     return posts
@@ -174,19 +208,7 @@ export const getPost = async (slug: string) => {
   try {
 
     const posts = await readClient.fetch(
-      groq`*[_type == "post" && slug.current == '${slug}']{
-        _id,
-        slug,
-        "image": image.asset->url,
-        title,
-        emoji,
-        subtitle,
-        category,
-        content,
-        link,
-        moods,        
-        date
-      }`
+      groq`*[_type == "post" && slug.current == '${slug}']{${postFields}}`
     )
 
     return posts[0] 
