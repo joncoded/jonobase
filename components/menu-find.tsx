@@ -3,16 +3,18 @@
 import { useState } from "react"
 import { useRouter } from 'next/navigation'
 import { UtilMenuFindProps } from "@/lib/types"
+import { text } from "@/lib/app.config"
 
-export default function MenuFind({lang, showMenu, inputName, placeholder = '🔎'}: UtilMenuFindProps) {
+export default function MenuFind({showMenu, inputName, placeholder = '🔎'}: UtilMenuFindProps) {
 
   const [ searchTerm, setSearchTerm ] = useState('')
   const router = useRouter()
 
   const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>): void => {
     event.preventDefault()
-    router.push(`/finds/${decodeURIComponent(searchTerm)}`)
+    router.push(`/finds/?query=${decodeURIComponent(searchTerm)}`)
     showMenu && showMenu(false)
+    document.getElementById("main")?.focus()
   }
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -27,7 +29,7 @@ export default function MenuFind({lang, showMenu, inputName, placeholder = '🔎
         onSubmit={handleSubmit}
       >  
         <label htmlFor={inputName} className="sr-only">
-          {lang.search}
+          {text['search']}
         </label>
         <input 
           type="text"
@@ -42,7 +44,7 @@ export default function MenuFind({lang, showMenu, inputName, placeholder = '🔎
         />
         <input 
           type="submit"
-          value={lang.go}
+          value={text["search go"]}
           className={`
             bg-green-900 border border-gray-200 dark:border-gray-500 
             text-white cursor-pointer p-2 px-5

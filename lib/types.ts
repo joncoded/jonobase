@@ -58,8 +58,7 @@ export interface UtilDOMSpanProps {
   ariaLabel?: string;
 }
 
-export interface UtilMenuFindProps {
-  lang: { [x: string]: string },
+export interface UtilMenuFindProps {  
   showMenu?: (arg: boolean) => void,
   inputName: string,
   placeholder: string,

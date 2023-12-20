@@ -39,6 +39,9 @@ export const text = {
   "search"        
   : "search",
 
+  "search go"
+  : "go", 
+
   "skip to main content" 
   : "skip to main content", 
 

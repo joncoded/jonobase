@@ -3,12 +3,14 @@ import Link from 'next/link'
 import { UtilDOMChildrenProps } from '@/lib/types'
 import { getBase } from '@/sanity/actions'
 import Menu from './menu'
+import { Span } from './main'
 
 export default async function Head() {
   
   const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)  
   
   const { title } = base || ""
+  const { tagline } = base || ""
 
   const HeadWrap = ({children}: UtilDOMChildrenProps) => {
     return (
@@ -23,11 +25,15 @@ export default async function Head() {
   const HeadBranding = () => {
   
     return (
-      <div className="head-branding flex justify-between items-center gap-5">
+      <div className="head-branding">
         <Link href="/" className="flex items-center">
           <Image className="head-logo rounded-full border-4 border-white drop-shadow mr-5" src="/images/logo.png" alt="logo" width={40} height={40} />
-          <h1 className="head-title text-2xl md:text-4xl uppercase font-sans">{title}</h1>
+          <div className="flex flex-col gap-1">
+            <h1 className="head-title text-3xl uppercase font-sans">{title}</h1>
+            <Span className="hidden md:inline text-sm">{tagline}</Span>
+          </div>          
         </Link>                
+        
       </div>      
     )
   }  

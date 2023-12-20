@@ -19,7 +19,7 @@ export default async function Main({ searchParams }: FindProps) {
 
   return (
     
-    <main>
+    <main id="main" tabIndex={-1}>
 
       <Sect className="bg-white text-black">
         <Find filters={filters} posts={posts} urlParams={searchParams} />

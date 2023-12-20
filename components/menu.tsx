@@ -46,7 +46,7 @@ export default function Menu({base} : any) {
 
   const MenuButton = () => {
     return (
-      <div>
+      <div className={`menu-button`}>
         <button className={`text-sm uppercase`} onClick={openMenu} id="open-menu">
           <Span className={`mr-1 text-2xl`} ariaHidden={true}>≡</Span>
           <Span className={`mx-1 text-2xl`}>{text['menu']}</Span>
@@ -190,11 +190,15 @@ export default function Menu({base} : any) {
   /* end menu ui */
 
   return (
-    <>
+    <>      
+      <MenuFindWrapper className={`hidden md:block`}>
+        <MenuFind 
+          showMenu={setShowMenu} 
+          inputName={`desktop-search-in-nav`} 
+          placeholder={`🔎 ${text.search} (⌘K)`} 
+        />
+      </MenuFindWrapper>
       <MenuButton />
-      {/* <MenuFindWrapper className={`hidden md:block`}>
-        <MenuFind />
-      </MenuFindWrapper> */}
       { showMenu && (
         <FocusTrap>
           <div>
@@ -208,24 +212,20 @@ export default function Menu({base} : any) {
                     <MenuThemeOption />
                   </MenuOptions>
                 </MenuHead>
-                <MenuFindWrapper className={`block md:hidden`}>
-                  <></>
-                  {/* <MenuFind 
-                    lang={lang} 
+                <MenuFindWrapper className={`block md:hidden`}>                  
+                  <MenuFind                     
                     showMenu={setShowMenu} 
                     inputName={`mobile-search-in-menu`} 
-                    placeholder={`🔎 ${text[search}`} 
-                  /> */}
+                    placeholder={`🔎 ${text['search']}`} 
+                  />
                 </MenuFindWrapper>
                 <MenuContent />
-                <MenuFindWrapper className={`hidden md:block`}>
-                <></>
-                  {/* <MenuFind 
-                    lang={lang} 
+                <MenuFindWrapper className={`hidden md:block`}>                
+                  <MenuFind                     
                     showMenu={setShowMenu} 
                     inputName={`desktop-search-in-menu`} 
-                    placeholder={`🔎 ${text[search}`} 
-                  /> */}
+                    placeholder={`🔎 ${text['search']}`} 
+                  />
                 </MenuFindWrapper>
               </MenuWrapper>
             </MenuDialog>
