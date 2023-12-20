@@ -1,8 +1,8 @@
-import Find from "@/components/find"
 import { PortableText } from '@portabletext/react'
 import { getBase, getPosts } from "@/sanity/actions"
 import { FindProps } from "@/lib/types"
 import { Sect } from "@/components/main"
+import PostList from '@/components/post-list'
 
 export const revalidate = 10
 
@@ -20,8 +20,7 @@ export async function generateMetadata() {
 export default async function Home({ searchParams }: FindProps) {
 
   const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
-
-  const { filters } = base || [] 
+  
   const { intro } = base || ''
 
   const posts = await getPosts({
@@ -52,7 +51,7 @@ export default async function Home({ searchParams }: FindProps) {
       </Sect>
       
       <Sect className="bg-white text-black">
-        <Find filters={filters} posts={posts} urlParams={searchParams} />
+        <PostList posts={posts} />
       </Sect>          
     
     </main>
