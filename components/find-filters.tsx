@@ -3,12 +3,10 @@
 import { useState } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { formUrlQuery } from '@/sanity/utils'
+import { FindFiltersProps } from '@/lib/types'
 
-interface FiltersProps {
-  filters: string[]
-}
 
-const FindFilters = ({filters}: FiltersProps) => {
+const FindFilters = ({filters}: FindFiltersProps) => {
 
   const [active, setActive] = useState('all')
   const searchParams = useSearchParams()

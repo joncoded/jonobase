@@ -1,9 +1,5 @@
 import { text } from "@/lib/app.config";
-
-interface ListProps {
-  query: string;
-  category: string;
-}
+import { ListProps } from "@/lib/types";
 
 const ListHead = ({query, category}: ListProps) => {
   if (query && category) {

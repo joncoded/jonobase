@@ -1,7 +1,7 @@
 import { groq } from 'next-sanity'
 import { readClient } from './lib/client'
 import { buildQuery } from './utils'
-import { GetPostsParams } from '@/lib/types'
+import { PostGetterProps } from '@/lib/types'
 
 export const getBase = async (slug: string) => {
 
@@ -134,7 +134,7 @@ export const getLists = async () => {
 
 }
 
-export const getPosts = async (params: GetPostsParams) => {
+export const getPosts = async (params: PostGetterProps) => {
   
   const { query, category, page } = params
   

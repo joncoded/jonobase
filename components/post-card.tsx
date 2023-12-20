@@ -1,11 +1,11 @@
-import { DOMChildrenProps, PostProps } from '@/lib/types'
+import { UtilDOMChildrenProps, PostProps } from '@/lib/types'
 import Image from 'next/image'
 import Link from 'next/link'
 import { text } from '@/lib/app.config'
 
 const PostCard = ({post : { slug, image, title, category, subtitle, link, date}}: PostProps) => {
 
-  const Card = ({children} : DOMChildrenProps) => {
+  const Card = ({children} : UtilDOMChildrenProps) => {
     return (
       <article className="w-full border-2 border-gray-200 !bg-transparent">
         <div className="flex flex-col justify-center">
@@ -44,7 +44,7 @@ const PostCard = ({post : { slug, image, title, category, subtitle, link, date}}
     )
   }
 
-  const CardMeta = ({children}: DOMChildrenProps) => {
+  const CardMeta = ({children}: UtilDOMChildrenProps) => {
     return (
       <div className="flex flex-col p-5 gap-2">
         {children}

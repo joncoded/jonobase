@@ -4,16 +4,11 @@ import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
 import FocusTrap from 'focus-trap-react'
 import { useHotkeys } from 'react-hotkeys-hook'
-import { DOMChildrenProps } from '@/lib/types'
+import { UtilDOMChildrenProps, UtilMenuFindWrapperProps } from '@/lib/types'
 import { PortableText } from '@portabletext/react'
 import MenuFind from './menu-find'
 import { Span } from './main'
 import { text } from '@/lib/app.config'
-
-interface MenuFindWrapperProps {
-  children: React.ReactNode | React.ReactNode[],
-  className: string
-}
 
 export default function Menu({base} : any) {
   
@@ -61,7 +56,7 @@ export default function Menu({base} : any) {
     )
   }
 
-  const MenuDialog = ({children}: DOMChildrenProps) => {
+  const MenuDialog = ({children}: UtilDOMChildrenProps) => {
     return (
       <dialog 
         aria-label={text['menu']} 
@@ -76,7 +71,7 @@ export default function Menu({base} : any) {
     )
   }
 
-  const MenuWrapper = ({children}: DOMChildrenProps) => {
+  const MenuWrapper = ({children}: UtilDOMChildrenProps) => {
     return (
       <div className={`menu-wrapper w-full lg:max-w-4xl mx-auto`}>
         {children}
@@ -84,7 +79,7 @@ export default function Menu({base} : any) {
     )
   }
 
-  const MenuHead = ({children}: DOMChildrenProps) => {
+  const MenuHead = ({children}: UtilDOMChildrenProps) => {
     return (
       <div className={`menu-head 
         flex flex-col sm:flex-row sm:justify-between items-center mb-10
@@ -115,7 +110,7 @@ export default function Menu({base} : any) {
     )
   }
 
-  const MenuOptions = ({children} : DOMChildrenProps) => {
+  const MenuOptions = ({children} : UtilDOMChildrenProps) => {
     return (
       <div 
         className={`menu-options 
@@ -181,7 +176,7 @@ export default function Menu({base} : any) {
     )
   }
 
-  const MenuFindWrapper = ({children, className}: MenuFindWrapperProps) => {
+  const MenuFindWrapper = ({children, className}: UtilMenuFindWrapperProps) => {
     return (
       <div 
         className={`menu-find-wrapper 

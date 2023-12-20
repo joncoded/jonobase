@@ -2,15 +2,9 @@
 
 import { useState } from "react"
 import { useRouter } from 'next/navigation'
+import { UtilMenuFindProps } from "@/lib/types"
 
-interface MenuFindProps {
-  lang: { [x: string]: string },
-  showMenu?: (arg: boolean) => void,
-  inputName: string,
-  placeholder: string,
-}
-
-export default function MenuFind({lang, showMenu, inputName, placeholder = '🔎'}: MenuFindProps) {
+export default function MenuFind({lang, showMenu, inputName, placeholder = '🔎'}: UtilMenuFindProps) {
 
   const [ searchTerm, setSearchTerm ] = useState('')
   const router = useRouter()

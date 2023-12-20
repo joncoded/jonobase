@@ -1,14 +1,7 @@
 import qs from 'query-string'
+import { UtilQueryBuildingProps, UtilQueryURLProps } from '@/lib/types'
 
-interface BuildQueryParams {
-  type: string;
-  query: string;
-  category: string;
-  page: number;
-  perPage?: number;
-}
-
-export function buildQuery(params: BuildQueryParams) {
+export function buildQuery(params: UtilQueryBuildingProps) {
   const { type, query, category, page = 1, perPage = 20 } = params
 
   const conditions = [`*[_type=="${type}"`]
@@ -29,14 +22,7 @@ export function buildQuery(params: BuildQueryParams) {
     : `${conditions[0]}][${offset}...${limit}]`
 }
 
-interface UrlQueryParams {
-  params: string;
-  key?: string;
-  value?: string | null;
-  keysToRemove?: string[];
-}
-
-export function formUrlQuery({ params, key, value, keysToRemove }: UrlQueryParams) {
+export function formUrlQuery({ params, key, value, keysToRemove }: UtilQueryURLProps) {
 
   const currentUrl = qs.parse(params)
 

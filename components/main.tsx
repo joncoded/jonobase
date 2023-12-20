@@ -1,18 +1,6 @@
+import { UtilDOMSectProps, UtilDOMSpanProps } from "@/lib/types"
 
-interface SectProps {
-  children: JSX.Element | JSX.Element[];
-  className?: string;  
-  bgImage?: string;
-}
-
-interface SpanProps {
-  children: JSX.Element | JSX.Element[] | string;
-  className?: string;  
-  ariaHidden?: boolean;
-  ariaLabel?: string;
-}
-
-export const Sect = ({children, className, bgImage}: SectProps) => {
+export const Sect = ({children, className, bgImage}: UtilDOMSectProps) => {
 
   const background = bgImage 
     ? {  
@@ -43,7 +31,7 @@ export const Span = ({
   ariaLabel = '', 
   ariaHidden = false, 
   className = '', 
-  children}: SpanProps) => {
+  children}: UtilDOMSpanProps) => {
 
   return (
     <span 
