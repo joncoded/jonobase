@@ -92,7 +92,7 @@ export const getList = async (slug: string) => {
           content,
           link,
           "image" : image.asset->url,
-          category
+          kind
         }
       }`
     )
@@ -119,7 +119,7 @@ export const getLists = async () => {
           _id,
           link,
           "image" : image.asset->url,
-          category
+          kind
         }        
       }`    
     )
@@ -141,7 +141,7 @@ slug,
 title,
 emoji,
 subtitle,
-category,
+kind,
 content,
 link,
 moods,        
@@ -154,21 +154,21 @@ slug,
 title,
 emoji,
 subtitle,
-category,
+kind,
 link,
 moods,        
 date`
 
 export const getPosts = async (params: PostGetterProps) => {
   
-  const { query, category, page } = params
+  const { query, kind, page } = params
   
   try {
     const posts = await readClient.fetch(
       groq`${buildQuery({
         type: 'post',
         query,
-        category,
+        kind,
         page: parseInt(page),
       })} | order(date desc) { ${postFields} }`    
     )
@@ -183,6 +183,24 @@ export const getPosts = async (params: PostGetterProps) => {
 
 }
 
+export const getPostsByKind = async (params: MoodPostGetterProps) => {
+  
+  const { slug } = params
+  
+  try {
+    const posts = await readClient.fetch(
+      groq`*[_type == "post" && kind == lower("${slug}")] | order(date desc) {${postCardFields}}`    
+    )
+
+    return posts
+
+  } catch (error) {
+
+    console.log(error)
+
+  }
+
+}
 
 export const getPostsByMood = async (params: MoodPostGetterProps) => {
   
@@ -190,7 +208,7 @@ export const getPostsByMood = async (params: MoodPostGetterProps) => {
   
   try {
     const posts = await readClient.fetch(
-      groq`*[_type == "post" && "${slug}" in moods] | order(date desc) {${postCardFields}}`    
+      groq`*[_type == "post" && lower("${slug.toLowerCase()}") in moods] | order(date desc) {${postCardFields}}`    
     )
 
     return posts

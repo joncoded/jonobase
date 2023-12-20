@@ -26,7 +26,7 @@ export default async function Home({ searchParams }: FindProps) {
 
   const posts = await getPosts({
     query: searchParams?.query || '', 
-    category: searchParams?.category || '', 
+    kind: searchParams?.kind || '', 
     page: '1'
   })  
 

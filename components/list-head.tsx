@@ -1,11 +1,11 @@
 import { text } from "@/lib/app.config";
 import { ListProps } from "@/lib/types";
 
-const ListHead = ({query, category}: ListProps) => {
-  if (query && category) {
+const ListHead = ({query, kind}: ListProps) => {
+  if (query && kind) {
     return (
       <h2 className="text-3xl">
-        {text['results']} <strong>{query}</strong> (<strong>{category}</strong>)
+        {text['results']} <strong>{query}</strong> (<strong>{kind}</strong>)
       </h2>
     )
   }
@@ -18,10 +18,10 @@ const ListHead = ({query, category}: ListProps) => {
     )
   }
 
-  if (category) {
+  if (kind) {
     return (
       <h2 className="text-3xl">
-        {text['results_category']} : <strong>{category}</strong>
+        {text['results_kind']} : <strong>{kind}</strong>
       </h2>
     )
   }

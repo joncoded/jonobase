@@ -19,14 +19,14 @@ const FindFilters = ({filters}: FindFiltersProps) => {
       setActive('')
       newUrl = formUrlQuery({
         params: searchParams.toString(),
-        keysToRemove: ['category'], 
+        keysToRemove: ['kind'], 
         value: null
       })
     } else {      
       setActive(filter)
       newUrl = formUrlQuery({
         params: searchParams.toString(),
-        key: 'category', 
+        key: 'kind', 
         value: filter.toLowerCase()
       })
     }

@@ -31,8 +31,8 @@ const schema = {
       type: 'string'             
     },
     {
-      name: 'category',
-      title: 'Category',
+      name: 'kind',
+      title: 'Kind',
       description: 'for post-list filtering purposes',
       type: 'string',      
       validation: (Rule: any) => Rule.required(),

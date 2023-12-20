@@ -2,14 +2,14 @@ import qs from 'query-string'
 import { UtilQueryBuildingProps, UtilQueryURLProps } from '@/lib/types'
 
 export function buildQuery(params: UtilQueryBuildingProps) {
-  const { type, query, category, page = 1, perPage = 20 } = params
+  const { type, query, kind, page = 1, perPage = 20 } = params
 
   const conditions = [`*[_type=="${type}"`]
 
   if (query) conditions.push(`title match "*${query}*"`)
 
-  if (category && category !== "all") {
-    conditions.push(`category == "${category}"`)
+  if (kind && kind !== "all") {
+    conditions.push(`kind == "${kind}"`)
   }
 
   const offset = (page - 1) * perPage

@@ -5,6 +5,9 @@ export const text = {
     
   "go to the home page" 
   : "go to the home page",
+
+  "kinds"
+  : "kinds", 
   
   "loading"
   : "loading",
@@ -27,8 +30,8 @@ export const text = {
   "results_query"     
   : "results for query", 
   
-  "results_category"  
-  : "results for category", 
+  "results_kind"  
+  : "results for kind", 
   
   "result_found"      
   : "result found", 

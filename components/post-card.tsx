@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { text } from '@/lib/app.config'
 
-const PostCard = ({post : { slug, image, title, category, subtitle, link, date}}: PostProps) => {
+const PostCard = ({post : { slug, image, title, kind, subtitle, link, date}}: PostProps) => {
 
   const Card = ({children} : UtilDOMChildrenProps) => {
     return (
@@ -72,7 +72,7 @@ const PostCard = ({post : { slug, image, title, category, subtitle, link, date}}
   const CardSubtitle = () => {
     return (
       <div className="card-subtitle">
-        <p className="font-serif text-lg">{category} : {subtitle}</p>
+        <p className="font-serif text-lg">{kind} : {subtitle}</p>
       </div>
     )
   }

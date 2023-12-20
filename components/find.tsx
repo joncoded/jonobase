@@ -56,16 +56,16 @@ export default function Find({filters, posts, urlParams} : any ) {
     
       <section className="flex justify-center mt-5 w-full flex-col">
 
-        {(urlParams?.query || urlParams?.category) && ( 
+        {(urlParams?.query || urlParams?.kind) && ( 
         <div className="text-center mb-5">
-          <ListHead query={query} category={urlParams.category} />
+          <ListHead query={query} kind={urlParams.kind} />
         </div>
         )}
 
         <div className="w-full mt-5 sm:justify-start">
           {posts?.length > 0 ? (
             <>
-              {(urlParams?.query || urlParams.category) && ( 
+              {(urlParams?.query || urlParams.kind) && ( 
                 <p className="text-3xl text-gray-400 text-center mb-10">
                   {posts.length} {posts.length === 1 ? text['result_found'] : text['results_found']}
                 </p>

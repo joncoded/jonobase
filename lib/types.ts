@@ -11,7 +11,7 @@ export interface FindFiltersProps {
 
 export interface ListProps {
   query: string;
-  category: string;
+  kind: string;
 }
 
 export interface MoodPostGetterProps {
@@ -29,7 +29,7 @@ export interface PostProps {
     title: string;
     emoji: string;
     subtitle?: string;
-    category?: string;
+    kind?: string;
     moods?: string[];
     link?: URL | undefined;        
     date: string;
@@ -39,7 +39,7 @@ export interface PostProps {
 
 export interface PostGetterProps {
   query: string;
-  category: string;
+  kind: string;
   page: string;
 }
 
@@ -77,7 +77,7 @@ export interface UtilMenuFindWrapperProps {
 export interface UtilQueryBuildingProps {
   type: string;
   query: string;
-  category: string;
+  kind: string;
   page: number;
   perPage?: number;
 }
