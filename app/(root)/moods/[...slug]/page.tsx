@@ -1,16 +1,19 @@
 import { getPostsByMood } from "@/sanity/actions"
+import { MoodProps } from "@/lib/types"
 import { Sect } from "@/components/main"
 import PostList from "@/components/post-list"
 import { text } from "@/lib/app.config"
 
 export const revalidate = 30
 
-export default async function Main({ params }: FindProps) {
+export default async function Main({ params }: MoodProps) {
 
   const posts = await getPostsByMood ({
     slug: params?.slug || '',
     page: '1'
   })  
+
+  console.log(posts)
 
   return (
     

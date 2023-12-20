@@ -208,7 +208,7 @@ export const getPostsByMood = async (params: MoodPostGetterProps) => {
   
   try {
     const posts = await readClient.fetch(
-      groq`*[_type == "post" && lower("${slug.toLowerCase()}") in moods] | order(date desc) {${postCardFields}}`    
+      groq`*[_type == "post" && lower("${slug}") in moods] | order(date desc) {${postCardFields}}`    
     )
 
     return posts

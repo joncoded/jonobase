@@ -9,9 +9,21 @@ export interface FindFiltersProps {
   filters: string[]
 }
 
+export interface KindProps {
+  params?: {
+    slug: string | undefined;
+  }
+}
+
 export interface ListProps {
   query: string;
   kind: string;
+}
+
+export interface MoodProps {
+  params?: {
+    slug: string | undefined;
+  }
 }
 
 export interface MoodPostGetterProps {
