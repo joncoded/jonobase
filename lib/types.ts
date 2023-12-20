@@ -10,7 +10,7 @@ export interface FindFiltersProps {
 }
 
 export interface KindProps {
-  params?: {
+  params: {
     slug: string | undefined;
   }
 }
@@ -21,7 +21,7 @@ export interface ListProps {
 }
 
 export interface MoodProps {
-  params?: {
+  params: {
     slug: string | undefined;
   }
 }
