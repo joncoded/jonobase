@@ -25,7 +25,7 @@ export const text = {
   : "page not found",
 
   "results"       
-  : "results",
+  : "results for query",
   
   "results_query"     
   : "results for query", 

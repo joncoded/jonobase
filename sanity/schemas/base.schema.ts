@@ -45,6 +45,7 @@ const schema = {
       name: 'filters',
       title: 'Filters',
       description: 'categories for home page filters',
+      description: 'categories for search filters',
       type: 'array', 
       of: [
         {
