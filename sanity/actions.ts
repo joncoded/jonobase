@@ -5,7 +5,7 @@ import { MoodPostGetterProps, PostGetterProps } from '@/lib/types'
 
 const postFields = `
 _id,
-slug,
+"slug": slug.current,
 "image": image.asset->url,
 title,
 emoji,
@@ -18,7 +18,7 @@ date`
 
 const postCardFields = `
 _id,
-slug,
+"slug": slug.current,
 "image": image.asset->url,
 title,
 emoji,
@@ -26,6 +26,12 @@ subtitle,
 kind,
 link,
 moods,        
+date`
+
+const postEssentialFields = `
+_id,
+"slug": slug.current,
+title,
 date`
 
 export const getBase = async (slug: string) => {
@@ -226,6 +232,25 @@ export const getPost = async (slug: string) => {
     )
 
     return posts[0] 
+
+  } catch (error) {
+
+    console.log(error)
+
+  }
+
+}
+
+export const getPostAdjacent = async (date: string, mode: 'older' | 'newer') => {
+
+  try {
+
+    const operation = (mode === 'older' ? '<' : '>')
+    const posts = await readClient.fetch(
+      groq`*[_type == "post" && date ${operation} '${date}']{${postEssentialFields}}`
+    )    
+
+    return posts[0] || undefined
 
   } catch (error) {
 

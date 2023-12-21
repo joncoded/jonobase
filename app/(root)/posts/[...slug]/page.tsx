@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { getBase, getPost } from "@/sanity/actions"
+import { getBase, getPost, getPostAdjacent } from "@/sanity/actions"
 import BlockContent from "@sanity/block-content-to-react"
 import SyntaxHighlighter from "react-syntax-highlighter"
 import { monokaiSublime } from "react-syntax-highlighter/dist/cjs/styles/hljs"
@@ -45,6 +45,7 @@ export default async function Main({ params } : any) {
   }
   /* end syntax highlighting stuff */
 
+  /* def if no post data returns */
   if (!post) {
     return (
       <Sect>
@@ -52,6 +53,8 @@ export default async function Main({ params } : any) {
       </Sect>
     )
   }
+  /* end if no post data returns */
+  
 
   const { title, emoji, subtitle, kind, content, link, moods, image, date } = post 
 
@@ -89,6 +92,9 @@ export default async function Main({ params } : any) {
     )
   }
 
+  const newerPost = await getPostAdjacent(date, "newer")  
+  const olderPost = await getPostAdjacent(date, "older")
+
   return (
 
     <main id="main" tabIndex={-1}>
@@ -111,11 +117,28 @@ export default async function Main({ params } : any) {
       </Sect>
 
       { moods && 
-      <Sect className={`post-mood !bg-gradient-to-r from-gray-100 to-gray-300 p-5 text-2xl`}>
+      <Sect className={`post-mood !bg-gradient-to-r from-gray-100 to-gray-300 p-5 text-lg`}>
         <PostMood />
       </Sect>
       }
-    
+
+      <Sect className={`post-turn !bg-gradient-to-r from-white to-zinc-50 p-5 text-2xl`}>
+        <div className={`flex flex-col md:flex-row ${newerPost ? `justify-between` : `justify-end`} gap-5`}>
+        { newerPost && 
+          <div className="text-center md:text-left">
+            {text['post newer']} <br /> 
+            <Link className="text-sky-600" href={newerPost.slug}>{newerPost.title}</Link>
+          </div>
+        }
+        { olderPost && 
+          <div className="text-center md:text-right">
+            {text['post older']} <br /> 
+            <Link className="text-sky-600" href={olderPost.slug}>{olderPost.title}</Link>
+          </div>
+        }
+        </div>
+      </Sect>
+
     </main>
 
   )

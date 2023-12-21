@@ -24,6 +24,12 @@ export const text = {
   "page not found" 
   : "page not found",
 
+  "post newer"
+  : "newer post",
+
+  "post older"
+  : "older post", 
+
   "results"       
   : "results for query",
   

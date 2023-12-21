@@ -94,7 +94,7 @@ const PostCard = ({post : { slug, image, title, kind, subtitle, link, date}}: Po
 
   return (    
     <Card className="w-full border !bg-transparent">
-      <Link href={`/posts/${slug.current}`}>
+      <Link href={`/posts/${slug}`}>
         <CardHeader>
           <CardTitle />
           <CardDate />
