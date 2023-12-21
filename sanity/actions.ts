@@ -45,6 +45,7 @@ export const getBase = async (slug: string) => {
         intro,
         "featured" : featured->slug.current,         
         tagline,
+        perPage,        
         menu,
         filters,
         metakeywords, 
@@ -164,6 +165,9 @@ export const getLists = async () => {
 export const getPosts = async (params: PostGetterProps) => {
   
   const { query, kind, page } = params
+  const { perPage } = params || '6'
+
+  console.log(query, kind, page, perPage)
   
   try {
     const posts = await readClient.fetch(
@@ -172,9 +176,11 @@ export const getPosts = async (params: PostGetterProps) => {
         query,
         kind,
         page: parseInt(page),
+        perPage: parseInt(perPage)
       })} | order(date desc) { ${postFields} }`    
     )
 
+    console.log(posts)
     return posts
 
   } catch (error) {

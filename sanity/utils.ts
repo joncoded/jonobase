@@ -2,7 +2,7 @@ import qs from 'query-string'
 import { UtilQueryBuildingProps, UtilQueryURLProps } from '@/lib/types'
 
 export function buildQuery(params: UtilQueryBuildingProps) {
-  const { type, query, kind, page = 1, perPage = 20 } = params
+  const { type, query, kind, page = 1, perPage = 6 } = params
 
   const conditions = [`*[_type=="${type}"`]
 
@@ -13,13 +13,16 @@ export function buildQuery(params: UtilQueryBuildingProps) {
   }
 
   const offset = (page - 1) * perPage
-  const limit = perPage
+  const limit = offset + perPage 
 
-  return conditions.length > 1
-    ? `${conditions[0]} && (${conditions
-        .slice(1)
-        .join(" && ")})][${offset}...${limit}]`
-    : `${conditions[0]}][${offset}...${limit}]`
+  const final = conditions.length > 1
+  ? `${conditions[0]} && (${conditions
+      .slice(1)
+      .join(" && ")})][${offset}...${limit}]`
+  : `${conditions[0]}][${offset}...${limit}]`
+
+  return final
+
 }
 
 export function formUrlQuery({ params, key, value, keysToRemove }: UtilQueryURLProps) {

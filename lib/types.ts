@@ -53,6 +53,7 @@ export interface PostGetterProps {
   query: string;
   kind: string;
   page: string;
+  perPage: string;
 }
 
 export interface UtilDOMChildrenProps {

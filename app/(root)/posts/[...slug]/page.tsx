@@ -75,7 +75,7 @@ export default async function Main({ params } : any) {
 
   const PostLink = () => {
     return (
-      <Link href={link} className="post-url px-5 py-2 bg-black text-white text-2xl">{text['visit url']}</Link>
+      <Link className="post-url px-5 py-2 bg-black text-white text-2xl" href={link} target="_blank">{text['visit url']}</Link>
     )
   }
 

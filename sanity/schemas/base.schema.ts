@@ -13,12 +13,21 @@ const schema = {
       name: 'slug', 
       title: 'Slug', 
       type: 'slug', 
-      options: { source: 'title' }
+      options: { source: 'title' },
+      validation: (Rule: any) => Rule.required()
     },           
     {
       name: 'tagline',
       title: 'Tagline',
       type: 'string',      
+    },
+    {
+      name: 'perPage',
+      title: 'Posts per page on homepage',
+      type: 'string',
+      options: {
+        list:  ['1', '2', '3', '6', '12', '18', '30']
+      }    
     },
     {
       name: 'menu',
@@ -79,7 +88,7 @@ const schema = {
     {
       name: 'colophon1',
       title: 'Colophon 1',
-      description: 'footer (tail) content, left side for desktop, at the top for mobile - good for copyright messages',
+      description: 'footer (tail) content: left side for desktop + at the top for mobile',
       type: 'array', 
       of: [
         {
@@ -90,7 +99,7 @@ const schema = {
     {
       name: 'colophon2',
       title: 'Colophon 2',
-      description: 'footer (tail) content, right side for desktop, at the bottom for mobile - good for social media links or whatever',
+      description: 'footer (tail) content: right side for desktop + at the bottom for mobile',
       type: 'array', 
       of: [
         {

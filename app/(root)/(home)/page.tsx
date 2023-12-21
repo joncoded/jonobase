@@ -32,11 +32,13 @@ export default async function Home({ searchParams }: FindProps) {
 
   /* get regular posts */
   const { intro } = base || ''  
+  const { perPage } = base || '6'  
 
   const posts = await getPosts({
     query: searchParams?.query || '', 
     kind: searchParams?.kind || '', 
-    page: '1'
+    page: searchParams?.page || '1',
+    perPage: searchParams?.perPage || perPage    
   }) 
 
   const HomeHead = () => {
