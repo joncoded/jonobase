@@ -13,8 +13,6 @@ export default async function Main({ params }: MoodProps) {
     page: '1'
   })  
 
-  console.log(posts)
-
   return (
     
     <main id="main" tabIndex={-1}>
