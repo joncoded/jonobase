@@ -165,9 +165,7 @@ export const getLists = async () => {
 export const getPosts = async (params: PostGetterProps) => {
   
   const { query, kind, page } = params
-  const { perPage } = params || '6'
-
-  console.log(query, kind, page, perPage)
+  const { perPage } = params
   
   try {
     const posts = await readClient.fetch(
@@ -180,7 +178,6 @@ export const getPosts = async (params: PostGetterProps) => {
       })} | order(date desc) { ${postFields} }`    
     )
 
-    console.log(posts)
     return posts
 
   } catch (error) {

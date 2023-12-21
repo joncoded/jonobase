@@ -14,7 +14,8 @@ export default async function Main({ searchParams }: FindProps) {
   const posts = await getPosts({
     query: searchParams?.query || '', 
     kind: searchParams?.kind || '', 
-    page: '1'
+    page: '1',
+    perPage: searchParams?.perPage || '6'
   })  
 
   return (
