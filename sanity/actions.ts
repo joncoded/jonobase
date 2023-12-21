@@ -3,6 +3,31 @@ import { readClient } from './lib/client'
 import { buildQuery } from './utils'
 import { MoodPostGetterProps, PostGetterProps } from '@/lib/types'
 
+const postFields = `
+_id,
+slug,
+"image": image.asset->url,
+title,
+emoji,
+subtitle,
+kind,
+content,
+link,
+moods,        
+date`
+
+const postCardFields = `
+_id,
+slug,
+"image": image.asset->url,
+title,
+emoji,
+subtitle,
+kind,
+link,
+moods,        
+date`
+
 export const getBase = async (slug: string) => {
 
   try {
@@ -11,7 +36,8 @@ export const getBase = async (slug: string) => {
         _id,
         title,
         slug, 
-        intro,        
+        intro,
+        "featured" : featured->slug.current,         
         tagline,
         menu,
         filters,
@@ -87,12 +113,7 @@ export const getList = async (slug: string) => {
         _id,
         title,
         posts[0...12]->{
-          title,
-          _id, 
-          content,
-          link,
-          "image" : image.asset->url,
-          kind
+          ${postCardFields}
         }
       }`
     )
@@ -133,31 +154,6 @@ export const getLists = async () => {
   }
 
 }
-
-const postFields = `
-_id,
-slug,
-"image": image.asset->url,
-title,
-emoji,
-subtitle,
-kind,
-content,
-link,
-moods,        
-date`
-
-const postCardFields = `
-_id,
-slug,
-"image": image.asset->url,
-title,
-emoji,
-subtitle,
-kind,
-link,
-moods,        
-date`
 
 export const getPosts = async (params: PostGetterProps) => {
   

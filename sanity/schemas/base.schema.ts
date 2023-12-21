@@ -42,9 +42,15 @@ const schema = {
       ]
     },
     {
+      name: 'featured',
+      title: 'Featured posts',
+      description: 'The "greatest hits" list of posts for home page',
+      type: 'reference',             
+      to: { type: 'list'}      
+    },
+    {
       name: 'filters',
       title: 'Filters',
-      description: 'categories for home page filters',
       description: 'categories for search filters',
       type: 'array', 
       of: [

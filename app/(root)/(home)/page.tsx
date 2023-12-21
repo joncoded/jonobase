@@ -1,5 +1,5 @@
 import { PortableText } from '@portabletext/react'
-import { getBase, getPosts } from "@/sanity/actions"
+import { getBase, getList, getPosts } from "@/sanity/actions"
 import { FindProps } from "@/lib/types"
 import { Sect } from "@/components/main"
 import PostList from '@/components/post-list'
@@ -21,13 +21,23 @@ export default async function Home({ searchParams }: FindProps) {
 
   const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
   
-  const { intro } = base || ''
+  /* get featured posts */
+  const { featured : featuredList } = base || ''
+  
+  let featuredData = []
+  if (featuredList !== null) {
+    featuredData = await getList(featuredList)    
+  }  
+  const featuredPosts = featuredData.posts || undefined
+
+  /* get regular posts */
+  const { intro } = base || ''  
 
   const posts = await getPosts({
     query: searchParams?.query || '', 
     kind: searchParams?.kind || '', 
     page: '1'
-  })  
+  }) 
 
   const HomeHead = () => {
     return (
@@ -51,8 +61,9 @@ export default async function Home({ searchParams }: FindProps) {
       </Sect>
       
       <Sect className="bg-white text-black">
-        <PostList posts={posts} />
-      </Sect>          
+        {featuredPosts && <PostList posts={featuredPosts} />}
+        <PostList posts={posts} />        
+      </Sect>
     
     </main>
 
