@@ -31,13 +31,13 @@ export default async function Main({ params }: HeapProps) {
       <Sect className="bg-white text-black">
         <h2 className="font-sans text-sm md:text-2xl">{text['heaps']} / {params.slug}</h2>        
         {heapLists && heapLists.map(heapList => 
-          <>
+          <div key={heapList._id}>
             <h3>{heapList.title}</h3>
             <p>{heapList.subtitle}</p>
             <PortableText value={heapList.precontent} />
             <PostList posts={heapList.posts} />
             <PortableText value={heapList.postcontent} />
-          </>
+          </div>
         )}
       </Sect>          
     
