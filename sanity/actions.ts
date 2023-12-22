@@ -58,7 +58,7 @@ export const getBase = async (slug: string) => {
   
   } catch (error) {
   
-    console.log("could not get base")
+    console.log(error)
 
   }
 
@@ -78,7 +78,7 @@ export const getCategories = async (slug: string) => {
 
   } catch (error) {
 
-    console.log("could not get categories")
+    console.log(error)
 
   }
 
@@ -88,20 +88,18 @@ export const getHeap = async (slug: string) => {
   
   try {
 
-    const heap = await readClient.fetch(
+    const heaps = await readClient.fetch(
       groq`*[_type == "heap" && slug.current == '${slug}']{
         _id,
         title,
-        lists->{
-          title,
-          subtitle,
-          posts,
-          content          
+        slug,
+        lists[0...30]->{          
+          "slug" : slug.current
         }
       }`
     )
-
-    return heap
+    
+    return heaps[0]
 
   } catch (error) {
 
@@ -119,8 +117,16 @@ export const getList = async (slug: string) => {
       groq`*[_type == "list" && slug.current == '${slug}']{
         _id,
         title,
-        posts[0...12]->{
+        slug,
+        subtitle,
+        precontent,        
+        posts[0...30]->{
           ${postCardFields}
+        },
+        postcontent,
+        cta->{
+          url,
+          title
         }
       }`
     )
@@ -142,7 +148,7 @@ export const getLists = async () => {
       groq`*[_type == "list"]{        
         _id,
         title,
-        posts[0...12]->{
+        posts[0...30]->{
           title,
           _id,
           link,

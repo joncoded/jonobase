@@ -21,6 +21,34 @@ const schema = {
       type: 'string'      
     },
     {
+      name: 'precontent',
+      title: 'Precontent',
+      description: 'content before the post list (if any)',
+      type: 'array', 
+      of: [
+        {
+          type: 'block'
+        },
+        {
+          type: 'image',
+          fields: [
+            {
+              type: 'text',
+              name: 'alt',
+              title: 'Alternative text',
+              description: `Screen reader text for low-sighted users`,
+              options: {
+                isHighlighted: true
+              }
+            }
+          ]
+        },
+        {
+          type: 'code'
+        }
+      ]
+    }, 
+    {
       name: 'posts',
       title: 'Posts',
       type: 'array',       
@@ -30,8 +58,8 @@ const schema = {
       }]
     },
     {
-      name: 'content',
-      title: 'Content',       
+      name: 'postcontent',
+      title: 'Postcontent',       
       type: 'array',      
       of: [
         {
@@ -56,6 +84,16 @@ const schema = {
         }
       ] 
     },
+    {
+      name: 'cta',
+      title: 'CTA', 
+      description: 'external link to somewhere else',
+      type: 'object',
+      fields: [
+        { name: 'url', type: 'url', title: 'URL'},
+        { name: 'title', type: 'string', title: 'Title'},
+      ]
+    }    
   ]
 }
 

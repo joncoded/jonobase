@@ -73,7 +73,7 @@ const schema = {
       name: 'link',
       title: 'Link', 
       description: 'external link to somewhere else',
-      type: 'string',      
+      type: 'url',      
     },
     {
       name: 'moods',

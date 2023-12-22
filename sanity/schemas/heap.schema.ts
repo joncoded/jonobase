@@ -13,16 +13,18 @@ const schema = {
       name: 'slug', 
       title: 'Slug', 
       type: 'slug', 
-      options: { source: 'title' }
-    },
+      options: { source: 'title' },
+      validation: (Rule: any) => Rule.required()
+    },    
     {
       name: 'lists',
-      title: 'lists',
+      title: 'Lists',
       type: 'array',       
       of: [{
         type: 'reference', 
         to: [{ type: 'list'}]
-      }]
+      }],
+      validation: (Rule: any) => Rule.required()
     }
   ]
 }

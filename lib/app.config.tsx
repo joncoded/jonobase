@@ -6,6 +6,9 @@ export const text = {
   "go to the home page" 
   : "go to the home page",
 
+  "heaps"
+  : "heaps", 
+
   "kinds"
   : "kinds", 
   

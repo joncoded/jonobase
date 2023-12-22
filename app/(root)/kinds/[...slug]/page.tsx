@@ -9,7 +9,7 @@ export const revalidate = 30
 export default async function Main({ params }: KindProps) {
 
   const posts = await getPostsByKind ({
-    slug: params.slug || '',
+    slug: params.slug,
     page: '1'
   })  
 

@@ -9,9 +9,15 @@ export interface FindFiltersProps {
   filters: string[]
 }
 
+export interface HeapProps {
+  params: {
+    slug: string;
+  }
+}
+
 export interface KindProps {
   params: {
-    slug: string | undefined;
+    slug: string;
   }
 }
 
