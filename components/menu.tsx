@@ -46,7 +46,7 @@ export default function Menu({base} : any) {
 
   const MenuButton = () => {
     return (
-      <div className={`menu-button`}>
+      <div className={`menu-button font-sans ml-2`}>
         <button className={`text-sm uppercase`} onClick={openMenu} id="open-menu">
           <Span className={`mr-1 text-2xl`} ariaHidden={true}>≡</Span>
           <Span className={`mx-1 text-2xl`}>{text['menu']}</Span>
@@ -82,7 +82,7 @@ export default function Menu({base} : any) {
   const MenuHead = ({children}: UtilDOMChildrenProps) => {
     return (
       <div className={`menu-head 
-        flex flex-col sm:flex-row sm:justify-between items-center mb-10
+        flex flex-col sm:flex-row justify-between items-center sm:items-end mb-10
       `}>
         {children}
       </div>
@@ -114,7 +114,7 @@ export default function Menu({base} : any) {
     return (
       <div 
         className={`menu-options 
-          flex justify-right gap-5
+          flex justify-center gap-5
         `}
       >
         {children}
