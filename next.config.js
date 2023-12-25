@@ -1,9 +1,24 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async redirects() {
-    return [   
+    return [
+      {
+        source: '/heaps',
+        destination: '/',
+        permanent: true
+      },
+      {
+        source: '/kinds',
+        destination: '/',
+        permanent: true
+      },    
       {
         source: '/moods',
+        destination: '/',
+        permanent: true
+      },
+      {
+        source: '/posts',
         destination: '/',
         permanent: true
       }      

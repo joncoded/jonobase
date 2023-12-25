@@ -54,7 +54,6 @@ export default async function Main({ params } : any) {
     )
   }
   /* end if no post data returns */
-  
 
   const { title, emoji, subtitle, kind, content, link, moods, image, date } = post 
 
