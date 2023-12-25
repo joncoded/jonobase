@@ -3,7 +3,7 @@ import { getBase, getPost, getPostAdjacent } from "@/sanity/actions"
 import BlockContent from "@sanity/block-content-to-react"
 import SyntaxHighlighter from "react-syntax-highlighter"
 import { monokaiSublime } from "react-syntax-highlighter/dist/cjs/styles/hljs"
-import { Sect } from "@/components/main"
+import { Sect, Span } from "@/components/main"
 import { text } from "@/lib/app.config"
 
 export const revalidate = 600
@@ -58,15 +58,25 @@ export default async function Main({ params } : any) {
 
   const { title, emoji, subtitle, kind, content, link, moods, image, date } = post 
 
+  const PostApex = () => {
+    return (
+      <aside className={`uppercase font-sans text-2xl`}>
+        <Span>{text['posts']}</Span>
+        <Span> / </Span>
+        <Span className="text-lg mr-2">{emoji}</Span>
+        <Span className="text-lg">{title}</Span>
+      </aside>
+    )
+  }
+
   const PostHead = () => {
     return (
-      <div className={`post-head ${image ? 'py-10 bg-zinc-900/60 text-white' : 'text-black dark:text-white'} text-center`}>
-        <div className="post-head-emoji hidden md:block text-7xl pb-5" aria-hidden="true">{emoji}</div>
+      <div className={`post-head ${image ? 'py-10 bg-zinc-900/70 text-white px-10' : 'text-black dark:text-white'}`}>        
         <h1 className="post-head-title text-5xl md:text-7xl font-bold">{title}</h1> 
         { subtitle && <p className="post-head-subtitle text-xl md:text-3xl mt-2">{subtitle}</p>}
         <p className="post-head-data font-serif text-sm md:text-xl mt-6">
           <span className="post-head-cats">{kind}</span>
-          <span className="post-head-bull mx-2" aria-hidden="true">&bull;</span>
+          <span className="post-head-bull mx-2" aria-hidden="true"> / </span>
           <span className="post-head-date">{date.substring(0,10)} {date.substring(11,16)}</span> 
         </p>          
       </div>
@@ -75,7 +85,17 @@ export default async function Main({ params } : any) {
 
   const PostLink = () => {
     return (
-      <Link className="post-url px-5 py-2 bg-black text-white text-2xl" href={link} target="_blank">{text['visit url']}</Link>
+      <Link 
+        className={`post-url 
+          px-5 py-2 bg-black 
+          text-white text-lg 
+          hover:border hover:border-black hover:bg-white hover:text-black
+        `}
+        href={link} 
+        target="_blank"
+      >
+        {text['visit url']}
+      </Link>
     )
   }
 
@@ -99,11 +119,15 @@ export default async function Main({ params } : any) {
 
     <main id="main" tabIndex={-1}>
 
+      <Sect className="bg-white">
+        <PostApex />
+      </Sect>
+
       <Sect className={`post-head ${!image && `!bg-gradient-to-b from-sky-100 to-sky-200`} p-10 font-sans`} bgImage={image}> 
         <PostHead />
       </Sect>
 
-      { link && <Sect className={`post-link !bg-zinc-50 text-center p-10`}>
+      { link && <Sect className={`post-link !bg-zinc-50 text-center p-5`}>
         <PostLink />
       </Sect>}
       

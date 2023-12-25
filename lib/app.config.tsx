@@ -33,6 +33,9 @@ export const text = {
   "post older"
   : "older post", 
 
+  "posts"
+  : "posts", 
+
   "results"       
   : "results for query",
   
