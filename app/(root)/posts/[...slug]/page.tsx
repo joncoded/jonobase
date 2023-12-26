@@ -70,41 +70,48 @@ export default async function Main({ params } : any) {
 
   const PostHead = () => {
     return (
-      <div className={`post-head ${image ? 'py-10 bg-zinc-900/70 text-white px-10' : 'text-black dark:text-white'}`}>        
+      <div className={`post-head-wrap ${image ? 'bg-zinc-900/70 text-white p-5 md:p-10' : 'text-black'}`}>        
         <h1 className="post-head-title text-5xl md:text-7xl font-bold">{title}</h1> 
         { subtitle && <p className="post-head-subtitle text-xl md:text-3xl mt-2">{subtitle}</p>}
         <p className="post-head-data font-serif text-sm md:text-xl mt-6">
           <span className="post-head-cats">{kind}</span>
           <span className="post-head-bull mx-2" aria-hidden="true"> / </span>
           <span className="post-head-date">{date.substring(0,10)} {date.substring(11,16)}</span> 
-        </p>          
+        </p>
       </div>
     )
   }
 
   const PostLink = () => {
     return (
-      <Link 
-        className={`post-url 
-          px-5 py-2 bg-black 
-          text-white text-lg 
-          hover:border hover:border-black hover:bg-white hover:text-black
-        `}
-        href={link} 
-        target="_blank"
-      >
-        {text['visit url']}
-      </Link>
+      <div className={`post-link-wrap`}>
+        <Link 
+          className={`post-link-link 
+            px-5 py-2 bg-black text-white text-lg 
+            hover:border hover:border-black hover:bg-white hover:text-black
+          `}
+          href={link} 
+          target="_blank"
+        >
+          {text['visit url']}
+        </Link>
+      </div>
     )
   }
 
   const PostMood = () => {
     return (
       <div className="flex flex-wrap items-center gap-5">
-        {text['moods']}
+        {text['moods']} : 
         {moods.map((mood: any) => {
           return (
-            <Link key={mood} href={`/moods/${mood}`} className="mr-5 p-2 px-5 border border-black dark:border-white bg-white text-black hover:bg-black hover:text-white">{mood}</Link>
+            <Link 
+              className={`p-2 px-5 border border-black dark:border-white bg-white text-black hover:bg-black hover:text-white`}              
+              href={`/moods/${mood}`}
+              key={mood} 
+            >
+              {mood}
+            </Link>
           )
         })}
       </div>
@@ -118,19 +125,16 @@ export default async function Main({ params } : any) {
 
     <main id="main" tabIndex={-1}>
 
-      <Sect className={`post-apex`}>
+      <Sect className={`post-apex dark:bg-white dark:text-black`}>
         <PostApex />
       </Sect>
 
-      <Sect className={`post-head ${!image && `!bg-gradient-to-b from-sky-100 to-sky-200`} p-10 font-sans`} bgImage={image}> 
+      <Sect className={`post-meta font-sans ${image ? `py-0` : `!bg-gradient-to-b from-sky-100 to-sky-200 py-5`}`} bgImage={image}> 
         <PostHead />
+        { link && <PostLink />}
       </Sect>
 
-      { link && <Sect className={`post-link !bg-zinc-50 text-center p-5`}>
-        <PostLink />
-      </Sect>}
-      
-      <Sect className={`post-main border-t`}>        
+      <Sect className={`post-main border-t`}>
         <BlockContent 
           blocks={content} 
           serializers={serializers} 
@@ -148,15 +152,15 @@ export default async function Main({ params } : any) {
       <Sect className={`post-turn !bg-gradient-to-r from-white to-zinc-50 p-5 text-2xl`}>
         <div className={`flex flex-col md:flex-row ${newerPost ? `justify-between` : `justify-end`} gap-5`}>
         { newerPost && 
-          <div className="text-center md:text-left">
+          <div className={`text-center md:text-left`}>
             {text['post newer']} <br /> 
-            <Link className="text-sky-600" href={newerPost.slug}>{newerPost.title}</Link>
+            <Link className="text-sky-500 hover:text-black hover:underline" href={newerPost.slug}>{newerPost.title}</Link>
           </div>
         }
         { olderPost && 
-          <div className="text-center md:text-right">
+          <div className={`text-center md:text-right`}>
             {text['post older']} <br /> 
-            <Link className="text-sky-600" href={olderPost.slug}>{olderPost.title}</Link>
+            <Link className="text-sky-500 hover:text-black hover:underline" href={olderPost.slug}>{olderPost.title}</Link>
           </div>
         }
         </div>
