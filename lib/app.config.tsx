@@ -6,6 +6,9 @@ export const text = {
   "go to the home page" 
   : "go to the home page",
 
+  "finds"
+  : "finds", 
+
   "heaps"
   : "heaps", 
 
@@ -36,23 +39,29 @@ export const text = {
   "posts"
   : "posts", 
 
+  "result"
+  : "result",
+
   "results"       
-  : "results for query",
+  : "results",
+
+  "result for query"     
+  : "result for query", 
   
-  "results_query"     
+  "results for query"     
   : "results for query", 
   
-  "results_kind"  
+  "result for kind"  
+  : "result for kind", 
+
+  "results for kind"  
   : "results for kind", 
   
-  "result_found"      
-  : "result found", 
-  
-  "results_found"     
-  : "results found", 
+  "results found none"     
+  : "no result(s) found", 
 
   "search"        
-  : "search",
+  : "find",
 
   "search go"
   : "go", 

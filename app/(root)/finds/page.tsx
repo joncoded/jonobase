@@ -9,7 +9,8 @@ export default async function Main({ searchParams }: FindProps) {
 
   const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
 
-  const { filters } = base || []   
+  const { filters } = base || []  
+  const { showFilters } = base || false
 
   const posts = await getPosts({
     query: searchParams?.query || '', 
@@ -22,8 +23,8 @@ export default async function Main({ searchParams }: FindProps) {
     
     <main id="main" tabIndex={-1}>
 
-      <Sect className="bg-white text-black">
-        <Find filters={filters} posts={posts} urlParams={searchParams} />
+      <Sect className={`dark:bg-gray-900`}>
+        <Find filters={filters} showFilters={showFilters} posts={posts} urlParams={searchParams} />
       </Sect>          
     
     </main>

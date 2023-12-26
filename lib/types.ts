@@ -9,6 +9,15 @@ export interface FindFiltersProps {
   filters: string[]
 }
 
+export interface FindPageParams {
+  filters: string[];
+  showFilters: boolean;
+  posts: PostProps[];
+  urlParams: {
+    [key: string] : string | undefined;
+  };
+}
+
 export interface HeapProps {
   params: {
     slug: string;
@@ -22,6 +31,7 @@ export interface KindProps {
 }
 
 export interface ListProps {
+  count: number;
   query: string;
   kind: string;
 }
