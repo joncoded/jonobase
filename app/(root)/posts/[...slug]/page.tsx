@@ -118,7 +118,7 @@ export default async function Main({ params } : any) {
 
     <main id="main" tabIndex={-1}>
 
-      <Sect className="bg-white">
+      <Sect className={`post-apex`}>
         <PostApex />
       </Sect>
 
