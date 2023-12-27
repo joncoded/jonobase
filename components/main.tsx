@@ -1,3 +1,10 @@
+
+/*
+jonanity by @joncoded
+/app/components/main.tsx
+the "main" section template of each page
+*/
+
 import { UtilDOMSectProps, UtilDOMSpanProps } from "@/lib/types"
 
 export const Sect = ({children, className, bgImage}: UtilDOMSectProps) => {
@@ -16,7 +23,7 @@ export const Sect = ({children, className, bgImage}: UtilDOMSectProps) => {
     
     <section 
       style={background}
-      className={`${className} post-main w-full`}
+      className={`post-main w-full ${className ?? ''}`}
     >
       <div className="max-w-screen-lg mx-auto p-5">
         {children}

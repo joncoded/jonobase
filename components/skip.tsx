@@ -1,5 +1,11 @@
 'use client'
 
+/*
+jonanity by @joncoded
+/app/components/skip-card.tsx
+the "skip to main content" button
+*/
+
 import Link from "next/link"
 import { text } from "@/lib/app.config"
 

@@ -1,10 +1,15 @@
 'use client'
 
+/*
+jonanity by @joncoded
+/app/components/find-filters.tsx
+the buttons to filter by "kind" (category) on the "find" (search) page
+*/
+
 import { useState } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { formUrlQuery } from '@/sanity/utils'
 import { FindFiltersProps } from '@/lib/types'
-
 
 const FindFilters = ({filters}: FindFiltersProps) => {
 

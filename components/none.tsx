@@ -1,3 +1,10 @@
+
+/*
+jonanity by @joncoded
+/app/components/none.tsx
+file not found template
+*/
+
 import { Sect } from "@/components/main"
 import { text } from "@/lib/app.config"
 import Link from "next/link"

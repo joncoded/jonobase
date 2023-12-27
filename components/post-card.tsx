@@ -1,6 +1,13 @@
-import { UtilDOMChildrenProps, PostProps } from '@/lib/types'
+
+/*
+jonanity by @joncoded
+/app/components/post-card.tsx
+the card for each (blog) post (in lists), e.g. in home, finds, kinds, moods, etc.
+*/
+
 import Image from 'next/image'
 import Link from 'next/link'
+import { UtilDOMChildrenProps, PostProps } from '@/lib/types'
 import { text } from '@/lib/app.config'
 import { Span } from './main'
 
@@ -8,7 +15,7 @@ const PostCard = ({post : { slug, image, title, kind, subtitle, link, date}}: Po
 
   const Card = ({children} : UtilDOMChildrenProps) => {
     return (
-      <article className={`card-unit w-full border-2 border-gray-200 !bg-transparent`}>
+      <article className={`card-unit w-full !bg-zinc-100 text-black dark:!bg-black dark:text-white shadow-lg`}>
         <div className={`flex flex-col justify-center`}>
           {children}
         </div>
@@ -27,7 +34,7 @@ const PostCard = ({post : { slug, image, title, kind, subtitle, link, date}}: Po
   const CardTitle = () => {
     return (
       <div className={`card-title`}>
-        <h3 className={`font-sans text-sky-500 hover:text-black dark:hover:text-white hover:underline text-2xl md:text-4xl font-semibold`}>
+        <h3 className={`font-sans font-semibold text-2xl md:text-4xl text-sky-700 hover:text-black dark:hover:text-white hover:underline`}>
           {title}
         </h3>
       </div>      
@@ -47,7 +54,7 @@ const PostCard = ({post : { slug, image, title, kind, subtitle, link, date}}: Po
     return (      
       <>
         {image && 
-          <div className={`card-image w-full`}>
+          <div className={`card-image w-full shadow-xl`}>
             <Image               
               src={image} 
               alt={title} 
@@ -96,7 +103,7 @@ const PostCard = ({post : { slug, image, title, kind, subtitle, link, date}}: Po
   }
 
   return (    
-    <Card className={`card w-full border !bg-transparent`}>
+    <Card className={`card w-full border`}>
       <Link href={`/posts/${slug}`}>
         <CardHeader>
           <CardTitle />

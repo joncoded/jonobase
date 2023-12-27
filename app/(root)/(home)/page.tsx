@@ -1,10 +1,17 @@
-import { PortableText } from '@portabletext/react'
+
+/*
+jonanity by @joncoded
+/app/(root)/(home)/page.tsx
+the homepage
+*/
+
 import { getBase, getList, getPosts } from "@/sanity/actions"
+import { PortableText } from '@portabletext/react'
 import { FindProps } from "@/lib/types"
 import { Sect } from "@/components/main"
 import PostList from '@/components/post-list'
 
-export const revalidate = 10
+export const revalidate = 60
 
 export async function generateMetadata() {
 
@@ -46,7 +53,7 @@ export default async function Home({ searchParams }: FindProps) {
       <div className={`w-full flex flex-col gap-5 text-center`}>
         <div className={`
           max-w-screen-lg mx-auto font-sans 
-          prose prose-h2:text-5xl prose-h2:mb-5 prose-p:text-3xl`
+          prose prose-h2:text-5xl prose-h2:mb-5 prose-p:text-3xl dark:prose-headings:!text-white dark:prose-p:!text-white dark:prose-strong:!text-white`
         }>
           <PortableText value={intro} />
         </div>
@@ -58,11 +65,11 @@ export default async function Home({ searchParams }: FindProps) {
     
     <main id="main" tabIndex={-1}>
 
-      <Sect className="bg-gradient-to-b from-sky-50 to-sky-200 py-5 sm:py-10 drop-shadow-md">
+      <Sect className="bg-gradient-to-b from-sky-50 dark:from-sky-800 to-sky-200 dark:to-sky-900 py-5 sm:py-10 drop-shadow-md">
         <HomeHead />
       </Sect>
       
-      <Sect className="bg-white text-black">
+      <Sect className="bg-white dark:bg-gray-900 text-black dark:text-white">
         {featuredPosts && <PostList posts={featuredPosts} />}
         <PostList posts={posts} />        
       </Sect>

@@ -1,9 +1,16 @@
-import Find from "@/components/find"
+
+/*
+jonanity by @joncoded
+/app/(root)/finds/page.tsx
+the finds (search) page
+*/
+
 import { getBase, getPosts } from "@/sanity/actions"
 import { FindProps } from "@/lib/types"
 import { Sect } from "@/components/main"
+import Find from "@/components/find"
 
-export const revalidate = 30
+export const revalidate = 60
 
 export default async function Main({ searchParams }: FindProps) {
 

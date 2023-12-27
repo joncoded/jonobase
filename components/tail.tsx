@@ -1,3 +1,11 @@
+
+/*
+jonanity by @joncoded
+/app/components/tail.tsx
+the footer of each page
+*/
+
+
 import { getBase } from '@/sanity/actions'
 import { PortableText } from '@portabletext/react'
 

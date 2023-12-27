@@ -1,5 +1,11 @@
 'use client'
 
+/*
+jonanity by @joncoded
+/app/components/menu-find.tsx
+the find (search) UI for the head menu
+*/
+
 import { useState } from "react"
 import { useRouter } from 'next/navigation'
 import { UtilMenuFindProps } from "@/lib/types"

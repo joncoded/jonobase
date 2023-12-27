@@ -1,3 +1,11 @@
+
+/*
+jonanity by @joncoded
+/sanity/env.ts
+environment variable checks
+*/
+
+
 export const apiVersion =
   process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2023-12-14'
 

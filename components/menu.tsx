@@ -1,14 +1,20 @@
 'use client'
 
+/*
+jonanity by @joncoded
+/app/components/menu.tsx
+the "menu" of the header
+*/
+
 import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
-import FocusTrap from 'focus-trap-react'
 import { useHotkeys } from 'react-hotkeys-hook'
 import { UtilDOMChildrenProps, UtilMenuFindWrapperProps } from '@/lib/types'
 import { PortableText } from '@portabletext/react'
-import MenuFind from './menu-find'
 import { Span } from './main'
 import { text } from '@/lib/app.config'
+import FocusTrap from 'focus-trap-react'
+import MenuFind from './menu-find'
 
 export default function Menu({base} : any) {
   
@@ -167,7 +173,8 @@ export default function Menu({base} : any) {
     return (
       <nav
         className={`menu-content 
-          !font-sans my-5 text-4xl
+          !font-sans my-10 text-4xl text-center 
+          prose-h2:my-5 prose-a:text-sky-500 hover:prose-a:text-black hover:prose-a:font-semibold dark:hover:prose-a:text-white
         `} 
       >
         <PortableText value={base.menu} />
@@ -212,7 +219,7 @@ export default function Menu({base} : any) {
                     <MenuThemeOption />
                   </MenuOptions>
                 </MenuHead>
-                <MenuFindWrapper className={`block md:hidden`}>                  
+                <MenuFindWrapper className={`block md:hidden mb-5`}>                  
                   <MenuFind                     
                     showMenu={setShowMenu} 
                     inputName={`mobile-search-in-menu`} 
@@ -220,7 +227,7 @@ export default function Menu({base} : any) {
                   />
                 </MenuFindWrapper>
                 <MenuContent />
-                <MenuFindWrapper className={`hidden md:block`}>                
+                <MenuFindWrapper className={`hidden md:block mt-5`}>                
                   <MenuFind                     
                     showMenu={setShowMenu} 
                     inputName={`desktop-search-in-menu`} 

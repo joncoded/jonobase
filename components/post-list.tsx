@@ -1,4 +1,10 @@
-import { text } from "@/lib/app.config";
+
+/*
+jonanity by @joncoded
+/app/components/post-list.tsx
+the list of post "cards"
+*/
+
 import PostCard from "./post-card";
 
 export default function PostList({posts} : any) {

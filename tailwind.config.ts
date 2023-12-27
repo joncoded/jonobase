@@ -22,6 +22,14 @@ module.exports = {
       }
     },
   },
+  safelist: [
+    {
+      pattern: /(bg|text)-+/,
+      variants: [
+        'dark', 'prose-a', 'hover', 'hover:dark', 'hover:dark:prose-a'
+      ]
+    },
+  ],
   plugins: [
     require('@tailwindcss/typography'),
   ],

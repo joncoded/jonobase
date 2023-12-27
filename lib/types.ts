@@ -1,4 +1,10 @@
 
+/*
+jonanity by @joncoded
+/app/lib/types.ts
+all typescript interfaces for prop types in all/most other .tsx files
+*/
+
 export interface FindProps {
   searchParams: {
     [key: string] : string | undefined;
@@ -7,6 +13,12 @@ export interface FindProps {
 
 export interface FindFiltersProps {
   filters: string[]
+}
+
+export interface FindHeadProps {
+  count: number;
+  query: string;
+  kind: string;
 }
 
 export interface FindPageParams {
@@ -28,12 +40,6 @@ export interface KindProps {
   params: {
     slug: string;
   }
-}
-
-export interface ListProps {
-  count: number;
-  query: string;
-  kind: string;
 }
 
 export interface MoodProps {

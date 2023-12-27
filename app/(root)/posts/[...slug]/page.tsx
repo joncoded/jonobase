@@ -1,12 +1,19 @@
+
+/*
+jonanity by @joncoded
+/app/(root)/posts/page.tsx
+the post template
+*/
+
 import Link from "next/link"
-import { getBase, getPost, getPostAdjacent } from "@/sanity/actions"
 import BlockContent from "@sanity/block-content-to-react"
 import SyntaxHighlighter from "react-syntax-highlighter"
+import { getBase, getPost, getPostAdjacent } from "@/sanity/actions"
 import { monokaiSublime } from "react-syntax-highlighter/dist/cjs/styles/hljs"
 import { Sect, Span } from "@/components/main"
 import { text } from "@/lib/app.config"
 
-export const revalidate = 600
+export const revalidate = 30
 
 export async function generateMetadata({params}: any) {
 
@@ -59,11 +66,11 @@ export default async function Main({ params } : any) {
 
   const PostApex = () => {
     return (
-      <aside className={`uppercase font-sans text-2xl`}>
+      <aside className={`uppercase font-sans text-lg md:text-2xl`}>
         <Span>{text['posts']}</Span>
-        <Span> / </Span>
-        <Span className="text-lg mr-2">{emoji}</Span>
-        <Span className="text-lg">{title}</Span>
+        <Span ariaHidden={true}> / </Span>
+        <Span className="text-sm md:text-lg mr-2">{emoji}</Span>
+        <Span className="text-sm md:text-lg">{title}</Span>
       </aside>
     )
   }
@@ -106,7 +113,9 @@ export default async function Main({ params } : any) {
         {moods.map((mood: any) => {
           return (
             <Link 
-              className={`p-2 px-5 border border-black dark:border-white bg-white text-black hover:bg-black hover:text-white`}              
+              className={`post-mood-item border border-black dark:border-white p-2 px-5 
+              bg-white hover:bg-black text-black hover:text-white 
+              dark:focus:ring-4 focus:ring-offset-2`}
               href={`/moods/${mood}`}
               key={mood} 
             >
@@ -125,7 +134,7 @@ export default async function Main({ params } : any) {
 
     <main id="main" tabIndex={-1}>
 
-      <Sect className={`post-apex dark:bg-white dark:text-black`}>
+      <Sect className={`post-apex`}>
         <PostApex />
       </Sect>
 
@@ -134,7 +143,7 @@ export default async function Main({ params } : any) {
         { link && <PostLink />}
       </Sect>
 
-      <Sect className={`post-main border-t`}>
+      <Sect className={`post-main border-t prose-a:text-sky-500 hover:prose-a:text-black dark:hover:prose-a:text-white hover:prose-a:underline`}>
         <BlockContent 
           blocks={content} 
           serializers={serializers} 
@@ -144,12 +153,12 @@ export default async function Main({ params } : any) {
       </Sect>
 
       { moods && 
-      <Sect className={`post-mood !bg-gradient-to-r from-gray-100 to-gray-300 p-5 text-lg`}>
+      <Sect className={`post-mood !bg-gradient-to-r from-gray-100 to-gray-300 dark:from-gray-800 to-gray-900 p-5 text-lg`}>
         <PostMood />
       </Sect>
       }
 
-      <Sect className={`post-turn !bg-gradient-to-r from-white to-zinc-50 p-5 text-2xl`}>
+      <Sect className={`post-turn !bg-gradient-to-r from-white dark:from-black to-zinc-50 dark:to-gray-900 p-5 text-2xl`}>
         <div className={`flex flex-col md:flex-row ${newerPost ? `justify-between` : `justify-end`} gap-5`}>
         { newerPost && 
           <div className={`text-center md:text-left`}>

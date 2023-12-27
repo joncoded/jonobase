@@ -1,5 +1,11 @@
 "use client"
 
+/*
+jonanity by @joncoded
+/app/components/lite-dark.tsx
+the next.js themes to lite/dark mode provider
+*/
+
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import type { ThemeProviderProps } from "next-themes/dist/types";
 

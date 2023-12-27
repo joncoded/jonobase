@@ -1,7 +1,14 @@
-import { text } from "@/lib/app.config";
-import { ListProps } from "@/lib/types";
+/*
+jonanity by @joncoded
+/app/components/find-head.tsx
+search results counter
+*/
 
-const ListHead = ({count, query, kind}: ListProps) => {
+
+import { text } from "@/lib/app.config";
+import { FindHeadProps } from "@/lib/types";
+
+const FindHead = ({count, query, kind}: FindHeadProps) => {
 
   if (query && kind) {
     return (      
@@ -27,4 +34,4 @@ const ListHead = ({count, query, kind}: ListProps) => {
 
 }
 
-export default ListHead
+export default FindHead

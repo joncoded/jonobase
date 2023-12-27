@@ -1,3 +1,10 @@
+
+/*
+jonanity by @joncoded
+/app/lib/app.config.tsx
+text constants: handy for localization or internationalization
+*/
+
 export const text = {  
 
   "close menu"

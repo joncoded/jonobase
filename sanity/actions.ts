@@ -1,3 +1,11 @@
+
+/*
+jonanity by @joncoded
+/sanity/actions.ts
+the query list
+*/
+
+
 import { groq } from 'next-sanity'
 import { readClient } from './lib/client'
 import { buildQuery } from './utils'
@@ -119,6 +127,7 @@ export const getList = async (slug: string) => {
         title,
         slug,
         subtitle,
+        bgColor, 
         precontent,        
         posts[0...30]->{
           ${postCardFields}

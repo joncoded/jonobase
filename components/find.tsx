@@ -1,12 +1,18 @@
 'use client'
 
+/*
+jonanity by @joncoded
+/app/components/find.tsx
+the "find" (search) page UI
+*/
+
 import { useEffect, useState } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { formUrlQuery } from '@/sanity/utils'
 import { FindPageParams } from '@/lib/types'
 import FindFilters from './find-filters'
 import PostCard from './post-card'
-import ListHead from './list-head'
+import FindHead from './find-head'
 import { Span } from './main'
 import { text } from '@/lib/app.config'
 
@@ -46,12 +52,12 @@ export default function Find({filters, showFilters, posts, urlParams} : FindPage
 
   const FindApex = () => {
     return (
-      <aside className={`find-apex uppercase font-sans text-2xl`}>
+      <aside className={`find-apex uppercase font-sans text-lg md:text-2xl`}>
         <Span>{text['finds']}</Span>
         { query && 
           <>
             <Span ariaHidden={true}> / </Span>        
-            <Span className="text-lg">{query}</Span>
+            <Span className="text-sm md:text-lg">{query}</Span>
           </>
         } 
       </aside>
@@ -86,7 +92,7 @@ export default function Find({filters, showFilters, posts, urlParams} : FindPage
           {posts && (
             <>
               <div className={`text-right mb-5`}>
-                <h2 className="text-lg"><ListHead count={posts.length} query={query ?? ''} kind={urlParams.kind ?? ''} /></h2>
+                <h2 className="text-lg"><FindHead count={posts.length} query={query ?? ''} kind={urlParams.kind ?? ''} /></h2>
               </div>                                                
               <div className={`find-post-list 
                 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 justify-center mt-0`

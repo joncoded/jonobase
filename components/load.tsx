@@ -1,11 +1,16 @@
+/*
+jonanity by @joncoded
+/app/components/load.tsx
+the "loading" page
+*/
+
 import { Sect } from "@/components/main"
-import { text } from "@/lib/app.config"
+import Image from "next/image"
 
 export default function Main() {
   return (
     <Sect>
-      <h1 className="spec-head font-sans font-bold text-7xl">{text['loading']}</h1>
-      <p className="text-3xl mt-10">{text['loading message']}</p>
+      <Image src={`/images/load.gif?v=${Date.now()}`} alt={`loading`} height={64} width={64} />
     </Sect>
   )
 }

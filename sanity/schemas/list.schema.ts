@@ -21,6 +21,16 @@ const schema = {
       type: 'string'      
     },
     {
+      name: 'bgColor',
+      title: 'Background',
+      description: 'Background colour for the whole section',
+      type: 'string',
+      options: {
+        list: ['white', 'gray', 'red', 'orange', 'yellow', 'amber', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchsia', 'pink', 'rose']
+      },
+      validation: (Rule: any) => Rule.required()
+    },    
+    {
       name: 'precontent',
       title: 'Precontent',
       description: 'content before the post list (if any)',
