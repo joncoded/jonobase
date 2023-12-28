@@ -153,12 +153,12 @@ export default async function Main({ params } : any) {
       </Sect>
 
       { moods && 
-      <Sect className={`post-mood !bg-gradient-to-r from-gray-100 to-gray-300 dark:from-gray-800 to-gray-900 p-5 text-md lg:text-lg`}>
+      <Sect className={`post-mood !bg-gradient-to-r from-zinc-100 to-zinc-200 dark:from-gray-800 dark:to-gray-900 p-5 text-md lg:text-lg`}>
         <PostMood />
       </Sect>
       }
 
-      <Sect className={`post-turn !bg-gradient-to-r from-white dark:from-black to-zinc-50 dark:to-gray-900 p-5 text-lg md:text-2xl`}>
+      <Sect className={`post-turn !bg-gradient-to-r from-white dark:from-black to-zinc-50 dark:to-gray-900 p-5 text-lg md:text-xl`}>
         <div className={`flex flex-col md:flex-row ${newerPost ? `justify-between` : `justify-end`} gap-5`}>
         { newerPost && 
           <div className={`text-center md:text-left`}>

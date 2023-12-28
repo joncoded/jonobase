@@ -77,7 +77,7 @@ export default function Find({filters, showFilters, posts, urlParams} : FindPage
           placeholder={text['search']} 
           className={`font-sans 
             w-full border-0 bg-gray-200 dark:bg-black dark:border dark:border-gray-200 px-5 py-2 text-2xl focus:!ring-2
-            placeholder:text-black placeholder:font-sans placeholder:text-3xl
+            placeholder:text-gray-300 placeholder:font-sans placeholder:text-3xl
           `}
           value={query}
           onChange={handleQuery}
