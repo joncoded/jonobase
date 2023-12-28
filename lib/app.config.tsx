@@ -77,10 +77,10 @@ export const text = {
   : "skip to main content", 
 
   "switch to dark mode"
-  : "switch to dark mode",
+  : "dark mode off",
 
   "switch to light mode"
-  : "switch to light mode",
+  : "dark mode on",
 
   "visit url"     
   : "visit URL",
