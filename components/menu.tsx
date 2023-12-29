@@ -208,7 +208,7 @@ export default function Menu({base} : any) {
       <MenuButton />
       { showMenu && (
         <FocusTrap>
-          <div>
+          <div className={`font-sans`}>
             <MenuDialog>
               <MenuWrapper>
                 <MenuHead>
