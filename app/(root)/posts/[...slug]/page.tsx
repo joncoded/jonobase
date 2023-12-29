@@ -163,13 +163,13 @@ export default async function Main({ params } : any) {
         { newerPost && 
           <div className={`text-center md:text-left`}>
             {text['post newer']} <br /> 
-            <Link className="text-sky-500 hover:text-black hover:underline" href={newerPost.slug}>{newerPost.title}</Link>
+            <Link className="text-sky-500 hover:text-black dark:hover:text-white hover:underline" href={newerPost.slug}>{newerPost.title}</Link>
           </div>
         }
         { olderPost && 
           <div className={`text-center md:text-right`}>
             {text['post older']} <br /> 
-            <Link className="text-sky-500 hover:text-black hover:underline" href={olderPost.slug}>{olderPost.title}</Link>
+            <Link className="text-sky-500 hover:text-black dark:hover:text-white hover:underline" href={olderPost.slug}>{olderPost.title}</Link>
           </div>
         }
         </div>
