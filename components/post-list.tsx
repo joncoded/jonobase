@@ -10,7 +10,7 @@ import PostCard from "./post-card";
 export default function PostList({posts} : any) {
 
   return (
-    <div className="post-list w-full my-5 sm:justify-start">
+    <div className="post-list w-full sm:justify-start">
       {posts?.length > 0 && 
         
         <div className="post-list-item grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 justify-center mt-0">

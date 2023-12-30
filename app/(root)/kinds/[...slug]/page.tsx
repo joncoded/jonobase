@@ -34,7 +34,7 @@ export default async function Main({ params }: KindProps) {
         </h2>
       </Sect>
 
-      <Sect className={`bg-zinc-100 dark:bg-zinc-800`}>
+      <Sect className={`bg-zinc-100 dark:bg-zinc-800 py-10`}>
         <PostList posts={posts} />
       </Sect>          
     

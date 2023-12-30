@@ -59,7 +59,7 @@ export default async function Main({ params }: HeapProps) {
             <Sect 
               key={heapList._id} 
               className={`heap-list-${heapList.slug} 
-                bg-${heapList.bgColor === 'white' 
+                py-5 bg-${heapList.bgColor === 'white' 
                   ? 'white dark:bg-black' 
                   : `${heapList.bgColor}-300 dark:bg-${heapList.bgColor}-800`
                 }`}

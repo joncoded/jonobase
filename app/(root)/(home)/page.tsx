@@ -72,7 +72,21 @@ export default async function Home({ searchParams }: FindProps) {
       <Sect className="bg-white dark:bg-gray-900 text-black dark:text-white">
         {featuredPosts && <PostList posts={featuredPosts} />}
         <PostList posts={posts} />        
+      { featuredPosts && 
+      <Sect className={`home-featured my-10`}>
+        <PostList posts={featuredPosts} /> 
+      </Sect> 
+      }
+
+      <Sect className={`home-post my-10`}>
+        <PostList posts={posts} />
       </Sect>
+
+      { totalPages > 1 && 
+      <Sect className={`home-turn my-10`}>
+        <PageTurn current={parseInt(currentPage)} totalPages={totalPages} />
+      </Sect> 
+      }
     
     </main>
 

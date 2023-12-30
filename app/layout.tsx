@@ -5,7 +5,7 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
-}) {    
+}) {      
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <head>
@@ -16,7 +16,7 @@ export default function RootLayout({
         <ThemeProvider attribute={`class`} defaultTheme={`light`} enableSystem>
           {children}
         </ThemeProvider>        
-      </body>
+      </body>      
     </html>
   )
 }
