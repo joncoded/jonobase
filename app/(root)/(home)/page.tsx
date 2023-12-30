@@ -39,13 +39,21 @@ export default async function Home({ searchParams }: FindProps) {
   }  
   const featuredPosts = featuredData.posts || undefined
 
-  /* get regular posts */
+  /* get posts by page and perPage */
   const posts = await getPosts({
     query: searchParams?.query || '', 
     kind: searchParams?.kind || '', 
     page: searchParams?.page || '1', 
     perPage: searchParams?.perPage || base.perPage || '6'
   })  
+
+  /* get all posts */
+  const unpagedPosts = await getPosts({
+    query: searchParams?.query || '', 
+    kind: searchParams?.kind || '', 
+    page: '1',
+    perPage: '100000'
+  })
 
   const HomeHead = () => {
     return (
@@ -78,7 +86,7 @@ export default async function Home({ searchParams }: FindProps) {
         <PostList posts={posts} />
       </Sect>
 
-      <PageTurn base={base} searchParams={searchParams} />
+      <PageTurn base={base} posts={unpagedPosts} searchParams={searchParams} />
     
     </main>
 

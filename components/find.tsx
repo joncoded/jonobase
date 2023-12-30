@@ -15,8 +15,9 @@ import PostCard from './post-card'
 import FindHead from './find-head'
 import { Span } from './main'
 import { text } from '@/lib/app.config'
+import PageTurn from './page-turn'
 
-export default function Find({filters, showFilters, posts, urlParams} : FindPageParams ) {
+export default function Find({filters, showFilters, posts, unpagedPosts, urlParams} : FindPageParams ) {
 
   const searchParams = useSearchParams()  
   const router = useRouter()  
@@ -76,8 +77,9 @@ export default function Find({filters, showFilters, posts, urlParams} : FindPage
           type="text"
           placeholder={text['search']} 
           className={`font-sans 
-            w-full border-0 bg-gray-200 dark:bg-black dark:border dark:border-gray-200 px-5 py-2 text-2xl focus:!ring-2
-            placeholder:text-gray-300 placeholder:font-sans placeholder:text-3xl
+            w-full border-0 dark:border dark:border-gray-200 px-5 py-2 
+            bg-gray-200 dark:bg-black focus:!ring-2
+            text-2xl placeholder:font-sans placeholder:text-gray-300 placeholder:text-3xl
           `}
           value={query}
           onChange={handleQuery}
@@ -92,7 +94,13 @@ export default function Find({filters, showFilters, posts, urlParams} : FindPage
           {posts && (
             <>
               <div className={`text-right mb-5`}>
-                <h2 className="text-lg"><FindHead count={posts.length} query={query ?? ''} kind={urlParams.kind ?? ''} /></h2>
+                <h2 className="text-lg">
+                  <FindHead 
+                    count={unpagedPosts.length} 
+                    query={query ?? ''} 
+                    kind={urlParams.kind ?? ''} 
+                  />
+                </h2>
               </div>                                                
               <div className={`find-post-list 
                 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 justify-center mt-0`
@@ -103,9 +111,11 @@ export default function Find({filters, showFilters, posts, urlParams} : FindPage
               </div>
             </>
           )}
-        </div>
+        </div>        
 
       </section>
+
+      
     </div>
   )
 }

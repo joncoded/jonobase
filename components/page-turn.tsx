@@ -6,25 +6,25 @@ pagination (page turner) for lists
 */
 
 import Link from "next/link"
-import { getPostCount } from "@/sanity/actions"
 import { Sect } from "./main"
+import { UtilPageTurnProps } from "@/lib/types"
 
-export default async function PageTurn({base, searchParams} : any) {
+export default async function PageTurn({base, posts, searchParams} : UtilPageTurnProps) {
+
+  // for finds pages
+  const query = searchParams?.query || ''
 
   // get current page based on search params or default to first page
-  const currentPage = parseInt(searchParams?.page) || 1
+  const currentPage = parseInt(searchParams?.page || '1')
 
   // get posts per page based on search params or CMS or default to 6 post per page 
   const perPage = searchParams?.perPage || base.perPage || '6'
 
-  // get total post count of all posts in app
-  const totalPosts = await getPostCount()  
-
   // get # of pages (total post count divided by posts per page)
-  const totalPages = Math.ceil(totalPosts / parseInt(perPage))
+  const totalPages = Math.ceil(posts.length / parseInt(perPage))
 
   let pageNumbers = []
-  for (let p=1; p<=totalPages; p++) {
+  for (let p = 1; p <= totalPages; p++) {
     pageNumbers.push(p)
   }  
 
@@ -39,7 +39,7 @@ export default async function PageTurn({base, searchParams} : any) {
               className={`button pagination
                 ${(currentPage === pageNumber) ? 'current' : ''} 
               `}
-              href={`?page=${pageNumber}&perPage=${perPage}`}
+              href={`?query=${query}&page=${pageNumber}&perPage=${perPage}`}
             >
               {pageNumber}
             </Link>

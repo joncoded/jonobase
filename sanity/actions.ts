@@ -9,7 +9,7 @@ the query list
 import { groq } from 'next-sanity'
 import { readClient } from './lib/client'
 import { buildQuery } from './utils'
-import { MoodPostGetterProps, PostGetterProps } from '@/lib/types'
+import { ListProps, PostGetterProps } from '@/lib/types'
 
 const postFields = `
 _id,
@@ -177,12 +177,12 @@ export const getLists = async () => {
 
 }
 
-export const getPosts = async (params: PostGetterProps) => {
+export const getPosts = async (searchParams: PostGetterProps) => {
   
-  const { query, kind, page } = params
-  const { perPage } = params   
+  const { query, kind, page, perPage } = searchParams
   
   try {
+
     const posts = await readClient.fetch(
       groq`${buildQuery({
         type: 'post',
@@ -190,7 +190,9 @@ export const getPosts = async (params: PostGetterProps) => {
         kind,
         page: parseInt(page),
         perPage: parseInt(perPage ?? '1000000')
-      })} | order(date desc) { ${postFields} }`    
+      })} | order(date desc) { 
+        ${(perPage === '1000000') ? '_id' : postFields} 
+      }`    
     )
 
     return posts
@@ -203,30 +205,25 @@ export const getPosts = async (params: PostGetterProps) => {
 
 }
 
-export const getPostCount = async () => {  
-  
-  try {
-    const posts = await readClient.fetch(
-      groq`*[_type == "post"] | order(date desc) {_id}`    
-    )
-
-    return posts.length
-
-  } catch (error) {
-
-    console.log(error)
-
-  }
-
-}
-
-export const getPostsByKind = async (params: MoodPostGetterProps) => {
+export const getPostsByKind = async ({params, searchParams}: ListProps) => {
   
   const { slug } = params
+  const { page, perPage } = searchParams   
+  const kind = slug?.toString().toLowerCase() || ''
   
   try {
+
     const posts = await readClient.fetch(
-      groq`*[_type == "post" && kind == lower("${slug}")] | order(date desc) {${postCardFields}}`    
+      groq`${buildQuery({
+        type: 'post',
+        query: '',
+        kind,
+        mood: '', 
+        page: parseInt(page ?? '1'),
+        perPage: parseInt(perPage ?? '1000000')
+      })} | order(date desc) { 
+        ${perPage === '1000000' ? '_id' : postCardFields} 
+      }`    
     )
 
     return posts
@@ -239,13 +236,25 @@ export const getPostsByKind = async (params: MoodPostGetterProps) => {
 
 }
 
-export const getPostsByMood = async (params: MoodPostGetterProps) => {
+export const getPostsByMood = async ({params, searchParams}: ListProps) => {
   
-  const { slug } = params
+  const { slug } = params  
+  const { page, perPage } = searchParams
+  const mood = slug?.toString().toLowerCase() || ''
   
   try {
+
     const posts = await readClient.fetch(
-      groq`*[_type == "post" && lower("${slug}") in moods] | order(date desc) {${postCardFields}}`    
+      groq`${buildQuery({
+        type: 'post',
+        query: '',
+        kind: '',
+        mood, 
+        page: parseInt(page ?? '1'),
+        perPage: parseInt(perPage ?? '1000000')
+      })} | order(date desc) { 
+        ${perPage === '1000000' ? '_id' : postCardFields} 
+      }`    
     )
 
     return posts

@@ -34,7 +34,7 @@ export default async function Main({ params }: HeapProps) {
 
   const HeapApex = () => {
     return (
-      <h2 className={`uppercase font-sans text-lg md:text-2xl`}>
+      <h2 className={`heap-apex uppercase font-sans text-lg md:text-2xl`}>
         <Span>{text['heaps']}</Span>
         <Span ariaHidden={true}> / </Span>
         <Span>{heap.title}</Span>

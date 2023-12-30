@@ -10,7 +10,7 @@ import qs from 'query-string'
 import { UtilQueryBuildingProps, UtilQueryURLProps } from '@/lib/types'
 
 export function buildQuery(params: UtilQueryBuildingProps) {
-  const { type, query, kind, page = 1, perPage = 6 } = params
+  const { type, query, kind, mood = '', page = 1, perPage = 6 } = params
 
   const conditions = [`*[_type=="${type}"`]
 
@@ -18,6 +18,10 @@ export function buildQuery(params: UtilQueryBuildingProps) {
 
   if (kind && kind !== "all") {
     conditions.push(`kind == "${kind}"`)
+  }
+
+  if (mood && mood !== "all") {
+    conditions.push(`lower("${mood}") in moods`)
   }
 
   const offset = (page - 1) * perPage

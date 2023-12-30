@@ -12,7 +12,7 @@ export interface FindProps {
 }
 
 export interface FindFiltersProps {
-  filters: string[]
+  filters: string[];
 }
 
 export interface FindHeadProps {
@@ -25,6 +25,7 @@ export interface FindPageParams {
   filters: string[];
   showFilters: boolean;
   posts: PostProps[];
+  unpagedPosts: { _id: string }[];
   urlParams: {
     [key: string] : string | undefined;
   };
@@ -36,21 +37,13 @@ export interface HeapProps {
   }
 }
 
-export interface KindProps {
+export interface ListProps {
   params: {
-    slug: string;
-  }
-}
-
-export interface MoodProps {
-  params: {
-    slug: string | undefined;
-  }
-}
-
-export interface MoodPostGetterProps {
-  slug: string;
-  page?: string;
+    [key: string] : string | undefined;
+  };
+  searchParams: {  
+    [key: string] : string | undefined;
+  };
 }
 
 export interface PostProps {
@@ -99,25 +92,33 @@ export interface UtilDOMSpanProps {
 }
 
 export interface UtilMenuFindProps {  
-  showMenu?: (arg: boolean) => void,
-  inputName: string,
-  placeholder: string,
+  showMenu?: (arg: boolean) => void;
+  inputName: string;
+  placeholder: string;
 }
 
 export interface UtilMenuFindWrapperProps {
-  children: React.ReactNode | React.ReactNode[],
-  className: string
+  children: React.ReactNode | React.ReactNode[];
+  className: string;
 }
 
 export interface UtilPageTurnProps {
-  current: number;
-  totalPages: number;
+  base: { 
+    perPage: string; 
+  };
+  posts: { 
+    length: number;
+  };
+  searchParams: {
+    [key: string] : string | undefined
+  };
 }
 
 export interface UtilQueryBuildingProps {
   type: string;
   query: string;
   kind: string;
+  mood?: string;
   page: number;
   perPage?: number;
 }

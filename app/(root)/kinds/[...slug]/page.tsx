@@ -6,26 +6,30 @@ the kinds (lists of "posts from category X") page
 */
 
 import PostList from "@/components/post-list"
-import { getPostsByKind } from "@/sanity/actions"
-import { KindProps } from "@/lib/types"
+import { getBase, getPostsByKind } from "@/sanity/actions"
+import { ListProps } from "@/lib/types"
 import { Sect, Span } from "@/components/main"
 import { text } from "@/lib/app.config"
+import PageTurn from "@/components/page-turn"
 
 export const revalidate = 30
 
-export default async function Main({ params }: KindProps) {
+export default async function Main({ params, searchParams }: ListProps) {
 
-  const posts = await getPostsByKind ({
-    slug: params.slug,
-    page: '1'
-  })  
+  const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
+
+  const posts = await getPostsByKind({params, searchParams})
+
+  const unpagedPosts = await getPostsByKind({ params, searchParams: {  
+    ...searchParams, page: '1', perPage: '1000000'
+  }})
 
   return (
     
     <main id="main" tabIndex={-1}>
 
       <Sect>
-        <h2 className={`uppercase font-sans text-lg md:text-2xl`}>
+        <h2 className={`kind-apex uppercase font-sans text-lg md:text-2xl`}>
           <Span>{text['kinds']}</Span>
           <Span ariaHidden={true}> / </Span>
           <Span className={`text-sm md:text-lg`}>
@@ -34,9 +38,11 @@ export default async function Main({ params }: KindProps) {
         </h2>
       </Sect>
 
-      <Sect className={`bg-zinc-100 dark:bg-zinc-800 py-10`}>
+      <Sect className={`kind-list bg-zinc-100 dark:bg-zinc-800 py-10`}>
         <PostList posts={posts} />
       </Sect>          
+
+      <PageTurn base={base} posts={unpagedPosts} searchParams={searchParams} />
     
     </main>
 
