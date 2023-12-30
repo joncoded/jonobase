@@ -75,7 +75,7 @@ export interface PostGetterProps {
   query: string;
   kind: string;
   page: string;
-  perPage: string;
+  perPage?: string;
 }
 
 export interface UtilDOMChildrenProps {
@@ -107,6 +107,11 @@ export interface UtilMenuFindProps {
 export interface UtilMenuFindWrapperProps {
   children: React.ReactNode | React.ReactNode[],
   className: string
+}
+
+export interface UtilPageTurnProps {
+  current: number;
+  totalPages: number;
 }
 
 export interface UtilQueryBuildingProps {

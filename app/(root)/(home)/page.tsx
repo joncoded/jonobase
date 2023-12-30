@@ -10,6 +10,7 @@ import { PortableText } from '@portabletext/react'
 import { FindProps } from "@/lib/types"
 import { Sect } from "@/components/main"
 import PostList from '@/components/post-list'
+import PageTurn from "@/components/page-turn"
 
 export const revalidate = 60
 
@@ -27,7 +28,8 @@ export async function generateMetadata() {
 export default async function Home({ searchParams }: FindProps) {
 
   const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
-  
+  const { intro } = base || ''  
+
   /* get featured posts */
   const { featured : featuredList } = base || ''
   
@@ -38,15 +40,12 @@ export default async function Home({ searchParams }: FindProps) {
   const featuredPosts = featuredData.posts || undefined
 
   /* get regular posts */
-  const { intro } = base || ''  
-  const { perPage } = base || '6'  
-
   const posts = await getPosts({
     query: searchParams?.query || '', 
     kind: searchParams?.kind || '', 
-    page: searchParams?.page || '1',
-    perPage: searchParams?.perPage || perPage    
-  }) 
+    page: searchParams?.page || '1', 
+    perPage: searchParams?.perPage || base.perPage || '6'
+  })  
 
   const HomeHead = () => {
     return (
@@ -65,13 +64,10 @@ export default async function Home({ searchParams }: FindProps) {
     
     <main id="main" tabIndex={-1}>
 
-      <Sect className="bg-gradient-to-b from-sky-50 dark:from-sky-800 to-sky-200 dark:to-sky-900 py-5 sm:py-10 drop-shadow-md">
+      <Sect className={`home-head bg-gradient-to-b from-sky-50 dark:from-sky-800 to-sky-200 dark:to-sky-900 py-5 sm:py-10 drop-shadow-md`}>
         <HomeHead />
       </Sect>
       
-      <Sect className="bg-white dark:bg-gray-900 text-black dark:text-white">
-        {featuredPosts && <PostList posts={featuredPosts} />}
-        <PostList posts={posts} />        
       { featuredPosts && 
       <Sect className={`home-featured my-10`}>
         <PostList posts={featuredPosts} /> 
@@ -82,11 +78,7 @@ export default async function Home({ searchParams }: FindProps) {
         <PostList posts={posts} />
       </Sect>
 
-      { totalPages > 1 && 
-      <Sect className={`home-turn my-10`}>
-        <PageTurn current={parseInt(currentPage)} totalPages={totalPages} />
-      </Sect> 
-      }
+      <PageTurn base={base} searchParams={searchParams} />
     
     </main>
 

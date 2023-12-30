@@ -180,7 +180,7 @@ export const getLists = async () => {
 export const getPosts = async (params: PostGetterProps) => {
   
   const { query, kind, page } = params
-  const { perPage } = params
+  const { perPage } = params   
   
   try {
     const posts = await readClient.fetch(
@@ -189,11 +189,28 @@ export const getPosts = async (params: PostGetterProps) => {
         query,
         kind,
         page: parseInt(page),
-        perPage: parseInt(perPage)
+        perPage: parseInt(perPage ?? '1000000')
       })} | order(date desc) { ${postFields} }`    
     )
 
     return posts
+
+  } catch (error) {
+
+    console.log(error)
+
+  }
+
+}
+
+export const getPostCount = async () => {  
+  
+  try {
+    const posts = await readClient.fetch(
+      groq`*[_type == "post"] | order(date desc) {_id}`    
+    )
+
+    return posts.length
 
   } catch (error) {
 
