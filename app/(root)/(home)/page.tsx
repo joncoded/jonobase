@@ -11,6 +11,7 @@ import { FindProps } from "@/lib/types"
 import { Sect } from "@/components/main"
 import PostList from '@/components/post-list'
 import PageTurn from "@/components/page-turn"
+import { text } from "@/lib/app.config"
 
 export const revalidate = 60
 
@@ -72,17 +73,23 @@ export default async function Home({ searchParams }: FindProps) {
     
     <main id="main" tabIndex={-1}>
 
-      <Sect className={`home-head bg-gradient-to-b from-sky-50 dark:from-sky-800 to-sky-200 dark:to-sky-900 py-5 sm:py-10 drop-shadow-md`}>
+      <Sect className={`home-head bg-gradient-to-b from-green-200 dark:from-green-800 to-green-300 dark:to-green-900 py-5 sm:py-10 drop-shadow-md`}>
         <HomeHead />
       </Sect>
       
       { featuredPosts && 
-      <Sect className={`home-featured my-10`}>
+      <Sect className={`home-featured bg-amber-300 dark:bg-yellow-700 py-5`}>
+        <h2 className={`mb-10 font-sans font-bold uppercase text-4xl md:text-5xl text-center`}>
+          {text['featured posts']}
+        </h2>
         <PostList posts={featuredPosts} /> 
       </Sect> 
       }
 
-      <Sect className={`home-post my-10`}>
+      <Sect className={`home-post py-5`}>
+        <h2 className={`mb-10 font-sans font-bold uppercase text-4xl md:text-5xl text-center`}>
+          {text['latest posts']}
+        </h2>
         <PostList posts={posts} />
       </Sect>
 

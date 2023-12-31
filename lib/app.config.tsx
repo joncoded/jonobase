@@ -13,6 +13,9 @@ export const text = {
   "go to the home page" 
   : "go to the home page",
 
+  "featured posts" 
+  : "featured",
+
   "finds"
   : "finds", 
 
@@ -21,6 +24,9 @@ export const text = {
 
   "kinds"
   : "kinds", 
+
+  "latest posts"
+  : "latest", 
   
   "loading"
   : "loading",
