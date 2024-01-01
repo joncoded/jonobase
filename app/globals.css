@@ -50,3 +50,30 @@ iframe[title="YouTube video player"] {
   height: 50vh;    
   margin: 0 auto;
 }
+
+/* custom lists */
+
+main ul, main ol {
+  margin: 30px;
+}
+
+main ul li, main ol li {
+  margin-left: 15px;
+}
+
+main ul li {
+  list-style-type: disc;  
+}
+
+main ul ul li {
+  list-style-type: circle;
+  margin-left: 15px;
+}
+
+main ol ol li {
+  list-style-type: lower-alpha;
+}
+
+main ol ol ol li {
+  list-style-type: lower-roman;
+}
