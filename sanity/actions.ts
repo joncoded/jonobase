@@ -179,7 +179,7 @@ export const getLists = async () => {
 
 export const getPosts = async (searchParams: PostGetterProps) => {
   
-  const { query, kind, page, perPage } = searchParams
+  const { query, kind, page, perPage } = searchParams  
   
   try {
 

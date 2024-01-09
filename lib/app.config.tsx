@@ -79,6 +79,9 @@ export const text = {
   "search go"
   : "go", 
 
+  "see more posts"
+  : "see more posts", 
+
   "skip to main content" 
   : "skip to main content", 
 

@@ -10,7 +10,7 @@ import { PortableText } from '@portabletext/react'
 import { FindProps } from "@/lib/types"
 import { Sect } from "@/components/main"
 import PostList from '@/components/post-list'
-import PageTurn from "@/components/page-turn"
+import Link from "next/link"
 import { text } from "@/lib/app.config"
 
 export const revalidate = 60
@@ -48,14 +48,6 @@ export default async function Home({ searchParams }: FindProps) {
     perPage: searchParams?.perPage || base.perPage || '6'
   })  
 
-  /* get all posts */
-  const unpagedPosts = await getPosts({
-    query: searchParams?.query || '', 
-    kind: searchParams?.kind || '', 
-    page: '1',
-    perPage: '100000'
-  })
-
   const HomeHead = () => {
     return (
       <div className={`w-full flex flex-col gap-5 text-center`}>
@@ -86,14 +78,15 @@ export default async function Home({ searchParams }: FindProps) {
       </Sect> 
       }
 
-      <Sect className={`home-post py-5`}>
+      <Sect className={`home-post pt-5 pb-10`}>
         <h2 className={`mb-10 font-sans font-bold uppercase text-4xl md:text-5xl text-center`}>
           {text['latest posts']}
         </h2>
         <PostList posts={posts} />
-      </Sect>
-
-      <PageTurn base={base} posts={unpagedPosts} searchParams={searchParams} />
+        <div className={`mt-10 text-center`}>
+          <Link href={`/finds?page=2`} className="button">{text['see more posts']}</Link>
+        </div>
+      </Sect>      
     
     </main>
 
