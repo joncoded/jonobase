@@ -22,7 +22,8 @@ kind,
 content,
 link,
 moods,        
-date`
+date, 
+showDate`
 
 const postCardFields = `
 _id,
@@ -34,7 +35,8 @@ subtitle,
 kind,
 link,
 moods,        
-date`
+date,
+showDate`
 
 const postEssentialFields = `
 _id,

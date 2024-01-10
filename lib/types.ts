@@ -60,6 +60,7 @@ export interface PostProps {
     moods?: string[];
     link?: URL | undefined;        
     date: string;
+    showDate: boolean;
     content: JSX.Element[] | JSX.Element;
   }
 }

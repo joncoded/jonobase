@@ -11,7 +11,7 @@ import { UtilDOMChildrenProps, PostProps } from '@/lib/types'
 import { text } from '@/lib/app.config'
 import { Span } from './main'
 
-const PostCard = ({post : { slug, image, title, kind, subtitle, link, date}}: PostProps) => {  
+const PostCard = ({post : { slug, image, title, kind, subtitle, link, date, showDate}}: PostProps) => {  
 
   const Card = ({children} : UtilDOMChildrenProps) => {
     return (
@@ -43,6 +43,7 @@ const PostCard = ({post : { slug, image, title, kind, subtitle, link, date}}: Po
 
 
   const CardDate = () => {
+    if (!showDate) return <></>
     return (
       <div className={`card-date text-sm`}>
         {date.substring(0, 10)} {date.substring(11, 16)}

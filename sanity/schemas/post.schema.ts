@@ -104,6 +104,13 @@ const schema = {
       },
       validation: (Rule: any) => Rule.required(),      
     },
+    {
+      name: 'showDate', 
+      title: 'Show date',
+      description: 'show date on public website',
+      type: 'boolean', 
+      validation: (Rule: any) => Rule.required()
+    }
   ],
   preview: {
     select: {
@@ -112,6 +119,9 @@ const schema = {
       media: 'image',     
     },
   },
+  initialValue: {
+    showDate: true
+  }
 }
 
 export default schema
