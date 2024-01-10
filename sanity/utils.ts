@@ -10,6 +10,7 @@ import qs from 'query-string'
 import { UtilQueryBuildingProps, UtilQueryURLProps } from '@/lib/types'
 
 export function buildQuery(params: UtilQueryBuildingProps) {
+
   const { type, query, kind, mood = '', page = 1, perPage = 6 } = params
 
   const conditions = [`*[_type=="${type}"`]

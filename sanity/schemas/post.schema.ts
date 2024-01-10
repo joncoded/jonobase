@@ -57,10 +57,7 @@ const schema = {
               type: 'text',
               name: 'alt',
               title: 'Alternative text',
-              description: `Screen reader text for low-sighted users`,
-              options: {
-                isHighlighted: true
-              }
+              description: `Screen reader text for low-sighted users`
             }
           ]
         },
@@ -110,6 +107,36 @@ const schema = {
       description: 'show date on public website',
       type: 'boolean', 
       validation: (Rule: any) => Rule.required()
+    }
+  ],
+  orderings: [
+    {
+      title: 'Date specified, newest first',
+      name: 'dateDesc',
+      by: [
+        { field: 'date', direction: 'desc'}
+      ]
+    },
+    {
+      title: 'Date specified, oldest first',
+      name: 'dateAsc',
+      by: [
+        { field: 'date', direction: 'asc'}
+      ]
+    },
+    {
+      title: 'Title, ascending',
+      name: 'titleAsc',
+      by: [
+        { field: 'title', direction: 'asc'}
+      ]
+    },
+    {
+      title: 'Title, descending',
+      name: 'titleDesc',
+      by: [
+        { field: 'title', direction: 'desc'}
+      ]
     }
   ],
   preview: {

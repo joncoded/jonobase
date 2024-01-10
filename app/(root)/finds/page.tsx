@@ -32,7 +32,7 @@ export default async function Main({ searchParams }: FindProps) {
     query: searchParams?.query || '', 
     kind: searchParams?.kind || '', 
     page: '1',
-    perPage: '100000'
+    perPage: '1000000'
   })
 
   return (
