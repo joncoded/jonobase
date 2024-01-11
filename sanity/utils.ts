@@ -31,8 +31,10 @@ export function buildQuery(params: UtilQueryBuildingProps) {
   const final = conditions.length > 1
   ? `${conditions[0]} && (${conditions
       .slice(1)
-      .join(" && ")})][${offset}...${limit}]`
-  : `${conditions[0]}][${offset}...${limit}]`
+      .join(" && ")})]| order(date desc)[${offset}...${limit}]`
+  : `${conditions[0]}]| order(date desc)[${offset}...${limit}]`
+
+  console.log("final: ", final)
 
   return final
 

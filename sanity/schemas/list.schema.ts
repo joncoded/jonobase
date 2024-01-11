@@ -46,10 +46,7 @@ const schema = {
               type: 'text',
               name: 'alt',
               title: 'Alternative text',
-              description: `Screen reader text for low-sighted users`,
-              options: {
-                isHighlighted: true
-              }
+              description: `Screen reader text for low-sighted users`             
             }
           ]
         },

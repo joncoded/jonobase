@@ -192,7 +192,7 @@ export const getPosts = async (searchParams: PostGetterProps) => {
         kind,
         page: parseInt(page),
         perPage: parseInt(perPage ?? '1000000')
-      })} | order(date desc) { 
+      })} { 
         ${(perPage === '1000000') ? '_id' : postFields} 
       }`    
     )
