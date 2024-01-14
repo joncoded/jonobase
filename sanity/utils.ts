@@ -34,8 +34,6 @@ export function buildQuery(params: UtilQueryBuildingProps) {
       .join(" && ")})]| order(date desc)[${offset}...${limit}]`
   : `${conditions[0]}]| order(date desc)[${offset}...${limit}]`
 
-  console.log("final: ", final)
-
   return final
 
 }

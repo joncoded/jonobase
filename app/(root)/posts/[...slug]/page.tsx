@@ -91,7 +91,7 @@ export default async function Main({ params } : any) {
 
   const PostLink = () => {
     return (
-      <div className={`post-link-wrap`}>
+      <div className={`post-link-wrap my-5 md:my-10`}>
         <Link 
           className={`post-link-link 
             px-5 py-2 bg-black text-white text-lg 

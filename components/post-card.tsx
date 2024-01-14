@@ -9,9 +9,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { UtilDOMChildrenProps, PostProps } from '@/lib/types'
 import { text } from '@/lib/app.config'
-import { Span } from './main'
 
-const PostCard = ({post : { slug, image, title, kind, subtitle, link, date, showDate}}: PostProps) => {  
+const PostCard = ({post : { slug, image, title, subtitle, link, date, showDate}}: PostProps) => {  
 
   const Card = ({children} : UtilDOMChildrenProps) => {
     return (
@@ -46,7 +45,7 @@ const PostCard = ({post : { slug, image, title, kind, subtitle, link, date, show
     if (!showDate) return <></>
     return (
       <div className={`card-date text-sm`}>
-        {date.substring(0, 10)} {date.substring(11, 16)}
+        {date.substring(0, 10)} 
       </div>
     )
   }
@@ -82,7 +81,7 @@ const PostCard = ({post : { slug, image, title, kind, subtitle, link, date, show
     return (
       <div className={`card-subtitle`}>
         <p className={`font-serif text-sm`}>
-          {kind && <Span className={`font-bold`}>{kind}</Span>} : {subtitle}
+          {subtitle}
         </p>
       </div>
     )
