@@ -10,8 +10,19 @@ import { FindProps } from "@/lib/types"
 import { Sect } from "@/components/main"
 import Find from "@/components/find"
 import PageTurn from "@/components/page-turn"
+import { text } from "@/lib/app.config"
 
 export const revalidate = 60
+
+export async function generateMetadata({searchParams}: any) {
+
+  const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
+
+  return {
+    title: `${text['finds']} : ${searchParams.query} @ ${base?.title}`    
+  }
+
+}
 
 export default async function Main({ searchParams }: FindProps) {
 
