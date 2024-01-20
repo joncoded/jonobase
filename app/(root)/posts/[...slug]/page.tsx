@@ -12,6 +12,7 @@ import { getBase, getPost, getPostAdjacent } from "@/sanity/actions"
 import { monokaiSublime } from "react-syntax-highlighter/dist/cjs/styles/hljs"
 import { Sect, Span } from "@/components/main"
 import { text } from "@/lib/app.config"
+import ScrollToTop from "@/components/ttop"
 
 export const revalidate = 30
 
@@ -133,6 +134,8 @@ export default async function Main({ params } : any) {
   return (
 
     <main id="main" tabIndex={-1}>
+
+      <ScrollToTop />
 
       <Sect className={`post-apex`}>
         <PostApex />
