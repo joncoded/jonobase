@@ -78,7 +78,7 @@ export default async function Main({ params } : any) {
 
   const PostHead = () => {
     return (
-      <div className={`post-head-wrap ${image ? 'bg-zinc-900/70 text-white p-5 md:p-10' : 'text-black'}`}>        
+      <div className={`post-head-wrap ${image ? 'bg-zinc-900/70 text-white p-5 md:p-10 my-5' : 'text-black'}`}>        
         <h1 className="post-head-title text-5xl md:text-7xl font-bold">{title}</h1> 
         { subtitle && <p className="post-head-subtitle text-xl md:text-3xl mt-2">{subtitle}</p>}
         <p className="post-head-data text-sm md:text-xl mt-6">
@@ -92,7 +92,7 @@ export default async function Main({ params } : any) {
 
   const PostLink = () => {
     return (
-      <div className={`post-link-wrap my-5 md:my-10`}>
+      <div className={`post-link-wrap my-10`}>
         <Link 
           className={`post-link-link 
             px-5 py-2 bg-black text-white text-lg 
