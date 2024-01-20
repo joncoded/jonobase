@@ -98,17 +98,19 @@ const PostLine = ({post : { slug, image, title, subtitle, link, date, showDate}}
   }
 
   return (    
-    <Link href={`/posts/${slug}`}>
-      <Card className={`card w-full`}>      
-        <CardImage />        
-        <CardMeta>
+    
+    <Card className={`card w-full`}>      
+      <CardImage />        
+      <CardMeta>
+        <Link href={`/posts/${slug}`}>
           <CardTitle />
-          <CardDate />
-          <CardSubtitle />
-          <CardExternalLink />        
-        </CardMeta>
-      </Card>    
-    </Link>
+        </Link>
+        <CardDate />
+        <CardSubtitle />
+        <CardExternalLink />        
+      </CardMeta>
+    </Card>    
+  
   )
 }
 
