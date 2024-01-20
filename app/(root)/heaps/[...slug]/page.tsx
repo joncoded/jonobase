@@ -12,6 +12,7 @@ import { HeapProps } from "@/lib/types"
 import { Sect, Span } from "@/components/main"
 import { PortableText } from "@portabletext/react"
 import { text } from "@/lib/app.config"
+import ScrollToTop from "@/components/ttop"
 
 export const revalidate = 30
 
@@ -45,6 +46,8 @@ export default async function Main({ params }: HeapProps) {
   return (
     
     <main id="main" tabIndex={-1}>
+
+      <ScrollToTop />
 
       <Sect className={`heap-wrap bg-white text-black`}>
         

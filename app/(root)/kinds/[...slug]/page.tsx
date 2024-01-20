@@ -11,6 +11,7 @@ import { ListProps } from "@/lib/types"
 import { Sect, Span } from "@/components/main"
 import { text } from "@/lib/app.config"
 import PageTurn from "@/components/page-turn"
+import ScrollToTop from "@/components/ttop"
 
 export const revalidate = 30
 
@@ -27,6 +28,8 @@ export default async function Main({ params, searchParams }: ListProps) {
   return (
     
     <main id="main" tabIndex={-1}>
+
+      <ScrollToTop />
 
       <Sect>
         <h2 className={`kind-apex uppercase font-sans text-lg md:text-2xl`}>

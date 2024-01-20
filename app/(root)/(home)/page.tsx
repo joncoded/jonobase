@@ -12,6 +12,7 @@ import { Sect } from "@/components/main"
 import PostList from '@/components/post-list'
 import Link from "next/link"
 import { text } from "@/lib/app.config"
+import ScrollToTop from "@/components/ttop"
 
 export const revalidate = 60
 
@@ -64,6 +65,8 @@ export default async function Home({ searchParams }: FindProps) {
   return (
     
     <main id="main" tabIndex={-1}>
+
+      <ScrollToTop />
 
       <Sect className={`home-head bg-gradient-to-b from-green-200 dark:from-green-800 to-green-300 dark:to-green-900 py-5 sm:py-10 drop-shadow-md`}>
         <HomeHead />

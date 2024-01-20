@@ -11,6 +11,7 @@ import { Sect } from "@/components/main"
 import Find from "@/components/find"
 import PageTurn from "@/components/page-turn"
 import { text } from "@/lib/app.config"
+import ScrollToTop from "@/components/ttop"
 
 export const revalidate = 60
 
@@ -49,6 +50,8 @@ export default async function Main({ searchParams }: FindProps) {
   return (
     
     <main id="main" tabIndex={-1}>
+
+      <ScrollToTop />
 
       <Sect className={`dark:bg-gray-900`}>
         <Find 

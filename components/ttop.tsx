@@ -1,4 +1,10 @@
-// scrollToTop
+
+/*
+jonanity by @joncoded
+/app/components/ttop.tsx
+scrolls to top on page load
+*/
+
 'use client'
 import { useEffect } from 'react'
 

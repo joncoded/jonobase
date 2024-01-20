@@ -133,9 +133,9 @@ export default async function Main({ params } : any) {
 
   return (
 
-    <main id="main" tabIndex={-1}>
+    <main id="main" tabIndex={-1}>     
 
-      <ScrollToTop />
+      <ScrollToTop /> 
 
       <Sect className={`post-apex`}>
         <PostApex />
