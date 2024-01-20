@@ -19,7 +19,7 @@ export async function generateMetadata({searchParams}: any) {
   const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
 
   return {
-    title: `${text['finds']} : ${searchParams.query} @ ${base?.title}`    
+    title: `${text['finds']} : ${searchParams.query ?? text['posts']} @ ${base?.title}`    
   }
 
 }

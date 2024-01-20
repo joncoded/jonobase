@@ -11,11 +11,10 @@ import { useSearchParams, useRouter } from 'next/navigation'
 import { formUrlQuery } from '@/sanity/utils'
 import { FindPageParams } from '@/lib/types'
 import FindFilters from './find-filters'
-import PostCard from './post-card'
+import PostLine from './post-line'
 import FindHead from './find-head'
 import { Span } from './main'
 import { text } from '@/lib/app.config'
-import PageTurn from './page-turn'
 
 export default function Find({filters, showFilters, posts, unpagedPosts, urlParams} : FindPageParams ) {
 
@@ -103,10 +102,10 @@ export default function Find({filters, showFilters, posts, unpagedPosts, urlPara
                 </h2>
               </div>                                                
               <div className={`find-post-list 
-                grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 justify-center mt-0`
+                grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 justify-center mt-0`
               }>
                 {posts.map((post: any) => (
-                  <PostCard key={post._id} post={post} />
+                  <PostLine key={post._id} post={post} />
                 ))}
               </div>
             </>
