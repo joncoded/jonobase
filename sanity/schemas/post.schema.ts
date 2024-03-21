@@ -37,7 +37,7 @@ const schema = {
       type: 'string',      
       validation: (Rule: any) => Rule.required(),
       options: {
-        list: ['coded', 'noted']
+        list: ['craft', 'notes']
       }
     },
     {
