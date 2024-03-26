@@ -6,6 +6,7 @@ import {visionTool} from '@sanity/vision'
 import {defineConfig} from 'sanity'
 import {deskTool} from 'sanity/desk'
 import {codeInput} from '@sanity/code-input'
+import {table} from '@sanity/table'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import {apiVersion, dataset, projectId} from './sanity/env'
@@ -20,6 +21,7 @@ export default defineConfig({
   plugins: [
     codeInput(),
     deskTool(),
+    table(),
     // Vision is a tool that lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({defaultApiVersion: apiVersion}),

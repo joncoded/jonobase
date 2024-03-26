@@ -63,6 +63,9 @@ const schema = {
         },
         {
           type: 'code'
+        },
+        {
+          type: 'table'
         }
       ] 
     },

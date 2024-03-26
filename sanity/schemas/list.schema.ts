@@ -80,8 +80,7 @@ const schema = {
               name: 'alt',
               title: 'Alternative text',
               description: `Screen reader text for low-sighted users`,
-              options: {
-                isHighlighted: true
+              options: {                
               }
             }
           ]
