@@ -14,7 +14,7 @@ export const text = {
   : "go to the home page",
 
   "featured posts" 
-  : "featured",
+  : "pinned",
 
   "finds"
   : "finds", 
@@ -32,7 +32,7 @@ export const text = {
   : "loading",
   
   "loading message"
-  : "Page is loading shortly ... thanks for your patience!",
+  : "page is loading shortly ... thanks for your patience!",
 
   "menu"
   : "Menu", 
