@@ -12,19 +12,19 @@ const FindHead = ({count, query, kind}: FindHeadProps) => {
 
   if (query && kind) {
     return (      
-      <>{count} {count > 1 ? text['results'] : text['result']} : <strong>{query} ({kind})</strong></>
+      <>{count} {count == 1 ? text['result'] : text['results']} : <strong>{query} ({kind})</strong></>
     )
   }
 
   if (query) {
     return (      
-      <>{count} {count > 1 ? text['results for query'] : text['result for query']} : <strong>{query}</strong></>
+      <>{count} {count == 1 ? text['result for query'] : text['results for query']} : <strong>{query}</strong></>
     )
   }
 
   if (kind) {
     return (      
-      <>{count} {count > 1 ? text['results for kind'] : text['result for kind']} : <strong>{kind}</strong></>
+      <>{count} {count == 1 ? text['result for kind'] : text['results for kind']} : <strong>{kind}</strong></>
     )
   }
 
