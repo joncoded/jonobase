@@ -138,7 +138,8 @@ export default function Menu({base} : any) {
         <button onClick={closeMenu}>
           <Span 
             aria-hidden="true" 
-            className={`mr-2`}>❌</Span> 
+            className={`sm:mr-2`}>❌</Span>
+          <br className={`sm:hidden`} />
           <Span>{text['close menu']}</Span>
         </button>
       </div>
@@ -155,9 +156,10 @@ export default function Menu({base} : any) {
         <button onClick={handleTheme}>
           <Span 
             aria-hidden="true"
-            className={`mr-2`}>
+            className={`sm:mr-2`}>
             {theme === 'dark' ? '💡' : '🌜' }
           </Span>
+          <br className={`sm:hidden`} />
           <Span>
             {theme === 'dark' 
               ? text['switch to light mode'] 
