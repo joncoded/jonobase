@@ -67,11 +67,11 @@ export default async function Main({ params }: HeapProps) {
                   : `${heapList.bgColor}-300 dark:bg-${heapList.bgColor}-800`
                 }`}
             >
-              <h3 className={`heap-list-title text-xl md:text-4xl font-sans font-bold`}>{heapList.title}</h3>
-              <p className={`heap-list-sub text-lg md:text-xl font-sans`}>{heapList.subtitle}</p>
-              <PortableText value={heapList.precontent} />
+              <h3 className={`heap-list-title uppercase text-center md:text-left text-3xl md:text-4xl font-sans font-bold`}>{heapList.title}</h3>
+              <p className={`heap-list-sub text-lg md:text-xl text-center md:text-left font-sans`}>{heapList.subtitle}</p>
+              <div className={`mb-5`}><PortableText value={heapList.precontent} /></div>
               <PostList posts={heapList.posts} />
-              <PortableText value={heapList.postcontent} />
+              <div className={`mt-5`}><PortableText value={heapList.postcontent} /></div>
             </Sect>
           )
         })}        
