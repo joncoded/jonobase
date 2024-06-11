@@ -10,8 +10,8 @@ import PostCard from "./post-card";
 export default function PostList({posts} : any) {
 
   const postsDes = posts
-  const postsTab = posts.slice(0, posts.length % 2 == 1 ? posts.length - 1 : posts.length)
-  const postsMob = posts.slice(0, 2)
+  const postsTab = posts?.slice(0, posts.length % 2 == 1 ? posts.length - 1 : posts.length) || []
+  const postsMob = posts?.slice(0, 1) || []
   
   return (
     <div className="post-list w-full sm:justify-start">
