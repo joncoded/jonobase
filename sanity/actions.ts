@@ -44,6 +44,17 @@ _id,
 title,
 date`
 
+const sideFields = `
+_id,
+"slug": slug.current,
+"image": image.asset->url,
+title,
+emoji,
+subtitle,
+content,      
+date, 
+showDate`
+
 export const getBase = async (slug: string) => {
 
   try {
@@ -297,6 +308,26 @@ export const getPostAdjacent = async (date: string, mode: 'older' | 'newer') => 
     )    
 
     return posts[0] || undefined
+
+  } catch (error) {
+
+    console.log(error)
+
+  }
+
+}
+
+export const getSide = async (slug: string) => {
+
+  try {
+
+    const sides = await readClient.fetch(
+      groq`*[_type == "side" && slug.current == '${slug}']{${sideFields}}`
+    )  
+    
+    console.log("side: ", sides)
+
+    return sides[0] 
 
   } catch (error) {
 

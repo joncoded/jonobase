@@ -82,6 +82,9 @@ export const text = {
   "see more posts"
   : "see more posts", 
 
+  "sides"
+  : "sides", 
+
   "skip to main content" 
   : "skip to main content", 
 
