@@ -251,7 +251,7 @@ export const getPostsByMood = async ({params, searchParams}: ListProps) => {
         type: 'post',
         query: '',
         kind: '',
-        mood, 
+        mood: decodeURIComponent(mood), 
         page: parseInt(page ?? '1'),
         perPage: parseInt(perPage ?? '1000000')
       })} | order(date desc) { 

@@ -19,7 +19,7 @@ export default async function Main({ params, searchParams }: ListProps) {
 
   const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
 
-  const posts = await getPostsByMood ({params, searchParams})  
+  const posts = await getPostsByMood({params, searchParams})  
 
   const unpagedPosts = await getPostsByMood({ params, searchParams: {
     ...searchParams, page: '1', perPage: '1000000'
@@ -36,7 +36,7 @@ export default async function Main({ params, searchParams }: ListProps) {
           <Span>{text['moods']}</Span>
           <Span ariaHidden={true}> / </Span>
           <Span className={`text-sm md:text-lg`}>
-            {params.slug ?? ''}
+            {params.slug ? decodeURI(params.slug) : ''}
           </Span> 
         </h2>
       </Sect>
