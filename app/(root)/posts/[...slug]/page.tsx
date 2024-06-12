@@ -117,7 +117,7 @@ export default async function Main({ params } : any) {
               className={`post-mood-item border border-black dark:border-white p-2 px-5 
               bg-white hover:bg-black text-black hover:text-white 
               dark:focus:ring-4 focus:ring-offset-2`}
-              href={`/moods/${encodeURI(mood)}`}
+              href={`/nooks/${encodeURI(mood)}`}
               key={mood} 
             >
               {mood}

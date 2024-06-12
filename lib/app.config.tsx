@@ -38,7 +38,7 @@ export const text = {
   : "Menu", 
 
   "moods"         
-  : "moods",
+  : "nooks",
 
   "page not found" 
   : "page not found",
