@@ -15,10 +15,6 @@ body {
   font-size: 18px;
 }
 
-header {
-  z-index: 200;
-}
-
 .post-main p {
   margin: 15px 0;
 }

@@ -21,7 +21,7 @@ export default async function Head() {
 
   const HeadWrap = ({children}: UtilDOMChildrenProps) => {
     return (
-      <header className="head-wrapper sticky top-0 z-50 w-full bg-gradient-to-t from-gray-900 to-gray-600 text-white shadow-xl py-5">
+      <header className="head-wrapper sticky top-0 !z-[200] w-full bg-gradient-to-t from-gray-900 to-gray-600 text-white shadow-xl py-5">
         <nav className="flex items-center justify-between mx-auto w-full max-w-screen-lg px-5 gap-5">          
           {children}          
         </nav>
