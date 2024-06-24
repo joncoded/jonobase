@@ -37,18 +37,50 @@ export default async function Main({ params } : any) {
   const { slug } = params  
   const post = await getPost(slug)  
 
-  /* def syntax highlighting stuff */
+  /* wysiwyg formatting for rich content */
   const serializers = {
     types: {
-        code: ({node}: any) => {
-            const { code, language } = node
-            if (!code){
-                return null
-            }
-            return <SyntaxHighlighter style={monokaiSublime} language={language ||'text'} showLineNumbers={true} wrapLines={true}>
-            {code}
-          </SyntaxHighlighter>
+      // code snippets
+      code: ({node}: any) => {
+        const { code, language } = node
+        if (!code){
+            return null
         }
+        return <SyntaxHighlighter style={monokaiSublime} language={language ||'text'} showLineNumbers={true} wrapLines={true}>
+          {code}
+        </SyntaxHighlighter>
+      },
+      // tables with rows and columns
+      table: ({node}: any) => { 
+        const thead = node.rows[0]          
+        const tbody = node.rows.slice(1)
+        return (
+          <table className={`table-auto w-full border border-spacing-2 my-5`}>
+            <caption className={`sr-only`}>table</caption>
+            <thead>              
+              <tr key={thead._key} className={`bg-slate-200`}>
+                {thead.cells.map((cell: any) => {
+                  return (
+                    <th className={`border border-slate-300 px-5 py-3 text-left`} key={cell._key}>{cell}</th>
+                  )
+                })}                
+              </tr>
+            </thead>    
+            <tbody>
+              {tbody.map((row: { cells: any[], _key: any }, index: number) => {
+                return (
+                  <tr key={row._key}>
+                    {row.cells.map((cell: any) => {
+                    return (
+                      <td className={`border border-slate-300 px-5 py-3`} key={cell._key}>{cell}</td>
+                    )})}
+                  </tr>
+                )
+              })}
+            </tbody>      
+          </table>
+        )
+      }
     }
   }
   /* end syntax highlighting stuff */

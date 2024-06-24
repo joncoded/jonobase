@@ -122,7 +122,7 @@ const schema = {
     },
   },
   initialValue: {
-    showDate: true
+    showDate: false
   }
 }
 
