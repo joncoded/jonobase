@@ -15,7 +15,7 @@ const PostCard = ({post : { slug, image, title, subtitle, link, date, showDate}}
   const Card = ({children} : UtilDOMChildrenProps) => {
     return (
       <article className={`card-unit w-full border border-gray-300 dark:border-gray-800 !bg-zinc-100 text-black dark:!bg-black dark:text-white shadow-lg`}>
-        <div className={`flex flex-col justify-center`}>
+        <div className={`flex flex-col h-full justify-between`}>
           {children}
         </div>
       </article>
@@ -60,7 +60,7 @@ const PostCard = ({post : { slug, image, title, subtitle, link, date, showDate}}
               alt={title} 
               width={0}
               height={0}
-              sizes={`100vw`}
+              sizes={`100vw`}              
               className={`w-full h-auto`}
             />
           </div> 
@@ -108,13 +108,12 @@ const PostCard = ({post : { slug, image, title, subtitle, link, date, showDate}}
         <CardHeader>
           <CardTitle />
           <CardDate />
-        </CardHeader>        
-        <CardImage />        
+        </CardHeader>                        
       </Link>      
       <CardMeta>        
         <CardSubtitle />
         <CardExternalLink />        
-      </CardMeta>
+      </CardMeta>      
     </Card>    
   )
 }

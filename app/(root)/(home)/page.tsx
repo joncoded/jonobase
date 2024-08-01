@@ -47,7 +47,7 @@ export default async function Home({ searchParams }: FindProps) {
     query: searchParams?.query || '', 
     kind: searchParams?.kind || '', 
     page: searchParams?.page || '1', 
-    perPage: searchParams?.perPage || base.perPage || '6'
+    perPage: searchParams?.perPage 
   })  
 
   /* get specialized posts */
@@ -110,16 +110,16 @@ export default async function Home({ searchParams }: FindProps) {
 
       { filters.length > 0 && filters.map((section: any, index: number) => {
 
-        return (<Sect key={`home-${section}`} className={`home-sect home-sect-${section} ${index % 2 == 0 && `bg-gray-300 dark:bg-gray-700`} pt-5 pb-10`}>
-          <h2 id={`home-sect-${index}`} className={`mb-10 font-sans font-bold uppercase text-4xl md:text-5xl text-center`}>
-            {section}
-          </h2>
-          <PostList posts={homeContent[index]} />
-          <div className={`mt-10 text-center`}>
-            <Link href={`/finds?query=${section}`} className="button">{text['see more posts']}</Link>
-          </div>
-        </Sect>)    
-
+        return (
+          <Sect key={`home-${section}`} className={`home-sect home-sect-${section} ${index % 2 == 0 && `bg-gray-300 dark:bg-gray-700`} pt-5 pb-10`}>
+            <h2 id={`home-sect-${index}`} className={`mb-10 font-sans font-bold uppercase text-4xl md:text-5xl text-center`}>
+              {section}
+            </h2>
+            <PostList posts={homeContent[index]} />          
+            <div className={`mt-10 text-center`}>
+              <Link href={`/finds?query=${section}&page=2`} className="button">{text['see more posts']}</Link>
+            </div>        
+          </Sect>)    
         })
 
       }
