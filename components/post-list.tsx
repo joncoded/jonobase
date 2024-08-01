@@ -5,7 +5,8 @@ jonanity by @joncoded
 the list of post "cards"
 */
 
-import PostCard from "./post-card";
+'use client'
+import PostCard from "./post-card"
 
 export default function PostList({posts} : any) {
 

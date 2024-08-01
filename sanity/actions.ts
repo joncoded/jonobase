@@ -323,9 +323,7 @@ export const getSide = async (slug: string) => {
 
     const sides = await readClient.fetch(
       groq`*[_type == "side" && slug.current == '${slug}']{${sideFields}}`
-    )  
-    
-    console.log("side: ", sides)
+    )      
 
     return sides[0] 
 

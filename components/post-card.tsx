@@ -56,7 +56,7 @@ const PostCard = ({post : { slug, image, title, subtitle, link, date, showDate}}
         {image && 
           <div className={`card-image w-full shadow-xl`}>
             <Image               
-              src={`${image}?w=256`}
+              src={`${image}?w=640`}
               alt={title} 
               width={0}
               height={0}

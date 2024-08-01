@@ -5,8 +5,8 @@ search results counter
 */
 
 
-import { text } from "@/lib/app.config";
-import { FindHeadProps } from "@/lib/types";
+import { text } from "@/lib/app.config"
+import { FindHeadProps } from "@/lib/types"
 
 const FindHead = ({count, query, kind}: FindHeadProps) => {
 

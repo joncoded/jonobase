@@ -31,6 +31,7 @@ export default async function Home({ searchParams }: FindProps) {
 
   const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
   const { intro } = base || ''  
+  const { filters } = base || []
 
   /* get featured posts */
   const { featured : featuredList } = base || ''
@@ -41,7 +42,7 @@ export default async function Home({ searchParams }: FindProps) {
   }  
   const featuredPosts = featuredData.posts || undefined
 
-  /* get posts by page and perPage */
+  /* get latest posts */
   const posts = await getPosts({
     query: searchParams?.query || '', 
     kind: searchParams?.kind || '', 
@@ -49,6 +50,21 @@ export default async function Home({ searchParams }: FindProps) {
     perPage: searchParams?.perPage || base.perPage || '6'
   })  
 
+  /* get specialized posts */
+  let homeContent: any[] = []
+
+  const contentPromises = filters.map(async (filter: any) => {
+    const sectionContent = await getPosts({
+      query: filter,
+      kind: '',
+      page: '1',
+      perPage: base.perPage
+    })
+    return sectionContent
+  })
+    
+  homeContent = await Promise.all(contentPromises)
+  
   const HomeHead = () => {
     return (
       <div className={`w-full flex flex-col gap-5 text-center`}>
@@ -81,15 +97,32 @@ export default async function Home({ searchParams }: FindProps) {
       </Sect> 
       }
 
-      <Sect className={`home-post pt-5 pb-10`}>
-        <h2 className={`mb-10 font-sans font-bold uppercase text-4xl md:text-5xl text-center`}>
-          {text['latest posts']}
-        </h2>
-        <PostList posts={posts} />
-        <div className={`mt-10 text-center`}>
-          <Link href={`/finds?page=2`} className="button">{text['see more posts']}</Link>
-        </div>
-      </Sect>      
+      { posts && <Sect className={`home-post pt-5 pb-10`}>
+          <h2 className={`mb-10 font-sans font-bold uppercase text-4xl md:text-5xl text-center`}>
+            {text['latest posts']}
+          </h2>
+          <PostList posts={posts} />
+          <div className={`mt-10 text-center`}>
+            <Link href={`/finds`} className="button">{text['see more posts']}</Link>
+          </div>
+        </Sect> 
+      }
+
+      { filters.length > 0 && filters.map((section: any, index: number) => {
+
+        return (<Sect key={`home-${section}`} className={`home-sect home-sect-${section} ${index % 2 == 0 && `bg-gray-300 dark:bg-gray-700`} pt-5 pb-10`}>
+          <h2 id={`home-sect-${index}`} className={`mb-10 font-sans font-bold uppercase text-4xl md:text-5xl text-center`}>
+            {section}
+          </h2>
+          <PostList posts={homeContent[index]} />
+          <div className={`mt-10 text-center`}>
+            <Link href={`/finds?query=${section}`} className="button">{text['see more posts']}</Link>
+          </div>
+        </Sect>)    
+
+        })
+
+      }
     
     </main>
 
