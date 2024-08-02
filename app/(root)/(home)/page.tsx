@@ -5,7 +5,7 @@ jonanity by @joncoded
 the root homepage
 */
 
-import { getBase, getList, getPosts } from "@/sanity/actions"
+import { getBase, getList, getPosts, getPostsByMood } from "@/sanity/actions"
 import { PortableText } from '@portabletext/react'
 import { FindProps } from "@/lib/types"
 import { Sect } from "@/components/main"
@@ -54,11 +54,13 @@ export default async function Home({ searchParams }: FindProps) {
   let homeContent: any[] = []
 
   const contentPromises = filters?.map(async (filter: any) => {
-    const sectionContent = await getPosts({
-      query: filter,
-      kind: '',
-      page: '1',
-      perPage: base.perPage
+    const sectionContent = await getPostsByMood({
+      params: {
+        slug: filter,
+        page: '1',
+        perPage: base.perPage
+      },
+      searchParams: {}
     })
     return sectionContent
   })
