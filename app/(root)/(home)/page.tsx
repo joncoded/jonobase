@@ -117,10 +117,7 @@ export default async function Home({ searchParams }: FindProps) {
             <h2 id={`home-sect-${index}`} className={`mb-10 font-sans font-bold uppercase text-4xl md:text-5xl text-center`}>
               {section}
             </h2>
-            <PostList posts={homeContent[index]} />
-            <div className={`mt-10 text-center`}>
-              <Link href={`/nooks?query=${section}&page=2`} className="button">{text['see more posts']}</Link>
-            </div>        
+            <PostList posts={homeContent[index]} />            
           </Sect>)    
         })
 
