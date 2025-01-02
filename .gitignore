@@ -35,3 +35,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+production.tar.gz
+.sanity/runtime/app.js
+.sanity/runtime/index.html
+/dist/
