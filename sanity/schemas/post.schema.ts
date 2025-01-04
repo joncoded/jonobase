@@ -6,7 +6,7 @@ const schema = {
     {
       name: 'title',      
       title: 'Title',
-      description: 'the post\'s name - will factor into the SEO metadata', 
+      description: 'the post\'s name (obviously)', 
       type: 'string', 
       require: true,
       validation: (Rule: any) => Rule.required()
@@ -14,7 +14,7 @@ const schema = {
     {
       name: 'slug', 
       title: 'Slug', 
-      description: 'alphanumeric and dashes-only - will factor into the SEO',
+      description: 'alphanumeric and dashes-only',
       type: 'slug',       
       options: { source: 'title' }
     },
@@ -27,7 +27,7 @@ const schema = {
     {
       name: 'subtitle',
       title: 'Subtitle', 
-      description: 'a tagline for the post - will factor into the SEO metadata',
+      description: 'a tagline for the post that appears under the title',
       type: 'string'             
     },
     {
