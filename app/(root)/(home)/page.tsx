@@ -93,7 +93,7 @@ export default async function Home({ searchParams }: FindProps) {
       { featuredPosts && 
       <Sect className={`home-featured bg-amber-300 dark:bg-yellow-700 py-5`}>
         <h2 className={`mb-10 font-sans font-bold uppercase text-4xl md:text-5xl text-center`}>
-          *** {text['featured posts']} ***
+          [ {text['featured posts']} ]
         </h2>
         <PostList posts={featuredPosts} /> 
       </Sect> 
