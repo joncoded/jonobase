@@ -1,4 +1,4 @@
 # jonchius
 
-[website](jonchius.com)
-[gitbook](jonchius.gitbook.io)
+* [website](https://jonchius.com)
+* [gitbook](https://jonchius.gitbook.io)
