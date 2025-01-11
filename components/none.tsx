@@ -1,6 +1,6 @@
 
 /*
-jonanity by @joncoded
+jonanity by @jonchius
 /app/components/none.tsx
 file not found template
 */

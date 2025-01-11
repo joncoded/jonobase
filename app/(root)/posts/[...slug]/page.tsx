@@ -1,6 +1,6 @@
 
 /*
-jonanity by @joncoded
+jonanity by @jonchius
 /app/(root)/posts/page.tsx
 the post template
 */

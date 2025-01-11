@@ -1,6 +1,6 @@
 
 /*
-jonanity by @joncoded
+jonanity by @jonchius
 /sanity/env.ts
 environment variable checks
 */

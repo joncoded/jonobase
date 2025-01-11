@@ -1,7 +1,7 @@
 'use client'
 
 /*
-jonanity by @joncoded
+jonanity by @jonchius
 /app/components/menu.tsx
 the "menu" of the header
 */

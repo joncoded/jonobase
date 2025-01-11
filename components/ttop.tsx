@@ -1,6 +1,6 @@
 
 /*
-jonanity by @joncoded
+jonanity by @jonchius
 /app/components/ttop.tsx
 scrolls to top on page load
 */

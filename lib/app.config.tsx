@@ -1,6 +1,6 @@
 
 /*
-jonanity by @joncoded
+jonanity by @jonchius
 /app/lib/app.config.tsx
 text constants: handy for localization or internationalization
 */

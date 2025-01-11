@@ -1,7 +1,7 @@
 'use client'
 
 /*
-jonanity by @joncoded
+jonanity by @jonchius
 /app/components/find.tsx
 the "find" (search) page UI
 */

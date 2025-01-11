@@ -1,6 +1,6 @@
 
 /*
-jonanity by @joncoded
+jonanity by @jonchius
 /app/(root)/moods/page.tsx
 the moods (lists of "posts from mood (tag) X") page
 */

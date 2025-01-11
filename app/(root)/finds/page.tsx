@@ -1,6 +1,6 @@
 
 /*
-jonanity by @joncoded
+jonanity by @jonchius
 /app/(root)/finds/page.tsx
 the finds (search) page
 */

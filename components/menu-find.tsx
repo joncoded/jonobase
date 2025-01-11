@@ -1,7 +1,7 @@
 'use client'
 
 /*
-jonanity by @joncoded
+jonanity by @jonchius
 /app/components/menu-find.tsx
 the find (search) UI for the head menu
 */

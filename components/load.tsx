@@ -1,5 +1,5 @@
 /*
-jonanity by @joncoded
+jonanity by @jonchius
 /app/components/load.tsx
 the "loading" page
 */

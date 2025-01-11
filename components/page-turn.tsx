@@ -1,6 +1,6 @@
 
 /*
-jonanity by @joncoded
+jonanity by @jonchius
 /app/components/page-turn.tsx
 pagination (page turner) for lists
 */
