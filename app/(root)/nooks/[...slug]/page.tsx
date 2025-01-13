@@ -1,6 +1,6 @@
 
 /*
-jonanity by @jonchius
+jonobase by @jonchius
 /app/(root)/nooks/page.tsx
 the nooks (lists of "posts from nook (tag) X") page
 (replacement for moods)

@@ -1,6 +1,6 @@
 
 /*
-jonanity by @jonchius
+jonobase by @jonchius
 /app/components/main.tsx
 the "main" section template of each page
 */

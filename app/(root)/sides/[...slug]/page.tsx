@@ -1,6 +1,6 @@
 
 /*
-jonanity by @jonchius
+jonobase by @jonchius
 /app/(root)/sides/page.tsx
 the side (static page) template
 */

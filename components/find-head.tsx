@@ -1,5 +1,5 @@
 /*
-jonanity by @jonchius
+jonobase by @jonchius
 /app/components/find-head.tsx
 search results counter
 */

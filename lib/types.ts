@@ -1,6 +1,6 @@
 
 /*
-jonanity by @jonchius
+jonobase by @jonchius
 /app/lib/types.ts
 all typescript interfaces for prop types in all/most other .tsx files
 */

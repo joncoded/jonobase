@@ -1,7 +1,7 @@
 'use client'
 
 /*
-jonanity by @jonchius
+jonobase by @jonchius
 /app/components/skip-card.tsx
 the "skip to main content" button
 */

@@ -1,5 +1,5 @@
 /*
-jonanity by @jonchius
+jonobase by @jonchius
 /app/components/load.tsx
 the "loading" page
 */

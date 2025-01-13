@@ -1,6 +1,6 @@
 
 /*
-jonanity by @jonchius
+jonobase by @jonchius
 /app/(root)/kinds/page.tsx
 the kinds (lists of "posts from category X") page
 */

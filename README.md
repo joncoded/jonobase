@@ -1,4 +1,4 @@
-# jonchius
+# jonobase
 
-* [website](https://jonchius.com)
-* [gitbook](https://jonchius.gitbook.io)
+a custom blogging platform made with a nextjs front-end and a sanity (headless "cms") back-end
+

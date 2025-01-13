@@ -1,6 +1,6 @@
 
 /*
-jonanity by @jonchius
+jonobase by @jonchius
 /app/components/post-card.tsx
 the card for each (blog) post (in lists), e.g. in home, finds, kinds, moods, etc.
 */

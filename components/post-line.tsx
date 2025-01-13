@@ -1,6 +1,6 @@
 
 /*
-jonanity by @jonchius
+jonobase by @jonchius
 /app/components/post-line.tsx
 the card for each (blog) post (in lists)
 */

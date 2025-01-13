@@ -1,7 +1,7 @@
 
 
 /*
-jonanity by @jonchius
+jonobase by @jonchius
 /app/(root)/heaps/page.tsx
 the heaps (stacked custom sections) page
 */

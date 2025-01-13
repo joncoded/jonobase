@@ -1,6 +1,6 @@
 
 /*
-jonanity by @jonchius
+jonobase by @jonchius
 /app/lib/app.config.tsx
 text constants: handy for localization or internationalization
 */

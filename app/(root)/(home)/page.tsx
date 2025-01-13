@@ -1,6 +1,6 @@
 
 /*
-jonanity by @jonchius
+jonobase by @jonchius
 /app/(root)/(home)/page.tsx
 the root homepage
 */

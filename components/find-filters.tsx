@@ -1,7 +1,7 @@
 'use client'
 
 /*
-jonanity by @jonchius
+jonobase by @jonchius
 /app/components/find-filters.tsx
 the buttons to filter by "kind" (category) on the "find" (search) page
 */
