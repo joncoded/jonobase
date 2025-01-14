@@ -21,7 +21,7 @@ subtitle,
 kind,
 content,
 link,
-moods,        
+nooks,        
 date, 
 showDate`
 
@@ -34,7 +34,7 @@ emoji,
 subtitle,
 kind,
 link,
-moods,        
+nooks,        
 date,
 showDate`
 
@@ -231,7 +231,7 @@ export const getPostsByKind = async ({params, searchParams}: ListProps) => {
         type: 'post',
         query: '',
         kind,
-        mood: '', 
+        nook: '', 
         page: parseInt(page ?? '1'),
         perPage: parseInt(perPage ?? '1000000')
       })} | order(date desc) { 
@@ -249,11 +249,11 @@ export const getPostsByKind = async ({params, searchParams}: ListProps) => {
 
 }
 
-export const getPostsByMood = async ({params, searchParams}: ListProps) => {
+export const getPostsByNook = async ({params, searchParams}: ListProps) => {
   
   const { slug } = params  
   const { page, perPage } = searchParams
-  const mood = slug?.toString().toLowerCase() || ''
+  const nook = slug?.toString().toLowerCase() || ''
   
   try {
 
@@ -262,7 +262,7 @@ export const getPostsByMood = async ({params, searchParams}: ListProps) => {
         type: 'post',
         query: '',
         kind: '',
-        mood: decodeURIComponent(mood), 
+        nook: decodeURIComponent(nook), 
         page: parseInt(page ?? '1'),
         perPage: parseInt(perPage ?? '1000000')
       })} | order(date desc) { 

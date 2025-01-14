@@ -76,7 +76,7 @@ const schema = {
       type: 'url',      
     },
     {
-      name: 'moods',
+      name: 'nooks',
       title: 'Nooks', 
       description: 'the topics of the posts (aka tags)',
       type: 'array',

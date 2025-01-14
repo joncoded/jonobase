@@ -2,7 +2,7 @@
 /*
 jonobase by @jonchius
 /app/components/post-card.tsx
-the card for each (blog) post (in lists), e.g. in home, finds, kinds, moods, etc.
+the card for each (blog) post (in lists), e.g. in home, finds, kinds, nooks, etc.
 */
 
 import Image from 'next/image'

@@ -26,7 +26,7 @@ export async function generateMetadata({params}: any) {
     return {
       title: `${side.title} @ ${base?.title}`,
       description: `${side.subtitle}`,
-      keywords: `${side.moods}`,
+      keywords: `${side.nooks}`,
     }
   } 
 

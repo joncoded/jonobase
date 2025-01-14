@@ -13,7 +13,7 @@ const nextConfig = {
         permanent: true
       },    
       {
-        source: '/moods',
+        source: '/nooks',
         destination: '/',
         permanent: true
       },

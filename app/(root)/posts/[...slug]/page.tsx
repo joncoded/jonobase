@@ -26,7 +26,7 @@ export async function generateMetadata({params}: any) {
     return {
       title: `${post.title} @ ${base?.title}`,
       description: `${post.subtitle}`,
-      keywords: `${post.moods}`,
+      keywords: `${post.nooks}`,
     }
   } 
 
@@ -95,7 +95,7 @@ export default async function Main({ params } : any) {
   }
   /* end if no post data returns */
 
-  const { title, emoji, subtitle, kind, content, link, moods, image, date } = post 
+  const { title, emoji, subtitle, kind, content, link, nooks, image, date } = post 
 
   const PostApex = () => {
     return (
@@ -139,20 +139,20 @@ export default async function Main({ params } : any) {
     )
   }
 
-  const PostMood = () => {
+  const PostNook = () => {
     return (
       <div className="flex flex-wrap items-center gap-5">
-        {text['moods']} : 
-        {moods.map((mood: any) => {
+        {text['nooks']} : 
+        {nooks.map((nook: any) => {
           return (
             <Link 
-              className={`post-mood-item border border-black dark:border-white p-2 px-5 
+              className={`post-nook-item border border-black dark:border-white p-2 px-5 
               bg-white hover:bg-black text-black hover:text-white 
               dark:focus:ring-4 focus:ring-offset-2`}
-              href={`/nooks/${encodeURI(mood)}`}
-              key={mood} 
+              href={`/nooks/${encodeURI(nook)}`}
+              key={nook} 
             >
-              {mood}
+              {nook}
             </Link>
           )
         })}
@@ -189,9 +189,9 @@ export default async function Main({ params } : any) {
         /> 
       </Sect>
 
-      { moods && 
-      <Sect className={`post-mood !bg-gradient-to-r from-zinc-100 to-zinc-200 dark:from-gray-800 dark:to-gray-900 p-5 text-md lg:text-lg`}>
-        <PostMood />
+      { nooks && 
+      <Sect className={`post-nook !bg-gradient-to-r from-zinc-100 to-zinc-200 dark:from-gray-800 dark:to-gray-900 p-5 text-md lg:text-lg`}>
+        <PostNook />
       </Sect>
       }
 

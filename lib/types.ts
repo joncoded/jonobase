@@ -57,7 +57,7 @@ export interface PostProps {
     emoji: string;
     subtitle?: string;
     kind?: string;
-    moods?: string[];
+    nooks?: string[];
     link?: URL | undefined;        
     date: string;
     showDate: boolean;
@@ -119,7 +119,7 @@ export interface UtilQueryBuildingProps {
   type: string;
   query: string;
   kind: string;
-  mood?: string;
+  nook?: string;
   page: number;
   perPage?: number;
 }
