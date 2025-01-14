@@ -5,7 +5,7 @@ jonobase by @jonchius
 the root homepage
 */
 
-import { getBase, getList, getPosts, getPostsByMood } from "@/sanity/actions"
+import { getBase, getList, getPosts, getPostsByNook } from "@/sanity/actions"
 import { PortableText } from '@portabletext/react'
 import { FindProps } from "@/lib/types"
 import { Sect } from "@/components/main"
@@ -54,7 +54,7 @@ export default async function Home({ searchParams }: FindProps) {
   let homeContent: any[] = []
 
   const contentPromises = filters?.map(async (filter: any) => {
-    const sectionContent = await getPostsByMood({
+    const sectionContent = await getPostsByNook({
       params: {
         slug: filter,
         page: '1',

@@ -11,7 +11,7 @@ import { UtilQueryBuildingProps, UtilQueryURLProps } from '@/lib/types'
 
 export function buildQuery(params: UtilQueryBuildingProps) {
 
-  const { type, query, kind, mood = '', page = 1, perPage = 6 } = params
+  const { type, query, kind, nook = '', page = 1, perPage = 6 } = params
 
   const conditions = [`*[_type=="${type}"`]
 
@@ -21,8 +21,8 @@ export function buildQuery(params: UtilQueryBuildingProps) {
     conditions.push(`kind == "${kind}"`)
   }
 
-  if (mood && mood !== "all") {
-    conditions.push(`lower("${mood}") in moods`)
+  if (nook && nook !== "all") {
+    conditions.push(`lower("${nook}") in nooks`)
   }
 
   const offset = (page - 1) * perPage

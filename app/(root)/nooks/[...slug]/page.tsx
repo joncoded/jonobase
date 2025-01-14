@@ -3,11 +3,11 @@
 jonobase by @jonchius
 /app/(root)/nooks/page.tsx
 the nooks (lists of "posts from nook (tag) X") page
-(replacement for moods)
+(replacement for nooks)
 */
 
 import PostList from "@/components/post-list"
-import { getBase, getPostsByMood } from "@/sanity/actions"
+import { getBase, getPostsByNook } from "@/sanity/actions"
 import { ListProps } from "@/lib/types"
 import { Sect, Span } from "@/components/main"
 import { text } from "@/lib/app.config"
@@ -20,9 +20,9 @@ export default async function Main({ params, searchParams }: ListProps) {
 
   const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
 
-  const posts = await getPostsByMood({params, searchParams})  
+  const posts = await getPostsByNook({params, searchParams})  
 
-  const unpagedPosts = await getPostsByMood({ params, searchParams: {
+  const unpagedPosts = await getPostsByNook({ params, searchParams: {
     ...searchParams, page: '1', perPage: '1000000'
   }})
 
@@ -34,7 +34,7 @@ export default async function Main({ params, searchParams }: ListProps) {
 
       <Sect>
         <h2 className={`nook-apex uppercase font-sans text-lg md:text-2xl`}>
-          <Span>{text['moods']}</Span>
+          <Span>{text['nooks']}</Span>
           <Span ariaHidden={true}> / </Span>
           <Span className={`text-sm md:text-lg`}>
             {params.slug ? decodeURI(params.slug) : ''}
