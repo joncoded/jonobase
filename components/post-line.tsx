@@ -28,12 +28,13 @@ const PostLine = ({post : { slug, image, title, subtitle, link, date, showDate}}
         {image && 
           <div className={`card-image w-[80px] h-[80px] shadow-xl rounded-full`}>
             <Image               
-              src={`${image}?w=256`} 
+              src={`${image}`} 
               alt={``} 
               width={0}
               height={0}
-              sizes={`auto`}
-              className={`rounded-full w-[80px] h-[80px]`}
+              sizes={`10vw`}
+              quality={`100`}
+              className={`rounded-full w-full h-full object-cover`}
             />
           </div> 
         } 
