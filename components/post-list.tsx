@@ -9,6 +9,7 @@ the list of post "cards"
 
 import { useEffect, useRef, useState } from 'react'
 import PostLine from "./post-line"
+import PostCard from "./post-card"
 import { text } from '@/lib/app.config'
 
 export default function PostList({posts} : any) {
@@ -41,7 +42,7 @@ export default function PostList({posts} : any) {
             
               {postsDesktop.map((post: any) => (
                 
-                  <PostLine key={post._id} post={post} />                  
+                  <PostCard key={post._id} post={post} />                  
                 
               ))}
               
