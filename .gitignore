@@ -39,3 +39,4 @@ production.tar.gz
 .sanity/runtime/app.js
 .sanity/runtime/index.html
 /dist/
+/studio-*/
