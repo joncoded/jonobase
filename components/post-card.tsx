@@ -54,14 +54,14 @@ const PostCard = ({post : { slug, image, title, subtitle, link, date, showDate}}
     return (      
       <>
         {image && 
-          <div className={`card-image w-full shadow-xl`}>
+          <div className={`card-image w-full shadow-xl min-h-52 max-h-52`}>
             <Image               
               src={`${image}?w=640`}
               alt={title} 
               width={0}
               height={0}
               sizes={`100vw`}              
-              className={`w-full h-auto`}
+              className={`w-full min-h-52 max-h-52`}
             />
           </div> 
         } 
@@ -105,10 +105,11 @@ const PostCard = ({post : { slug, image, title, subtitle, link, date, showDate}}
   return (    
     <Card className={`card w-full border`}>
       <Link href={`/posts/${slug}`}>
+        <CardImage />   
         <CardHeader>
           <CardTitle />
-          <CardDate />
-        </CardHeader>                        
+          <CardDate />          
+        </CardHeader>                             
       </Link>      
       <CardMeta>        
         <CardSubtitle />
