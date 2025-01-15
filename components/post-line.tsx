@@ -29,7 +29,7 @@ const PostLine = ({post : { slug, image, title, subtitle, link, date, showDate}}
           <div className={`card-image w-[80px] h-[80px] shadow-xl rounded-full`}>
             <Image               
               src={`${image}?w=256`} 
-              alt={title} 
+              alt={``} 
               width={0}
               height={0}
               sizes={`auto`}
