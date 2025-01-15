@@ -77,10 +77,11 @@ export default function PostList({posts} : any) {
               className={`btn-left-all 
                 border border-black dark:border-white 
                 px-4 py-2 font-bold 
-                ${currentCard === 0 && 'opacity-50'}`
+                ${currentCard === 0 && 'opacity-25'}`
               }
+              aria-label={text.newer}
             >
-              {"<"}
+              {"< " + text.newer}
             </button>
             <button
               disabled={currentCard >= ((posts.length - 3) / 3)}
@@ -90,8 +91,9 @@ export default function PostList({posts} : any) {
                 hidden lg:inline px-4 py-2 font-bold 
                 ${currentCard >= ((posts.length - 3) / 3) && 'opacity-25'}`
               }
+              aria-label={text.older}
             >
-              {">"}
+              {text.older + " >"}
             </button>
             <button
               disabled={currentCard >= ((posts.length - 2) / 2)}
@@ -101,8 +103,9 @@ export default function PostList({posts} : any) {
                 hidden md:inline lg:hidden px-4 py-2 font-bold 
                 ${currentCard >= ((posts.length - 2) / 2) && 'opacity-25'}`
               }
+              aria-label={text.older}
             >
-              {">"}
+              {text.older + " >"}
             </button>
             <button
               disabled={currentCard === posts.length - 1}
@@ -112,8 +115,9 @@ export default function PostList({posts} : any) {
                 inline md:hidden px-4 py-2 font-bold 
                 ${currentCard === posts.length - 1 && 'opacity-25'}`
               }
+              aria-label={text.older}
             >
-              {">"}
+              {text.older + " >"}
             </button>
           </div>   
         </>    

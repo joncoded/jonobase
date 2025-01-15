@@ -96,5 +96,11 @@ export const text = {
 
   "visit url"     
   : "visit URL",
+
+  "newer"
+  : "newer", 
+
+  "older"
+  : "older",
   
 }
