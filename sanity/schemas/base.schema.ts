@@ -52,8 +52,8 @@ const schema = {
     },
     {
       name: 'featuredPostsTitle',
-      title: 'Featured posts title',
-      description: 'What to call the featured (pinned) posts section',
+      title: 'Featured posts heading',
+      description: 'What to call the featured (pinned) posts section of the home page (e.g. "pinned")',
       type: 'string',
     },
     {
@@ -63,6 +63,12 @@ const schema = {
       type: 'reference',
       weak: true,              
       to: { type: 'list'}      
+    },
+    {
+      name: 'latestPostsTitle', 
+      title: 'Latest posts heading', 
+      description: 'What to call the latest posts section of the home page (e.g. "blog")',
+      type: 'string'
     },
     {
       name: 'filters',

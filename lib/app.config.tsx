@@ -21,9 +21,6 @@ export const text = {
 
   "kinds"
   : "kinds", 
-
-  "latest posts"
-  : "blog", 
   
   "loading"
   : "loading",

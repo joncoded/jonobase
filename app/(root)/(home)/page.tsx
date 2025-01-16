@@ -90,6 +90,7 @@ export default async function Home({ searchParams }: FindProps) {
         <HomeHead />
       </Sect>
       
+      /* the featured posts as defined by the "featured posts" field in the "base" content model */
       { featuredPosts && 
       <Sect className={`home-featured bg-amber-300 dark:bg-gray-800 py-5`}>
         <h2 className={`mb-10 font-sans font-bold uppercase text-4xl md:text-5xl text-center`}>
@@ -99,9 +100,10 @@ export default async function Home({ searchParams }: FindProps) {
       </Sect> 
       }
 
+      /* the latest content from the "post" content model */
       { posts && <Sect className={`home-post pt-5 pb-10`}>
           <h2 className={`mb-10 font-sans font-bold uppercase text-4xl md:text-5xl text-center`}>
-            <span aria-hidden="true">[</span> {text["latest posts"]} <span aria-hidden="true">]</span>
+            <span aria-hidden="true">[</span> {base.latestPostsTitle} <span aria-hidden="true">]</span>
           </h2>
           <PostList posts={posts} />
           <div className={`mt-10 text-center`}>
@@ -110,6 +112,7 @@ export default async function Home({ searchParams }: FindProps) {
         </Sect> 
       }
 
+      /* horizontal sections of "posts" that have "nooks" as defined by the "filters" field in the "base" content model */
       { filters && filters.map((section: any, index: number) => {
 
         return (
