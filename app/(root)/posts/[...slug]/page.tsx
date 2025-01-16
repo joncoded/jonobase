@@ -148,8 +148,7 @@ export default async function Main({ params } : any) {
 
   const PostNook = () => {
     return (
-      <div className="flex flex-wrap items-center gap-5">
-        {text['nooks']} : 
+      <div className="flex flex-wrap items-center gap-5 font-sans">        
         {nooks.map((nook: any) => {
           return (
             <Link 

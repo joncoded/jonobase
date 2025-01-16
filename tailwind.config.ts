@@ -17,7 +17,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        serif: ["Nunito", "serif"],
+        serif: ["Zilla Slab", "serif"],
         sans: ["Barlow Condensed", "sans-serif"]        
       }
     },
