@@ -100,10 +100,18 @@ export default async function Main({ params } : any) {
   const PostApex = () => {
     return (
       <aside className={`uppercase font-sans text-lg md:text-2xl`}>
-        <Span>{text['posts']}</Span>
-        <Span ariaHidden={true}> / </Span>
-        <Span className="text-sm md:text-lg mr-2">{emoji}</Span>
-        <Span className="text-sm md:text-lg">{title}</Span>
+        <>
+          <Span>{text['posts']}</Span> 
+          <Span ariaHidden={true}> / </Span>
+          <Span>
+            <Link 
+              className={`post-head-kind-link`} 
+              href={`/kinds/${kind}`}
+            >
+              {kind}
+            </Link>
+          </Span>        
+        </>
       </aside>
     )
   }
@@ -111,18 +119,11 @@ export default async function Main({ params } : any) {
   const PostHead = () => {
     return (
       <div className={`post-head-wrap ${image ? 'bg-zinc-900/70 text-white p-5 md:p-10 my-5' : 'text-black'}`}>        
-        <h1 className="post-head-title text-5xl md:text-7xl font-bold">{title}</h1> 
-        { subtitle && <p className="post-head-subtitle text-xl md:text-3xl mt-2">{subtitle}</p>}
-        <p className="post-head-data text-sm md:text-xl mt-6">
-          <span className="post-head-kind">
-            <Link 
-              className={`post-head-kind-link text-zinc-200`} 
-              href={`/kinds/${kind}`}
-            >
-              {kind}
-            </Link>
-          </span>
-          <span className="post-head-bull mx-2" aria-hidden="true"> / </span>
+        <h1 className="post-head-title text-5xl font-bold">          
+          <Span ariaHidden={true}>{image ? '' : emoji}</Span> {title}
+        </h1> 
+        { subtitle && <p className="post-head-subtitle text-xl md:text-2xl mt-2">{subtitle}</p>}
+        <p className="post-head-data text-sm md:text-lg mt-6">
           <span className="post-head-date">{date.substring(0,10)} {date.substring(11,16)}</span> 
         </p>
       </div>
@@ -179,13 +180,13 @@ export default async function Main({ params } : any) {
         <PostApex />
       </Sect>
 
-      <Sect className={`post-meta font-sans ${image ? `py-0` : `!bg-gradient-to-b from-sky-100 to-sky-200 py-5`}`} bgImage={image}> 
+      <Sect className={`post-meta font-sans ${image ? `py-0` : `!bg-gradient-to-b from-zinc-100 to-zinc-200 py-5`}`} bgImage={image}> 
         <PostHead />
         { link && <PostLink />}
       </Sect>
 
       <Sect className={`post-main border-t prose-a:text-sky-500 hover:prose-a:text-black dark:hover:prose-a:text-white hover:prose-a:underline 
-        prose-headings:font-sans prose-headings:font-bold prose-headings:mt-5 prose-h2:text-5xl prose-h3:text-3xl prose-h4:text-xl`
+        prose-headings:font-sans prose-headings:font-bold prose-headings:mt-5 prose-h2:text-4xl prose-h3:text-3xl prose-h4:text-xl`
       }>
         <BlockContent 
           blocks={content} 
