@@ -69,9 +69,9 @@ export default async function Home({ searchParams }: FindProps) {
   
   const HomeHead = () => {
     return (
-      <div className={`w-full flex flex-col gap-5 text-center`}>
+      <div className={`w-full flex flex-col gap-5 text-center font-sans`}>
         <div className={`
-          w-3/4 md:w-full max-w-screen-lg mx-auto prose-h2:font-sans prose-p:font-serif
+          w-3/4 md:w-full max-w-screen-lg mx-auto 
           prose prose-h2:text-4xl md:prose-h2:text-5xl prose-h2:mb-5 prose-p:text-2xl md:prose-p:text-3xl dark:prose-headings:!text-white dark:prose-p:!text-white dark:prose-strong:!text-white`
         }>          
           <PortableText value={intro} />
