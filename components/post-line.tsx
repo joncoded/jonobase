@@ -65,7 +65,7 @@ const PostLine = ({post : { slug, image, title, subtitle, link, date, showDate}}
     if (!showDate) return <></>
     return (
       <div className={`card-date`}>
-        <p className={`font-serif text-sm`}>
+        <p className={`font-sans text-sm`}>
           {date.substring(0, 10)}
         </p> 
       </div>
@@ -76,7 +76,7 @@ const PostLine = ({post : { slug, image, title, subtitle, link, date, showDate}}
   const CardSubtitle = () => {
     return (
       <div className={`card-subtitle`}>
-        <p className={`font-serif text-sm`}>
+        <p className={`font-sans text-sm`}>
           {subtitle}
         </p>
       </div>
