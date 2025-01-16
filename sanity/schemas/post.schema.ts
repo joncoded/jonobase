@@ -33,12 +33,8 @@ const schema = {
     {
       name: 'kind',
       title: 'Kind',
-      description: 'for post-list filtering purposes',
-      type: 'string',      
-      validation: (Rule: any) => Rule.required(),
-      options: {
-        list: ['craft', 'notes']
-      }
+      description: 'a one-word category for post-list filtering purposes',      
+      type: 'string'     
     },
     {
       name: 'content',

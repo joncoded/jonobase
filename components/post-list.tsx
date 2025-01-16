@@ -30,7 +30,7 @@ export default function PostList({posts} : any) {
     <div className="post-list w-full sm:justify-start">      
       {posts.length == 0 && 
         <>
-          <p className="text-center">{text['page not found']}</p>
+          <p className="text-center">{text['results found none']}</p>
         </>
       }
       {posts.length > 0 && 
@@ -42,7 +42,7 @@ export default function PostList({posts} : any) {
             
               {postsDesktop.map((post: any) => (
                 
-                  <PostCard key={post._id} post={post} />                  
+                  <PostLine key={post._id} post={post} />                  
                 
               ))}
               

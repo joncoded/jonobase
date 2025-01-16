@@ -114,7 +114,14 @@ export default async function Main({ params } : any) {
         <h1 className="post-head-title text-5xl md:text-7xl font-bold">{title}</h1> 
         { subtitle && <p className="post-head-subtitle text-xl md:text-3xl mt-2">{subtitle}</p>}
         <p className="post-head-data text-sm md:text-xl mt-6">
-          <span className="post-head-cats">{kind}</span>
+          <span className="post-head-kind">
+            <Link 
+              className={`post-head-kind-link text-zinc-200`} 
+              href={`/kinds/${kind}`}
+            >
+              {kind}
+            </Link>
+          </span>
           <span className="post-head-bull mx-2" aria-hidden="true"> / </span>
           <span className="post-head-date">{date.substring(0,10)} {date.substring(11,16)}</span> 
         </p>

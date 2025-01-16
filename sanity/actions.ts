@@ -238,7 +238,7 @@ export const getPostsByKind = async ({params, searchParams}: ListProps) => {
         ${perPage === '1000000' ? '_id' : postCardFields} 
       }`    
     )
-
+    
     return posts
 
   } catch (error) {
