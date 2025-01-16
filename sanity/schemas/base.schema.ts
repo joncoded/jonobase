@@ -51,6 +51,12 @@ const schema = {
       ]
     },
     {
+      name: 'featuredPostsTitle',
+      title: 'Featured posts title',
+      description: 'What to call the featured (pinned) posts section',
+      type: 'string',
+    },
+    {
       name: 'featured',
       title: 'Featured posts',
       description: 'The "greatest hits" list of posts for home page',

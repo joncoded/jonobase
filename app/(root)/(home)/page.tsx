@@ -91,9 +91,9 @@ export default async function Home({ searchParams }: FindProps) {
       </Sect>
       
       { featuredPosts && 
-      <Sect className={`home-featured bg-amber-300 dark:bg-yellow-700 py-5`}>
+      <Sect className={`home-featured bg-amber-300 dark:bg-gray-800 py-5`}>
         <h2 className={`mb-10 font-sans font-bold uppercase text-4xl md:text-5xl text-center`}>
-          [ {text['featured posts']} ]
+          <span aria-hidden="true">[</span> {base.featuredPostsTitle} <span aria-hidden="true">]</span>
         </h2>
         <PostList posts={featuredPosts} /> 
       </Sect> 
@@ -101,7 +101,7 @@ export default async function Home({ searchParams }: FindProps) {
 
       { posts && <Sect className={`home-post pt-5 pb-10`}>
           <h2 className={`mb-10 font-sans font-bold uppercase text-4xl md:text-5xl text-center`}>
-            {text['latest posts']}
+            <span aria-hidden="true">[</span> {text["latest posts"]} <span aria-hidden="true">]</span>
           </h2>
           <PostList posts={posts} />
           <div className={`mt-10 text-center`}>
@@ -115,7 +115,7 @@ export default async function Home({ searchParams }: FindProps) {
         return (
           <Sect key={`home-${section}`} className={`home-sect home-sect-${section} ${index % 2 == 0 && `bg-gray-300 dark:bg-gray-700`} pt-5 pb-10`}>
             <h2 id={`home-sect-${index}`} className={`mb-10 font-sans font-bold uppercase text-4xl md:text-5xl text-center`}>
-              {section}
+              <span aria-hidden="true">[</span> {section} <span aria-hidden="true">]</span>
             </h2>
             <PostList posts={homeContent[index]} />            
           </Sect>)    

@@ -13,9 +13,6 @@ export const text = {
   "go to the home page" 
   : "go to the home page",
 
-  "featured posts" 
-  : "pinned",
-
   "finds"
   : "finds", 
 
@@ -26,7 +23,7 @@ export const text = {
   : "kinds", 
 
   "latest posts"
-  : "latest", 
+  : "blog", 
   
   "loading"
   : "loading",
