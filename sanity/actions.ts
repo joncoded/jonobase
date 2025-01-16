@@ -66,6 +66,7 @@ export const getBase = async (slug: string) => {
         intro,
         featuredPostsTitle, 
         "featured" : featured->slug.current,         
+        latestPostsTitle,
         tagline,
         perPage,        
         menu,
