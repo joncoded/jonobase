@@ -60,7 +60,8 @@ const schema = {
       name: 'featured',
       title: 'Featured posts',
       description: 'The "greatest hits" list of posts for home page',
-      type: 'reference',             
+      type: 'reference',
+      weak: true,              
       to: { type: 'list'}      
     },
     {

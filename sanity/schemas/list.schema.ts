@@ -61,6 +61,7 @@ const schema = {
       type: 'array',       
       of: [{
         type: 'reference', 
+        weak: true, 
         to: [{ type: 'post'}]
       }]
     },
