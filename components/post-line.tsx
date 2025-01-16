@@ -88,8 +88,10 @@ const PostLine = ({post : { slug, image, title, subtitle, link, date, showDate}}
       <div className={`card-link my-5 ${!link && `hidden`}`}>
         {link && 
           <Link 
-            className={`border border-black dark:border-white p-2 hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black`} 
-            href={link}
+            className={`card-link-link px-5 py-2 bg-black text-white text-lg 
+            hover:border hover:border-black hover:bg-white hover:text-black font-sans`} 
+            href={link} 
+            target="_blank"
           >
             {text['visit url']}
           </Link>
