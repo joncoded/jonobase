@@ -82,7 +82,7 @@ export default async function Home({ searchParams }: FindProps) {
 
   return (
     
-    <main id="main" tabIndex={-1}>
+    <main id="main" tabIndex={-1}>      
 
       <ScrollToTop />
 

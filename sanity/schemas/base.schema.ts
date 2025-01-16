@@ -4,6 +4,13 @@ const schema = {
   type: 'document',
   fields: [
     {
+      name: 'logo',
+      title: 'Site logo', 
+      description: '', 
+      type: 'image',
+      validation: (Rule: any) => Rule.required()
+    },
+    {
       name: 'title', 
       title: 'Title',
       type: 'string', 

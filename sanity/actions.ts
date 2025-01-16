@@ -64,6 +64,7 @@ export const getBase = async (slug: string) => {
         title,
         slug, 
         intro,
+        "logo": logo.asset->url,
         featuredPostsTitle, 
         "featured" : featured->slug.current,         
         latestPostsTitle,
