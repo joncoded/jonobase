@@ -71,7 +71,7 @@ export default function PostList({posts} : any) {
               ))}
               
           </div> 
-          <div className='post-list-navs flex gap-5 justify-center mt-10'>
+          <div className='post-list-navs flex gap-5 justify-center mt-10 font-sans'>
             <button
               disabled={currentCard === 0}
               onClick={() => setCurrentCard(prev => prev - 1)}
