@@ -33,7 +33,7 @@ export default async function Tail() {
 
   return (
     <footer className={`tail-wrapper 
-      w-full border-t border-gray-300 bg-gradient-to-b from-black to-gray-900 mt-auto p-5 
+      w-full border-t border-gray-300 bg-gradient-to-b from-black to-gray-900 mt-auto p-5 font-sans
     `}>
       <div className={`tail-prop 
         max-w-screen-lg flex max-md:flex-col justify-between gap-0 mx-auto 
