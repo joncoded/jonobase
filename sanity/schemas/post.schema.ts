@@ -21,7 +21,7 @@ const schema = {
     {
       name: 'emoji',
       title: 'Emoji', 
-      description: 'for casual categorization purposes',       
+      description: 'for casual categorization purposes',
       type: 'string',      
     },
     {
@@ -86,6 +86,7 @@ const schema = {
     {
       name: 'image', 
       title: 'Image', 
+      description: 'if there is no image, then the emoji will substitute as the image',
       type: 'image'      
     },
     { 

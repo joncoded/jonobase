@@ -10,7 +10,7 @@ import Link from 'next/link'
 import { UtilDOMChildrenProps, PostProps } from '@/lib/types'
 import { text } from '@/lib/app.config'
 
-const PostLine = ({post : { slug, image, title, subtitle, link, date, showDate}}: PostProps) => {  
+const PostLine = ({post : { slug, image, emoji, title, subtitle, link, date, showDate}}: PostProps) => {  
 
   const Card = ({children} : UtilDOMChildrenProps) => {
     return (
@@ -38,6 +38,11 @@ const PostLine = ({post : { slug, image, title, subtitle, link, date, showDate}}
             />
           </div> 
         } 
+        {!image && 
+          <div className={`card-image text-7xl`}>
+            {emoji}
+          </div>
+        }
       </div>
     )
   }
