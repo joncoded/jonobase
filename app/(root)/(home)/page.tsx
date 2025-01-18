@@ -92,18 +92,19 @@ export default async function Home({ searchParams }: FindProps) {
       
       {/* the featured posts as defined by the "featured posts" field in the "base" content model */}
       { featuredPosts && 
-      <Sect className={`home-featured bg-amber-300 dark:bg-gray-800 py-5`}>
-        <h2 className={`mb-10 font-sans font-bold uppercase text-4xl md:text-5xl text-center`}>
-          <span aria-hidden="true">[</span> {base.featuredPostsTitle} <span aria-hidden="true">]</span>
-        </h2>
-        <PostList posts={featuredPosts} /> 
-      </Sect> 
+        <Sect className={`home-featured bg-amber-300 dark:bg-gray-800 py-5`}>
+          <h2 className={`mb-10 font-sans font-bold uppercase text-4xl md:text-5xl text-center`}>
+          {base.featuredPostsTitle}
+          </h2>
+          <PostList posts={featuredPosts} /> 
+        </Sect> 
       }
 
       {/* the latest content from the "post" content model */}
-      { posts && <Sect className={`home-post pt-5 pb-10`}>
+      { posts && 
+        <Sect className={`home-post pt-5 pb-10`}>
           <h2 className={`mb-10 font-sans font-bold uppercase text-4xl md:text-5xl text-center`}>
-            <span aria-hidden="true">[</span> {base.latestPostsTitle} <span aria-hidden="true">]</span>
+            {base.latestPostsTitle} 
           </h2>
           <PostList posts={posts} />
           <div className={`mt-10 text-center`}>
