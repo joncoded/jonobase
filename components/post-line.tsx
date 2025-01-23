@@ -49,8 +49,19 @@ const PostLine = ({post : { slug, image, emoji, title, subtitle, link, date, sho
 
   const CardMeta = ({children}: UtilDOMChildrenProps) => {
     return (
-      <div className={`card-meta flex flex-col px-5`}>
+      <div className={`card-meta font-sans flex flex-col px-5`}>
         {children}
+      </div>
+    )
+  }
+
+  const CardDate = () => {
+    if (!showDate) return <></>
+    return (
+      <div className={`card-date`}>
+        <p className={`text-md !mt-0`}>
+          {date.substring(0, 10)}
+        </p> 
       </div>
     )
   }
@@ -58,30 +69,17 @@ const PostLine = ({post : { slug, image, emoji, title, subtitle, link, date, sho
   const CardTitle = () => {
     return (
       <div className={`card-title`}>
-        <h3 className={`font-sans font-semibold text-2xl text-sky-600 hover:text-black dark:hover:text-white hover:underline`}>
+        <h3 className={`font-semibold text-2xl text-sky-600 hover:text-black dark:hover:text-white hover:underline !mt-2`}>
           {title}
         </h3>
       </div>      
     )
   }
 
-
-  const CardDate = () => {
-    if (!showDate) return <></>
-    return (
-      <div className={`card-date`}>
-        <p className={`font-sans text-md`}>
-          {date.substring(0, 10)}
-        </p> 
-      </div>
-    )
-  }
-
-
   const CardSubtitle = () => {
     return (
       <div className={`card-subtitle`}>
-        <p className={`font-sans text-sm !mt-0`}>
+        <p className={`text-sm md:text-md !mt-2`}>
           {subtitle}
         </p>
       </div>
@@ -94,7 +92,7 @@ const PostLine = ({post : { slug, image, emoji, title, subtitle, link, date, sho
         {link && 
           <Link 
             className={`card-link-link px-5 py-2 bg-black text-white text-lg 
-            hover:border hover:border-black hover:bg-white hover:text-black font-sans`} 
+            hover:border hover:border-black hover:bg-white hover:text-black`} 
             href={link} 
             target="_blank"
           >
@@ -110,10 +108,10 @@ const PostLine = ({post : { slug, image, emoji, title, subtitle, link, date, sho
     <Card className={`card w-full`}>      
       <CardImage />        
       <CardMeta>
+        <CardDate />
         <Link href={`/posts/${slug}`}>
           <CardTitle />
-        </Link>
-        <CardDate />
+        </Link>        
         <CardSubtitle />
         <CardExternalLink />        
       </CardMeta>
