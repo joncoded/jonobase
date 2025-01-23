@@ -54,11 +54,11 @@ iframe[title="YouTube video player"] {
 /* custom lists */
 
 main ul, main ol {
-  margin: 30px;
+  margin: 15px;
 }
 
-main ul li, main ol li {
-  margin-left: 15px;
+main ul li, main ol li {  
+  margin-left: 7.5px;
 }
 
 main ul li {
@@ -67,7 +67,7 @@ main ul li {
 
 main ul ul li {
   list-style-type: circle;
-  margin-left: 15px;
+  margin-left: 7.5px;
 }
 
 main ol ol li {
