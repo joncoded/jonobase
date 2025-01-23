@@ -59,7 +59,7 @@ const PostLine = ({post : { slug, image, emoji, title, subtitle, link, date, sho
     if (!showDate) return <></>
     return (
       <div className={`card-date`}>
-        <p className={`text-md !mt-0`}>
+        <p className={`text-md !my-0`}>
           {date.substring(0, 10)}
         </p> 
       </div>
