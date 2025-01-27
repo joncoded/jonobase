@@ -105,7 +105,7 @@ export default async function Main({ params } : any) {
           <Span ariaHidden={true}> / </Span>
           <Span>
             <Link 
-              className={`post-head-kind-link`} 
+              className={`post-head-kind-link text-sm md:text-lg`} 
               href={`/kinds/${kind}`}
             >
               {kind}
