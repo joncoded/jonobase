@@ -16,6 +16,18 @@ import ScrollToTop from "@/components/ttop"
 
 export const revalidate = 30
 
+export async function generateMetadata({params}: any) {
+
+  const { slug } = params  
+  const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!) || {}  
+  
+  return {
+    title: `${decodeURIComponent(slug)} @ ${base?.title}`,
+    description: `${decodeURIComponent(slug)} on ${base?.title}`    
+  }
+  
+}
+
 export default async function Main({ params, searchParams }: ListProps) {
 
   const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)

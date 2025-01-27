@@ -28,12 +28,12 @@ export default function PostList({posts} : any) {
   
   return (
     <div className="post-list w-full sm:justify-start">      
-      {posts.length == 0 && 
+      {posts?.length === 0 && 
         <>
           <p className="text-center">{text['results found none']}</p>
         </>
       }
-      {posts.length > 0 && 
+      {posts?.length > 0 && 
         <>  
           <div 
             ref={carouselRef}             

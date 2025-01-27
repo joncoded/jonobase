@@ -7,14 +7,27 @@ the heaps (stacked custom sections) page
 */
 
 import PostList from "@/components/post-list"
-import { getHeap, getList } from "@/sanity/actions"
+import { getBase, getHeap, getList } from "@/sanity/actions"
 import { HeapProps } from "@/lib/types"
 import { Sect, Span } from "@/components/main"
 import { PortableText } from "@portabletext/react"
-import { text } from "@/lib/app.config"
 import ScrollToTop from "@/components/ttop"
 
 export const revalidate = 30
+
+export async function generateMetadata({params}: any) {
+
+  const { slug } = params  
+  const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!) || {}  
+  const heap = await getHeap(slug) || {}  
+  
+  if (heap) {
+    return {
+      title: `${decodeURIComponent(heap?.title)} @ ${base?.title}`
+    }
+  }
+
+}
 
 export default async function Main({ params }: HeapProps) {
 
@@ -35,9 +48,7 @@ export default async function Main({ params }: HeapProps) {
 
   const HeapApex = () => {
     return (
-      <h2 className={`heap-apex uppercase font-sans text-lg md:text-2xl`}>
-        <Span>{text['heaps']}</Span>
-        <Span ariaHidden={true}> / </Span>
+      <h2 className={`heap-apex uppercase font-sans text-lg md:text-2xl`}>        
         <Span>{heap.title}</Span>
       </h2>
     )
