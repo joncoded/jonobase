@@ -77,3 +77,8 @@ main ol ol li {
 main ol ol ol li {
   list-style-type: lower-roman;
 }
+
+main img {
+  margin: 15px 0;
+  border: 1px solid #666;
+}
