@@ -9,7 +9,7 @@ import { getBase, getList, getPosts, getPostsByNook } from "@/sanity/actions"
 import { PortableText } from '@portabletext/react'
 import { FindProps } from "@/lib/types"
 import { Sect } from "@/components/main"
-import PostList from '@/components/post-list'
+import PostGrid from '@/components/post-grid'
 import Link from "next/link"
 import { text } from "@/lib/app.config"
 import ScrollToTop from "@/components/ttop"
@@ -96,7 +96,7 @@ export default async function Home({ searchParams }: FindProps) {
           <h2 className={`mb-10 font-sans font-bold uppercase text-4xl md:text-5xl text-center`}>
           {base.featuredPostsTitle}
           </h2>
-          <PostList posts={featuredPosts} /> 
+          <PostGrid posts={featuredPosts} /> 
         </Sect> 
       }
 
@@ -106,7 +106,7 @@ export default async function Home({ searchParams }: FindProps) {
           <h2 className={`mb-10 font-sans font-bold uppercase text-4xl md:text-5xl text-center`}>
             {base.latestPostsTitle} 
           </h2>
-          <PostList posts={posts} />
+          <PostGrid posts={posts} />
           <div className={`mt-10 text-center`}>
             <Link href={`/finds`} className="button font-sans">{text['see more posts']}</Link>
           </div>
@@ -121,7 +121,7 @@ export default async function Home({ searchParams }: FindProps) {
             <h2 id={`home-sect-${index}`} className={`mb-10 font-sans font-bold uppercase text-4xl md:text-5xl text-center`}>
               <span aria-hidden="true">[</span> {section} <span aria-hidden="true">]</span>
             </h2>
-            <PostList posts={homeContent[index]} />            
+            <PostGrid posts={homeContent[index]} />            
           </Sect>)    
         })
 

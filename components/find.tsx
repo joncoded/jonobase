@@ -92,7 +92,7 @@ export default function Find({filters, showFilters, posts, unpagedPosts, urlPara
         <div className={`find-post w-full sm:justify-start my-5`}>
           {posts && (
             <>
-              <div className={`text-right mb-5`}>
+              <div className={`text-right mt-0 mb-10`}>
                 <h2 className="text-lg">
                   <FindHead 
                     count={unpagedPosts.length} 

@@ -6,7 +6,7 @@ jonobase by @jonchius
 the heaps (stacked custom sections) page
 */
 
-import PostList from "@/components/post-list"
+import PostGrid from "@/components/post-list"
 import { getBase, getHeap, getList } from "@/sanity/actions"
 import { HeapProps } from "@/lib/types"
 import { Sect, Span } from "@/components/main"
@@ -81,7 +81,7 @@ export default async function Main({ params }: HeapProps) {
               <h3 className={`heap-list-title uppercase text-center md:text-left text-3xl md:text-4xl font-sans font-bold`}>{heapList.title}</h3>
               <p className={`heap-list-sub text-lg md:text-xl text-center md:text-left font-sans`}>{heapList.subtitle}</p>
               <div className={`mb-5`}><PortableText value={heapList.precontent} /></div>
-              <PostList posts={heapList.posts} />
+              <PostGrid posts={heapList.posts} />
               <div className={`mt-5`}><PortableText value={heapList.postcontent} /></div>
             </Sect>
           )

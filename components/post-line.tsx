@@ -14,7 +14,7 @@ const PostLine = ({post : { slug, image, emoji, title, subtitle, link, date, sho
 
   const Card = ({children} : UtilDOMChildrenProps) => {
     return (
-      <article className={`card-unit w-full`}>
+      <article className={`card-unit w-full `}>
         <div className={`flex`}>
           {children}
         </div>
@@ -23,26 +23,27 @@ const PostLine = ({post : { slug, image, emoji, title, subtitle, link, date, sho
   }
 
   const CardImage = () => {
+
     return (      
-      <div>
-        {image && 
-          <div className={`card-image w-[80px] h-[80px] shadow-xl rounded-full`}>
-            <Image               
-              src={`${image}`} 
-              alt={``} 
-              width={0}
-              height={0}
-              sizes={`10vw`}
-              quality={`100`}
-              className={`rounded-full w-full h-full object-cover`}
-            />
-          </div> 
+      <div className={`card-image 
+        text-7xl max-w-[80px] min-h-[80px] w-[80px] h-[80px] max-h-[80px] min-h-[80px] rounded-full
+      `}>
+        {image &&           
+          <Image               
+            src={`${image}`} 
+            alt={``} 
+            height={0}
+            width={0}
+            sizes={`(max-width: 768px) 25vw, 10vw`}
+            quality={`100`}
+            className={`w-full h-full min-h-[80px] min-w-[80px] object-cover border-0 rounded-full shadow-xl !my-2`}
+          />          
         } 
         {!image && 
-          <div className={`card-image text-7xl`}>
+          <p aria-hidden="true">
             {emoji}
-          </div>
-        }
+          </p>
+        } 
       </div>
     )
   }
@@ -105,15 +106,14 @@ const PostLine = ({post : { slug, image, emoji, title, subtitle, link, date, sho
 
   return (    
     
-    <Card className={`card w-full`}>      
+    <Card className={`card w-full min-w-[80px] min-h-[80px]`}>      
       <CardImage />        
-      <CardMeta>
-        <CardDate />
+      <CardMeta>        
+        <CardDate />         
         <Link href={`/posts/${slug}`}>
           <CardTitle />
         </Link>        
-        <CardSubtitle />
-        <CardExternalLink />        
+        <CardSubtitle />        
       </CardMeta>
     </Card>    
   

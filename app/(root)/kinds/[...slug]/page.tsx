@@ -53,7 +53,7 @@ export default async function Main({ params, searchParams }: ListProps) {
         </h2>
       </Sect>
 
-      <Sect className={`kind-list bg-zinc-100 dark:bg-zinc-800 py-10`}>
+      <Sect className={`kind-list bg-zinc-100 dark:bg-zinc-800`}>
         <PostList posts={posts} />
       </Sect>          
 
