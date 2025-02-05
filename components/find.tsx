@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 /*
 jonobase by @jonchius
@@ -6,38 +6,37 @@ jonobase by @jonchius
 the "find" (search) page UI
 */
 
-import { useEffect, useState } from 'react'
-import { useSearchParams, useRouter } from 'next/navigation'
-import { formUrlQuery } from '@/sanity/utils'
-import { FindPageParams } from '@/lib/types'
-import FindFilters from './find-filters'
-import PostLine from './post-line'
-import FindHead from './find-head'
-import { Span } from './main'
-import { text } from '@/lib/app.config'
+import { useEffect, useState } from "react"
+import { useSearchParams, useRouter } from "next/navigation"
+import { formUrlQuery } from "@/sanity/utils"
+import { FindPageParams } from "@/lib/types"
+import FindFilters from "./find-filters"
+import PostLine from "./post-line"
+import FindHead from "./find-head"
+import { Span } from "./main"
+import { text } from "@/lib/app.config"
 
-export default function Find({filters, showFilters, posts, unpagedPosts, urlParams} : FindPageParams ) {
-
-  const searchParams = useSearchParams()  
-  const router = useRouter()  
-  const [ query, setQuery ] = useState(urlParams.query || '')
+export default function Find({ filters, showFilters, posts, unpagedPosts, urlParams }: FindPageParams) {
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  const [query, setQuery] = useState(urlParams.query || "")
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
-      let newUrl = ''  
+      let newUrl = ""
       if (query) {
-        newUrl = formUrlQuery({ 
+        newUrl = formUrlQuery({
           params: searchParams.toString(),
-          key: 'query', 
+          key: "query",
           value: query
-        })          
+        })
       } else {
         newUrl = formUrlQuery({
-          params: searchParams.toString()          
+          params: searchParams.toString()
         })
-      }     
-      router.push(newUrl, {scroll: false})
-    }, 500)
+      }
+      router.push(newUrl, { scroll: false })
+    }, 250)
 
     return () => clearTimeout(delayDebounceFn)
   }, [query])
@@ -53,28 +52,27 @@ export default function Find({filters, showFilters, posts, unpagedPosts, urlPara
   const FindApex = () => {
     return (
       <aside className={`find-apex uppercase font-sans text-lg md:text-2xl`}>
-        <Span>{text['finds']}</Span>
-        { query && 
+        <Span>{text["finds"]}</Span>
+        {query && (
           <>
-            <Span ariaHidden={true}> / </Span>        
+            <Span ariaHidden={true}> / </Span>
             <Span className="text-sm md:text-lg">{query}</Span>
           </>
-        } 
+        )}
       </aside>
     )
   }
 
   return (
     <div className={`find-base flex flex-col gap-5 mx-auto`}>
-
       <FindApex />
-    
+
       {/* moving this to a separate component will make the API struggle */}
       <form className={`find-form w-full flex text-center`}>
-        <label className={`w-full max-w-full md:max-w-screen-md mx-auto sr-only`}></label>        
-        <input 
+        <label className={`w-full max-w-full md:max-w-screen-md mx-auto sr-only`}></label>
+        <input
           type="text"
-          placeholder={text['search']} 
+          placeholder={text["search"]}
           className={`font-sans 
             w-full border-0 dark:border dark:border-gray-200 px-5 py-2 
             bg-gray-200 dark:bg-black focus:!ring-2
@@ -84,37 +82,30 @@ export default function Find({filters, showFilters, posts, unpagedPosts, urlPara
           onChange={handleQuery}
         />
       </form>
-    
-      { showFilters && <FindFilters filters={filters} /> }
-    
-      <section className={`find-main flex justify-center w-full flex-col`}>
 
+      {showFilters && <FindFilters filters={filters} />}
+
+      <section className={`find-main flex justify-center w-full flex-col`}>
         <div className={`find-post w-full sm:justify-start my-5`}>
           {posts && (
             <>
-              <div className={`text-right mt-0 mb-10`}>
+              <div className={`text-center mt-0 mb-10`}>
                 <h2 className="text-lg">
-                  <FindHead 
-                    count={unpagedPosts.length} 
-                    query={query ?? ''} 
-                    kind={urlParams.kind ?? ''} 
-                  />
+                  <FindHead count={unpagedPosts.length} query={query ?? ""} kind={urlParams.kind ?? ""} />
                 </h2>
-              </div>                                                
-              <div className={`find-post-list 
-                grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 justify-center mt-0`
-              }>
+              </div>
+              <div
+                className={`find-post-list 
+                grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-center mt-0`}
+              >
                 {posts.map((post: any) => (
                   <PostLine key={post._id} post={post} />
                 ))}
               </div>
             </>
           )}
-        </div>        
-
+        </div>
       </section>
-
-      
     </div>
   )
 }

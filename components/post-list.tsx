@@ -21,7 +21,7 @@ export default function PostList({posts} : any) {
       }
       {posts?.length > 0 && 
         <>  
-          <div className="post-list grid gap-y-5 py-2 md:py-5">
+          <div className="post-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-0 md:py-5 gap-10">
             
             {posts.map((post: any) => (
               
