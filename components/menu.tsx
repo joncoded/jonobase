@@ -175,8 +175,8 @@ export default function Menu({base} : any) {
     return (
       <nav
         className={`menu-content 
-          !font-sans my-10 text-4xl text-center 
-          prose-h2:my-5 prose-a:text-sky-500 hover:prose-a:text-black hover:prose-a:font-semibold dark:hover:prose-a:text-white
+          !font-sans my-10 text-center 
+          prose-h2:my-5 prose-h2:text-4xl prose-h3:text-3xl prose-p:text-2xl prose-a:text-sky-500 hover:prose-a:text-black hover:prose-a:font-semibold dark:hover:prose-a:text-white
         `} 
       >
         <PortableText value={base.menu} />
