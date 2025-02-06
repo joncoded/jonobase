@@ -39,7 +39,7 @@ export default async function Main({ searchParams }: FindProps) {
     perPage: searchParams?.perPage || base.perPage || '6'
   })  
 
-  /* get all posts */
+  /* to get total post count */
   const unpagedPosts = await getPosts({
     query: searchParams?.query || '', 
     kind: searchParams?.kind || '', 

@@ -27,8 +27,15 @@ export async function generateMetadata({ params }: any) {
 export default async function Main({ params, searchParams }: ListProps) {
   const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
 
-  const posts = await getPostsByKind({ params, searchParams })
+  const posts = await getPostsByKind({ 
+    params, 
+    searchParams: {
+      ...searchParams,
+      perPage: searchParams?.perPage || base.perPage || '6'
+    } 
+  })
 
+  /* to get total post count */
   const unpagedPosts = await getPostsByKind({
     params,
     searchParams: {

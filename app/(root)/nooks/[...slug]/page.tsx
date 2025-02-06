@@ -32,11 +32,21 @@ export default async function Main({ params, searchParams }: ListProps) {
 
   const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
 
-  const posts = await getPostsByNook({params, searchParams})  
+  const posts = await getPostsByNook({
+    params, 
+    searchParams: { 
+      ...searchParams, 
+      perPage: searchParams?.perPage || base.perPage || '6'
+    }
+  })  
 
-  const unpagedPosts = await getPostsByNook({ params, searchParams: {
-    ...searchParams, page: '1', perPage: '1000000'
-  }})
+  /* to get total post count */
+  const unpagedPosts = await getPostsByNook({ 
+    params, 
+    searchParams: {
+      ...searchParams, page: '1', perPage: '1000000'
+    }
+  })
 
   return (
     
