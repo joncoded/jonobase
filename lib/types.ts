@@ -65,6 +65,11 @@ export interface PostProps {
   }
 }
 
+export interface LinkProps {
+  mark: any;
+  children: any;
+}
+
 export interface PostGetterProps {
   query: string;
   kind: string;

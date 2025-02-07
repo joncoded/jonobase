@@ -13,6 +13,7 @@ import { monokaiSublime } from "react-syntax-highlighter/dist/cjs/styles/hljs"
 import { Sect, Span } from "@/components/main"
 import { text } from "@/lib/app.config"
 import ScrollToTop from "@/components/ttop"
+import { LinkProps } from "@/lib/types"
 
 export const revalidate = 30
 
@@ -39,6 +40,13 @@ export default async function Main({ params } : any) {
 
   /* wysiwyg formatting for rich content */
   const serializers = {
+    marks: {
+      link: ({ children, mark }: LinkProps) => (
+        <a href={mark.href} target={mark.href.startsWith('http') ? '_blank' : ''} rel="noopener noreferer">
+          {children}
+        </a>
+      ),
+    },
     types: {
       // code snippets
       code: ({node}: any) => {
