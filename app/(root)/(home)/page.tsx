@@ -47,7 +47,7 @@ export default async function Home({ searchParams }: FindProps) {
     query: searchParams?.query || '', 
     kind: searchParams?.kind || '', 
     page: searchParams?.page || '1', 
-    perPage: searchParams?.perPage 
+    perPage: base.perPage 
   })  
 
   /* get specialized posts */
