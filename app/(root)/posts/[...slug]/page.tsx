@@ -103,7 +103,7 @@ export default async function Main({ params } : any) {
   }
   /* end if no post data returns */
 
-  const { title, emoji, subtitle, kind, content, link, nooks, image, date } = post 
+  const { title, emoji, subtitle, kind, content, link, nooks, image, date, showDate } = post 
 
   const PostApex = () => {
     return (
@@ -131,9 +131,11 @@ export default async function Main({ params } : any) {
           <Span ariaHidden={true}>{image ? '' : emoji}</Span> {title}
         </h1> 
         { subtitle && <p className="post-head-subtitle text-xl md:text-2xl mt-2">{subtitle}</p>}
-        <p className="post-head-data text-sm md:text-lg mt-6">
-          <span className="post-head-date">{date.substring(0,10)} {date.substring(11,16)}</span> 
-        </p>
+        { showDate && 
+          <p className="post-head-data text-sm md:text-lg mt-6">
+            <span className="post-head-date">{date.substring(0,10)} {date.substring(11,16)}</span> 
+          </p>
+        }
       </div>
     )
   }
