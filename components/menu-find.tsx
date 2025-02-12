@@ -52,8 +52,10 @@ export default function MenuFind({showMenu, inputName, placeholder = '🔎'}: Ut
           type="submit"
           value={text["search go"]}
           className={`
-            bg-green-900 border border-gray-200 dark:border-gray-500 
-            text-white cursor-pointer p-2 px-5
+            bg-green-900 dark:bg-lime-300 border border-gray-200 dark:border-gray-500 
+            text-white dark:text-black cursor-pointer p-2 px-5 
+            focus:bg-white focus:text-black dark:focus:bg-black dark:focus:text-white 
+            hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white 
           `}
         />
       </form>

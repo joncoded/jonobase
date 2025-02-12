@@ -39,6 +39,7 @@ export default async function Tail() {
         max-w-screen-lg flex max-md:flex-col justify-between gap-0 mx-auto 
         prose prose-p:text-white prose-p:my-2 md:propse-p:my-0 
         prose-a:text-sky-300 prose-a:font-bold prose-a:no-underline 
+        dark:prose-a:text-lime-300
         hover:prose-a:text-white hover:prose-a:underline p-5 xl:p-0
       `}>
         <Colophon1 />

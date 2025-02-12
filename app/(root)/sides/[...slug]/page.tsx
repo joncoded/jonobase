@@ -102,7 +102,7 @@ export default async function Main({ params } : any) {
         <SideHead />        
       </Sect>
 
-      <Sect className={`side-main border-t prose-a:text-sky-500 hover:prose-a:text-black dark:hover:prose-a:text-white hover:prose-a:underline 
+      <Sect className={`side-main border-t prose-a:text-sky-500 dark:prose-a:text-lime-300 hover:prose-a:text-black dark:hover:prose-a:text-white hover:prose-a:underline 
         prose-headings:font-sans prose-headings:font-bold prose-headings:mt-5 prose-h2:text-5xl prose-h3:text-3xl prose-h4:text-xl`
       }>
         <BlockContent 

@@ -70,7 +70,7 @@ const PostLine = ({post : { slug, image, emoji, title, subtitle, link, date, sho
   const CardTitle = () => {
     return (
       <div className={`card-title`}>
-        <h3 className={`font-semibold text-2xl text-sky-600 hover:text-black dark:hover:text-white hover:underline !mt-2`}>
+        <h3 className={`font-semibold text-2xl text-sky-600 dark:text-lime-300 hover:text-black dark:hover:text-white hover:underline !mt-2`}>
           {title}
         </h3>
       </div>      

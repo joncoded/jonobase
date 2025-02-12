@@ -176,7 +176,7 @@ export default function Menu({base} : any) {
       <nav
         className={`menu-content 
           !font-sans my-10 text-center 
-          prose-h2:my-5 prose-h2:text-4xl prose-h3:text-3xl prose-p:text-2xl prose-a:text-sky-500 hover:prose-a:text-black hover:prose-a:font-semibold dark:hover:prose-a:text-white
+          prose-h2:my-5 prose-h2:text-4xl prose-h3:text-3xl prose-p:text-2xl prose-a:text-sky-500 dark:prose-a:text-lime-300 hover:prose-a:text-black hover:prose-a:font-semibold dark:hover:prose-a:text-white
         `} 
       >
         <PortableText value={base.menu} />
@@ -200,7 +200,7 @@ export default function Menu({base} : any) {
 
   return (
     <>      
-      <MenuFindWrapper className={`hidden md:block`}>
+      <MenuFindWrapper className={`hidden md:block font-sans`}>
         <MenuFind 
           showMenu={setShowMenu} 
           inputName={`desktop-search-in-nav`} 

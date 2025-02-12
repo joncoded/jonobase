@@ -33,7 +33,7 @@ const PostCard = ({post : { slug, image, title, subtitle, link, date, showDate}}
   const CardTitle = () => {
     return (
       <div className={`card-title`}>
-        <h3 className={`font-sans font-semibold text-2xl md:text-4xl text-sky-600 hover:text-black dark:hover:text-white hover:underline`}>
+        <h3 className={`font-sans font-semibold text-2xl md:text-4xl text-sky-600 dark:text-lime-300 hover:text-black dark:hover:text-white hover:underline`}>
           {title}
         </h3>
       </div>      

@@ -86,13 +86,13 @@ export default async function Home({ searchParams }: FindProps) {
 
       <ScrollToTop />
 
-      <Sect className={`home-head bg-gradient-to-b from-green-200 dark:from-green-800 to-green-300 dark:to-green-900 py-5 sm:py-10 drop-shadow-md`}>
+      <Sect className={`home-head bg-gradient-to-b from-green-200 dark:from-green-900 to-green-300 dark:to-green-800 py-5 sm:py-10 drop-shadow-md`}>
         <HomeHead />
       </Sect>
       
       {/* the featured posts as defined by the "featured posts" field in the "base" content model */}
       { featuredPosts && 
-        <Sect className={`home-featured bg-amber-300 dark:bg-gray-800 py-5`}>
+        <Sect className={`home-featured bg-amber-300 dark:bg-black py-5`}>
           <h2 className={`mb-10 font-sans font-bold uppercase text-4xl md:text-5xl text-center`}>
           {base.featuredPostsTitle}
           </h2>
