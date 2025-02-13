@@ -15,7 +15,9 @@ import { text } from "@/lib/app.config"
 import ScrollToTop from "@/components/ttop"
 import { LinkProps } from "@/lib/types"
 
-export const revalidate = 30
+export const revalidate = 10
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'force-no-store'
 
 export async function generateMetadata({params}: any) {
 

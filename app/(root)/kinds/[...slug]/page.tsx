@@ -12,7 +12,9 @@ import { text } from "@/lib/app.config"
 import PageTurn from "@/components/page-turn"
 import ScrollToTop from "@/components/ttop"
 
-export const revalidate = 30
+export const revalidate = 10
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'force-no-store'
 
 export async function generateMetadata({ params }: any) {
   const { slug } = params

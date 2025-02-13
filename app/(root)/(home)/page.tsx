@@ -14,7 +14,9 @@ import Link from "next/link"
 import { text } from "@/lib/app.config"
 import ScrollToTop from "@/components/ttop"
 
-export const revalidate = 10
+export const revalidate = 60
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'force-no-store'
 
 export async function generateMetadata() {
 
