@@ -56,7 +56,7 @@ export default async function Main({ params } : any) {
         if (!code){
             return null
         }
-        return <SyntaxHighlighter style={monokaiSublime} language={language ||'text'} showLineNumbers={true} wrapLines={true}>
+        return <SyntaxHighlighter style={monokaiSublime} language={language ||'text'} wrapLines={true}>
           {code}
         </SyntaxHighlighter>
       },
