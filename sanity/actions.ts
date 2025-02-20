@@ -307,7 +307,7 @@ export const getPostAdjacent = async (date: string, mode: 'older' | 'newer') => 
 
     const operation = (mode === 'older' ? '<' : '>')
     const posts = await readClient.fetch(
-      groq`*[_type == "post" && date ${operation} '${date}']{${postEssentialFields}}`
+      groq`*[_type == "post" && date ${operation} '${date}'] | order(date desc){${postEssentialFields}}`
     )    
 
     return posts[0] || undefined
