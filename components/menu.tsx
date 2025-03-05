@@ -10,11 +10,12 @@ import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
 import { useHotkeys } from 'react-hotkeys-hook'
 import { UtilDOMChildrenProps, UtilMenuFindWrapperProps } from '@/lib/types'
-import { PortableText } from '@portabletext/react'
+import BlockContent from '@sanity/block-content-to-react'
 import { Span } from './main'
 import { text } from '@/lib/app.config'
 import FocusTrap from 'focus-trap-react'
 import MenuFind from './menu-find'
+import { LinkProps } from '@/lib/types'
 
 export default function Menu({base} : any) {
   
@@ -49,6 +50,17 @@ export default function Menu({base} : any) {
   useEffect(() => {
     if (menuOpenedAlready) document.getElementById('open-menu')?.focus()
   }, [showMenu, menuOpenedAlready])
+
+  /* wysiwyg formatting for rich content */
+  const serializers = {
+    marks: {
+      link: ({ children, mark }: LinkProps) => (
+        <a href={mark.href} target={mark.href.startsWith('http') ? '_blank' : ''} rel="noopener noreferer">
+          {children}
+        </a>        
+      ),
+    },
+  }
 
   const MenuButton = () => {
     return (
@@ -179,7 +191,12 @@ export default function Menu({base} : any) {
           prose-h2:my-5 prose-h2:text-4xl prose-h3:text-3xl prose-p:text-2xl prose-a:text-sky-500 dark:prose-a:text-lime-300 hover:prose-a:text-black hover:prose-a:font-semibold dark:hover:prose-a:text-white
         `} 
       >
-        <PortableText value={base.menu} />
+        <BlockContent 
+          blocks={base.menu} 
+          serializers={serializers} 
+          dataset="production"
+          projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}  
+        /> 
       </nav>
       
     )
