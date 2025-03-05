@@ -7,7 +7,8 @@ the footer of each page
 
 
 import { getBase } from '@/sanity/actions'
-import { PortableText } from '@portabletext/react'
+import BlockContent from '@sanity/block-content-to-react'
+import { LinkProps } from '@/lib/types'
 
 export default async function Tail() {  
 
@@ -15,10 +16,25 @@ export default async function Tail() {
 
   const { colophon1, colophon2 } = base || ''
 
+  const serializers = {
+    marks: {
+      link: ({ children, mark }: LinkProps) => (
+        <a href={mark.href} target={mark.href.startsWith('http') ? '_blank' : ''} rel="noopener noreferer">
+          {children}
+        </a>
+      ),
+    },
+  }
+
   const Colophon1 = () => {
     return (
       <div className="tail-colo-1 text-center md:text-left">
-        <PortableText value={colophon1} />
+        <BlockContent 
+          blocks={colophon1} 
+          serializers={serializers} 
+          dataset="production"
+          projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}  
+        />        
       </div>
     )
   }
@@ -26,7 +42,12 @@ export default async function Tail() {
   const Colophon2 = () => {
     return (
       <div className="tail-colo-2 text-center md:text-right">
-        <PortableText value={colophon2} />
+         <BlockContent 
+          blocks={colophon2} 
+          serializers={serializers} 
+          dataset="production"
+          projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}  
+        />        
       </div>
     )
   }
