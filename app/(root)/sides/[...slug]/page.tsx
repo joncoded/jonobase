@@ -13,6 +13,7 @@ import { Sect, Span } from "@/components/main"
 import { text } from "@/lib/app.config"
 import ScrollToTop from "@/components/ttop"
 import None from "@/components/none"
+import { LinkProps } from "@/lib/types"
 
 export const revalidate = 10
 export const dynamic = 'force-dynamic'
