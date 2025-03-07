@@ -5,6 +5,8 @@ jonobase by @jonchius
 text constants: handy for localization or internationalization
 */
 
+export const timezone = "America/Toronto"
+
 export const text = {  
 
   "close menu"

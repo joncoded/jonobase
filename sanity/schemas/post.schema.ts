@@ -147,7 +147,8 @@ const schema = {
     },
   },
   initialValue: {
-    showDate: true
+    showDate: true,
+    date: Date.now()
   }
 }
 

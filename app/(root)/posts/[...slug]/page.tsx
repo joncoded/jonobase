@@ -14,6 +14,7 @@ import { Sect, Span } from "@/components/main"
 import { text } from "@/lib/app.config"
 import ScrollToTop from "@/components/ttop"
 import { LinkProps } from "@/lib/types"
+import { timezone } from "@/lib/app.config"
 
 export const revalidate = 10
 export const dynamic = 'force-dynamic'
@@ -106,6 +107,15 @@ export default async function Main({ params } : any) {
   /* end if no post data returns */
 
   const { title, emoji, subtitle, kind, content, link, nooks, image, date, showDate } = post 
+  
+  let newDate = new Date(Date.parse(date))
+  let dateOptions = { 
+    dateStyle: "short",
+    timeStyle: "short",
+    timeZone: timezone
+  }
+
+  let formattedDate = new Intl.DateTimeFormat("en-CA", dateOptions).format(newDate)
 
   const PostApex = () => {
     return (
@@ -138,7 +148,8 @@ export default async function Main({ params } : any) {
           { subtitle && <p className="post-head-subtitle text-xl md:text-2xl mt-2">{subtitle}</p>}
           { showDate && 
             <p className="post-head-data text-sm md:text-lg mt-6">
-              <span className="post-head-date">{date.substring(0,10)} {date.substring(11,16)}</span> 
+              {/* <span className="post-head-date">{date.substring(0,10)} {date.toLocaleString('en-CA', {timeZone: 'America/Toronto'}).substring(11,16)}</span>              */}
+              <span className="post-head-date">{formattedDate}</span>             
             </p>
           }
         </div>

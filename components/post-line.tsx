@@ -9,6 +9,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { UtilDOMChildrenProps, PostProps } from '@/lib/types'
 import { text } from '@/lib/app.config'
+import { timezone } from '@/lib/app.config'
 
 const PostLine = ({post : { slug, image, emoji, title, subtitle, link, date, showDate}}: PostProps) => {  
 
@@ -58,10 +59,16 @@ const PostLine = ({post : { slug, image, emoji, title, subtitle, link, date, sho
 
   const CardDate = () => {
     if (!showDate) return <></>
+    let newDate = new Date(Date.parse(date))
+    let dateOptions = {
+      dateStyle: "short",
+      timeZone: timezone
+    }
+    let postDate = new Intl.DateTimeFormat("en-CA", dateOptions).format(newDate)
     return (
       <div className={`card-date`}>
         <p className={`text-md !my-0`}>
-          {date.substring(0, 10)}
+          {postDate} 
         </p> 
       </div>
     )
