@@ -93,6 +93,9 @@ export const text = {
   "visit url"     
   : "visit URL",
 
+  "wikis"
+  : "wikis", 
+
   "newer"
   : "newer", 
 

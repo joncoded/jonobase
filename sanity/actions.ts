@@ -55,6 +55,18 @@ content,
 date, 
 showDate`
 
+const wikiFields = `
+_id,
+"slug": slug.current,
+"image": image.asset->url,
+title,
+emoji,
+subtitle,
+content,
+seealso,      
+date, 
+showDate`
+
 export const getBase = async (slug: string) => {
 
   try {
@@ -329,6 +341,24 @@ export const getSide = async (slug: string) => {
     )      
 
     return sides[0] 
+
+  } catch (error) {
+
+    console.log(error)
+
+  }
+
+}
+
+export const getWiki = async (slug: string) => {
+
+  try {
+
+    const wikis = await readClient.fetch(
+      groq`*[_type == "wiki" && slug.current == '${slug}']{${wikiFields}}`
+    )
+
+    return wikis[0] 
 
   } catch (error) {
 

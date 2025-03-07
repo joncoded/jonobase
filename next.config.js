@@ -21,6 +21,11 @@ const nextConfig = {
         source: '/posts',
         destination: '/',
         permanent: true
+      },
+      {
+        source: '/wikis',
+        destination: '/',
+        permanent: true
       }      
     ]
   },
