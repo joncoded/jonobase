@@ -41,6 +41,13 @@ export default async function Main({ params } : any) {
 
   /* def syntax highlighting stuff */
   const serializers = {
+    marks: {
+        link: ({ children, mark }: LinkProps) => (
+          <a href={mark.href} target={mark.href.startsWith('http') ? '_blank' : ''} rel="noopener noreferer">
+            {children}
+          </a>
+        ),
+    },
     types: {
         code: ({node}: any) => {
             const { code, language } = node
