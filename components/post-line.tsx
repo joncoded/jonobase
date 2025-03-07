@@ -60,15 +60,12 @@ const PostLine = ({post : { slug, image, emoji, title, subtitle, link, date, sho
   const CardDate = () => {
     if (!showDate) return <></>
     let newDate = new Date(Date.parse(date))
-    let dateOptions = {
-      dateStyle: "short",
-      timeZone: timezone
-    }
-    let postDate = new Intl.DateTimeFormat("en-CA", dateOptions).format(newDate)
+    let formattedDate = new Intl.DateTimeFormat("sv-SE", { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: timezone }).format(newDate)
+    
     return (
       <div className={`card-date`}>
         <p className={`text-md !my-0`}>
-          {postDate} 
+          {formattedDate} 
         </p> 
       </div>
     )

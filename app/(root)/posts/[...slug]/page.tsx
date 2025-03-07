@@ -108,14 +108,8 @@ export default async function Main({ params } : any) {
 
   const { title, emoji, subtitle, kind, content, link, nooks, image, date, showDate } = post 
   
-  let newDate = new Date(Date.parse(date))
-  let dateOptions = { 
-    dateStyle: "short",
-    timeStyle: "short",
-    timeZone: timezone
-  }
-
-  let formattedDate = new Intl.DateTimeFormat("en-CA", dateOptions).format(newDate)
+  let newDate = new Date(Date.parse(date))  
+  let formattedDate = new Intl.DateTimeFormat("sv-SE", { year: 'numeric', month: '2-digit', day: '2-digit', hour: 'numeric', minute: 'numeric', timeZone: timezone }).format(newDate)
 
   const PostApex = () => {
     return (
