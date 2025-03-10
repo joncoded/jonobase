@@ -5,6 +5,8 @@ jonobase by @jonchius
 all typescript interfaces for prop types in all/most other .tsx files
 */
 
+// finds 
+
 export interface FindProps {
   searchParams: {
     [key: string] : string | undefined;
@@ -24,18 +26,22 @@ export interface FindHeadProps {
 export interface FindPageParams {
   filters: string[];
   showFilters: boolean;
-  posts: PostProps[];
+  posts: ListItemProps[];
   unpagedPosts: { _id: string }[];
   urlParams: {
     [key: string] : string | undefined;
   };
 }
 
+// heaps
+
 export interface HeapProps {
   params: {
     slug: string;
   }
 }
+
+// lists
 
 export interface ListProps {
   params: {
@@ -46,7 +52,9 @@ export interface ListProps {
   };
 }
 
-export interface PostProps {
+// posts
+
+export interface ListItemProps {
   post: {
     _id: string;
     slug: {
@@ -65,17 +73,21 @@ export interface PostProps {
   }
 }
 
-export interface LinkProps {
-  mark: any;
-  children: any;
-}
-
 export interface PostGetterProps {
   query: string;
   kind: string;
   page: string;
   perPage?: string;
 }
+
+// post links
+
+export interface LinkProps {
+  mark: any;
+  children: any;
+}
+
+// utils
 
 export interface UtilDOMChildrenProps {
   children: JSX.Element[] | JSX.Element;
