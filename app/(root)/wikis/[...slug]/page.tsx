@@ -140,6 +140,27 @@ export default async function Main({ params } : any) {
     )
   }
 
+  {/* TODO turn this into a reusable component ( PostNook and WikiNook ) */}
+  const WikiNook = () => {
+    return (
+      <div className="flex flex-wrap items-center gap-5 font-sans">        
+        {nooks.map((nook: any) => {
+          return (
+            <Link 
+              className={`post-nook-item border border-black dark:border-white p-2 px-5 
+              bg-white hover:bg-black text-black hover:text-white 
+              dark:focus:ring-4 focus:ring-offset-2`}
+              href={`/nooks/${encodeURI(nook)}`}
+              key={nook} 
+            >
+              {nook}
+            </Link>
+          )
+        })}
+      </div>
+    )
+  }
+
   return (
 
     <main id="main" tabIndex={-1}>     
