@@ -13,6 +13,8 @@ import { Sect, Span } from "@/components/main"
 import { text } from "@/lib/app.config"
 import ScrollToTop from "@/components/ttop"
 import { LinkProps } from "@/lib/types"
+import Link from "next/link"
+import { timezone } from "@/lib/app.config"
 
 export const revalidate = 10
 export const dynamic = 'force-dynamic'
@@ -103,7 +105,10 @@ export default async function Main({ params } : any) {
   }
   /* end if no wiki data returns */
 
-  const { title, emoji, subtitle, content, seealso, image, date, showDate } = wiki 
+  const { title, emoji, subtitle, content, extra, nooks, image, date, showDate } = wiki 
+
+  let newDate = new Date(Date.parse(date))  
+  let formattedDate = new Intl.DateTimeFormat("sv-SE", { year: 'numeric', month: '2-digit', day: '2-digit', hour: 'numeric', minute: 'numeric', timeZone: timezone }).format(newDate)
 
   const WikiApex = () => {
     return (
