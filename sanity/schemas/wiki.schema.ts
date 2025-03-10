@@ -71,6 +71,18 @@ const schema = {
       ] 
     },
     {
+      name: 'nooks',
+      title: 'Nooks', 
+      description: 'the topics relating to this wiki item (aka tags)',
+      type: 'array',
+      of: [
+        {type: 'string'}      
+      ],
+      options: {
+        layout: 'tags',
+      }
+    },
+    {
       name: 'image', 
       title: 'Image', 
       description: 'if there is no image, then the emoji will substitute as the image',
