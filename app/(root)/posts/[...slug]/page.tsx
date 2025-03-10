@@ -167,6 +167,7 @@ export default async function Main({ params } : any) {
     )
   }
 
+  {/* TODO turn this into a reusable component ( PostNook and WikiNook ) */}
   const PostNook = () => {
     return (
       <div className="flex flex-wrap items-center gap-5 font-sans">        

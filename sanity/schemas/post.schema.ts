@@ -74,7 +74,7 @@ const schema = {
     {
       name: 'nooks',
       title: 'Nooks', 
-      description: 'the topics of the posts (aka tags)',
+      description: 'the topics of this post item (aka tags)',
       type: 'array',
       of: [
         {type: 'string'}      
@@ -92,7 +92,7 @@ const schema = {
     { 
       name: 'date',
       title: 'Date', 
-      description: 'back-dating or future-dating allowed',
+      description: 'back-dating or future-dating allowed / defaults to current date and time',
       type: 'datetime',
       options: {
         dateFormat: 'YYYY-MM-DD', 

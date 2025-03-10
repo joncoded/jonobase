@@ -91,7 +91,7 @@ const schema = {
     { 
       name: 'date',
       title: 'Date', 
-      description: 'back-dating or future-dating allowed',
+      description: 'back-dating or future-dating allowed / defaults to current date and time',
       type: 'datetime',
       options: {
         dateFormat: 'YYYY-MM-DD', 
