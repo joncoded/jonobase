@@ -141,8 +141,7 @@ export default async function Main({ params } : any) {
           </h1> 
           { subtitle && <p className="post-head-subtitle text-xl md:text-2xl mt-2">{subtitle}</p>}
           { showDate && 
-            <p className="post-head-data text-sm md:text-lg mt-6">
-              {/* <span className="post-head-date">{date.substring(0,10)} {date.toLocaleString('en-CA', {timeZone: 'America/Toronto'}).substring(11,16)}</span>              */}
+            <p className="post-head-data text-sm md:text-lg mt-6">              
               <span className="post-head-date">{formattedDate}</span>             
             </p>
           }

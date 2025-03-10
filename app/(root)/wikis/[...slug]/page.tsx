@@ -117,17 +117,17 @@ export default async function Main({ params } : any) {
 
   const WikiHead = () => {
     return (
-      <div className={`post-head-wrap flex gap-5 ${image ? 'bg-zinc-900/70 text-white p-5 md:p-10 my-5' : 'text-black'}`}>        
+      <div className={`wiki-head-wrap flex gap-5 ${image ? 'bg-zinc-900/70 text-white p-5 md:p-10 my-5' : 'text-black'}`}>        
 
-        {emoji && <div className="post-head-wrap-emoj text-5xl" aria-hidden={true}>{emoji}</div>}
-        <div className="post-head-wrap-text">
-          <h1 className="post-head-title text-5xl font-bold">          
+        {emoji && <div className="wiki-head-wrap-emoj text-5xl" aria-hidden={true}>{emoji}</div>}
+        <div className="wiki-head-wrap-text">
+          <h1 className="wiki-head-title text-5xl font-bold">          
             {title}
           </h1> 
-          { subtitle && <p className="post-head-subtitle text-xl md:text-2xl mt-2">{subtitle}</p>}
+          { subtitle && <p className="wiki-head-subtitle text-xl md:text-2xl mt-2">{subtitle}</p>}
           { showDate && 
-            <p className="post-head-data text-sm md:text-lg mt-6">
-              <span className="post-head-date">{date.substring(0,10)} {date.substring(11,16)}</span> 
+            <p className="wiki-head-data text-sm md:text-lg mt-6">
+              <span className="wiki-head-date">{formattedDate}</span> 
             </p>
           }
         </div>
