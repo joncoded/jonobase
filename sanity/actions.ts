@@ -5,97 +5,26 @@ jonobase by @jonchius
 the query list
 */
 
-
 import { groq } from 'next-sanity'
 import { readClient } from './lib/client'
 import { buildQuery } from './utils'
 import { ListProps, PostGetterProps } from '@/lib/types'
 
-const postFields = `
-_id,
-"slug": slug.current,
-"image": image.asset->url,
-title,
-emoji,
-subtitle,
-kind,
-content,
-link,
-nooks,        
-date, 
-showDate`
-
-const postCardFields = `
-_id,
-"slug": slug.current,
-"image": image.asset->url,
-title,
-emoji,
-subtitle,
-kind,
-link,
-nooks,        
-date,
-showDate`
-
-const postEssentialFields = `
-_id,
-"slug": slug.current,
-title,
-date`
-
-const sideFields = `
-_id,
-"slug": slug.current,
-"image": image.asset->url,
-title,
-emoji,
-subtitle,
-content,      
-date, 
-showDate`
-
-const wikiFields = `
-_id,
-"slug": slug.current,
-"image": image.asset->url,
-title,
-emoji,
-subtitle,
-content,
-extra,
-nooks,   
-date, 
-showDate`
+// add query fields into sanity/fields.ts
+import * as fields from './fields'
 
 export const getBase = async (slug: string) => {
 
   try {
     const base = await readClient.fetch(
-      groq`*[_type == "base" && slug.current == '${slug}'] {
-        _id,
-        title,
-        slug, 
-        intro,
-        "logo": logo.asset->url,
-        featuredPostsTitle, 
-        "featured" : featured->slug.current,         
-        latestPostsTitle,
-        tagline,
-        perPage,        
-        menu,
-        filters,
-        metakeywords, 
-        colophon1,
-        colophon2
-      }`
+      groq`*[_type == "base" && slug.current == '${slug}'] {${fields.base}}`
     )
 
     return base[0]
   
   } catch (error) {
   
-    console.log(error)
+    console.log("Base not found: ", error)
 
   }
 
@@ -159,7 +88,7 @@ export const getList = async (slug: string) => {
         bgColor, 
         precontent,        
         posts[0...30]->{
-          ${postCardFields}
+          ${fields.postCard}
         },
         postcontent,
         cta->{
@@ -220,7 +149,7 @@ export const getPosts = async (searchParams: PostGetterProps) => {
         page: parseInt(page),
         perPage: parseInt(perPage ?? '1000000')
       })} { 
-        ${(perPage === '1000000') ? '_id' : postFields} 
+        ${(perPage === '1000000') ? '_id' : fields.post} 
       }`    
     )
 
@@ -251,7 +180,7 @@ export const getPostsByKind = async ({params, searchParams}: ListProps) => {
         page: parseInt(page ?? '1'),
         perPage: parseInt(perPage ?? '1000000')
       })} | order(date desc) { 
-        ${perPage === '1000000' ? '_id' : postCardFields} 
+        ${perPage === '1000000' ? '_id' : fields.postCard} 
       }`    
     )
     
@@ -282,7 +211,7 @@ export const getPostsByNook = async ({params, searchParams}: ListProps) => {
         page: parseInt(page ?? '1'),
         perPage: parseInt(perPage ?? '1000000')
       })} | order(date desc) { 
-        ${perPage === '1000000' ? '_id' : postCardFields} 
+        ${perPage === '1000000' ? '_id' : fields.postCard} 
       }`    
     )
 
@@ -301,7 +230,7 @@ export const getPost = async (slug: string) => {
   try {
 
     const posts = await readClient.fetch(
-      groq`*[_type == "post" && slug.current == '${slug}']{${postFields}}`
+      groq`*[_type == "post" && slug.current == '${slug}']{${fields.post}}`
     )
 
     return posts[0] 
@@ -320,7 +249,7 @@ export const getPostAdjacent = async (date: string, mode: 'older' | 'newer') => 
 
     const operation = (mode === 'older' ? '<' : '>')
     const posts = await readClient.fetch(
-      groq`*[_type == "post" && date ${operation} '${date}'] | order(date desc){${postEssentialFields}}`
+      groq`*[_type == "post" && date ${operation} '${date}'] | order(date desc){${fields.postLite}}`
     )    
 
     return posts[0] || undefined
@@ -338,7 +267,7 @@ export const getSide = async (slug: string) => {
   try {
 
     const sides = await readClient.fetch(
-      groq`*[_type == "side" && slug.current == '${slug}']{${sideFields}}`
+      groq`*[_type == "side" && slug.current == '${slug}']{${fields.side}}`
     )      
 
     return sides[0] 
@@ -356,7 +285,7 @@ export const getWiki = async (slug: string) => {
   try {
 
     const wikis = await readClient.fetch(
-      groq`*[_type == "wiki" && slug.current == '${slug}']{${wikiFields}}`
+      groq`*[_type == "wiki" && slug.current == '${slug}']{${fields.wiki}}`
     )
 
     return wikis[0] 
