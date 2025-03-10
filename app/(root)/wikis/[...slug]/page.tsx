@@ -154,7 +154,7 @@ export default async function Main({ params } : any) {
         <WikiHead />        
       </Sect>
 
-      <Sect className={`wiki-main border-t prose-a:text-sky-500 hover:prose-a:text-black dark:hover:prose-a:text-white hover:prose-a:underline 
+      <Sect className={`wiki-main prose-a:text-sky-500 hover:prose-a:text-black dark:hover:prose-a:text-white hover:prose-a:underline 
         prose-headings:font-sans prose-headings:font-bold prose-headings:mt-5 prose-h2:text-4xl prose-h3:text-3xl prose-h4:text-xl`
       }>
         <BlockContent 
@@ -165,18 +165,25 @@ export default async function Main({ params } : any) {
         /> 
       </Sect>
 
+      {extra && 
       <Sect className={`wiki-also border-t prose-a:text-sky-500 hover:prose-a:text-black dark:hover:prose-a:text-white hover:prose-a:underline 
-        prose-headings:font-sans prose-headings:font-bold prose-headings:mt-5 prose-h2:text-4xl prose-h3:text-3xl prose-h4:text-xl`
+        prose-headings:font-sans prose-headings:font-bold prose-headings:mt-5 prose-h2:text-4xl prose-h3:text-3xl prose-h4:text-xl mb-5`
       }>
         <BlockContent 
-          blocks={seealso} 
+          blocks={extra} 
           serializers={serializers} 
           dataset="production"
           projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}  
         /> 
       </Sect>
+      }
 
-     
+      { nooks && 
+      <Sect className={`post-nook !bg-gradient-to-r from-zinc-100 to-zinc-200 dark:from-gray-800 dark:to-gray-900 p-5 text-md lg:text-lg`}>
+        <WikiNook />
+      </Sect>
+      }
+
     </main>
 
   )
