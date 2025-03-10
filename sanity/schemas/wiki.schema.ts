@@ -60,8 +60,8 @@ const schema = {
       ] 
     },
     {
-      name: 'seealso',
-      title: 'See also',
+      name: 'extra',
+      title: 'Extra',
       description: 'footnotes and references - rich text and code allowed',      
       type: 'array',      
       of: [

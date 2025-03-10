@@ -63,7 +63,7 @@ title,
 emoji,
 subtitle,
 content,
-seealso,      
+extra,
 date, 
 showDate`
 
