@@ -44,7 +44,7 @@ export const getCategories = async (slug: string) => {
 
   } catch (error) {
 
-    console.log(error)
+    console.log("Categories not found: ", error)
 
   }
 
@@ -55,21 +55,14 @@ export const getHeap = async (slug: string) => {
   try {
 
     const heaps = await readClient.fetch(
-      groq`*[_type == "heap" && slug.current == '${slug}']{
-        _id,
-        title,
-        slug,
-        lists[0...30]->{          
-          "slug" : slug.current
-        }
-      }`
+      groq`*[_type == "heap" && slug.current == '${slug}']{${fields.heap}}`
     )
     
     return heaps[0]
 
   } catch (error) {
 
-    console.log(error)
+    console.log("Heap not found: ", error)
 
   }
 
@@ -80,29 +73,14 @@ export const getList = async (slug: string) => {
   try {
 
     const lists = await readClient.fetch(
-      groq`*[_type == "list" && slug.current == '${slug}']{
-        _id,
-        title,
-        slug,
-        subtitle,
-        bgColor, 
-        precontent,        
-        posts[0...30]->{
-          ${fields.postCard}
-        },
-        postcontent,
-        cta->{
-          url,
-          title
-        }
-      }`
+      groq`*[_type == "list" && slug.current == '${slug}']{${fields.list}}`
     )
 
     return lists[0] 
 
   } catch (error) {
 
-    console.log(error)
+    console.log("List not found: ", error)
 
   }
 
@@ -111,25 +89,16 @@ export const getList = async (slug: string) => {
 export const getLists = async () => {
  
   try {
+
     const lists = await readClient.fetch(
-      groq`*[_type == "list"]{        
-        _id,
-        title,
-        posts[0...30]->{
-          title,
-          _id,
-          link,
-          "image" : image.asset->url,
-          kind
-        }        
-      }`    
+      groq`*[_type == "list"]{${fields.lists}}`    
     )
 
     return lists
 
   } catch (error) {
 
-    console.log(error)
+    console.log("List(s) not found: ", error)
 
   }
 
@@ -157,7 +126,7 @@ export const getPosts = async (searchParams: PostGetterProps) => {
 
   } catch (error) {
 
-    console.log(error)
+    console.log("Post(s) not found: ", error)
 
   }
 
@@ -188,7 +157,7 @@ export const getPostsByKind = async ({params, searchParams}: ListProps) => {
 
   } catch (error) {
 
-    console.log(error)
+    console.log("Post(s) not found: ", error)
 
   }
 
@@ -219,7 +188,7 @@ export const getPostsByNook = async ({params, searchParams}: ListProps) => {
 
   } catch (error) {
 
-    console.log(error)
+    console.log("Post(s) not found: ", error)
 
   }
 
@@ -237,7 +206,7 @@ export const getPost = async (slug: string) => {
 
   } catch (error) {
 
-    console.log(error)
+    console.log("Post not found: ", error)
 
   }
 
@@ -256,7 +225,7 @@ export const getPostAdjacent = async (date: string, mode: 'older' | 'newer') => 
 
   } catch (error) {
 
-    console.log(error)
+    console.log("Adjacent post not found: ", error)
 
   }
 
@@ -274,7 +243,7 @@ export const getSide = async (slug: string) => {
 
   } catch (error) {
 
-    console.log(error)
+    console.log("Side not found: ", error)
 
   }
 
@@ -292,7 +261,7 @@ export const getWiki = async (slug: string) => {
 
   } catch (error) {
 
-    console.log(error)
+    console.log("Wiki note found: " , error)
 
   }
 

@@ -24,6 +24,14 @@ export const base = `
   colophon2
 `
 
+export const heap = `
+  _id,
+  title,
+  slug,
+  lists[0...30]->{          
+    "slug" : slug.current
+  }
+`
 export const post = `
   _id,
   "slug": slug.current,
@@ -52,7 +60,6 @@ export const postCard = `
   date,
   showDate
 `
-
 export const postLite = `
   _id,
   "slug": slug.current,
@@ -84,4 +91,43 @@ export const wiki = `
   nooks,   
   date, 
   showDate
+`
+
+export const list = `
+  _id,
+  title,
+  slug,
+  subtitle,
+  bgColor, 
+  precontent,        
+  posts[]->{
+    _id,
+    "slug": slug.current,
+    "image": image.asset->url,
+    title,
+    emoji,
+    subtitle,
+    kind,
+    link,
+    nooks,        
+    date,
+    showDate
+  },
+  postcontent,
+  cta->{
+    url,
+    title
+  }
+`
+
+export const lists = `
+  _id,
+  title,
+  posts[0...30]->{
+    title,
+    _id,
+    link,
+    "image" : image.asset->url,
+    kind
+  }       
 `
