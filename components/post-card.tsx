@@ -7,10 +7,10 @@ the card for each (blog) post (in lists), e.g. in home, finds, kinds, nooks, etc
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { UtilDOMChildrenProps, PostProps } from '@/lib/types'
+import { UtilDOMChildrenProps, ListItemProps } from '@/lib/types'
 import { text } from '@/lib/app.config'
 
-const PostCard = ({post : { slug, image, title, subtitle, link, date, showDate}}: PostProps) => {  
+const PostCard = ({post : { slug, image, title, subtitle, link, date, showDate}}: ListItemProps) => {  
 
   const Card = ({children} : UtilDOMChildrenProps) => {
     return (

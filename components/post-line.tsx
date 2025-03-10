@@ -7,11 +7,11 @@ the card for each (blog) post (in lists)
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { UtilDOMChildrenProps, PostProps } from '@/lib/types'
+import { UtilDOMChildrenProps, ListItemProps } from '@/lib/types'
 import { text } from '@/lib/app.config'
 import { timezone } from '@/lib/app.config'
 
-const PostLine = ({post : { slug, image, emoji, title, subtitle, link, date, showDate}}: PostProps) => {  
+const PostLine = ({post : { slug, image, emoji, title, subtitle, link, date, showDate}}: ListItemProps) => {  
 
   const Card = ({children} : UtilDOMChildrenProps) => {
     return (
