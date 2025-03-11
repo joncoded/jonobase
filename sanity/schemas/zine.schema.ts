@@ -1,12 +1,12 @@
 const schema = {
-  name: 'post',
-  title: 'Post',
+  name: 'zine',
+  title: 'Zine',
   type: 'document',
   fields: [
     {
       name: 'title',
       title: 'Title',
-      description: 'this post\'s name',
+      description: 'the zine page\'s name',
       type: 'string',
       require: true,
       validation: (Rule: any) => Rule.required()
@@ -33,7 +33,7 @@ const schema = {
     {
       name: 'kind',
       title: 'Kind',
-      description: 'the one-word category that also serves as the subfolder in the URL (i.e. /posts/[kind])',
+      description: 'the one-word category that also serves as the subfolder in the URL (i.e. /zines/[kind])',
       type: 'string',
       validation: (Rule: any) => Rule.required(),
     },
@@ -86,7 +86,7 @@ const schema = {
     {
       name: 'nooks',
       title: 'Nooks',
-      description: 'the topics of this post (commonly known as "tags")',
+      description: 'the topics of this static page (commonly known as "tags")',
       type: 'array',
       of: [
         {type: 'string'}
@@ -111,17 +111,30 @@ const schema = {
         timeFormat: 'HH:mm',
         calendarTodayLabel: 'Today'
       },
-      validation: (Rule: any) => Rule.required(),
     },
     {
       name: 'showDate',
       title: 'Show date',
-      description: 'show that date on the public website',
+      description: 'show date on public website',
       type: 'boolean',
       validation: (Rule: any) => Rule.required()
     }
   ],
   orderings: [
+    {
+      title: 'Title, ascending',
+      name: 'titleAsc',
+      by: [
+        { field: 'title', direction: 'asc'}
+      ]
+    },
+    {
+      title: 'Title, descending',
+      name: 'titleDesc',
+      by: [
+        { field: 'title', direction: 'desc'}
+      ]
+    },
     {
       title: 'Date specified, newest first',
       name: 'dateDesc',
@@ -136,31 +149,17 @@ const schema = {
         { field: 'date', direction: 'asc'}
       ]
     },
-    {
-      title: 'Title, ascending',
-      name: 'titleAsc',
-      by: [
-        { field: 'title', direction: 'asc'}
-      ]
-    },
-    {
-      title: 'Title, descending',
-      name: 'titleDesc',
-      by: [
-        { field: 'title', direction: 'desc'}
-      ]
-    }
   ],
   preview: {
     select: {
       title: 'title',
-      subtitle: 'date',
+      subtitle: 'subtitle',
       media: 'image',
     },
   },
   initialValue: {
-    kind: 'writings',
-    showDate: true,
+    kind: 'blogbits',
+    showDate: false,
     date: Date.now()
   }
 }

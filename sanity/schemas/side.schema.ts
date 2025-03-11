@@ -1,39 +1,46 @@
 const schema = {
   name: 'side',
-  title: 'Side', 
-  type: 'document', 
+  title: 'Side',
+  type: 'document',
   fields: [
     {
-      name: 'title',      
+      name: 'title',
       title: 'Title',
-      description: 'the side\'s name - will factor into the SEO metadata', 
-      type: 'string', 
+      description: 'this static page\'s name',
+      type: 'string',
       require: true,
       validation: (Rule: any) => Rule.required()
     },
     {
-      name: 'slug', 
-      title: 'Slug', 
-      description: 'alphanumeric and dashes-only - will factor into the SEO',
-      type: 'slug',       
+      name: 'slug',
+      title: 'Slug',
+      description: 'a machine-friendly version of the title (characters allowed: a-z, 0-9, - [dashes, no spaces])',
+      type: 'slug',
       options: { source: 'title' }
     },
     {
       name: 'emoji',
-      title: 'Emoji', 
-      description: 'for casual categorization purposes',       
-      type: 'string',      
+      title: 'Emoji',
+      description: 'the replacement for an image (image and emoji are both optional)',
+      type: 'string',
     },
     {
       name: 'subtitle',
-      title: 'Subtitle', 
-      description: 'a tagline for the side - will factor into the SEO metadata',
-      type: 'string'             
+      title: 'Subtitle',
+      description: 'the tagline under the title that also serves as the meta description for SEO)',
+      type: 'string'
+    },
+    {
+      name: 'kind',
+      title: 'Kind',
+      description: 'the one-word category that also serves as the subfolder in the URL (i.e. /sides/[kind])',
+      type: 'string',
+      validation: (Rule: any) => Rule.required(),
     },
     {
       name: 'content',
       title: 'Content',
-      description: 'rich text and code allowed',      
+      description: 'the meat of this entry - rich text and code allowed',
       type: 'array',
       validation: (Rule: any) => Rule.required(),
       of: [
@@ -57,34 +64,77 @@ const schema = {
         {
           type: 'table'
         }
-      ] 
+      ]
     },
     {
-      name: 'image', 
-      title: 'Image', 
-      type: 'image'      
+      name: 'extra',
+      title: 'Extra',
+      description: 'optional footnotes and references - rich text allowed',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+        }
+      ]
     },
-    { 
+    {
+      name: 'link',
+      title: 'Link',
+      description: 'an external link to somewhere else (optional, will appear as a button)',
+      type: 'url',
+    },
+    {
+      name: 'nooks',
+      title: 'Nooks',
+      description: 'the topics of this static page (commonly known as "tags")',
+      type: 'array',
+      of: [
+        {type: 'string'}
+      ],
+      options: {
+        layout: 'tags',
+      }
+    },
+    {
+      name: 'image',
+      title: 'Image',
+      description: 'the image that appears as the thumbnail in lists and background in posts (if there is no image, then the emoji might substitute the thumbnail)',
+      type: 'image'
+    },
+    {
       name: 'date',
-      title: 'Date', 
-      description: 'back-dating or future-dating allowed',
+      title: 'Date',
+      description: 'the desired publication date (back-dating or future-dating allowed!) / defaults to current date and time',
       type: 'datetime',
       options: {
-        dateFormat: 'YYYY-MM-DD', 
+        dateFormat: 'YYYY-MM-DD',
         timeFormat: 'HH:mm',
         calendarTodayLabel: 'Today'
       },
-      validation: (Rule: any) => Rule.required(),      
     },
     {
-      name: 'showDate', 
+      name: 'showDate',
       title: 'Show date',
-      description: 'show date on public website',
-      type: 'boolean', 
+      description: 'show that date on the public website',
+      type: 'boolean',
       validation: (Rule: any) => Rule.required()
     }
   ],
   orderings: [
+    {
+      title: 'Title, ascending',
+      name: 'titleAsc',
+      by: [
+        { field: 'title', direction: 'asc'}
+      ]
+    },
+    {
+      title: 'Title, descending',
+      name: 'titleDesc',
+      by: [
+        { field: 'title', direction: 'desc'}
+      ]
+    },
     {
       title: 'Date specified, newest first',
       name: 'dateDesc',
@@ -99,30 +149,18 @@ const schema = {
         { field: 'date', direction: 'asc'}
       ]
     },
-    {
-      title: 'Title, ascending',
-      name: 'titleAsc',
-      by: [
-        { field: 'title', direction: 'asc'}
-      ]
-    },
-    {
-      title: 'Title, descending',
-      name: 'titleDesc',
-      by: [
-        { field: 'title', direction: 'desc'}
-      ]
-    }
   ],
   preview: {
     select: {
       title: 'title',
-      subtitle: 'date',
-      media: 'image',     
+      subtitle: 'subtitle',
+      media: 'image',
     },
   },
   initialValue: {
-    showDate: false
+    kind: 'about',
+    showDate: false,
+    date: Date.now()
   }
 }
 
