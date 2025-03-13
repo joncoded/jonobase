@@ -92,12 +92,6 @@ const schema = {
       }
     },
     {
-      name: 'filtershow',
-      title: 'Show filters',
-      description: 'Show buttons of post kinds (post categories) in finds page',
-      type: 'boolean'
-    },
-    {
       name: 'metakeywords',
       title: 'Meta keywords', 
       description: 'site keywords for SEO purposes',
