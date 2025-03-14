@@ -159,7 +159,7 @@ const schema = {
     },
   },
   initialValue: {
-    kind: 'writings',
+    kind: 'unsorted',
     showDate: true,
     date: Date.now()
   }
