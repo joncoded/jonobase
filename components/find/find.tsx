@@ -10,12 +10,15 @@ import { useEffect, useState } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { formUrlQuery } from "@/sanity/utils"
 import { FindPageParams } from "@/sanity/myprops"
+import { findableSchemas } from "@/sanity/schemas"
 import { text, styling } from "@/lib/app.config"
 import { Span } from "../base/html/main"
 import FindHead from "./find-head"
 import OpusLine from "../opus/opus-line"
 
 export default function Find({ opera, totalOperaCount, urlParams }: FindPageParams) {
+
+  const schemas = JSON.parse(findableSchemas)
   const searchParams = useSearchParams()
   const router = useRouter()
   const [query, setQuery] = useState(urlParams.query || "")
@@ -90,11 +93,11 @@ export default function Find({ opera, totalOperaCount, urlParams }: FindPagePara
   }
 
   return (
-    <div className={`find-base flex flex-col gap-5 mx-auto`}>
+    <div id="find-base" className={`flex flex-col gap-5 mx-auto`}>
       <FindApex />
 
       {/* moving this to a separate component will make the API struggle */}
-      <form className={`find-form w-full flex text-center`}>
+      <form id="find-form" className={`find-form w-full flex text-center`}>
         <label className={`w-full max-w-full md:max-w-screen-md mx-auto sr-only`}></label>
         <input
           type="text"
@@ -109,14 +112,13 @@ export default function Find({ opera, totalOperaCount, urlParams }: FindPagePara
         />
         <select className={`px-5`} onChange={handleFilter} value={urlParams.type}>          
           <option value="*">all</option>
-          <option value="post">{text.posts}</option>
-          <option value="side">{text.sides}</option>
-          <option value="wiki">{text.wikis}</option>
-          <option value="zine">{text.zines}</option>
+          {schemas.map((schema : string) => (
+            <option value={schema}>{schema}s</option>  
+          ))}          
         </select>
       </form>      
 
-      <section className={`find-main flex justify-center w-full flex-col`}>
+      <section id="find-main" className={`flex justify-center w-full flex-col`}>
         <div className={`find-post w-full sm:justify-start my-5`}>
           {opera && (
             <>
