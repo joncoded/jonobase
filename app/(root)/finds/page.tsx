@@ -7,11 +7,11 @@ the finds (search) page
 
 import { getBase, getOpera, getOperaCount } from "@/sanity/actions"
 import { FindProps } from "@/sanity/myprops"
+import { text } from "@/lib/app.config"
 import { Sect } from "@/components/base/html/main"
+import ScrollToTop from "@/components/base/util/ttop"
 import Find from "@/components/find/find"
 import ListTurn from "@/components/list/list-turn"
-import { text } from "@/lib/app.config"
-import ScrollToTop from "@/components/base/util/ttop"
 
 export const revalidate = 10
 export const dynamic = 'force-dynamic'
@@ -53,7 +53,7 @@ export default async function Main({ searchParams }: FindProps) {
 
       <ScrollToTop />
 
-      <Sect className={`dark:bg-gray-900`}>
+      <Sect>
         <Find                     
           opera={opera} 
           totalOperaCount={totalOperaCount} 

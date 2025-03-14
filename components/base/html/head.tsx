@@ -35,7 +35,7 @@ export default async function Head() {
       <div className="head-branding">
         <Link href="/" className="flex items-center">
           <Image className="head-logo rounded-full border-4 border-white drop-shadow mr-5" src={myBase.logo} alt="logo" width={40} height={40} />
-          <div className="flex flex-col gap-1 font-sans">
+          <div className="flex flex-col gap-1">
             <h1 className="head-title text-3xl uppercase">{title}</h1>
             <Span className="hidden md:inline text-sm">{tagline}</Span>
           </div>          

@@ -7,11 +7,10 @@ the opera (many articles) template that has a content _type
 */
 
 import { getBase, getOpera, getOperaCount } from "@/sanity/actions"
+import { styling } from "@/lib/app.config"
 import { Sect } from "@/components/base/html/main"
-
 import ScrollToTop from "@/components/base/util/ttop"
 import None from "@/components/base/util/none"
-
 import Apex from "@/components/base/html/main-apex"
 import OpusLine from "@/components/opus/opus-line"
 import ListTurn from "@/components/list/list-turn"
@@ -50,7 +49,7 @@ export default async function Main({ params, searchParams } : any) {
 
       <ScrollToTop />
 
-      <Sect id="join-apex">
+      <Sect id="join-apex" className={`${styling['main-apex']}`}>
         <Apex first={opera} />
       </Sect>
 

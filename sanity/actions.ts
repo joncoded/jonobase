@@ -185,38 +185,6 @@ export const getOperaCount = async (searchParams: myprops.OpusGetterProps) => {
 
 }
 
-// TODO : (legacy code cleanup) get multiple "opera" (i.e. "opus"es) by "nook" (tag) - to do after nook pages written
-export const getOperaByNook = async ({params, searchParams}: myprops.ListProps) => {
-
-  const { slug } = params
-  const { page, perPage } = searchParams
-  const nook = slug?.toString().toLowerCase() || ''
-
-  try {
-
-    const posts = await readClient.fetch(
-      groq`${buildQuery({
-        type: '',
-        query: '',
-        kind: '',
-        nook: decodeURIComponent(nook),
-        page: parseInt(page ?? '1'),
-        perPage: parseInt(perPage ?? '1000000')
-      })} | order(date desc) {
-        ${perPage === '1000000' ? '_id' : fields.opusCard}
-      }`
-    )
-
-    return posts
-
-  } catch (error) {
-
-    console.log("Post(s) not found: ", error)
-
-  }
-
-}
-
 // get single "opus", given a type and a slug
 export const getOpus = async ({type = 'post', kind, slug} : { type: string, kind: string, slug: string }) => {
 

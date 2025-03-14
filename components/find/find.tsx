@@ -10,10 +10,10 @@ import { useEffect, useState } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { formUrlQuery } from "@/sanity/utils"
 import { FindPageParams } from "@/sanity/myprops"
-import OpusLine from "../opus/opus-line"
-import FindHead from "./find-head"
+import { text, styling } from "@/lib/app.config"
 import { Span } from "../base/html/main"
-import { text } from "@/lib/app.config"
+import FindHead from "./find-head"
+import OpusLine from "../opus/opus-line"
 
 export default function Find({ opera, totalOperaCount, urlParams }: FindPageParams) {
   const searchParams = useSearchParams()
@@ -77,7 +77,7 @@ export default function Find({ opera, totalOperaCount, urlParams }: FindPagePara
 
   const FindApex = () => {
     return (
-      <aside className={`find-apex uppercase font-sans text-lg md:text-2xl`}>
+      <aside className={`find-apex uppercase text-lg md:text-2xl`}>
         <Span>{text["finds"]}</Span>
         {query && (
           <>
@@ -99,10 +99,10 @@ export default function Find({ opera, totalOperaCount, urlParams }: FindPagePara
         <input
           type="text"
           placeholder={text["search"]}
-          className={`font-sans 
+          className={` 
             w-full border-0 dark:border dark:border-gray-200 px-5 py-2 
             bg-gray-200 dark:bg-black focus:!ring-2
-            text-2xl placeholder:font-sans placeholder:text-gray-300 placeholder:text-3xl
+            text-2xl placeholder:text-gray-300 placeholder:text-3xl
           `}
           value={query}
           onChange={handleQuery}
@@ -130,7 +130,7 @@ export default function Find({ opera, totalOperaCount, urlParams }: FindPagePara
                 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-center mt-0`}
               >
                 {opera.map((opus: any) => (
-                  <OpusLine key={opus._id} opus={opus} />
+                  <OpusLine key={opus._id} opus={opus} showKind={true} showType={true} />
                 ))}
               </div>
               

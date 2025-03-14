@@ -103,14 +103,6 @@ export interface OpusGetterProps {
   random?: boolean;
 }
 
-export interface PostGetterProps {  
-  query: string;
-  type: string;
-  kind: string;
-  page: string;
-  perPage?: string;    
-}
-
 // post links
 
 export interface LinkProps {

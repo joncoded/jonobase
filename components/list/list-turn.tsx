@@ -8,6 +8,7 @@ pagination (page turner) for lists
 import Link from "next/link"
 import { Sect } from "../base/html/main"
 import { UtilListTurnProps } from "@/sanity/myprops"
+import { text } from "@/lib/app.config"
 
 export default async function ListTurn({myBase, totalOperaCount, searchParams} : UtilListTurnProps) {
 
@@ -31,7 +32,7 @@ export default async function ListTurn({myBase, totalOperaCount, searchParams} :
   return (
     <>
     { totalPages > 1 && 
-      <Sect className={`page-turn mt-5 mb-10`}>
+      <Sect className={`page-turn my-5`}>
         <div className="flex flex-wrap gap-2">
           {pageNumbers.map((pageNumber: number) => 
             <Link 
@@ -40,6 +41,7 @@ export default async function ListTurn({myBase, totalOperaCount, searchParams} :
                 ${(currentPage === pageNumber) ? 'current' : ''} 
               `}
               href={`?query=${query}&page=${pageNumber}&perPage=${perPage}`}
+              aria-label={(currentPage === pageNumber) ? `${text['current page']}, ${text['page number']} ${pageNumber}` : `${text['page number']} ${pageNumber}`}
             >
               {pageNumber}
             </Link>

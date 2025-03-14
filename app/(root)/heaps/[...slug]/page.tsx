@@ -2,7 +2,7 @@
 
 /*
 jonobase by @jonchius
-/app/(root)/heaps/page.tsx
+/app/(root)/heaps/[...slug]/page.tsx
 the heaps (stacked custom sections) page
 */
 
@@ -50,7 +50,7 @@ export default async function Heap({ params }: HeapProps) {
 
   const HeapApex = () => {
     return (
-      <h2 className={`heap-apex uppercase font-sans text-lg md:text-2xl`}>        
+      <h2 className={`heap-apex uppercase text-lg md:text-2xl`}>        
         <Span>{myHeap.title}</Span>
       </h2>
     )
@@ -80,7 +80,7 @@ export default async function Heap({ params }: HeapProps) {
                   : `${heapList.bgColor}-300 dark:bg-${heapList.bgColor}-800`
                 }`}
             >
-              <h3 className={`heap-list-title uppercase text-center md:text-left text-3xl md:text-4xl font-sans font-bold`}>{heapList.title}</h3>
+              <h3 className={`heap-list-title uppercase text-center md:text-left text-3xl md:text-4xl font-bold`}>{heapList.title}</h3>
               <p className={`heap-list-sub text-lg md:text-xl text-center md:text-left font-sans`}>{heapList.subtitle}</p>
               <div className={`mb-5`}><PortableText value={heapList.precontent} /></div>
               <OpusList opera={heapList.posts} />

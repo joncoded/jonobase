@@ -7,13 +7,7 @@ text constants: handy for localization or internationalization
 
 export const timezone = "America/Toronto"
 
-export const styling = {
-
-
-
-}
-
-// tailwind colors (https://tailwindcss.com/docs/colors)
+// common tailwind colors (https://tailwindcss.com/docs/colors)
 export const colors = {
 
   "link"
@@ -30,10 +24,25 @@ export const colors = {
 
 }
 
+// common tailwind styles
+export const styling = {
+
+  "button" : "p-2 px-5 border border-black dark:hover:border-white dark:border-white bg-white dark:bg-black text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black", 
+
+  "main-apex" : "bg-zinc-100 dark:bg-zinc-800",
+
+  "opus-head-section" : ""
+
+}
+
+// localization
 export const text = {  
 
   "close menu"
   : "close menu", 
+
+  "current page"
+  : "current page", 
     
   "go to the home page" 
   : "go to the home page",
@@ -62,8 +71,17 @@ export const text = {
   "nooks"         
   : "nooks",
 
+  "nooks explained"
+  : "'nooks' are the 'topic tags' of my website, which include content from all entry types",
+
   "older"
   : "older",
+
+  "page"
+  : "page",
+
+  "page number"
+  : "page number", 
 
   "page not found" 
   : "page not found",

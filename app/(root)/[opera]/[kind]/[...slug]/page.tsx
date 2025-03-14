@@ -22,7 +22,7 @@ import OpusLink from "@/components/opus/opus-link"
 import OpusNook from "@/components/opus/opus-nook"
 import OpusTurn from "@/components/opus/opus-turn"
 
-export const revalidate = 10
+export const revalidate = 60
 export const dynamic = 'force-dynamic'
 export const fetchCache = 'force-no-store'
 
@@ -67,9 +67,9 @@ export default async function Main({ params } : any) {
         <Apex first={opera} second={kind} opus={true} />
       </Sect>
 
-      <Sect id="opus-head" className={`font-sans ${image ? `py-0` : `!bg-gradient-to-b from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900 dark:text-white py-5`}`} bgImage={image}> 
+      <Sect id="opus-head" className={`${image ? `py-0` : `!bg-gradient-to-b from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900 dark:text-white py-5`}`} bgImage={image}> 
         <OpusHead opus={opus} />
-        { myLink && <OpusLink link={myLink} />}
+        { myLink && <OpusLink link={myLink} />}        
       </Sect>
 
       <Sect id="opus-main" className={`border-t font-serif dark:border-t-gray-600 prose-a:${colors.link} dark:prose-a:${colors.darkLink} hover:prose-a:${colors.linkHover} dark:hover:prose-a:${colors.darkLinkHover} hover:prose-a:underline 
@@ -86,6 +86,7 @@ export default async function Main({ params } : any) {
       { extra && <Sect id="opus-xtra" className={`border-t font-serif prose-a:${colors.link} dark:prose-a:${colors.darkLink} hover:prose-a:${colors.linkHover} dark:hover:prose-a:${colors.darkLinkHover} hover:prose-a:underline 
         prose-headings:font-sans prose-headings:font-bold prose-headings:mt-5 prose-h2:text-4xl prose-h3:text-3xl prose-h4:text-xl prose-code:text-white prose-code:bg-[#23241f]`
       }>
+        
         <BlockContent 
           blocks={extra} 
           serializers={serializers} 

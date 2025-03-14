@@ -53,7 +53,7 @@ export default function Menu({myBase} : any) {
 
   const MenuButton = () => {
     return (
-      <div className={`menu-button font-sans ml-2`}>
+      <div className={`menu-button ml-2`}>
         <button className={`text-sm uppercase`} onClick={openMenu} id="open-menu">
           <Span className={`mr-1 text-2xl`} ariaHidden={true}>≡</Span>
           <Span className={`mx-1 text-2xl`}>{text['menu']}</Span>
@@ -176,7 +176,7 @@ export default function Menu({myBase} : any) {
     return (
       <nav
         className={`menu-content 
-          !font-sans my-10 text-center 
+          my-10 text-center 
           prose-h2:my-5 prose-h2:text-4xl prose-h3:text-3xl prose-p:text-2xl prose-a:${colors.link} dark:prose-a:${colors.darkLink} hover:prose-a:${colors.linkHover} dark:hover:prose-a:${colors.darkLinkHover} hover:prose-a:font-semibold dark:hover:prose-a:text-white
         `} 
       >
@@ -206,7 +206,7 @@ export default function Menu({myBase} : any) {
 
   return (
     <>      
-      <MenuFindWrapper className={`hidden md:block font-sans`}>
+      <MenuFindWrapper className={`hidden md:block`}>
         <MenuFind 
           showMenu={setShowMenu} 
           inputName={`desktop-search-in-nav`} 
@@ -216,7 +216,7 @@ export default function Menu({myBase} : any) {
       <MenuButton />
       { showMenu && (
         <FocusTrap>
-          <div className={`font-sans`}>
+          <div>
             <MenuDialog>
               <MenuWrapper>
                 <MenuHead>

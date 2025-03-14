@@ -17,7 +17,7 @@ export default function Apex( { first, second, opus = false } : { first: string,
   const linkColors = `${colors.link} dark:${colors.darkLink} hover:${colors.linkHover} dark:hover:${colors.darkLinkHover}`
 
   return (
-    <aside className={`font-sans uppercase`}>
+    <aside className={`uppercase`}>
       <>
 
         { (first && !second) && <Span className={`text-lg md:text-2xl`}>{first}</Span>}

@@ -1,23 +1,22 @@
 
 /*
 jonobase by @jonchius
-/app/(root)/nooks/page.tsx
+/app/(root)/nooks/[...slug]/page.tsx
 the nooks (lists of "posts from nook (tag) X") page
 (replacement for nooks)
 */
 
-import OpusList from "@/components/opus/opus-list"
 import { getBase, getOpera, getOperaCount } from "@/sanity/actions"
 import { ListProps } from "@/sanity/myprops"
+import { text, styling } from "@/lib/app.config"
 import { Sect, Span } from "@/components/base/html/main"
-import { text } from "@/lib/app.config"
-import ListTurn from "@/components/list/list-turn"
 import ScrollToTop from "@/components/base/util/ttop"
+import OpusList from "@/components/opus/opus-list"
+import ListTurn from "@/components/list/list-turn"
 
 export const revalidate = 10
 export const dynamic = 'force-dynamic'
 export const fetchCache = 'force-no-store'
-
 
 export async function generateMetadata({params}: any) {
 
@@ -59,17 +58,18 @@ export default async function Main({ params, searchParams }: ListProps) {
 
       <ScrollToTop />
 
-      <Sect>
-        <h2 className={`nook-apex uppercase font-sans text-lg md:text-2xl`}>
+      <Sect className={`nook-apex ${styling['main-apex']}`}>
+        <h2 className={`nook-apex-head uppercase text-lg md:text-2xl`}>
           <Span>{text['nooks']}</Span>
           <Span ariaHidden={true}> / </Span>
           <Span className={`text-sm md:text-lg`}>
             {params.slug ? decodeURI(params.slug) : ''}
           </Span> 
         </h2>
+        <p className={`nook-apex-tail text-sm md:text-lg mt-0`}>{text['nooks explained']}</p>
       </Sect>
 
-      <Sect className={`nook-list bg-zinc-100 dark:bg-zinc-800`}>
+      <Sect className={`nook-list`}>
         <OpusList opera={opera} showType={true} showKind={true} />
       </Sect>    
 

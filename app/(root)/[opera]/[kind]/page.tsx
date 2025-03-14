@@ -6,11 +6,11 @@ the opera (many articles) template that have a kind of [kind]
 */
 
 import { getBase, getOpera, getOperaCount } from "@/sanity/actions"
-import { Sect } from "@/components/base/html/main"
+import { styling } from "@/lib/app.config"
 
+import { Sect } from "@/components/base/html/main"
 import ScrollToTop from "@/components/base/util/ttop"
 import None from "@/components/base/util/none"
-
 import Apex from "@/components/base/html/main-apex"
 import OpusLine from "@/components/opus/opus-line"
 import ListTurn from "@/components/list/list-turn"
@@ -49,7 +49,7 @@ export default async function Main({ searchParams, params } : any) {
 
       <ScrollToTop />
 
-      <Sect id="kind-apex">
+      <Sect id="kind-apex" className={styling['main-apex']}>
         <Apex first={opera} second={kind} opus={false} />
       </Sect>
 
