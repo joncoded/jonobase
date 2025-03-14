@@ -7,6 +7,29 @@ text constants: handy for localization or internationalization
 
 export const timezone = "America/Toronto"
 
+export const styling = {
+
+
+
+}
+
+// tailwind colors (https://tailwindcss.com/docs/colors)
+export const colors = {
+
+  "link"
+  : "text-sky-600",
+
+  "darkLink"
+  : "text-lime-300",
+
+  "linkHover"
+  : "text-black",
+
+  "darkLinkHover"
+  : "text-white"
+
+}
+
 export const text = {  
 
   "close menu"
@@ -33,8 +56,14 @@ export const text = {
   "menu"
   : "Menu", 
 
+  "newer"
+  : "newer",
+
   "nooks"         
   : "nooks",
+
+  "older"
+  : "older",
 
   "page not found" 
   : "page not found",
@@ -96,10 +125,7 @@ export const text = {
   "wikis"
   : "wikis", 
 
-  "newer"
-  : "newer", 
-
-  "older"
-  : "older",
+  "zines"
+  : "zines", 
   
 }

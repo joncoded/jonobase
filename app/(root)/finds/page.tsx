@@ -5,13 +5,13 @@ jonobase by @jonchius
 the finds (search) page
 */
 
-import { getBase, getPosts } from "@/sanity/actions"
-import { FindProps } from "@/lib/types"
-import { Sect } from "@/components/main"
-import Find from "@/components/find"
-import PageTurn from "@/components/page-turn"
+import { getBase, getOpera, getOperaCount } from "@/sanity/actions"
+import { FindProps } from "@/sanity/myprops"
+import { Sect } from "@/components/base/html/main"
+import Find from "@/components/find/find"
+import ListTurn from "@/components/list/list-turn"
 import { text } from "@/lib/app.config"
-import ScrollToTop from "@/components/ttop"
+import ScrollToTop from "@/components/base/util/ttop"
 
 export const revalidate = 10
 export const dynamic = 'force-dynamic'
@@ -19,34 +19,32 @@ export const fetchCache = 'force-no-store'
 
 export async function generateMetadata({searchParams}: any) {
 
-  const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
+  const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
 
   return {
-    title: `${text['finds']} : ${searchParams.query ?? text['posts']} @ ${base?.title}`    
+    title: `${text['finds']} : ${searchParams.query ?? text['posts']} @ ${myBase?.title}`    
   }
 
 }
 
 export default async function Main({ searchParams }: FindProps) {
 
-  const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
+  const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
 
-  const { filters } = base || []  
-  const { showFilters } = base || false
-
-  const posts = await getPosts({
-    query: searchParams?.query || '', 
-    kind: searchParams?.kind || '', 
+  const opera = await getOpera({       
+    query: searchParams?.query || '',
+    type: searchParams?.type || '',      
+    kind: searchParams?.kind || '',     
+    nook: searchParams?.nook || '', 
     page: searchParams?.page || '1',
-    perPage: searchParams?.perPage || base.perPage || '6'
+    perPage: searchParams?.perPage || myBase.perPage || '6'
   })  
-
-  /* to get total post count */
-  const unpagedPosts = await getPosts({
+  
+  const totalOperaCount = await getOperaCount({    
+    type: searchParams?.type || '', 
     query: searchParams?.query || '', 
     kind: searchParams?.kind || '', 
-    page: '1',
-    perPage: '1000000'
+    nook: searchParams?.nook || ''
   })
 
   return (
@@ -56,16 +54,14 @@ export default async function Main({ searchParams }: FindProps) {
       <ScrollToTop />
 
       <Sect className={`dark:bg-gray-900`}>
-        <Find 
-          filters={filters} 
-          showFilters={showFilters} 
-          posts={posts} 
-          unpagedPosts={unpagedPosts} 
+        <Find                     
+          opera={opera} 
+          totalOperaCount={totalOperaCount} 
           urlParams={searchParams} 
         />
-        <PageTurn 
-          base={base} 
-          posts={unpagedPosts} 
+        <ListTurn 
+          myBase={myBase} 
+          totalOperaCount={totalOperaCount} 
           searchParams={searchParams} 
         />
       </Sect>          

@@ -2,17 +2,23 @@
 /*
 jonobase by @jonchius
 /sanity/actions.ts
-the query list
+a collection of various functions that gets content from the sanity studio
+(use with /sanity/fields.ts)
+
+- getBase, getHeap, getList
+- getOpera, getOperaRandomly, getOperaCount
+- getOpus, getOpusAdjacent
+
 */
 
 import { groq } from 'next-sanity'
 import { readClient } from './lib/client'
 import { buildQuery } from './utils'
-import { ListProps, PostGetterProps } from '@/lib/types'
-
-// add query fields into sanity/fields.ts
+import * as myprops from './myprops'
 import * as fields from './fields'
+import { findableSchemas } from './schemas'
 
+// get single "base" (i.e. website) data
 export const getBase = async (slug: string) => {
 
   try {
@@ -21,43 +27,24 @@ export const getBase = async (slug: string) => {
     )
 
     return base[0]
-  
+
   } catch (error) {
-  
+
     console.log("Base not found: ", error)
 
   }
 
 }
 
-export const getCategories = async (slug: string) => {
-
-  try {
-
-    const base = await readClient.fetch(
-      groq`*[_type == "base" && slug.current == '${slug}']{
-        filters
-      }`
-    )
-
-    return base[0].filters
-
-  } catch (error) {
-
-    console.log("Categories not found: ", error)
-
-  }
-
-}
-
+// get single "heap" (i.e. a custom page of "list"s, see below)
 export const getHeap = async (slug: string) => {
-  
+
   try {
 
     const heaps = await readClient.fetch(
-      groq`*[_type == "heap" && slug.current == '${slug}']{${fields.heap}}`
+      groq`*[_type == 'heap' && slug.current == '${slug}']{${fields.heap}}`
     )
-    
+
     return heaps[0]
 
   } catch (error) {
@@ -68,15 +55,16 @@ export const getHeap = async (slug: string) => {
 
 }
 
+// get single "list" (i.e. a horizontal section of a page)
 export const getList = async (slug: string) => {
 
   try {
 
     const lists = await readClient.fetch(
-      groq`*[_type == "list" && slug.current == '${slug}']{${fields.list}}`
+      groq`*[_type == 'list' && slug.current == '${slug}']{${fields.list}}`
     )
 
-    return lists[0] 
+    return lists[0]
 
   } catch (error) {
 
@@ -86,12 +74,13 @@ export const getList = async (slug: string) => {
 
 }
 
+// get mutiple "list"s
 export const getLists = async () => {
- 
+
   try {
 
     const lists = await readClient.fetch(
-      groq`*[_type == "list"]{${fields.lists}}`    
+      groq`*[_type == 'list']{${fields.lists}}`
     )
 
     return lists
@@ -104,84 +93,118 @@ export const getLists = async () => {
 
 }
 
-export const getPosts = async (searchParams: PostGetterProps) => {
-  
-  const { query, kind, page, perPage } = searchParams  
-  
+// get multiple "opera" (i.e. "opus"es) - either all items or filtered by a search term
+export const getOpera = async (searchParams: myprops.OpusGetterProps) => {
+
+  const { query = '', type = '', kind = '', page = '1', nook = '', perPage = '6'} = searchParams
+
   try {
 
-    const posts = await readClient.fetch(
-      groq`${buildQuery({
-        type: 'post',
+    const opera = await readClient.fetch(
+      groq`${buildQuery({type, query, kind,
+        nook: decodeURIComponent(nook),
+        page: parseInt(page),
+        perPage: parseInt(perPage)
+      })} {
+        ${fields.opus}
+      }`
+    )    
+
+    return opera
+
+  } catch (error) {
+
+    console.log("Post(s) not found: ", error)
+
+  }
+
+}
+
+// get X number of random opera (i.e. "opus"es)
+export const getOperaRandomly = async (searchParams: myprops.OpusGetterProps, count: number) => {
+
+  try {
+
+    // get all opera of the same criteria
+    const operaMeetingCriteria = await getOpera({      
+      query: searchParams?.query || '',
+      type: searchParams?.type || '',
+      kind: searchParams?.kind || '',
+      nook: searchParams.nook || ''
+    })
+
+    // get random indices as an array of numbers
+    let randomIndices = []    
+    while (randomIndices.length < count) {
+      const randomIndex = Math.floor(Math.random() * operaMeetingCriteria.length)
+      // no repeat indices pushed!
+      if (randomIndices.indexOf(randomIndex) === -1)
+        randomIndices.push(randomIndex)
+    }
+
+    // now we push the opera
+    let randomOpera = []
+    for (let r = 0; r < randomIndices.length; r++) {
+      randomOpera.push(operaMeetingCriteria[randomIndices[r]])
+    }
+    
+    return randomOpera
+    
+  } catch (error) {
+
+    console.log("Random post not found: ", error)
+
+  }
+
+}
+
+// get the total count of a query before the perPage kicks in
+export const getOperaCount = async (searchParams: myprops.OpusGetterProps) => {
+
+  const { query = '', type = '', kind = '', nook = '' } = searchParams
+
+  try {
+
+    const operaCount = await readClient.fetch(
+      groq`${buildQuery({    
+        isCount: true,     
+        type,
         query,
         kind,
-        page: parseInt(page),
-        perPage: parseInt(perPage ?? '1000000')
-      })} { 
-        ${(perPage === '1000000') ? '_id' : fields.post} 
-      }`    
-    )
+        nook: decodeURIComponent(nook)
+      })}`
+    )    
 
-    return posts
+    return operaCount
 
   } catch (error) {
 
-    console.log("Post(s) not found: ", error)
+    console.log("Post count not found: ", error)
 
   }
 
 }
 
-export const getPostsByKind = async ({params, searchParams}: ListProps) => {
-  
+// TODO : (legacy code cleanup) get multiple "opera" (i.e. "opus"es) by "nook" (tag) - to do after nook pages written
+export const getOperaByNook = async ({params, searchParams}: myprops.ListProps) => {
+
   const { slug } = params
-  const { page, perPage } = searchParams   
-  const kind = slug?.toString().toLowerCase() || ''
-  
-  try {
-
-    const posts = await readClient.fetch(
-      groq`${buildQuery({
-        type: 'post',
-        query: '',
-        kind,
-        nook: '', 
-        page: parseInt(page ?? '1'),
-        perPage: parseInt(perPage ?? '1000000')
-      })} | order(date desc) { 
-        ${perPage === '1000000' ? '_id' : fields.postCard} 
-      }`    
-    )
-    
-    return posts
-
-  } catch (error) {
-
-    console.log("Post(s) not found: ", error)
-
-  }
-
-}
-
-export const getPostsByNook = async ({params, searchParams}: ListProps) => {
-  
-  const { slug } = params  
   const { page, perPage } = searchParams
   const nook = slug?.toString().toLowerCase() || ''
-  
+
   try {
 
     const posts = await readClient.fetch(
       groq`${buildQuery({
-        type: 'post',
+        type: '',
         query: '',
         kind: '',
-        nook: decodeURIComponent(nook), 
+        nook: decodeURIComponent(nook),
         page: parseInt(page ?? '1'),
         perPage: parseInt(perPage ?? '1000000')
-      })} | order(date desc) { 
-        ${perPage === '1000000' ? '_id' : fields.postCard} 
-      }`    
+      })} | order(date desc) {
+        ${perPage === '1000000' ? '_id' : fields.opusCard}
+      }`
     )
 
     return posts
@@ -194,74 +217,49 @@ export const getPostsByNook = async ({params, searchParams}: ListProps) => {
 
 }
 
-export const getPost = async (slug: string) => {
+// get single "opus", given a type and a slug
+export const getOpus = async ({type = 'post', kind, slug} : { type: string, kind: string, slug: string }) => {
 
   try {
 
     const posts = await readClient.fetch(
-      groq`*[_type == "post" && slug.current == '${slug}']{${fields.post}}`
+      groq`*[_type == '${type}' && lower(kind) == '${kind.toLowerCase()}' && slug.current == '${slug}']{${fields.opus}}`
     )
 
-    return posts[0] 
+    return posts[0]
 
   } catch (error) {
 
-    console.log("Post not found: ", error)
+    console.log("Opus not found: ", error)
 
   }
 
 }
 
-export const getPostAdjacent = async (date: string, mode: 'older' | 'newer') => {
+// get single "opus", that is either older or newer than the date of a "current post" of a type (or none at all)
+export const getOpusAdjacent = async (type: string, date: string, mode: 'older' | 'newer', kind?: string, nook?: string) => {
 
   try {
 
     const operation = (mode === 'older' ? '<' : '>')
+    
+    const adjacentQuery = `*[
+      ${type && `_type == '${type}' &&`}
+      _type in ${findableSchemas} && 
+      ${kind ? `lower(kind) == '${kind.toLowerCase()}' &&` : ``}
+      ${nook ? `lower('${nook}') in nooks &&` : ``}     
+      date ${operation} '${date}'
+    ] | order(date desc){${fields.opusLite}}`
+
     const posts = await readClient.fetch(
-      groq`*[_type == "post" && date ${operation} '${date}'] | order(date desc){${fields.postLite}}`
-    )    
+      groq`${adjacentQuery}`
+    )
 
     return posts[0] || undefined
 
   } catch (error) {
 
     console.log("Adjacent post not found: ", error)
-
-  }
-
-}
-
-export const getSide = async (slug: string) => {
-
-  try {
-
-    const sides = await readClient.fetch(
-      groq`*[_type == "side" && slug.current == '${slug}']{${fields.side}}`
-    )      
-
-    return sides[0] 
-
-  } catch (error) {
-
-    console.log("Side not found: ", error)
-
-  }
-
-}
-
-export const getWiki = async (slug: string) => {
-
-  try {
-
-    const wikis = await readClient.fetch(
-      groq`*[_type == "wiki" && slug.current == '${slug}']{${fields.wiki}}`
-    )
-
-    return wikis[0] 
-
-  } catch (error) {
-
-    console.log("Wiki note found: " , error)
 
   }
 

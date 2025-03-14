@@ -16,17 +16,7 @@ const nextConfig = {
         source: '/nooks',
         destination: '/',
         permanent: true
-      },
-      {
-        source: '/posts',
-        destination: '/',
-        permanent: true
-      },
-      {
-        source: '/wikis',
-        destination: '/',
-        permanent: true
-      }      
+      }
     ]
   },
   images: {

@@ -5,14 +5,14 @@ jonobase by @jonchius
 the root homepage
 */
 
-import { getBase, getList, getPosts, getPostsByNook } from "@/sanity/actions"
+import { getBase, getList, getOpera, getOperaByNook } from "@/sanity/actions"
 import { PortableText } from '@portabletext/react'
-import { FindProps } from "@/lib/types"
-import { Sect } from "@/components/main"
-import PostList from '@/components/post-list'
+import { FindProps } from "@/sanity/myprops"
+import { Sect } from "@/components/base/html/main"
+import OpusList from '@/components/opus/opus-list'
 import Link from "next/link"
 import { text } from "@/lib/app.config"
-import ScrollToTop from "@/components/ttop"
+import ScrollToTop from "@/components/base/util/ttop"
 
 export const revalidate = 60
 export const dynamic = 'force-dynamic'
@@ -20,23 +20,23 @@ export const fetchCache = 'force-no-store'
 
 export async function generateMetadata() {
 
-  const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)   
+  const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)   
     
   return {
-    title: base.title,
-    description: base.tagline,
-    keywords: base.metakeywords  
+    title: myBase.title,
+    description: myBase.tagline,
+    keywords: myBase.metakeywords  
   }
 }
 
 export default async function Home({ searchParams }: FindProps) {
 
-  const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
-  const { intro } = base || ''  
-  const { filters } = base || []
+  const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
+  const { intro } = myBase || ''  
+  const { filters } = myBase || []
 
   /* get featured posts */
-  const { featured : featuredList } = base || ''
+  const { featured : featuredList } = myBase || ''
   
   let featuredData = []
   if (featuredList !== null) {
@@ -45,22 +45,17 @@ export default async function Home({ searchParams }: FindProps) {
   const featuredPosts = featuredData.posts || undefined
 
   /* get latest posts */
-  const posts = await getPosts({
-    query: searchParams?.query || '', 
-    kind: searchParams?.kind || '', 
-    page: searchParams?.page || '1', 
-    perPage: base.perPage 
-  })  
+  const posts = await getOpera({ type: 'post'})  
 
   /* get specialized posts */
   let homeContent: any[] = []
 
   const contentPromises = filters?.map(async (filter: any) => {
-    const sectionContent = await getPostsByNook({
+    const sectionContent = await getOperaByNook({
       params: {
         slug: filter,
         page: '1',
-        perPage: base.perPage
+        perPage: myBase.perPage
       },
       searchParams: {}
     })
@@ -96,21 +91,21 @@ export default async function Home({ searchParams }: FindProps) {
       { featuredPosts && 
         <Sect className={`home-featured bg-amber-300 dark:bg-black py-5`}>
           <h2 className={`mb-10 font-sans font-bold uppercase text-4xl md:text-5xl text-center`}>
-          {base.featuredPostsTitle}
+          {myBase.featuredPostsTitle}
           </h2>
-          <PostList posts={featuredPosts} /> 
+          <OpusList opera={featuredPosts} /> 
         </Sect> 
       }
 
       {/* the latest content from the "post" content model */}
       { posts && 
         <Sect className={`home-post py-10`}>
-          {base.latestPostsTitle && 
+          {myBase.latestPostsTitle && 
             <h2 className={`mb-10 font-sans font-bold uppercase text-4xl md:text-5xl text-center`}>
-              {base.latestPostsTitle} 
+              {myBase.latestPostsTitle} 
             </h2>
           }          
-          <PostList posts={posts} />
+          <OpusList opera={posts} showKind={true} />
           <div className={`mt-10 text-center`}>
             <Link href={`/finds`} className="button font-sans">{text['see more posts']}</Link>
           </div>
@@ -125,7 +120,7 @@ export default async function Home({ searchParams }: FindProps) {
             <h2 id={`home-sect-${index}`} className={`mb-10 font-sans font-bold uppercase text-4xl md:text-5xl text-center`}>
               <span aria-hidden="true">[</span> {section} <span aria-hidden="true">]</span>
             </h2>
-            <PostList posts={homeContent[index]} />            
+            <OpusList opera={homeContent[index]} />            
           </Sect>)    
         })
 

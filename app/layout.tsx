@@ -1,9 +1,9 @@
 import './globals.css'
-import Head from "@/components/head"
-import Tail from "@/components/tail"
-import Skip from "@/components/skip"
-import { ThemeProvider } from '@/components/lite-dark'
-import OverHead from "@/components/over-head"
+import Head from '@/components/base/html/head'
+import Tail from "@/components/base/html/tail"
+import Skip from "@/components/base/util/skip"
+import { ThemeProvider } from '@/components/base/util/lite-dark'
+import OverHead from "@/components/base/html/over-head"
 
 export default function RootLayout({
   children,
@@ -14,7 +14,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning={true}>
       <OverHead />
       <body 
-        className="flex flex-col min-h-screen font-serif">                          
+        className="flex flex-col min-h-screen font-sans">                          
         <ThemeProvider attribute={`class`} defaultTheme={`light`} enableSystem>          
           <Skip />          
           <Head />

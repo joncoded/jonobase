@@ -6,12 +6,12 @@ jonobase by @jonchius
 the heaps (stacked custom sections) page
 */
 
-import PostList from "@/components/post-list"
+import OpusList from "@/components/opus/opus-list"
 import { getBase, getHeap, getList } from "@/sanity/actions"
-import { HeapProps } from "@/lib/types"
-import { Sect, Span } from "@/components/main"
+import { HeapProps } from "@/sanity/myprops"
+import { Sect, Span } from "@/components/base/html/main"
 import { PortableText } from "@portabletext/react"
-import ScrollToTop from "@/components/ttop"
+import ScrollToTop from "@/components/base/util/ttop"
 
 export const revalidate = 10
 export const dynamic = 'force-dynamic'
@@ -20,23 +20,23 @@ export const fetchCache = 'force-no-store'
 export async function generateMetadata({params}: any) {
 
   const { slug } = params  
-  const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!) || {}  
-  const heap = await getHeap(slug) || {}  
+  const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!) || {}  
+  const myHeap = await getHeap(slug) || {}  
   
-  if (heap) {
+  if (myHeap) {
     return {
-      title: `${decodeURIComponent(heap?.title)} @ ${base?.title}`
+      title: `${decodeURIComponent(myHeap?.title)} @ ${myBase?.title}`
     }
   }
 
 }
 
-export default async function Main({ params }: HeapProps) {
+export default async function Heap({ params }: HeapProps) {
 
-  const heap = await getHeap(params.slug)
+  const myHeap = await getHeap(params.slug)
 
   const getHeapLists = async () => {
-    const promises = heap.lists.map(async (list: any) => {        
+    const promises = myHeap.lists.map(async (list: any) => {        
       const listObject = await getList(list.slug)          
       return listObject
     })
@@ -51,7 +51,7 @@ export default async function Main({ params }: HeapProps) {
   const HeapApex = () => {
     return (
       <h2 className={`heap-apex uppercase font-sans text-lg md:text-2xl`}>        
-        <Span>{heap.title}</Span>
+        <Span>{myHeap.title}</Span>
       </h2>
     )
   }
@@ -83,7 +83,7 @@ export default async function Main({ params }: HeapProps) {
               <h3 className={`heap-list-title uppercase text-center md:text-left text-3xl md:text-4xl font-sans font-bold`}>{heapList.title}</h3>
               <p className={`heap-list-sub text-lg md:text-xl text-center md:text-left font-sans`}>{heapList.subtitle}</p>
               <div className={`mb-5`}><PortableText value={heapList.precontent} /></div>
-              <PostList posts={heapList.posts} />
+              <OpusList opera={heapList.posts} />
               <div className={`mt-5`}><PortableText value={heapList.postcontent} /></div>
             </Sect>
           )

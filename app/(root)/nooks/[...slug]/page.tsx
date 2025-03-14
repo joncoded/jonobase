@@ -6,13 +6,13 @@ the nooks (lists of "posts from nook (tag) X") page
 (replacement for nooks)
 */
 
-import PostList from "@/components/post-list"
-import { getBase, getPostsByNook } from "@/sanity/actions"
-import { ListProps } from "@/lib/types"
-import { Sect, Span } from "@/components/main"
+import OpusList from "@/components/opus/opus-list"
+import { getBase, getOpera, getOperaCount } from "@/sanity/actions"
+import { ListProps } from "@/sanity/myprops"
+import { Sect, Span } from "@/components/base/html/main"
 import { text } from "@/lib/app.config"
-import PageTurn from "@/components/page-turn"
-import ScrollToTop from "@/components/ttop"
+import ListTurn from "@/components/list/list-turn"
+import ScrollToTop from "@/components/base/util/ttop"
 
 export const revalidate = 10
 export const dynamic = 'force-dynamic'
@@ -22,33 +22,35 @@ export const fetchCache = 'force-no-store'
 export async function generateMetadata({params}: any) {
 
   const { slug } = params  
-  const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!) || {}  
+  const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!) || {}  
   
   return {
-    title: `${decodeURIComponent(slug)} @ ${base?.title}`,
-    description: `${decodeURIComponent(slug)} on ${base?.title}`    
+    title: `${decodeURIComponent(slug)} @ ${myBase?.title}`,
+    description: `${decodeURIComponent(slug)} on ${myBase?.title}`    
   }
   
 }
 
 export default async function Main({ params, searchParams }: ListProps) {
 
-  const base = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
+  const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!) || {}
 
-  const posts = await getPostsByNook({
-    params, 
-    searchParams: { 
-      ...searchParams, 
-      perPage: searchParams?.perPage || base.perPage || '6'
-    }
+  const { slug } = params
+  const { page, perPage } = searchParams
+
+  const opera = await getOpera({
+    type: '',
+    nook: slug,
+    page,
+    perPage   
   })  
 
   /* to get total post count */
-  const unpagedPosts = await getPostsByNook({ 
-    params, 
-    searchParams: {
-      ...searchParams, page: '1', perPage: '1000000'
-    }
+  const totalOperaCount = await getOperaCount({ 
+    type: '',
+    nook: slug,
+    page,
+    perPage   
   })
 
   return (
@@ -68,10 +70,10 @@ export default async function Main({ params, searchParams }: ListProps) {
       </Sect>
 
       <Sect className={`nook-list bg-zinc-100 dark:bg-zinc-800`}>
-        <PostList posts={posts} />
+        <OpusList opera={opera} showType={true} showKind={true} />
       </Sect>    
 
-      <PageTurn base={base} posts={unpagedPosts} searchParams={searchParams} />     
+      <ListTurn myBase={myBase} totalOperaCount={totalOperaCount} searchParams={searchParams} />     
     
     </main>
 

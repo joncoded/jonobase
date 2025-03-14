@@ -2,53 +2,42 @@
 /*
 jonobase by @jonchius
 /sanity/fields.ts
-fields for the queries 
-(use with /sanity/actions.ts)
+field enumerations for the queries
+(used only with /sanity/actions.ts)
+
+- opus, opusCard, opusLite
+- list, lists, heap, base
+
 */
 
-export const base = `
-  _id,
-  title,
-  slug, 
-  intro,
-  "logo": logo.asset->url,
-  featuredPostsTitle, 
-  "featured" : featured->slug.current,         
-  latestPostsTitle,
-  tagline,
-  perPage,        
-  menu,
-  filters,
-  metakeywords, 
-  colophon1,
-  colophon2
-`
+/* 
+opera 
+(plural of "opus", 
+i.e. content entries such as posts, sides, wikis, etc.)
+*/
 
-export const heap = `
+// for single pages of posts/sides/wikis/zines/etc.
+export const opus = `
   _id,
-  title,
-  slug,
-  lists[0...30]->{          
-    "slug" : slug.current
-  }
-`
-export const post = `
-  _id,
+  _type,
   "slug": slug.current,
   "image": image.asset->url,
   title,
   emoji,
   subtitle,
-  kind,
+  kind,  
+  link,  
+  date,
+  showDate,
   content,
-  link,
-  nooks,        
-  date, 
-  showDate
+  extra,
+  nooks
 `
 
-export const postCard = `
+// entry data when listing links to single pages
+export const opusCard = `
   _id,
+  _type,
   "slug": slug.current,
   "image": image.asset->url,
   title,
@@ -56,62 +45,34 @@ export const postCard = `
   subtitle,
   kind,
   link,
-  nooks,        
   date,
   showDate
 `
-export const postLite = `
-  _id,
-  "slug": slug.current,
-  title,
-  date
-`
 
-export const side = `
+// entry data (the concise version) 
+export const opusLite = `
   _id,
+  _type,
   "slug": slug.current,
-  "image": image.asset->url,
   title,
-  emoji,
-  subtitle,
-  content,      
-  date, 
+  emoji, 
+  kind, 
+  subtitle, 
+  date,
   showDate
 `
 
-export const wiki = `
-  _id,
-  "slug": slug.current,
-  "image": image.asset->url,
-  title,
-  emoji,
-  subtitle,
-  content,
-  extra,
-  nooks,   
-  date, 
-  showDate
-`
+// lists of opera
 
 export const list = `
   _id,
   title,
   slug,
   subtitle,
-  bgColor, 
-  precontent,        
+  bgColor,
+  precontent,
   posts[]->{
-    _id,
-    "slug": slug.current,
-    "image": image.asset->url,
-    title,
-    emoji,
-    subtitle,
-    kind,
-    link,
-    nooks,        
-    date,
-    showDate
+    ${opus}
   },
   postcontent,
   cta->{
@@ -124,10 +85,42 @@ export const lists = `
   _id,
   title,
   posts[0...30]->{
-    title,
     _id,
-    link,
+    title,
     "image" : image.asset->url,
-    kind
-  }       
+    _type,
+    kind,
+    link
+  }
+`
+
+// lists of lists
+
+export const heap = `
+  _id,
+  title,
+  slug,
+  lists[0...30]->{
+    "slug" : slug.current
+  }
+`
+
+// the system (TODO: fields need a bit of cleaning up)
+
+export const base = `
+  _id,
+  title,
+  slug,
+  intro,
+  "logo": logo.asset->url,  
+  featuredPostsTitle,
+  "featured" : featured->slug.current,
+  latestPostsTitle,
+  tagline,
+  perPage,
+  menu,
+  filters,
+  metakeywords,
+  colophon1,
+  colophon2
 `
