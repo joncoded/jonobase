@@ -2,7 +2,8 @@
 /*
 jonobase by @jonchius
 /app/lib/app.config.tsx
-text constants: handy for localization or internationalization
+developer configuration 
+stretch goal: try to make this updatable via backend?
 */
 
 export const timezone = "America/Toronto"
@@ -81,7 +82,7 @@ export const text = {
   : "nooks",
 
   "nooks explained"
-  : "'nooks' are the 'topic tags' of my website, which include content from all entry types",
+  : "think of 'nooks' as 'topic tags'",
 
   "older"
   : "older",
