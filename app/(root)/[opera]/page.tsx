@@ -13,7 +13,7 @@ import ScrollToTop from "@/components/base/util/ttop"
 import None from "@/components/base/util/none"
 import Apex from "@/components/base/html/main-apex"
 import OpusLine from "@/components/opus/opus-line"
-import ListTurn from "@/components/list/list-turn"
+import Paginate from "@/components/base/util/pagi"
 
 export const revalidate = 10
 export const dynamic = 'force-dynamic'
@@ -69,7 +69,7 @@ export default async function Main({ params, searchParams } : any) {
         )}    
       </Sect>
 
-      <ListTurn myBase={myBase} totalOperaCount={myOperaCount} searchParams={searchParams} />
+      <Paginate myBase={myBase} totalOperaCount={myOperaCount} searchParams={searchParams} />
       
     </main>
 

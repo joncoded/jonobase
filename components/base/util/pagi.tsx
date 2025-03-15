@@ -1,16 +1,16 @@
 
 /*
 jonobase by @jonchius
-/app/components/list/list-turn.tsx
+/app/components/base/util/pagi.tsx
 pagination (page turner) for lists
 */
 
 import Link from "next/link"
-import { Sect } from "../base/html/main"
+import { Sect } from "../html/main"
 import { UtilListTurnProps } from "@/sanity/myprops"
 import { text } from "@/lib/app.config"
 
-export default async function ListTurn({myBase, totalOperaCount, searchParams} : UtilListTurnProps) {
+export default async function Paginate({myBase, totalOperaCount, searchParams} : UtilListTurnProps) {
 
   // for finds pages
   const query = searchParams?.query || ''

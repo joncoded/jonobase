@@ -12,7 +12,7 @@ import { text, styling } from "@/lib/app.config"
 import { Sect, Span } from "@/components/base/html/main"
 import ScrollToTop from "@/components/base/util/ttop"
 import OpusList from "@/components/opus/opus-list"
-import ListTurn from "@/components/list/list-turn"
+import Paginate from "@/components/base/util/pagi"
 
 export const revalidate = 10
 export const dynamic = 'force-dynamic'
@@ -72,7 +72,7 @@ export default async function Main({ params, searchParams }: NookProps) {
         <OpusList opera={opera} showType={true} showKind={true} />
       </Sect>    
 
-      <ListTurn myBase={myBase} totalOperaCount={totalOperaCount} searchParams={searchParams} />     
+      <Paginate myBase={myBase} totalOperaCount={totalOperaCount} searchParams={searchParams} />     
     
     </main>
 

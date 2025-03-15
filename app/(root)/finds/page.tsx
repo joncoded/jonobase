@@ -11,7 +11,7 @@ import { text } from "@/lib/app.config"
 import { Sect } from "@/components/base/html/main"
 import ScrollToTop from "@/components/base/util/ttop"
 import Find from "@/components/find/find"
-import ListTurn from "@/components/list/list-turn"
+import Paginate from "@/components/base/util/pagi"
 
 export const revalidate = 10
 export const dynamic = 'force-dynamic'
@@ -59,7 +59,7 @@ export default async function Main({ searchParams }: FindProps) {
           totalOperaCount={totalOperaCount} 
           urlParams={searchParams} 
         />
-        <ListTurn 
+        <Paginate 
           myBase={myBase} 
           totalOperaCount={totalOperaCount} 
           searchParams={searchParams} 
