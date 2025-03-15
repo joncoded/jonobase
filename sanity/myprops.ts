@@ -101,6 +101,8 @@ export interface OpusGetterProps {
   nook?: string;
   perPage?: string;
   random?: boolean;
+  order?: 'title' | 'date';
+  ascDesc?: 'asc' | 'desc';
 }
 
 // post links

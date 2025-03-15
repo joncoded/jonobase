@@ -96,7 +96,7 @@ export const getLists = async () => {
 // get multiple "opera" (i.e. "opus"es) - either all items or filtered by a search term
 export const getOpera = async (criteria: myprops.OpusGetterProps) => {
 
-  const { query = '', type = '', kind = '', page = '1', nook = '', perPage = '6'} = criteria
+  const { query = '', type = '', kind = '', page = '1', nook = '', perPage = '6', order = 'date', ascDesc = 'desc'} = criteria
 
   try {
 
@@ -104,7 +104,9 @@ export const getOpera = async (criteria: myprops.OpusGetterProps) => {
       groq`${buildQuery({type, query, kind,
         nook: decodeURIComponent(nook),
         page: parseInt(page),
-        perPage: parseInt(perPage)
+        perPage: parseInt(perPage),
+        order,
+        ascDesc
       })} {
         ${fields.opus}
       }`
