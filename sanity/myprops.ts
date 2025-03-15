@@ -21,7 +21,7 @@ export interface FindHeadProps {
 }
 
 export interface FindPageParams {
-  opera: ListOpusProps[];
+  opera: OpusListProps[];
   totalOperaCount: number;
   urlParams: {
     [key: string] : string | undefined;
@@ -36,9 +36,9 @@ export interface HeapProps {
   }
 }
 
-// lists
+// nooks
 
-export interface ListProps {
+export interface NookProps {
   params: {
     [key: string] : string | undefined;
   };
@@ -47,9 +47,9 @@ export interface ListProps {
   };
 }
 
-// opera
+// opera (plural of opus)
 
-export interface ListOpusProps {
+export interface OpusListProps {
 
   opus: OpusProps;
   showType?: boolean;
@@ -105,9 +105,7 @@ export interface OpusGetterProps {
   ascDesc?: 'asc' | 'desc';
 }
 
-// post links
-
-export interface LinkProps {
+export interface OpusLinkProps {
   mark: any;
   children: any;
 }

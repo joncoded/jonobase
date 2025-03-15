@@ -7,13 +7,13 @@ the "line" ui for each item (post/side/wiki) in lists, e.g. in home, finds, kind
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { UtilDOMChildrenProps, ListOpusProps } from '@/sanity/myprops'
+import { UtilDOMChildrenProps, OpusListProps } from '@/sanity/myprops'
 import { text } from '@/lib/app.config'
 import { timezone, colors, styling } from '@/lib/app.config'
 
 const linkColors = `${colors.link} dark:${colors.darkLink} hover:${colors.linkHover} dark:hover:${colors.darkLinkHover} hover:underline`
 
-const OpusLine = ({opus : { _type, kind, slug, image, emoji, title, subtitle, link, date, showDate}, showType = false, showKind = false}: ListOpusProps) => {
+const OpusLine = ({opus : { _type, kind, slug, image, emoji, title, subtitle, link, date, showDate}, showType = false, showKind = false}: OpusListProps) => {
 
   const Card = ({children} : UtilDOMChildrenProps) => {
     return (

@@ -1,7 +1,7 @@
 
 /*
 jonobase by @jonchius
-/app/components/utils.ts
+/sanity/utils.ts
 query building helper methods
 */
 

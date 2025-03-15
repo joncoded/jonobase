@@ -7,7 +7,7 @@ the nooks (lists of "posts from nook (tag) X") page
 */
 
 import { getBase, getOpera, getOperaCount } from "@/sanity/actions"
-import { ListProps } from "@/sanity/myprops"
+import { NookProps } from "@/sanity/myprops"
 import { text, styling } from "@/lib/app.config"
 import { Sect, Span } from "@/components/base/html/main"
 import ScrollToTop from "@/components/base/util/ttop"
@@ -30,7 +30,7 @@ export async function generateMetadata({params}: any) {
   
 }
 
-export default async function Main({ params, searchParams }: ListProps) {
+export default async function Main({ params, searchParams }: NookProps) {
 
   const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!) || {}
 
@@ -44,7 +44,6 @@ export default async function Main({ params, searchParams }: ListProps) {
     perPage   
   })  
 
-  /* to get total post count */
   const totalOperaCount = await getOperaCount({ 
     type: '',
     nook: slug,
