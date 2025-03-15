@@ -6,12 +6,7 @@ const nextConfig = {
         source: '/heaps',
         destination: '/',
         permanent: true
-      },
-      {
-        source: '/kinds',
-        destination: '/',
-        permanent: true
-      },    
+      },   
       {
         source: '/nooks',
         destination: '/',
