@@ -106,7 +106,7 @@ export default async function Main({ params } : any) {
       </Sect>}
 
       {(olderInType || newerInType) && <Sect id="opus-turn-type" className={`opus-turn border-1 p-5 bg-gray-100 dark:bg-gray-900 text-md md:text-lg font-sans`}>
-        <OpusTurn newer={newerInType ?? null} turnTitle={`in ${_type}`} older={olderInType ?? null} />
+        <OpusTurn newer={newerInType ?? null} turnTitle={`in ${_type}s`} older={olderInType ?? null} />
       </Sect>}
 
     </main>

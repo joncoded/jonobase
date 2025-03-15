@@ -12,20 +12,26 @@ import { OpusAdjacentProps } from "@/sanity/myprops"
 
 export default function OpusTurn( { newer, turnTitle, older } : { newer?: OpusAdjacentProps, turnTitle: string, older?: OpusAdjacentProps } ) {
 
-  const linkColors = `${colors.link} dark:${colors.darkLink} hover:${colors.linkHover} dark:hover:${colors.darkLinkHover} hover:underline`  
+  const linkColors = `${colors.link} dark:${colors.darkLink} hover:${colors.linkHover} dark:hover:${colors.darkLinkHover} hover:underline`
 
   return (
     <div className={`flex flex-col md:flex-row ${newer ? `justify-between` : `justify-end`} gap-5`}>
       { newer &&
         <div className={`flex-1 text-center md:text-left`}>
-          {text['newer']} ({turnTitle}) <br />
-          <Link className={linkColors} href={`/${newer._type}s/${newer.kind}/${newer.slug}`}>{newer.title}</Link>
+          <strong>⬅️ {text['newer']}</strong> ({turnTitle}) <br />
+          <span className={`hover:no-underline`}>{newer.emoji} </span>
+          <Link className={linkColors} href={`/${newer._type}s/${newer.kind}/${newer.slug}`}>
+            {newer.title}
+          </Link>
         </div>
       }
       { older &&
         <div className={`flex-1 text-center md:text-right`}>
-          {text['older']} ({turnTitle}) <br />
-          <Link className={linkColors} href={`/${older._type}s/${older.kind}/${older.slug}`}>{older.title}</Link>
+          <strong>{text['older']}</strong> ({turnTitle}) ➡️<br />
+          <Link className={linkColors} href={`/${older._type}s/${older.kind}/${older.slug}`}>
+            {older.title}
+          </Link>
+          <span className={`hover:no-underline`}> {older.emoji}</span>
         </div>
       }
     </div>
