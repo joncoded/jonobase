@@ -2,10 +2,10 @@
 /*
 jonobase by @jonchius
 /sanity/actions.ts
-a collection of various functions that gets content from the sanity studio
+a collection of various functions that gets content from the sanity back-end
 (use with /sanity/fields.ts)
 
-- getBase, getHeap, getList
+- getBase, getHeap, getList, getLists
 - getOpera, getOperaRandomly, getOperaCount
 - getOpus, getOpusAdjacent
 
