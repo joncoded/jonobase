@@ -7,7 +7,7 @@ pagination (page turner) for lists
 
 import Link from "next/link"
 import { Sect } from "../html/main"
-import { UtilListTurnProps } from "@/sanity/myprops"
+import { UtilPaginationProps } from "@/sanity/myprops"
 import { text } from "@/lib/app.config"
 
 export default async function Paginate({myBase, totalPostsCount, searchParams} : UtilPaginationProps) {
