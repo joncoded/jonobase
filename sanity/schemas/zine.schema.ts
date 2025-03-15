@@ -6,7 +6,7 @@ const schema = {
     {
       name: 'title',
       title: 'Title',
-      description: 'the zine page\'s name',
+      description: 'this page\'s name',
       type: 'string',
       require: true,
       validation: (Rule: any) => Rule.required()
@@ -33,7 +33,7 @@ const schema = {
     {
       name: 'kind',
       title: 'Kind',
-      description: 'the one-word category that also serves as the subfolder in the URL (i.e. /zines/[kind])',
+      description: 'the one-word category that also serves as the subfolder in the URL (i.e. /[type]/[kind])',
       type: 'string',
       validation: (Rule: any) => Rule.required(),
     },

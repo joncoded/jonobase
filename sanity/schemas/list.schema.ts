@@ -7,23 +7,26 @@ const schema = {
       name: 'title', 
       title: 'Title',
       type: 'string', 
+      description: 'the heading',
       validation: (Rule: any) => Rule.required()
     },
     {
       name: 'slug', 
       title: 'Slug', 
       type: 'slug', 
+      description: 'a machine-friendly version of the title (characters allowed: a-z, 0-9, - [dashes, no spaces])',
       options: { source: 'title' }
     },
     {
       name: 'subtitle', 
       title: 'Subtitle',
+      description: 'content before the precontent', 
       type: 'string'      
     },
     {
       name: 'bgColor',
       title: 'Background',
-      description: 'Background colour for the whole section',
+      description: 'background colour for the whole section',
       type: 'string',
       options: {
         list: ['white', 'gray', 'red', 'orange', 'yellow', 'amber', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchsia', 'pink', 'rose']
@@ -46,7 +49,7 @@ const schema = {
               type: 'text',
               name: 'alt',
               title: 'Alternative text',
-              description: `Screen reader text for low-sighted users`             
+              description: `screen reader text for low-sighted users`             
             }
           ]
         },
@@ -80,7 +83,7 @@ const schema = {
               type: 'text',
               name: 'alt',
               title: 'Alternative text',
-              description: `Screen reader text for low-sighted users`,
+              description: `screen reader text for low-sighted users`,
               options: {                
               }
             }

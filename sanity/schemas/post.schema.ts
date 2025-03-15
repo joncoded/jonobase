@@ -33,7 +33,7 @@ const schema = {
     {
       name: 'kind',
       title: 'Kind',
-      description: 'the one-word category that also serves as the subfolder in the URL (i.e. /posts/[kind])',
+      description: 'the one-word category that also serves as the subfolder in the URL (i.e. /[type]/[kind])',
       type: 'string',
       validation: (Rule: any) => Rule.required(),
     },
