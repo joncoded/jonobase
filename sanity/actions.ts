@@ -16,7 +16,7 @@ import { readClient } from './lib/client'
 import { buildQuery } from './utils'
 import * as myprops from './myprops'
 import * as fields from './fields'
-import { findableSchemas } from './schemas'
+import { findableTypes } from './schemas'
 
 // get single "base" (i.e. website) data
 export const getBase = async (slug: string) => {
@@ -94,13 +94,13 @@ export const getLists = async () => {
 }
 
 // get multiple "opera" (i.e. "opus"es) - either all items or filtered by a search term
-export const getOpera = async (searchParams: myprops.OpusGetterProps) => {
+export const getOpera = async (criteria: myprops.OpusGetterProps) => {
 
-  const { query = '', type = '', kind = '', page = '1', nook = '', perPage = '6'} = searchParams
+  const { query = '', type = '', kind = '', page = '1', nook = '', perPage = '6'} = criteria
 
   try {
 
-    const opera = await readClient.fetch(
+    const operaMeetingCriteria = await readClient.fetch(
       groq`${buildQuery({type, query, kind,
         nook: decodeURIComponent(nook),
         page: parseInt(page),
@@ -110,7 +110,7 @@ export const getOpera = async (searchParams: myprops.OpusGetterProps) => {
       }`
     )    
 
-    return opera
+    return operaMeetingCriteria
 
   } catch (error) {
 
@@ -121,16 +121,16 @@ export const getOpera = async (searchParams: myprops.OpusGetterProps) => {
 }
 
 // get X number of random opera (i.e. "opus"es)
-export const getOperaRandomly = async (searchParams: myprops.OpusGetterProps, count: number) => {
+export const getOperaRandomly = async (criteria: myprops.OpusGetterProps, count: number) => {
 
   try {
 
     // get all opera of the same criteria
     const operaMeetingCriteria = await getOpera({      
-      query: searchParams?.query || '',
-      type: searchParams?.type || '',
-      kind: searchParams?.kind || '',
-      nook: searchParams.nook || ''
+      query: criteria?.query || '',
+      type: criteria?.type || '',
+      kind: criteria?.kind || '',
+      nook: criteria.nook || ''
     })
 
     // get random indices as an array of numbers
@@ -159,9 +159,9 @@ export const getOperaRandomly = async (searchParams: myprops.OpusGetterProps, co
 }
 
 // get the total count of a query before the perPage kicks in
-export const getOperaCount = async (searchParams: myprops.OpusGetterProps) => {
+export const getOperaCount = async (criteria: myprops.OpusGetterProps) => {
 
-  const { query = '', type = '', kind = '', nook = '' } = searchParams
+  const { query = '', type = '', kind = '', nook = '' } = criteria
 
   try {
 
@@ -213,7 +213,7 @@ export const getOpusAdjacent = async (type: string, date: string, mode: 'older' 
     
     const adjacentQuery = `*[
       ${type && `_type == '${type}' &&`}
-      _type in ${findableSchemas} && 
+      _type in ${findableTypes} && 
       ${kind ? `lower(kind) == '${kind.toLowerCase()}' &&` : ``}
       ${nook ? `lower('${nook}') in nooks &&` : ``}     
       date ${operation} '${date}'

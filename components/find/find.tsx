@@ -10,7 +10,7 @@ import { useEffect, useState } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { formUrlQuery } from "@/sanity/utils"
 import { FindPageParams } from "@/sanity/myprops"
-import { findableSchemas } from "@/sanity/schemas"
+import { findableTypes } from "@/sanity/schemas"
 import { text, styling } from "@/lib/app.config"
 import { Span } from "../base/html/main"
 import FindHead from "./find-head"
@@ -18,7 +18,7 @@ import OpusLine from "../opus/opus-line"
 
 export default function Find({ opera, totalOperaCount, urlParams }: FindPageParams) {
 
-  const schemas = JSON.parse(findableSchemas)
+  const schemas = JSON.parse(findableTypes)
   const searchParams = useSearchParams()
   const router = useRouter()
   const [query, setQuery] = useState(urlParams.query || "")

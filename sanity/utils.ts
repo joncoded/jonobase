@@ -8,7 +8,7 @@ query building helper methods
 
 import qs from 'query-string'
 import { UtilQueryBuildingProps, UtilQueryURLProps } from '@/sanity/myprops'
-import { findableSchemas } from './schemas'
+import { findableTypes } from './schemas'
 
 // used to build long queries with many components, some of which may or may not appear
 export function buildQuery(params: UtilQueryBuildingProps) {
@@ -38,9 +38,9 @@ export function buildQuery(params: UtilQueryBuildingProps) {
 
   // by type
   if (type) {
-    conditions.push(`_type match '${type}' && _type in ${findableSchemas}`)
+    conditions.push(`_type match '${type}' && _type in ${findableTypes}`)
   } else {
-    conditions.push(`_type in ${findableSchemas}`)
+    conditions.push(`_type in ${findableTypes}`)
   }
 
   // by query (keyword)
