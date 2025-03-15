@@ -27,16 +27,44 @@ export interface FindPageParams {
   };
 }
 
-// heaps
-
+// get a heap, i.e. a list of lists
 export interface HeapProps {
   params: {
     slug: string;
   }
 }
 
-// nooks
+// get a list, i.e. data for a horizontal section
+export interface ListProps {
+  _id: string;
+  title: string;
+  showTitle: boolean;
+  slug: string;  
+  subtitle: string;
+  showSubtitle: boolean;
+  bgColor: string;
+  precontent: JSX.Element[] | JSX.Element;
+  querybuilder?: {
+    query?: string;
+    type?: string;
+    join?: string;
+    kind?: string;
+    nook?: string;
+    count?: number;
+    order?: 'date' | 'title';
+    ascDesc?: 'asc' | 'desc';
+  };
+  postcontent: JSX.Element[] | JSX.Element;
+  cta?: {
+    url?: string;
+    title?: string;
+  };
+  showtype?: boolean;
+  showjoin?: boolean;
+  showkind?: boolean;
+}
 
+// get a nook, i.e. a list of posts based on a topic/tag
 export interface NookProps {
   params: {
     [key: string] : string | undefined;
@@ -46,7 +74,7 @@ export interface NookProps {
   };
 }
 
-// get a list of posts
+// get a raw list of post data
 export interface PostListProps {
 
   post: PostProps;
@@ -55,7 +83,7 @@ export interface PostListProps {
 
 }
 
-// get the post data of the current post
+// get the post data of some post
 export interface PostProps {
   
   _type: string;
@@ -148,7 +176,8 @@ export interface UtilMenuFindWrapperProps {
   className: string;
 }
 
-export interface UtilListTurnProps {
+// pagination
+export interface UtilPaginationProps {
   myBase: { 
     perPage: string; 
   };

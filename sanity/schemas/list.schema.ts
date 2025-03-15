@@ -11,6 +11,12 @@ const schema = {
       validation: (Rule: any) => Rule.required()
     },
     {
+      name: 'showtitle',
+      title: 'Show title',
+      description: 'display or hide the title',
+      type: 'boolean',
+    },
+    {
       name: 'slug', 
       title: 'Slug', 
       type: 'slug', 
@@ -22,6 +28,12 @@ const schema = {
       title: 'Subtitle',
       description: 'content before the precontent', 
       type: 'string'      
+    },
+    {
+      name: 'showsubtitle', 
+      title: 'Show subtitle',
+      description: 'display or hide the subtitle', 
+      type: 'boolean'      
     },
     {
       name: 'bgColor',
@@ -59,14 +71,30 @@ const schema = {
       ]
     }, 
     {
-      name: 'posts',
-      title: 'Posts',
-      type: 'array',       
-      of: [{
-        type: 'reference', 
-        weak: true, 
-        to: [{ type: 'post'}]
-      }]
+      name: 'querybuilder',
+      title: 'Query builder', 
+      type: 'object',
+      description: 'build a query for the list of content to display in page sections (all fields are optional - leave blank to mean "any")!)',
+      fields: [
+        {name: 'query', type: 'string', title: 'Query', description: 'content that contains this keyword'},
+        {name: 'type', type: 'string', title: 'Type', description: 'within the content type (e.g. post / side / wiki / zine)'},
+        {name: 'kind', type: 'string', title: 'Kind', description: 'within the content subfolder' },
+        {name: 'nook', type: 'string', title: 'Nook', description: 'with the following tag' },
+        {name: 'count', type: 'number', title: '# of posts', options: { list: [ 1, 2, 3, 6, 12 ] }},
+        {name: 'order', type: 'string', title: 'Order by', options: { list: [ 
+          { title: 'Date', value: 'date'}, 
+          { title: 'Title', value: 'title'},
+          { title: 'Random', value: 'random'}
+        ]}},
+        {name: 'ascDesc', type: 'string', title: 'Sort direction', options: { list: [ 
+          { title: 'Descending', value: 'desc'}, 
+          { title: 'Ascending', value: 'asc'}
+        ]}},
+      ],
+      initialValue: {
+        order: 'date',
+        ascDesc: 'desc'
+      }
     },
     {
       name: 'postcontent',
@@ -103,8 +131,26 @@ const schema = {
         { name: 'url', type: 'url', title: 'URL'},
         { name: 'title', type: 'string', title: 'Title'},
       ]
-    }    
-  ]
+    },
+    {
+      name: 'showjoin',
+      title: 'Show join',
+      description: 'display the join (category folder) on the list',
+      type: 'boolean',
+    },
+    {
+      name: 'showkind',
+      title: 'Show kind',
+      description: 'display the kind (category subfolder) on the list',
+      type: 'boolean',
+    }
+  ],
+  initialValue: {
+    showtype: false,
+    showkind: false,
+    showtitle: true,
+    showsubtitle: false
+  }
 }
 
 export default schema
