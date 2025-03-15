@@ -106,9 +106,10 @@ export const heap = `
   _id,
   title,
   slug,
+  showapex,
   lists[0...30]->{
     "slug" : slug.current
-  }
+  }   
 `
 
  /* 

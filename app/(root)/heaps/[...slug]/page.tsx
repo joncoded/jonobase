@@ -54,11 +54,11 @@ export default async function Heap({ params }: HeapProps) {
 
       <ScrollToTop />
 
-      <Sect id="heap-apex">
+      {myHeap.showapex && <Sect id="heap-apex">
         
         <Apex first={myHeap.title} />
 
-      </Sect>
+      </Sect>}
             
       {heapLists && heapLists.map(heapList => {           
         return <HeapSect key={heapList._id} heapList={heapList} />

@@ -15,6 +15,12 @@ const schema = {
       type: 'slug', 
       options: { source: 'title' },
       validation: (Rule: any) => Rule.required()
+    },
+    {
+      name: 'showapex',
+      title: 'Show apex',
+      description: 'Show the title on the breadcrumbs on this page',
+      type: 'boolean',       
     },    
     {
       name: 'lists',
