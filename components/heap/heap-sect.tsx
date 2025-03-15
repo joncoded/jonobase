@@ -5,9 +5,10 @@ a horizontal section of a heap (i.e. automated page of post lists)
 */
 
 import Link from "next/link"
-import { PortableText } from "@portabletext/react"
+import BlockContent from "@sanity/block-content-to-react"
 import { getPosts, getPostsRandomly } from "@/sanity/actions"
 import { styling } from "@/lib/app.config"
+import { serializers } from "../base/util/rich"
 import { Sect } from "../base/html/main"
 import PostList from "../post/post-list"
 
@@ -45,13 +46,23 @@ export default async function HeapSect({heapList} : any) {
       }
       
       <div id="heap-prec" className={`mb-5`}>
-        <PortableText value={heapList.precontent} />
+        <BlockContent 
+          blocks={heapList.precontent}
+          serializers={serializers} 
+          dataset="production"
+          projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
+        />          
       </div>      
       
       {heapList.showposts && <PostList posts={posts} showJoin={heapList.showjoin} showKind={heapList.showkind} />}
       
       <div id="heap-posc" className={`mt-5`}>
-        <PortableText value={heapList.postcontent} />
+      <BlockContent 
+          blocks={heapList.postcontent}
+          serializers={serializers} 
+          dataset="production"
+          projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
+        /> 
       </div>
       
       {heapList.cta.url && 
