@@ -27,9 +27,20 @@ export const colors = {
 // common tailwind styles
 export const styling = {
 
-  "button" : "p-2 px-5 border border-black dark:hover:border-white dark:border-white bg-white dark:bg-black text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black", 
+  "button" : `p-2 px-5 border border-black dark:hover:border-white dark:border-white bg-white dark:bg-black text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black`, 
 
-  "main-apex" : "bg-zinc-100 dark:bg-zinc-800",
+  "main-apex" : `bg-zinc-100 dark:bg-zinc-800`,
+
+  "home-head" : `bg-gradient-to-b drop-shadow-md 
+    from-green-200 dark:from-green-900 to-green-300 dark:to-green-800 py-10 
+  `,
+
+  "home-head-main" : `
+    w-3/4 md:w-full max-w-screen-lg mx-auto prose
+    prose-h2:text-4xl md:prose-h2:text-5xl prose-h2:mb-5 
+    prose-h3:text-3xl md:prose-h3:text-4xl prose-h3:mb-5 
+    prose-p:text-2xl md:prose-p:text-3xl 
+    dark:prose-headings:!text-white dark:prose-p:!text-white dark:prose-strong:!text-white`,
 
   "opus-head-section" : ""
 
