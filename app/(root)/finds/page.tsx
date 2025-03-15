@@ -5,7 +5,7 @@ jonobase by @jonchius
 the finds (search) page
 */
 
-import { getBase, getOpera, getOperaCount } from "@/sanity/actions"
+import { getBase, getPosts, getPostsCount } from "@/sanity/actions"
 import { FindProps } from "@/sanity/myprops"
 import { text } from "@/lib/app.config"
 import { Sect } from "@/components/base/html/main"
@@ -31,7 +31,7 @@ export default async function Main({ searchParams }: FindProps) {
 
   const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
 
-  const opera = await getOpera({       
+  const posts = await getPosts({       
     query: searchParams?.query || '',
     type: searchParams?.type || '',      
     kind: searchParams?.kind || '',     
@@ -40,7 +40,7 @@ export default async function Main({ searchParams }: FindProps) {
     perPage: searchParams?.perPage || myBase.perPage || '6'
   })  
   
-  const totalOperaCount = await getOperaCount({    
+  const totalPostsCount = await getPostsCount({    
     type: searchParams?.type || '', 
     query: searchParams?.query || '', 
     kind: searchParams?.kind || '', 
@@ -55,13 +55,13 @@ export default async function Main({ searchParams }: FindProps) {
 
       <Sect>
         <Find                     
-          opera={opera} 
-          totalOperaCount={totalOperaCount} 
+          posts={posts} 
+          totalPostsCount={totalPostsCount} 
           urlParams={searchParams} 
         />
         <Paginate 
           myBase={myBase} 
-          totalOperaCount={totalOperaCount} 
+          totalPostsCount={totalPostsCount} 
           searchParams={searchParams} 
         />
       </Sect>          

@@ -10,15 +10,15 @@ import { useEffect, useState } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { formUrlQuery } from "@/sanity/utils"
 import { FindPageParams } from "@/sanity/myprops"
-import { findableTypes } from "@/sanity/schemas"
-import { text, styling } from "@/lib/app.config"
+import { findableJoins } from "@/sanity/schemas"
+import { text } from "@/lib/app.config"
 import { Span } from "../base/html/main"
 import FindHead from "./find-head"
-import OpusLine from "../opus/opus-line"
+import PostLine from "../post/post-line"
 
-export default function Find({ opera, totalOperaCount, urlParams }: FindPageParams) {
+export default function Find({ posts, totalPostsCount, urlParams }: FindPageParams) {
 
-  const schemas = JSON.parse(findableTypes)
+  const schemas = JSON.parse(findableJoins)
   const searchParams = useSearchParams()
   const router = useRouter()
   const [query, setQuery] = useState(urlParams.query || "")
@@ -113,26 +113,26 @@ export default function Find({ opera, totalOperaCount, urlParams }: FindPagePara
         <select className={`px-5`} onChange={handleFilter} value={urlParams.type}>          
           <option value="*">all</option>
           {schemas.map((schema : string) => (
-            <option value={schema}>{schema}s</option>  
+            <option value={schema}>{schema}</option>  
           ))}          
         </select>
       </form>      
 
       <section id="find-main" className={`flex justify-center w-full flex-col`}>
         <div className={`find-post w-full sm:justify-start my-5`}>
-          {opera && (
+          {posts && (
             <>
               <div className={`text-center mt-0 mb-10`}>
                 <h2 className="text-lg">
-                  <FindHead count={totalOperaCount} query={query ?? ""} kind={urlParams.kind ?? ""} />
+                  <FindHead count={totalPostsCount} query={query ?? ""} kind={urlParams.kind ?? ""} />
                 </h2>
               </div>
               <div
-                className={`find-opus-list 
+                className={`find-post-list 
                 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-center mt-0`}
               >
-                {opera.map((opus: any) => (
-                  <OpusLine key={opus._id} opus={opus} showKind={true} showType={true} />
+                {posts.map((post: any) => (
+                  <PostLine key={post._id} post={post} showJoin={true} showKind={true} />
                 ))}
               </div>
               

@@ -6,12 +6,12 @@ the nooks (lists of "posts from nook (tag) X") page
 (replacement for nooks)
 */
 
-import { getBase, getOpera, getOperaCount } from "@/sanity/actions"
+import { getBase, getPosts, getPostsCount } from "@/sanity/actions"
 import { NookProps } from "@/sanity/myprops"
 import { text, styling } from "@/lib/app.config"
 import { Sect, Span } from "@/components/base/html/main"
 import ScrollToTop from "@/components/base/util/ttop"
-import OpusList from "@/components/opus/opus-list"
+import PostList from "@/components/post/post-list"
 import Paginate from "@/components/base/util/pagi"
 
 export const revalidate = 10
@@ -37,15 +37,13 @@ export default async function Main({ params, searchParams }: NookProps) {
   const { slug } = params
   const { page, perPage } = searchParams
 
-  const opera = await getOpera({
-    type: '',
+  const posts = await getPosts({        
     nook: slug,
     page,
     perPage   
   })  
 
-  const totalOperaCount = await getOperaCount({ 
-    type: '',
+  const totalPostsCount = await getPostsCount({     
     nook: slug,
     page,
     perPage   
@@ -69,10 +67,10 @@ export default async function Main({ params, searchParams }: NookProps) {
       </Sect>
 
       <Sect className={`nook-list`}>
-        <OpusList opera={opera} showType={true} showKind={true} />
+        <PostList posts={posts} showJoin={true} showKind={true} />
       </Sect>    
 
-      <Paginate myBase={myBase} totalOperaCount={totalOperaCount} searchParams={searchParams} />     
+      <Paginate myBase={myBase} totalPostsCount={totalPostsCount} searchParams={searchParams} />     
     
     </main>
 

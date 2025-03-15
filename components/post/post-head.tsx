@@ -1,18 +1,18 @@
 
 /*
 jonobase by @jonchius
-/app/components/opus/opus-head.tsx
-the head of each opus (post/side/wiki/zine/etc.) page
+/app/components/post/post-head.tsx
+the head of each post page
 shows the emoji (or background image) + title + subtitle + date 
 */
 
-import { OpusProps } from "@/sanity/myprops"
+import { PostProps } from "@/sanity/myprops"
 import getFormattedDate from "../base/util/date-form"
 import { timezone } from "@/lib/app.config"
 
-export default function OpusHead( { opus } : { opus : OpusProps } ) {
+export default function OpusHead( { post } : { post : PostProps } ) {
 
-  const { title, emoji, subtitle, image, date, showDate } = opus
+  const { title, emoji, subtitle, image, date, showDate } = post
   const formattedDate = getFormattedDate({date, timezone, time: true})
 
   return (

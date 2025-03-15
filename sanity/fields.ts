@@ -5,19 +5,17 @@ jonobase by @jonchius
 field enumerations for the queries
 (used only with /sanity/actions.ts)
 
-- opus, opusCard, opusLite
+- post, postCard, postLite
 - list, lists, heap, base
 
 */
 
 /* 
-opera 
-(plural of "opus", 
-i.e. content entries such as posts, sides, wikis, etc.)
+posts : a single page of content
 */
 
-// for single pages of posts/sides/wikis/zines/etc.
-export const opus = `
+// post data for pages
+export const post = `
   _id,
   _type,
   "slug": slug.current,
@@ -25,6 +23,7 @@ export const opus = `
   title,
   emoji,
   subtitle,
+  join,
   kind,  
   link,  
   date,
@@ -34,8 +33,8 @@ export const opus = `
   nooks
 `
 
-// entry data when listing links to single pages
-export const opusCard = `
+// post data for lists (i.e. links to posts)
+export const postCard = `
   _id,
   _type,
   "slug": slug.current,
@@ -43,42 +42,46 @@ export const opusCard = `
   title,
   emoji,
   subtitle,
+  join,
   kind,
   link,
   date,
   showDate
 `
 
-// entry data (the concise version) 
-export const opusLite = `
+// post data for page turners
+export const postLite = `
   _id,
   _type,
   "slug": slug.current,
   title,
   emoji, 
+  join, 
   kind, 
   subtitle, 
   date,
   showDate
 `
 
-// lists of opera
+/*
+list : a collection of posts!
+*/
 
 export const list = `
   _id,
   title,
-  slug,
+  showtitle,
+  "slug": slug.current,
   subtitle,
+  showsubtitle,
   bgColor,
   precontent,
-  posts[]->{
-    ${opus}
-  },
+  querybuilder,
   postcontent,
-  cta->{
-    url,
-    title
-  }
+  cta,
+  showtype,
+  showkind,
+  showjoin
 `
 
 export const lists = `
@@ -94,7 +97,9 @@ export const lists = `
   }
 `
 
-// lists of lists
+/*
+heap : a collection of lists!
+*/
 
 export const heap = `
   _id,
@@ -105,7 +110,9 @@ export const heap = `
   }
 `
 
-// the system (TODO: fields need a bit of cleaning up)
+ /* 
+base : a collection of heaps!
+*/
 
 export const base = `
   _id,

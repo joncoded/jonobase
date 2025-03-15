@@ -1,23 +1,21 @@
 
 /*
 jonobase by @jonchius
-/app/components/opus/opus-link.tsx
-the link button of each opus (post/side/wiki/zine/etc.) page
+/app/components/post/post-link.tsx
+the external link button of each post 
 just takes in a link with "visit URL" as a label
 */
 
 import Link from "next/link"
+import { styling } from "@/lib/app.config"
 import { text } from "@/lib/app.config"
 
-export default function OpusLink( {link} : { link : URL } ) {
+export default function PostLink( {link} : { link : URL } ) {
 
   return (
     <div className={`my-5`}>
       <Link 
-        className={`
-          px-5 py-2 bg-black text-white text-lg 
-          hover:border hover:border-black hover:bg-white hover:text-black
-        `}
+        className={`${styling['button']}`}
         href={link} 
         target="_blank"
       >

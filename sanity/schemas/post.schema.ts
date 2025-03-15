@@ -14,33 +14,41 @@ const schema = {
     {
       name: 'slug',
       title: 'Slug',
-      description: 'a machine-friendly version of the title (characters allowed: a-z, 0-9, - [dashes, no spaces])',
+      description: 'a machine-friendly version of the title (characters allowed: a-z, 0-9, - [dashes, no spaces]), also this post\'s URL, e.g. yourname.com/yourjoin/yourkind/yourpost',
       type: 'slug',
       options: { source: 'title' }
     },
     {
       name: 'emoji',
       title: 'Emoji',
-      description: 'the replacement for an image (image and emoji are both optional)',
+      description: 'required: an emoji or a letter that could stand in as the post\'s thumbnail',
       type: 'string',
     },
     {
       name: 'subtitle',
       title: 'Subtitle',
-      description: 'the tagline under the title that also serves as the meta description for SEO)',
+      description: 'optional: the tagline under the title that also serves as the meta description for SEO)',
       type: 'string'
     },
     {
+      name: 'join',
+      title: 'Join', 
+      description: 'required: the one-word category that serves as the folder in this post\'s URL, e.g. yourname.com/yourjoin/yourkind/yourpost',
+      type: 'string',
+      validation: (Rule: any) => Rule.required(),
+    },
+
+    {
       name: 'kind',
       title: 'Kind',
-      description: 'the one-word category that also serves as the subfolder in the URL (i.e. /[type]/[kind])',
+      description: 'required: the one-word sub-category that also serves as the subfolder in this post\'s URL, e.g. yournae.com/yourjoin/yourkind/yourpost)',
       type: 'string',
       validation: (Rule: any) => Rule.required(),
     },
     {
       name: 'content',
       title: 'Content',
-      description: 'the meat of this entry - rich text and code allowed',
+      description: 'required: the real meat of this post!',
       type: 'array',
       validation: (Rule: any) => Rule.required(),
       of: [
@@ -54,7 +62,7 @@ const schema = {
               type: 'text',
               name: 'alt',
               title: 'Alternative text',
-              description: `Screen reader text for low-sighted users`
+              description: `screen reader text for low-sighted users`
             }
           ]
         },
@@ -69,7 +77,7 @@ const schema = {
     {
       name: 'extra',
       title: 'Extra',
-      description: 'optional footnotes and references - rich text allowed',
+      description: 'optional section for things like footnotes and references - rich text allowed',
       type: 'array',
       of: [
         {
@@ -80,13 +88,13 @@ const schema = {
     {
       name: 'link',
       title: 'Link',
-      description: 'an external link to somewhere else (optional, will appear as a button)',
+      description: 'optional external link to somewhere else (will appear as a button)',
       type: 'url',
     },
     {
       name: 'nooks',
       title: 'Nooks',
-      description: 'the topics of this post (commonly known as "tags")',
+      description: 'optional keywords for this post (i.e. like "tags")',
       type: 'array',
       of: [
         {type: 'string'}
@@ -98,7 +106,7 @@ const schema = {
     {
       name: 'image',
       title: 'Image',
-      description: 'the image that appears as the thumbnail in lists and background in posts (if there is no image, then the emoji might substitute the thumbnail)',
+      description: 'optional image that appears as the thumbnail in lists and as the background in posts (if there is no image, then the emoji stands in',
       type: 'image'
     },
     {
@@ -159,7 +167,8 @@ const schema = {
     },
   },
   initialValue: {
-    kind: 'unsorted',
+    join: 'notes',
+    kind: 'writings',
     showDate: true,
     date: Date.now()
   }

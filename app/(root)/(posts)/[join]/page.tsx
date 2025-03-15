@@ -1,19 +1,18 @@
 
 /*
 jonobase by @jonchius
-/app/(root)/[opera]/page.tsx
-the opera (many articles) template that has a content _type
-(i.e. post / side / wiki / zine)
+/app/(root)/(posts)/[join]/page.tsx
+the join (the first level category list of posts)
 */
 
-import { getBase, getOpera, getOperaCount } from "@/sanity/actions"
+import { getBase, getPosts, getPostsCount } from "@/sanity/actions"
 import { styling } from "@/lib/app.config"
 import { Sect } from "@/components/base/html/main"
 import ScrollToTop from "@/components/base/util/ttop"
 import None from "@/components/base/util/none"
 import Apex from "@/components/base/html/main-apex"
-import OpusLine from "@/components/opus/opus-line"
 import Paginate from "@/components/base/util/pagi"
+import PostLine from "@/components/post/post-line"
 
 export const revalidate = 10
 export const dynamic = 'force-dynamic'
@@ -21,12 +20,12 @@ export const fetchCache = 'force-no-store'
 
 export async function generateMetadata({params}: any) {
 
-  const { opera } = params
+  const { join } = params
   const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!) || {}
 
-  if (opera) {
+  if (join) {
     return {
-      title: `${opera} @ ${myBase?.title}`
+      title: `${join} @ ${myBase?.title}`
     }
   }
 
@@ -34,14 +33,13 @@ export async function generateMetadata({params}: any) {
 
 export default async function Main({ params, searchParams } : any) {
   
-  const { opera } = params
+  const { join } = params
   const { page, perPage } = searchParams
-  const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
-  const myJoin = opera.slice(0, -1)
-  const myOpera = await getOpera({type: myJoin, page: page, perPage: perPage})
-  const myOperaCount = await getOperaCount({ type: myJoin })
+  const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)  
+  const myPosts = await getPosts({join, page: page, perPage: perPage})
+  const myPostsCount = await getPostsCount({ join })
   
-  if (!myOpera || myOpera.length === 0) return <None />
+  if (!myPosts || myPosts.length === 0) return <None />
 
   return (
 
@@ -50,18 +48,18 @@ export default async function Main({ params, searchParams } : any) {
       <ScrollToTop />
 
       <Sect id="join-apex" className={`${styling['main-apex']}`}>
-        <Apex first={opera} />
+        <Apex first={join} />
       </Sect>
 
       <Sect id="join-main">
-        {myOpera && (
+        {myPosts && (
           <>
             <div
               className={`join-list 
               grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-center mt-0`}
             >
-              {myOpera.map((opus: any) => (
-                <OpusLine key={opus._id} opus={opus} showType={false} showKind={true} />
+              {myPosts.map((post: any) => (
+                <PostLine key={post._id} post={post} showJoin={false} showKind={true} />
               ))}    
               
             </div>
@@ -69,7 +67,7 @@ export default async function Main({ params, searchParams } : any) {
         )}    
       </Sect>
 
-      <Paginate myBase={myBase} totalOperaCount={myOperaCount} searchParams={searchParams} />
+      <Paginate myBase={myBase} totalPostsCount={myPostsCount} searchParams={searchParams} />
       
     </main>
 

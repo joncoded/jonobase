@@ -1,16 +1,16 @@
 /*
 jonobase by @jonchius
-/app/components/opus/opus-turn.tsx
-the "prev/next" (page turner) links to each opus (post/side/wiki/zine/etc.) page
-just takes in the newer (opus) and older (opus) as parameters
+/app/components/post/post-turn.tsx
+the "prev/next" (page turner) links for posts
+just takes in the newer (post) and older (post) as parameters
 */
 
 import Link from "next/link"
 import { colors, text } from "@/lib/app.config"
 
-import { OpusAdjacentProps } from "@/sanity/myprops"
+import { PostAdjacentProps } from "@/sanity/myprops"
 
-export default function OpusTurn( { newer, turnTitle, older } : { newer?: OpusAdjacentProps, turnTitle: string, older?: OpusAdjacentProps } ) {
+export default function PostTurn( { newer, turnTitle, older } : { newer?: PostAdjacentProps, turnTitle: string, older?: PostAdjacentProps } ) {
 
   const linkColors = `${colors.link} dark:${colors.darkLink} hover:${colors.linkHover} dark:hover:${colors.darkLinkHover} hover:underline`
 
@@ -20,7 +20,7 @@ export default function OpusTurn( { newer, turnTitle, older } : { newer?: OpusAd
         <div className={`flex-1 text-center md:text-left`}>
           <strong>⬅️ {text['newer']}</strong> ({turnTitle}) <br />
           <span className={`hover:no-underline`}>{newer.emoji} </span>
-          <Link className={linkColors} href={`/${newer._type}s/${newer.kind}/${newer.slug}`}>
+          <Link className={linkColors} href={`/${newer.join}/${newer.kind}/${newer.slug}`}>
             {newer.title}
           </Link>
         </div>
@@ -28,7 +28,7 @@ export default function OpusTurn( { newer, turnTitle, older } : { newer?: OpusAd
       { older &&
         <div className={`flex-1 text-center md:text-right`}>
           <strong>{text['older']}</strong> ({turnTitle}) ➡️<br />
-          <Link className={linkColors} href={`/${older._type}s/${older.kind}/${older.slug}`}>
+          <Link className={linkColors} href={`/${older.join}/${older.kind}/${older.slug}`}>
             {older.title}
           </Link>
           <span className={`hover:no-underline`}> {older.emoji}</span>

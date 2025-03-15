@@ -1,21 +1,21 @@
 
 /*
 jonobase by @jonchius
-/app/components/opus/opus-line.tsx
-the "line" ui for each item (post/side/wiki) in lists, e.g. in home, finds, kinds, nooks, etc.
+/app/components/post/post-line.tsx
+the link to each post (used for lists)
 */
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { UtilDOMChildrenProps, OpusListProps } from '@/sanity/myprops'
+import { UtilDOMChildrenProps, PostListProps } from '@/sanity/myprops'
 import { text } from '@/lib/app.config'
 import { timezone, colors, styling } from '@/lib/app.config'
 
 const linkColors = `${colors.link} dark:${colors.darkLink} hover:${colors.linkHover} dark:hover:${colors.darkLinkHover} hover:underline`
 
-const OpusLine = ({opus : { _type, kind, slug, image, emoji, title, subtitle, link, date, showDate}, showType = false, showKind = false}: OpusListProps) => {
+const PostLine = ({post : { join, kind, slug, image, emoji, title, subtitle, link, date, showDate}, showJoin = false, showKind = false}: PostListProps) => {
 
-  const Card = ({children} : UtilDOMChildrenProps) => {
+  const PostLine = ({children} : UtilDOMChildrenProps) => {
     return (
       <article className={`card-unit w-full`}>
         <div className={`flex gap-5`}>
@@ -25,7 +25,7 @@ const OpusLine = ({opus : { _type, kind, slug, image, emoji, title, subtitle, li
     )
   }
 
-  const CardSide = ({children}: UtilDOMChildrenProps) => {
+  const PostLineSide = ({children}: UtilDOMChildrenProps) => {
     return (
       <div className={`card-side flex flex-col gap-5`}>
         {children}
@@ -33,7 +33,7 @@ const OpusLine = ({opus : { _type, kind, slug, image, emoji, title, subtitle, li
     )
   }
 
-  const CardImage = () => {
+  const PostLineImage = () => {
 
     return (
       <div className={`card-image
@@ -62,7 +62,7 @@ const OpusLine = ({opus : { _type, kind, slug, image, emoji, title, subtitle, li
     )
   }
 
-  const CardMeta = () => {
+  const PostLineMeta = () => {
 
     let newDate = new Date(Date.parse(date))
     let formattedDate = new Intl.DateTimeFormat("sv-SE", { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: timezone }).format(newDate)
@@ -70,13 +70,13 @@ const OpusLine = ({opus : { _type, kind, slug, image, emoji, title, subtitle, li
     return (
       <div className={`card-meta text-center text-sm`}>
         {showDate === true && <p className={`!my-0`}>{formattedDate}</p>}
-        {showType === true && <p className={`!my-0`} aria-hidden="true"><Link tabIndex={-1} className={linkColors} href={`/${_type}s`}>{_type}</Link></p>}
-        {showKind === true && <p className={`!my-0`} aria-hidden="true">[<Link tabIndex={-1} className={linkColors} href={`/${_type}s/${kind}`}>{kind}</Link>]</p>}
+        {showJoin === true && <p className={`!my-0`} aria-hidden="true"><Link tabIndex={-1} className={linkColors} href={`/${join}`}>{join}</Link></p>}
+        {showKind === true && <p className={`!my-0`} aria-hidden="true">[<Link tabIndex={-1} className={linkColors} href={`/${join}/${kind}`}>{kind}</Link>]</p>}
       </div>
     )
   }
 
-  const CardBody = ({children}: UtilDOMChildrenProps) => {
+  const PostLineBody = ({children}: UtilDOMChildrenProps) => {
     return (
       <div className={`card-body flex flex-col`}>
         {children}
@@ -84,7 +84,7 @@ const OpusLine = ({opus : { _type, kind, slug, image, emoji, title, subtitle, li
     )
   }
 
-  const CardTitle = () => {
+  const PostLineTitle = () => {
     return (
       <div className={`card-title`}>
         <h3 className={`font-semibold text-2xl ${colors.link} dark:${colors.darkLink} hover:${colors.linkHover} dark:hover:${colors.darkLinkHover} hover:underline !mt-2`}>
@@ -94,7 +94,7 @@ const OpusLine = ({opus : { _type, kind, slug, image, emoji, title, subtitle, li
     )
   }
 
-  const CardSubtitle = () => {
+  const PostLineSubtitle = () => {
     return (
       <div className={`card-subtitle`}>
         <p className={`text-sm md:text-lg !mt-2 font-serif`}>
@@ -104,7 +104,7 @@ const OpusLine = ({opus : { _type, kind, slug, image, emoji, title, subtitle, li
     )
   }
 
-  const CardExternalLink = () => {
+  const PostLineExternalLink = () => {
     return (
       <div className={`card-link my-5 ${!link && `hidden`}`}>
         {link &&
@@ -122,21 +122,21 @@ const OpusLine = ({opus : { _type, kind, slug, image, emoji, title, subtitle, li
 
   return (
 
-    <Card className={`card w-full`}>
-      <CardSide>
-        <CardImage />
-        <CardMeta />
-      </CardSide>
-      <CardBody>
-        <Link href={`/${_type}s/${kind}/${slug}`}>
-          <CardTitle />
+    <PostLine className={`card w-full`}>
+      <PostLineSide>
+        <PostLineImage />
+        <PostLineMeta />
+      </PostLineSide>
+      <PostLineBody>
+        <Link href={`/${join}/${kind}/${slug}`}>
+          <PostLineTitle />
         </Link>
-        <CardSubtitle />
-        <CardExternalLink />
-      </CardBody>
-    </Card>
+        <PostLineSubtitle />
+        <PostLineExternalLink />
+      </PostLineBody>
+    </PostLine>
 
   )
 }
 
-export default OpusLine
+export default PostLine

@@ -42,8 +42,6 @@ export const styling = {
     prose-p:text-2xl md:prose-p:text-3xl 
     dark:prose-headings:!text-white dark:prose-p:!text-white dark:prose-strong:!text-white`,
 
-  "opus-head-section" : ""
-
 }
 
 // localization

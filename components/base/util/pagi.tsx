@@ -10,7 +10,7 @@ import { Sect } from "../html/main"
 import { UtilListTurnProps } from "@/sanity/myprops"
 import { text } from "@/lib/app.config"
 
-export default async function Paginate({myBase, totalOperaCount, searchParams} : UtilListTurnProps) {
+export default async function Paginate({myBase, totalPostsCount, searchParams} : UtilPaginationProps) {
 
   // for finds pages
   const query = searchParams?.query || ''
@@ -22,7 +22,7 @@ export default async function Paginate({myBase, totalOperaCount, searchParams} :
   const perPage = searchParams?.perPage || myBase.perPage || '6'
 
   // get # of pages (total post count divided by posts per page)
-  const totalPages = Math.ceil(totalOperaCount / parseInt(perPage))
+  const totalPages = Math.ceil(totalPostsCount / parseInt(perPage))
 
   let pageNumbers = []
   for (let p = 1; p <= totalPages; p++) {

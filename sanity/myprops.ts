@@ -6,8 +6,7 @@ a set of restrictions for various props and parameters
 (used everywhere - in app, components, sanity, schema!)
 */
 
-// finds 
-
+// get results for "finds" (i.e. the omnisearch) 
 export interface FindProps {
   searchParams: {
     [key: string] : string | undefined;
@@ -21,8 +20,8 @@ export interface FindHeadProps {
 }
 
 export interface FindPageParams {
-  opera: OpusListProps[];
-  totalOperaCount: number;
+  posts: PostListProps[];
+  totalPostsCount: number;
   urlParams: {
     [key: string] : string | undefined;
   };
@@ -47,17 +46,17 @@ export interface NookProps {
   };
 }
 
-// opera (plural of opus)
+// get a list of posts
+export interface PostListProps {
 
-export interface OpusListProps {
-
-  opus: OpusProps;
-  showType?: boolean;
+  post: PostProps;
+  showJoin?: boolean;
   showKind?: boolean; 
 
 }
 
-export interface OpusProps {
+// get the post data of the current post
+export interface PostProps {
   
   _type: string;
   _id: string;
@@ -68,7 +67,8 @@ export interface OpusProps {
   title: string;
   emoji: string;
   subtitle?: string;
-  kind?: string;
+  join: string;
+  kind: string;
   nooks?: string[];
   content: JSX.Element[] | JSX.Element;
   extra?: JSX.Element[] | JSX.Element;
@@ -78,7 +78,8 @@ export interface OpusProps {
 
 }
 
-export interface OpusAdjacentProps {
+// get the post data of the previous or next post 
+export interface PostAdjacentProps {
   
   _id: string;
   _type: string;
@@ -86,16 +87,19 @@ export interface OpusAdjacentProps {
   title: string;
   emoji: string;
   subtitle?: string;
+  join: string;
   kind: string;
   date: string;
   showDate: boolean;
 
 }
 
-export interface OpusGetterProps {  
+// get post query from URL
+export interface PostGetterProps {  
   isCount?: boolean; 
   query?: string;
   type?: string;
+  join?: string;
   kind?: string;
   page?: string;
   nook?: string;
@@ -105,19 +109,19 @@ export interface OpusGetterProps {
   ascDesc?: 'asc' | 'desc';
 }
 
-export interface OpusLinkProps {
+// post external link button
+export interface PostLinkProps {
   mark: any;
   children: any;
 }
 
-// utils
+// utils (mostly HTML wrappers)
 
 export interface UtilDOMChildrenProps {
   children: JSX.Element[] | JSX.Element;
   className?: string;
   bgImage?: string;
 }
-
 
 export interface UtilDOMSectProps {
   children: JSX.Element | JSX.Element[];
@@ -148,17 +152,18 @@ export interface UtilListTurnProps {
   myBase: { 
     perPage: string; 
   };
-  totalOperaCount: number,
+  totalPostsCount: number,
   searchParams: {
     [key: string] : string | undefined
   };
 }
 
-// what should the query be like?
+// queries
 export interface UtilQueryBuildingProps {
   isCount?: boolean; 
   type?: string;
   query?: string;
+  join?: string; 
   kind?: string;
   nook?: string;
   page?: number;

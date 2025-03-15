@@ -1,14 +1,14 @@
 /*
 jonobase by @jonchius
-/app/components/opus/opus-nook.tsx
-the html to display all "nooks" of an "opus" (post/side/wiki/zine/etc.)
+/app/components/post/post-nook.tsx
+displays all "nooks" (tags) of a "post" 
 */
 
 'use client'
 
 import Link from "next/link"
 
-export default function OpusNook({nooks}: any) {
+export default function PostNook({nooks}: any) {
 
   return (
     <div className="flex flex-wrap items-center gap-5">
