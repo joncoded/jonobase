@@ -77,6 +77,7 @@ export const list = `
   bgColor,
   precontent,
   querybuilder,
+  showposts, 
   postcontent,
   cta,
   showtype,

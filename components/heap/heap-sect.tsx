@@ -48,7 +48,7 @@ export default async function HeapSect({heapList} : any) {
         <PortableText value={heapList.precontent} />
       </div>      
       
-      <PostList posts={posts} showJoin={heapList.showjoin} showKind={heapList.showkind} />
+      {heapList.showposts && <PostList posts={posts} showJoin={heapList.showjoin} showKind={heapList.showkind} />}
       
       <div id="heap-posc" className={`mt-5`}>
         <PortableText value={heapList.postcontent} />

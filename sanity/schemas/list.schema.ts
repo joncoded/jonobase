@@ -48,7 +48,7 @@ const schema = {
     {
       name: 'precontent',
       title: 'Precontent',
-      description: 'content before the post list (if any)',
+      description: 'content before the post list (if any)!',
       type: 'array', 
       of: [
         {
@@ -90,11 +90,13 @@ const schema = {
           { title: 'Descending', value: 'desc'}, 
           { title: 'Ascending', value: 'asc'}
         ]}},
-      ],
-      initialValue: {
-        order: 'date',
-        ascDesc: 'desc'
-      }
+      ]
+    },
+    {
+      name: 'showposts',
+      title: 'Show posts',
+      description: 'Show the posts from the query above',
+      type: 'boolean',       
     },
     {
       name: 'postcontent',
@@ -149,7 +151,12 @@ const schema = {
     showtype: false,
     showkind: false,
     showtitle: true,
-    showsubtitle: false
+    showsubtitle: false,
+    querybuilder: {
+      order: 'date', 
+      ascDesc: 'desc'
+    },
+    showposts: true
   }
 }
 
