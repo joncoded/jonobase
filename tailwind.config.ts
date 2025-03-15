@@ -1,10 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
-  content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
+  content: [    
+    "./app/**/*.{ts,tsx}",    
+    "./components/**/*.{ts,tsx}",    
     "./src/**/*.{ts,tsx}",
   ],
   theme: {
@@ -24,7 +23,7 @@ module.exports = {
   },
   safelist: [
     {
-      pattern: /(bg|text)-+/,
+      pattern: /(bg|text|from|to)-+/,
       variants: [
         'dark', 'prose-a', 'hover', 'hover:dark', 'hover:dark:prose-a'
       ]
