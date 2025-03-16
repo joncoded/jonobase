@@ -88,11 +88,11 @@ export default async function HeapSect({ heapList }: any) {
       
       <div id="heap-posc" className={`mt-5`}>
       <BlockContent 
-          blocks={heapList.postcontent}
-          serializers={serializers} 
-          dataset="production"
-          projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
-        /> 
+        blocks={heapList.postcontent}
+        serializers={serializers} 
+        dataset="production"
+        projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
+      /> 
       </div>
       
       {heapList.showlink && heapList.cta.url && 

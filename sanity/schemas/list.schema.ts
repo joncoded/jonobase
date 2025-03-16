@@ -74,7 +74,7 @@ const schema = {
       name: 'querybuilder',
       title: 'Query builder', 
       type: 'object',
-      description: 'build a query for the list of content to display in page sections (all fields are optional - leave blank to mean "any")!)',
+      description: 'build a query to display a post list',
       fields: [
         {name: 'query', type: 'string', title: 'Query', description: 'content that contains this keyword'},
         {name: 'join', type: 'string', title: 'Join', description: 'within the content folder'},
@@ -95,19 +95,19 @@ const schema = {
     {
       name: 'showposts',
       title: 'Show posts',
-      description: 'Show the posts from the query above',
+      description: 'show (or hide) the posts from the query above',
       type: 'boolean',       
     },
     {
       name: 'showjoin',
       title: 'Show join',
-      description: 'display the join (category folder) on the list',
+      description: 'show (or hide) the category folder (the "join") on the list',
       type: 'boolean',
     },
     {
       name: 'showkind',
       title: 'Show kind',
-      description: 'display the kind (category subfolder) on the list',
+      description: 'show (or hide) the category subfolder (the "kind") on the list',
       type: 'boolean',
     },
     {
@@ -139,10 +139,10 @@ const schema = {
     {
       name: 'cta',
       title: 'CTA', 
-      description: 'external link to somewhere else',
+      description: 'show (or hide) the external link to somewhere else',
       type: 'object',
       fields: [
-        { name: 'url', type: 'url', title: 'URL'},
+        { name: 'url', type: 'string', title: 'URL'},
         { name: 'title', type: 'string', title: 'Title'},
       ]
     },
