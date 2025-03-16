@@ -113,7 +113,7 @@ export default function Find({ posts, totalPostsCount, urlParams }: FindPagePara
         <select className={`px-5`} onChange={handleFilter} value={urlParams.type}>          
           <option value="*">all</option>
           {schemas.map((schema : string) => (
-            <option value={schema}>{schema}</option>  
+            <option key={schema} value={schema}>{schema}</option>  
           ))}          
         </select>
       </form>      
