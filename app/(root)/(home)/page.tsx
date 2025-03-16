@@ -2,10 +2,10 @@
 /*
 jonobase by @jonchius
 /app/(root)/(home)/page.tsx
-the root homepage
+the root homepage (adjustable in sanity back-end via the "base" entry in the "home heap" field) 
 */
 
-import { getBase, getPosts } from "@/sanity/actions"
+import { getBase } from "@/sanity/actions"
 import ScrollToTop from "@/components/base/util/ttop"
 import Heap from "../heaps/[slug]/page"
 
@@ -23,6 +23,10 @@ export async function generateMetadata() {
 }
 
 export default async function Home() {
+
+  const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
+
+  const { homeheap } = myBase
   
   return (
 
@@ -30,7 +34,7 @@ export default async function Home() {
 
       <ScrollToTop />
 
-      <Heap params={{ slug: 'home' }} />
+      <Heap params={{ slug: homeheap }} />
 
     </main>
 

@@ -122,14 +122,11 @@ export const base = `
   slug,
   intro,
   "logo": logo.asset->url,  
-  featuredPostsTitle,
-  "featured" : featured->slug.current,
-  latestPostsTitle,
   tagline,
-  perPage,
-  menu,
-  filters,
   metakeywords,
+  menu,
+  perPage,
+  "homeheap": homeHeap->slug.current, 
   colophon1,
   colophon2
 `

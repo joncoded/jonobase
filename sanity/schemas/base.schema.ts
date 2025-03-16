@@ -29,14 +29,6 @@ const schema = {
       type: 'string',      
     },
     {
-      name: 'perPage',
-      title: 'Posts per page on homepage',
-      type: 'string',
-      options: {
-        list:  ['1', '2', '3', '6', '12', '18', '30']
-      }    
-    },
-    {
       name: 'menu',
       title: 'Menu',
       description: 'navigational menu in rich text (use WYSIWYG or HTML!)',
@@ -46,50 +38,24 @@ const schema = {
           type: 'block'
         }
       ]
-    }, 
-    {
-      name: 'intro',
-      title: 'Intro',
-      type: 'array', 
-      of: [
-        {
-          type: 'block'
-        }
-      ]
     },
     {
-      name: 'featuredPostsTitle',
-      title: 'Featured posts heading',
-      description: 'What to call the featured (pinned) posts section of the home page (e.g. "pinned")',
+      name: 'perPage',
+      title: 'Posts per page on homepage',
       type: 'string',
-    },
-    {
-      name: 'featured',
-      title: 'Featured posts',
-      description: 'The "greatest hits" list of posts for home page',
-      type: 'reference',
-      weak: true,              
-      to: { type: 'list'}      
-    },
-    {
-      name: 'latestPostsTitle', 
-      title: 'Latest posts heading', 
-      description: 'What to call the latest posts section of the home page (e.g. "blog")',
-      type: 'string'
-    },
-    {
-      name: 'filters',
-      title: 'Filters',
-      description: 'categories for search filters',
-      type: 'array', 
-      of: [
-        {
-          type: 'string',
-        }
-      ],
       options: {
-        layout: 'tags',
-      }
+        list:  ['1', '2', '3', '6', '12', '18', '30']
+      }    
+    },
+    {
+      name: 'homeHeap',
+      title: 'Home heap',
+      description: 'choose the heap to display on the homepage',
+      type: 'reference',
+      to: [{ 
+        type: 'heap'
+      }],
+      validation: (Rule: any) => Rule.required()
     },
     {
       name: 'metakeywords',
