@@ -8,7 +8,6 @@ query building helper methods
 
 import qs from 'query-string'
 import { UtilQueryBuildingProps, UtilQueryURLProps } from '@/sanity/myprops'
-import { findableJoins } from './schemas'
 
 // used to build long queries with many components, some of which may or may not appear
 export function buildQuery(params: UtilQueryBuildingProps) {
@@ -16,8 +15,7 @@ export function buildQuery(params: UtilQueryBuildingProps) {
   /* get all the variables based on URL params and query strings (or use defaults listed below) */
   const {
     isCount = false,
-    type = '',
-    query = '',
+    query = '*',
     join = '', 
     kind = '',
     nook = '',
@@ -38,7 +36,7 @@ export function buildQuery(params: UtilQueryBuildingProps) {
     conditions.push(`count(*[`)
 
   // by query (keyword)
-  if (query !== '')
+  if (query)
     conditions.push(`
       [title, subtitle, content[].children[].text] match '${query.toLowerCase()}'
     `)

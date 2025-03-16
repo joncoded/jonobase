@@ -30,8 +30,8 @@ export interface FindPageParams {
 // get a heap, i.e. a list of lists
 export interface HeapProps {
   params: {
-    slug: string;
-  }
+    slug : string;
+  },  
 }
 
 // get a list, i.e. data for a horizontal section
@@ -59,7 +59,6 @@ export interface ListProps {
     url?: string;
     title?: string;
   };
-  showtype?: boolean;
   showjoin?: boolean;
   showkind?: boolean;
 }
@@ -190,7 +189,6 @@ export interface UtilPaginationProps {
 // queries
 export interface UtilQueryBuildingProps {
   isCount?: boolean; 
-  type?: string;
   query?: string;
   join?: string; 
   kind?: string;

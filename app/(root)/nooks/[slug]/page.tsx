@@ -1,7 +1,7 @@
 
 /*
 jonobase by @jonchius
-/app/(root)/nooks/[...slug]/page.tsx
+/app/(root)/nooks/[slug]/page.tsx
 the nooks (lists of "posts from nook (tag) X") page
 (replacement for nooks)
 */
@@ -20,7 +20,7 @@ export const fetchCache = 'force-no-store'
 
 export async function generateMetadata({params}: any) {
 
-  const { slug } = params  
+  const { slug } = await params  
   const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!) || {}  
   
   return {
@@ -34,7 +34,7 @@ export default async function Main({ params, searchParams }: NookProps) {
 
   const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!) || {}
 
-  const { slug } = params
+  const { slug } = await params
   const { page, perPage } = searchParams
 
   const posts = await getPosts({        

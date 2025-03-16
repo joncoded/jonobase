@@ -77,7 +77,7 @@ const schema = {
       description: 'build a query for the list of content to display in page sections (all fields are optional - leave blank to mean "any")!)',
       fields: [
         {name: 'query', type: 'string', title: 'Query', description: 'content that contains this keyword'},
-        {name: 'type', type: 'string', title: 'Type', description: 'within the content type (e.g. post / side / wiki / zine)'},
+        {name: 'join', type: 'string', title: 'Join', description: 'within the content folder'},
         {name: 'kind', type: 'string', title: 'Kind', description: 'within the content subfolder' },
         {name: 'nook', type: 'string', title: 'Nook', description: 'with the following tag' },
         {name: 'count', type: 'number', title: '# of posts', options: { list: [ 1, 2, 3, 6, 12 ] }},
@@ -97,6 +97,18 @@ const schema = {
       title: 'Show posts',
       description: 'Show the posts from the query above',
       type: 'boolean',       
+    },
+    {
+      name: 'showjoin',
+      title: 'Show join',
+      description: 'display the join (category folder) on the list',
+      type: 'boolean',
+    },
+    {
+      name: 'showkind',
+      title: 'Show kind',
+      description: 'display the kind (category subfolder) on the list',
+      type: 'boolean',
     },
     {
       name: 'postcontent',
@@ -135,16 +147,10 @@ const schema = {
       ]
     },
     {
-      name: 'showjoin',
-      title: 'Show join',
-      description: 'display the join (category folder) on the list',
-      type: 'boolean',
-    },
-    {
-      name: 'showkind',
-      title: 'Show kind',
-      description: 'display the kind (category subfolder) on the list',
-      type: 'boolean',
+      name: 'showlink',
+      title: 'Show link', 
+      description: 'show CTA',
+      type: 'boolean'
     }
   ],
   initialValue: {
@@ -153,10 +159,13 @@ const schema = {
     showtitle: true,
     showsubtitle: false,
     querybuilder: {
+      query: '', 
+      nook: '', 
       order: 'date', 
       ascDesc: 'desc'
     },
-    showposts: true
+    showposts: true,
+    showlink: false
   }
 }
 

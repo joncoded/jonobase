@@ -79,10 +79,10 @@ export const list = `
   querybuilder,
   showposts, 
   postcontent,
-  cta,
-  showtype,
+  showjoin,
   showkind,
-  showjoin
+  cta,
+  showlink
 `
 
 export const lists = `
@@ -112,7 +112,7 @@ export const heap = `
   }   
 `
 
- /* 
+/* 
 base : a collection of heaps!
 */
 

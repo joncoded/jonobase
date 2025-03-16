@@ -62,7 +62,7 @@ export const getList = async (slug: string) => {
     const lists = await readClient.fetch(
       groq`*[_type == 'list' && slug.current == '${slug}']{${fields.list}}`
     )
-
+    
     return lists[0]
 
   } catch (error) {
@@ -88,7 +88,7 @@ export const getPosts = async (criteria: myprops.PostGetterProps) => {
         order,
         ascDesc
       })} {
-        ${fields.post}
+        ${fields.postCard}
       }`
     )    
 

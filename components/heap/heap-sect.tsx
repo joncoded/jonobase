@@ -12,20 +12,50 @@ import { serializers } from "../base/util/rich"
 import { Sect } from "../base/html/main"
 import PostList from "../post/post-list"
 
-export default async function HeapSect({heapList} : any) {
+export const revalidate = 10
 
-  const { query, join, kind, nook, count, order, ascDesc } = heapList.querybuilder
+export default async function HeapSect({ heapList }: any) {
 
-  let posts
-  (order === 'random') 
-  ? 
-    posts = await getPostsRandomly({
-      query, join, kind, nook
-    }, count)    
-  :
-    posts = await getPosts({
-      query, join, kind, nook, perPage: count, order, ascDesc 
-    })
+  const {
+    querybuilder = {}
+  }: {
+    querybuilder?: {
+      query?: string,
+      join?: any,
+      kind?: any,
+      nook?: any,
+      count?: number,
+      order?: string,
+      ascDesc?: string
+    }
+  } = heapList || {};
+  
+  const {
+    query = '*',
+    join,
+    kind,
+    nook,
+    count,
+    order,
+    ascDesc
+  } = querybuilder || {}
+
+  
+  let posts: any[] = []
+  
+  if (querybuilder) {
+    posts = order === 'random'
+      ? await getPostsRandomly({ query: query ?? '*', join, kind, nook }, count ?? 1) || []
+      : await getPosts({
+          query: query ?? '*',
+          join,
+          kind,
+          nook,
+          perPage: count?.toString() ?? '1',
+          order: order as 'date' | 'title',
+          ascDesc: ascDesc as 'asc' | 'desc' | undefined
+        }) || [];
+  }
 
   return (
     <Sect 
@@ -38,11 +68,11 @@ export default async function HeapSect({heapList} : any) {
     >
       
       {heapList.showtitle && 
-        <h2 id="heap-name" className={`uppercase text-center md:text-left text-3xl md:text-4xl font-bold`}>{heapList.title}</h2>
+        <h2 id="heap-name" className={`uppercase text-center text-3xl md:text-4xl font-bold`}>{heapList.title}</h2>
       }
       
       {heapList.showsubtitle && 
-        <p id="heap-subt" className={`text-lg md:text-xl text-center md:text-left`}>{heapList.subtitle}</p>
+        <p id="heap-subt" className={`text-lg md:text-xl text-center`}>{heapList.subtitle}</p>
       }
       
       <div id="heap-prec" className={`mb-5`}>
@@ -65,8 +95,15 @@ export default async function HeapSect({heapList} : any) {
         /> 
       </div>
       
-      {heapList.cta.url && 
-        <div className="text-center"><Link className={`${styling.button} text-center`} href={heapList.cta.url}>{heapList.cta.title}</Link></div>
+      {heapList.showlink && heapList.cta.url && 
+        <div className="text-center">
+          <Link 
+            className={`${styling.button} text-center`} 
+            href={heapList.cta.url}
+          >
+            {heapList.cta.title}
+          </Link>
+        </div>
       }
     
     </Sect>
@@ -74,4 +111,3 @@ export default async function HeapSect({heapList} : any) {
   )
 
 }
-

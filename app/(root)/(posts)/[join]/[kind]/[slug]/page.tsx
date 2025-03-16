@@ -28,7 +28,7 @@ export const fetchCache = 'force-no-store'
 
 export async function generateMetadata({params}: any) {
 
-  const { join, kind, slug } = params  
+  const { join, kind, slug } = await params  
   const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!) || {}
   const post = await getPost({slug})       
 
@@ -44,7 +44,7 @@ export async function generateMetadata({params}: any) {
 
 export default async function Main({ params } : any) {
 
-  const { join, kind, slug } = params    
+  const { join, kind, slug } = await params    
   const post = await getPost({slug})  
 
   if (!post) return <None />  
