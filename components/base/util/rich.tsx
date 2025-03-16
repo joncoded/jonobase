@@ -5,13 +5,13 @@ jonobase by @jonchius
 serializers for rich text editor generated content
 */
 
-import { OpusLinkProps } from "@/sanity/myprops"
+import { PostLinkProps } from "@/sanity/myprops"
 import SyntaxHighlighter from "react-syntax-highlighter"
 import { monokaiSublime } from "react-syntax-highlighter/dist/cjs/styles/hljs"
 
 export const serializers = {
   marks: {
-    link: ({ children, mark }: OpusLinkProps) => (
+    link: ({ children, mark }: PostLinkProps) => (
       <a href={mark.href} target={mark.href.startsWith('http') ? '_blank' : ''} rel="noopener noreferer">
         {children}
       </a>
