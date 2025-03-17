@@ -38,7 +38,7 @@ export function buildQuery(params: UtilQueryBuildingProps) {
   // by query (keyword)
   if (query)
     conditions.push(`
-      [title, subtitle, content[].children[].text] match '${query.toLowerCase()}'
+      [title, subtitle, content[].children[].text] match '*${query.toLowerCase()}*'
     `)
 
   // by join
