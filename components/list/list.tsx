@@ -75,7 +75,7 @@ export default async function HeapSect({ heapList }: any) {
         <p id="heap-subt" className={`text-lg md:text-xl text-center`}>{heapList.subtitle}</p>
       }
       
-      <div id="heap-prec" className={`mb-5`}>
+      <div id="heap-prec" className={`my-5 ${styling['home-head-main']}`}>
         <BlockContent 
           blocks={heapList.precontent}
           serializers={serializers} 
@@ -86,7 +86,7 @@ export default async function HeapSect({ heapList }: any) {
       
       {heapList.showposts && <PostList posts={posts} showJoin={heapList.showjoin} showKind={heapList.showkind} />}
       
-      <div id="heap-posc" className={`mt-5`}>
+      <div id="heap-posc" className={`my-5 ${styling['home-head-main']}`}>
       <BlockContent 
         blocks={heapList.postcontent}
         serializers={serializers} 
