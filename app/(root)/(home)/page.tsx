@@ -10,6 +10,8 @@ import ScrollToTop from "@/components/base/util/ttop"
 import Heap from "../heaps/[slug]/page"
 
 export const revalidate = 10
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'force-no-store'
 
 export async function generateMetadata() {
 

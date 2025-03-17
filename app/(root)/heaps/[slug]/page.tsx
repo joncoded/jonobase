@@ -14,6 +14,8 @@ import List from "@/components/list/list"
 import None from "@/components/base/util/none"
 
 export const revalidate = 10
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'force-no-store'
 
 export async function generateMetadata({ params }: HeapProps) {
 
