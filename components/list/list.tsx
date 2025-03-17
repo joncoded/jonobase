@@ -1,7 +1,7 @@
 /*
 jonobase by @jonchius
-/app/components/heap/heap-sect.tsx
-a horizontal section of a heap (i.e. automated page of post lists)
+/app/components/list/list.tsx
+a list, a horizontal section of a heap (i.e. "back-end" driven page of a list of posts)
 */
 
 import Link from "next/link"

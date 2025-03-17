@@ -10,7 +10,7 @@ import { getBase, getHeap, getList } from "@/sanity/actions"
 import { Sect } from "@/components/base/html/main"
 import ScrollToTop from "@/components/base/util/ttop"
 import Apex from "@/components/base/html/main-apex"
-import HeapSect from "@/components/heap/heap-sect"
+import List from "@/components/list/list"
 import None from "@/components/base/util/none"
 
 export const revalidate = 10
@@ -68,7 +68,7 @@ export default async function Heap({ params }: HeapProps) {
       }
             
       {heapLists && heapLists.map(heapList =>            
-        <HeapSect key={heapList._id} heapList={heapList} />
+        <List key={heapList._id} heapList={heapList} />
       )}        
 
     </main>
