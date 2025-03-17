@@ -10,7 +10,6 @@ import { useEffect, useState } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { formUrlQuery } from "@/sanity/utils"
 import { FindPageParams } from "@/sanity/myprops"
-import { findableJoins } from "@/sanity/schemas"
 import { text } from "@/lib/app.config"
 import { Span } from "../base/html/main"
 import FindHead from "./find-head"
@@ -18,7 +17,6 @@ import PostLine from "../post/post-line"
 
 export default function Find({ posts, totalPostsCount, urlParams }: FindPageParams) {
 
-  const schemas = JSON.parse(findableJoins)
   const searchParams = useSearchParams()
   const router = useRouter()
   const [query, setQuery] = useState(urlParams.query || "")
@@ -45,37 +43,12 @@ export default function Find({ posts, totalPostsCount, urlParams }: FindPagePara
   }, [query])
 
   useEffect(() => {
-    let newUrl = ""
-    
-    if (typeFilter) {
-      newUrl = formUrlQuery({
-        params: searchParams.toString(),
-        key: "type", 
-        value: typeFilter
-      })
-    } else {
-      newUrl = formUrlQuery({
-        params: searchParams.toString(),
-        key: "",
-        value: "",
-        keysToRemove: ["type"]
-      })
-    }
-    router.push(newUrl, { scroll: false })
-
-  }, [typeFilter])
-
-  useEffect(() => {
     setQuery(urlParams.query!)
     setTypeFilter(urlParams.type || "")
   }, [urlParams.query])
 
   const handleQuery = (event: any) => {
     setQuery(event.target.value)
-  }
-
-  const handleFilter = (event: any) => {
-    setTypeFilter(event.target.value)
   }
 
   const FindApex = () => {
@@ -109,13 +82,7 @@ export default function Find({ posts, totalPostsCount, urlParams }: FindPagePara
           `}
           value={query}
           onChange={handleQuery}
-        />
-        <select className={`px-5`} onChange={handleFilter} value={urlParams.type}>          
-          <option value="*">all</option>
-          {schemas.map((schema : string) => (
-            <option key={schema} value={schema}>{schema}</option>  
-          ))}          
-        </select>
+        />        
       </form>      
 
       <section id="find-main" className={`flex justify-center w-full flex-col`}>
