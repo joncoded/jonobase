@@ -11,7 +11,7 @@ import { getBase, getPost, getPostAdjacent } from "@/sanity/actions"
 import { serializers } from "@/components/base/util/rich"
 import { Sect } from "@/components/base/html/main"
 
-import { colors } from "@/lib/app.config"
+import { colors, text  } from "@/lib/app.config"
 
 import ScrollToTop from "@/components/base/util/ttop"
 import None from "@/components/base/util/none"
@@ -54,7 +54,9 @@ export default async function Main({ params } : any) {
   const newerInKind = await getPostAdjacent(myDate, 'newer', join, kind)
   const olderInKind = await getPostAdjacent(myDate, 'older', join, kind)  
   const newerInJoin = await getPostAdjacent(myDate, 'newer', join, kind)  
-  const olderInJoin = await getPostAdjacent(myDate, 'older', join, kind)  
+  const olderInJoin = await getPostAdjacent(myDate, 'older', join, kind) 
+  const newerInOmni = await getPostAdjacent(myDate, 'newer', "", "") 
+  const olderInOmni = await getPostAdjacent(myDate, 'older', "", "")  
   
   return (
 
@@ -106,6 +108,10 @@ export default async function Main({ params } : any) {
 
       {(olderInJoin || newerInJoin) && <Sect id="post-turn-type" className={`post-turn p-5 bg-gray-100 dark:bg-gray-900 text-md md:text-lg`}>
         <PostTurn newer={newerInJoin ?? null} turnTitle={`in ${join}`} older={olderInJoin ?? null} />
+      </Sect>}
+
+      {(olderInOmni || newerInOmni) && <Sect id="post-turn-omni" className={`post-turn p-5 text-md md:text-lg`}>
+        <PostTurn newer={newerInOmni ?? null} turnTitle={`${text['posts']}`} older={olderInOmni ?? null} />
       </Sect>}
 
     </main>
