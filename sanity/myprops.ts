@@ -86,6 +86,7 @@ export interface PostListProps {
 export interface PostProps {
   
   _type: string;
+  _updatedAt: string;
   _id: string;
   slug: {
     current: string;

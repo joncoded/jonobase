@@ -17,6 +17,7 @@ posts : a single page of content
 // post data for pages
 export const post = `
   _id,
+  _updatedAt, 
   _type,
   "slug": slug.current,
   "image": image.asset->url,

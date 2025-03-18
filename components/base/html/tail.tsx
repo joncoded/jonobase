@@ -50,7 +50,7 @@ export default async function Tail() {
         max-w-screen-lg flex max-md:flex-col justify-between gap-0 mx-auto 
         prose prose-p:text-white prose-p:my-2 md:propse-p:my-0 
         prose-a:${colors.link} prose-a:font-bold prose-a:no-underline 
-        !dark:prose-a:${colors.darkLink} 
+        dark:prose-a:${colors.darkLink} 
         hover:prose-a:${colors.darkLinkHover} 
         hover:prose-a:underline p-5 xl:p-0 
         dark:hover:prose-a:${colors.darkLinkHover} 

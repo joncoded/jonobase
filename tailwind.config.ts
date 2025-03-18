@@ -25,7 +25,7 @@ module.exports = {
     {
       pattern: /(bg|text|from|to)-+/,
       variants: [
-        'dark', 'prose-a', 'hover', 'hover:dark', 'hover:dark:prose-a'
+        'dark', 'prose-a', 'dark:prose-a', 'hover', 'dark:hover', 'dark:hover:prose-a'
       ]
     },
   ],
