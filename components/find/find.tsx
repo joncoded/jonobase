@@ -19,8 +19,7 @@ export default function Find({ posts, totalPostsCount, urlParams }: FindPagePara
 
   const searchParams = useSearchParams()
   const router = useRouter()
-  const [query, setQuery] = useState(urlParams.query || "")
-  const [typeFilter, setTypeFilter] = useState(urlParams.type || "")
+  const [query, setQuery] = useState(urlParams.query || "")  
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
@@ -43,12 +42,15 @@ export default function Find({ posts, totalPostsCount, urlParams }: FindPagePara
   }, [query])
 
   useEffect(() => {
-    setQuery(urlParams.query!)
-    setTypeFilter(urlParams.type || "")
+    setQuery(urlParams.query!)    
   }, [urlParams.query])
 
   const handleQuery = (event: any) => {
     setQuery(event.target.value)
+  }
+
+  const handleSubmit = (event: any) => {
+    event.preventDefault()
   }
 
   const FindApex = () => {
@@ -70,7 +72,7 @@ export default function Find({ posts, totalPostsCount, urlParams }: FindPagePara
       <FindApex />
 
       {/* moving this to a separate component will make the API struggle */}
-      <form id="find-form" className={`find-form w-full flex text-center`}>
+      <form id="find-form" className={`find-form w-full flex text-center`} onSubmit={handleSubmit}>
         <label className={`w-full max-w-full md:max-w-screen-md mx-auto sr-only`}></label>
         <input
           type="text"
