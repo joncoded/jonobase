@@ -1,7 +1,7 @@
 
 /*
 jonobase by @jonchius
-/app/(root)/(posts)/[join]/[kind]/[...slug]/page.tsx
+/app/(root)/(posts)/[join]/[kind]/[slug]/page.tsx
 the post (single article) template
 */
 
