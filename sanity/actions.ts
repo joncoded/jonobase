@@ -109,9 +109,8 @@ export const getPostsRandomly = async (criteria: myprops.PostGetterProps, count:
 
     // get all post of the same criteria
     const postMeetingCriteria = await getPosts({      
-      query: criteria.query || '',
-      join: criteria.join || '',
-      type: criteria.type || '',
+      query: criteria.query || '*',
+      join: criteria.join || '',      
       kind: criteria.kind || '',
       nook: criteria.nook || ''
     })

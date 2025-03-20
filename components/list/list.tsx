@@ -16,6 +16,7 @@ export const revalidate = 10
 
 export default async function List({ heapList }: any) {
 
+  // get query object from the list
   const {
     querybuilder = {}
   }: {
@@ -30,6 +31,7 @@ export default async function List({ heapList }: any) {
     }
   } = heapList || {};
   
+  // get query data from the query object
   const {
     query = '*',
     join,
@@ -38,14 +40,31 @@ export default async function List({ heapList }: any) {
     count,
     order,
     ascDesc
-  } = querybuilder || {}
+  } = heapList.querybuilder || {}
 
+  // get list data from the list object
+  const {
+    _id, 
+    slug, 
+    title, 
+    bgColor, 
+    showtitle, 
+    subtitle, 
+    showsubtitle, 
+    precontent, 
+    showposts,
+    postcontent, 
+    showjoin, 
+    showkind,
+    showlink, 
+    cta
+  } = heapList
   
   let posts: any[] = []
   
   if (querybuilder) {
     posts = order === 'random'
-      ? await getPostsRandomly({ query: query ?? '*', join, kind, nook }, count ?? 1) || []
+      ? await getPostsRandomly({ query, join, kind, nook }, count ?? 1) || []
       : await getPosts({
           query: query ?? '*',
           join,
