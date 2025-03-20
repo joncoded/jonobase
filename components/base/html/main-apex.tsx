@@ -4,13 +4,13 @@ jonobase by @jonchius
 breadcrumbs for top of each page
 "first" refers to first-level "subfolder" of domain
 "second" refers to second-level "subfolder" of domain
-(no more than two levels of breadcrumbs to keep things simpler)
+(no more than two levels of breadcrumbs will exist, in order to keep things simpler)
 "post" refers to whether the page is at the "post" (article) level
 */
 
 import Link from "next/link"
 import { Span } from "./main"
-import { colors } from "@/app/config"
+import { colors, styling } from "@/app/config"
 
 export default function Apex( { first, second, post = false } : { first: string, second?: string, post?: boolean }) {
 
@@ -20,22 +20,22 @@ export default function Apex( { first, second, post = false } : { first: string,
     <aside className={`uppercase`}>
       <>
 
-        { (first && !second) && <Span className={`text-lg md:text-2xl`}>{first}</Span>}
+        { (first && !second) && <Span className={`${styling['main-apex-first']}`}>{first}</Span>}
 
         { (first && second) && (
           <>
-            <Span className={`text-lg md:text-2xl`}>
+            <Span className={`${styling['main-apex-first']}`}>
               <Link className={linkColors} href={`/${first}/`}>{first}</Link>
             </Span>
             <Span ariaHidden={true}> / </Span>
           </>
         )}
 
-        { (second && post === false) && <Span className={`text-sm md:text-lg`}>{second}</Span> }
+        { (second && post === false) && <Span className={`${styling['main-apex-second']}`}>{second}</Span> }
 
         { (second && post === true) && (
           <>
-            <Span className={`text-sm md:text-lg`}>
+            <Span className={`${styling['main-apex-second']}`}>
               <Link className={linkColors} href={`/${first}/${second}/`}>{second}</Link>
             </Span>
           </>

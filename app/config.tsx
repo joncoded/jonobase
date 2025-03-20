@@ -34,6 +34,10 @@ export const styling = {
   "main-apex" : `bg-zinc-100 dark:bg-zinc-800
   `,
 
+  "main-apex-first" : `text-lg md:text-2xl`,
+
+  "main-apex-second" : `text-sm md:text-lg`,
+
   "home-head" : `bg-gradient-to-b drop-shadow-md 
     from-green-200 dark:from-green-900 to-green-300 dark:to-green-800 py-10 
   `,
