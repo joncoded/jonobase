@@ -28,9 +28,11 @@ export const colors = {
 // common tailwind styles
 export const styling = {
 
-  "button" : `p-2 px-5 border border-black dark:hover:border-white dark:border-white bg-white dark:bg-black text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black`, 
+  "button" : `p-2 px-5 border border-black dark:hover:border-white dark:border-white bg-white dark:bg-black text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black
+  `, 
 
-  "main-apex" : `bg-zinc-100 dark:bg-zinc-800`,
+  "main-apex" : `bg-zinc-100 dark:bg-zinc-800
+  `,
 
   "home-head" : `bg-gradient-to-b drop-shadow-md 
     from-green-200 dark:from-green-900 to-green-300 dark:to-green-800 py-10 
@@ -41,7 +43,36 @@ export const styling = {
     prose-h2:text-4xl md:prose-h2:text-5xl prose-h2:mb-5 prose-h2:font-sans 
     prose-h3:text-3xl md:prose-h3:text-4xl prose-h3:mb-5 prose-h3:font-sans  
     prose-p:text-lg prose-p:font-serif prose-p:mb-5 prose-p:leading-relaxed
-    text-black dark:text-white`,
+    text-black dark:text-white
+  `,
+
+  "post-head-sect" : `
+    !bg-gradient-to-b from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900 dark:text-white py-5
+  `,
+
+  "post-main-sect" : `
+    border-t dark:border-t-gray-600 
+    prose-headings:font-sans prose-headings:font-bold prose-headings:mt-5 
+    prose-h2:text-4xl prose-h3:text-3xl prose-h4:text-xl 
+    prose-code:text-white prose-code:bg-[#23241f] 
+    prose-a:${colors.link} dark:prose-a:${colors.darkLink} 
+    hover:prose-a:${colors.linkHover} dark:hover:prose-a:${colors.darkLinkHover} 
+    hover:prose-a:underline font-serif
+  `,
+
+  "post-nook-sect" : `
+    !bg-gradient-to-r from-zinc-100 to-zinc-200 dark:from-gray-800 dark:to-gray-900 
+    text-sm lg:text-md py-5
+  `,
+
+  "post-xtra-sect" : `
+    border-t hover:prose-a:underline 
+    prose-a:${colors.link} dark:prose-a:${colors.darkLink} 
+    hover:prose-a:${colors.linkHover} dark:hover:prose-a:${colors.darkLinkHover} 
+    prose-headings:font-sans prose-headings:font-bold prose-headings:mt-5 
+    prose-h2:text-4xl prose-h3:text-3xl prose-code:text-white prose-code:bg-[#23241f]
+    font-serif
+  `
 
 }
 
