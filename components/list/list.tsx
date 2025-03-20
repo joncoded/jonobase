@@ -30,7 +30,7 @@ export default async function List({ heapList }: any) {
       ascDesc?: string
     }
   } = heapList || {};
-  
+
   // get query data from the query object
   const {
     query = '*',
@@ -44,24 +44,24 @@ export default async function List({ heapList }: any) {
 
   // get list data from the list object
   const {
-    _id, 
-    slug, 
-    title, 
-    bgColor, 
-    showtitle, 
-    subtitle, 
-    showsubtitle, 
-    precontent, 
+    _id,
+    slug,
+    title,
+    bgColor,
+    showtitle,
+    subtitle,
+    showsubtitle,
+    precontent,
     showposts,
-    postcontent, 
-    showjoin, 
+    postcontent,
+    showjoin,
     showkind,
-    showlink, 
+    showlink,
     cta
   } = heapList
-  
+
   let posts: any[] = []
-  
+
   if (querybuilder) {
     posts = order === 'random'
       ? await getPostsRandomly({ query, join, kind, nook }, count ?? 1) || []
@@ -77,62 +77,62 @@ export default async function List({ heapList }: any) {
   }
 
   return (
-    <Sect 
-      key={_id} 
-      className={`list-${slug} 
-        py-5 bg-${bgColor === 'white' 
-          ? 'white dark:bg-black' 
+    <Sect
+      key={_id}
+      className={`list-sect-${slug}
+        py-5 bg-${bgColor === 'white'
+          ? 'white dark:bg-black'
           : `${bgColor}-300 dark:bg-${bgColor}-800`
         }`}
     >
 
-      <div id={`list-${slug}-head`} className={`text-center my-5`}>
-      
-        {showtitle && 
-          <h2 id="list-name" className={`uppercase text-center text-3xl md:text-4xl font-bold`}>{title}</h2>
+      <div id={`list-head-${slug}`} className={`text-center my-5`}>
+
+        {showtitle &&
+          <h2 id={`list-name-${slug}`} className={`uppercase text-center text-3xl md:text-4xl font-bold`}>{title}</h2>
         }
-        
-        {showsubtitle && 
-          <p id="list-subt" className={`text-lg md:text-xl text-center`}>{subtitle}</p>
+
+        {showsubtitle &&
+          <p id={`list-subt-${slug}`} className={`text-lg md:text-xl text-center`}>{subtitle}</p>
         }
-      
+
       </div>
-      
-      <div id={`list-${slug}-prec`} className={`my-5 text-center ${styling['home-head-main']}`}>
-        <BlockContent 
+
+      {precontent && <div id={`list-prec-${slug}`} className={`text-center my-5 ${styling['home-head-main']}`}>
+        <BlockContent
           blocks={precontent}
-          serializers={serializers} 
+          serializers={serializers}
           dataset="production"
           projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
-        />          
-      </div>      
-      
-      {showposts && 
-      
+        />
+      </div>}
+
+      {showposts &&
+
         <PostList posts={posts} showJoin={showjoin} showKind={showkind} />
-      
+
       }
-      
-      <div id={`list-${slug}-posc`} className={`my-5 text-center ${styling['home-head-main']}`}>
-        <BlockContent 
+
+      {postcontent && <div id={`list-posc-${slug}`} className={`my-5 text-center ${styling['home-head-main']}`}>
+        <BlockContent
           blocks={postcontent}
-          serializers={serializers} 
+          serializers={serializers}
           dataset="production"
           projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
-        /> 
-      </div>
-      
-      {showlink && cta.url && 
-        <div id={`list-${slug}-cta`} className="text-center">
-          <Link 
-            className={`${styling.button} text-center`} 
+        />
+      </div>}
+
+      {showlink && cta.url &&
+        <div id={`list-link-${slug}`} className="my-5 text-center">
+          <Link
+            className={`${styling.button} text-center`}
             href={cta.url}
           >
             {cta.title}
           </Link>
         </div>
       }
-    
+
     </Sect>
 
   )
