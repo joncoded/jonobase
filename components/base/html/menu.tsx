@@ -176,8 +176,12 @@ export default function Menu({myBase} : any) {
     return (
       <nav
         className={`menu-content 
-          my-10 text-center h-full 
-          prose-h2:my-5 prose-h2:text-4xl prose-h3:text-3xl prose-p:text-2xl prose-a:${colors.link} dark:prose-a:${colors.darkLink} hover:prose-a:${colors.linkHover} dark:hover:prose-a:${colors.darkLinkHover} hover:prose-a:font-semibold dark:hover:prose-a:text-white
+          pb-10 md:pb-5 text-center prose-h2:my-5 
+          prose-h2:text-2xl prose-h3:text-xl prose-p:text-lg 
+          md:prose-h2:text-4xl md:prose-h3:text-3xl md:prose-p:text-2xl 
+          prose-a:${colors.link} dark:prose-a:${colors.darkLink} 
+          hover:prose-a:${colors.linkHover} dark:hover:prose-a:${colors.darkLinkHover} 
+          hover:prose-a:font-semibold 
         `} 
       >
         <BlockContent 
