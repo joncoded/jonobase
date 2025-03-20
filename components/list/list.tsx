@@ -14,7 +14,7 @@ import PostList from "../post/post-list"
 
 export const revalidate = 10
 
-export default async function HeapSect({ heapList }: any) {
+export default async function List({ heapList }: any) {
 
   const {
     querybuilder = {}
@@ -59,49 +59,57 @@ export default async function HeapSect({ heapList }: any) {
 
   return (
     <Sect 
-      key={heapList._id} 
-      className={`heap-list-${heapList.slug} 
-        py-5 bg-${heapList.bgColor === 'white' 
+      key={_id} 
+      className={`list-${slug} 
+        py-5 bg-${bgColor === 'white' 
           ? 'white dark:bg-black' 
-          : `${heapList.bgColor}-300 dark:bg-${heapList.bgColor}-800`
+          : `${bgColor}-300 dark:bg-${bgColor}-800`
         }`}
     >
+
+      <div id={`list-${slug}-head`} className={`text-center my-5`}>
       
-      {heapList.showtitle && 
-        <h2 id="heap-name" className={`uppercase text-center text-3xl md:text-4xl font-bold`}>{heapList.title}</h2>
-      }
+        {showtitle && 
+          <h2 id="list-name" className={`uppercase text-center text-3xl md:text-4xl font-bold`}>{title}</h2>
+        }
+        
+        {showsubtitle && 
+          <p id="list-subt" className={`text-lg md:text-xl text-center`}>{subtitle}</p>
+        }
       
-      {heapList.showsubtitle && 
-        <p id="heap-subt" className={`text-lg md:text-xl text-center`}>{heapList.subtitle}</p>
-      }
+      </div>
       
-      <div id="heap-prec" className={`my-5 text-center ${styling['home-head-main']}`}>
+      <div id={`list-${slug}-prec`} className={`my-5 text-center ${styling['home-head-main']}`}>
         <BlockContent 
-          blocks={heapList.precontent}
+          blocks={precontent}
           serializers={serializers} 
           dataset="production"
           projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
         />          
       </div>      
       
-      {heapList.showposts && <PostList posts={posts} showJoin={heapList.showjoin} showKind={heapList.showkind} />}
+      {showposts && 
       
-      <div id="heap-posc" className={`my-5 text-center ${styling['home-head-main']}`}>
-      <BlockContent 
-        blocks={heapList.postcontent}
-        serializers={serializers} 
-        dataset="production"
-        projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
-      /> 
+        <PostList posts={posts} showJoin={showjoin} showKind={showkind} />
+      
+      }
+      
+      <div id={`list-${slug}-posc`} className={`my-5 text-center ${styling['home-head-main']}`}>
+        <BlockContent 
+          blocks={postcontent}
+          serializers={serializers} 
+          dataset="production"
+          projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
+        /> 
       </div>
       
-      {heapList.showlink && heapList.cta.url && 
-        <div className="text-center">
+      {showlink && cta.url && 
+        <div id={`list-${slug}-cta`} className="text-center">
           <Link 
             className={`${styling.button} text-center`} 
-            href={heapList.cta.url}
+            href={cta.url}
           >
-            {heapList.cta.title}
+            {cta.title}
           </Link>
         </div>
       }
