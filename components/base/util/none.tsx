@@ -6,7 +6,7 @@ file not found template
 */
 
 import { Sect } from "@/components/base/html/main"
-import { styling, text } from "@/lib/app.config"
+import { styling, text } from "@/app/config"
 import Link from "next/link"
 
 export default function None() {

@@ -6,7 +6,7 @@ the kind (the second level sub-category list of posts)
 */
 
 import { getBase, getPosts, getPostsCount } from "@/sanity/actions"
-import { styling } from "@/lib/app.config"
+import { styling } from "@/app/config"
 
 import { Sect } from "@/components/base/html/main"
 import ScrollToTop from "@/components/base/util/ttop"

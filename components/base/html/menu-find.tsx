@@ -9,7 +9,7 @@ the find (search) UI for the head menu
 import { useState } from "react"
 import { useRouter } from 'next/navigation'
 import { UtilMenuFindProps } from "@/sanity/myprops"
-import { text } from "@/lib/app.config"
+import { text } from "@/app/config"
 
 export default function MenuFind({showMenu, inputName, placeholder = '🔎'}: UtilMenuFindProps) {
 

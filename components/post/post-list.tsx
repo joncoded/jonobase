@@ -9,7 +9,7 @@ the list of posts
 
 import { PostProps } from '@/sanity/myprops'
 import PostLine from './post-line'
-import { text } from '@/lib/app.config'
+import { text } from '@/app/config'
 
 export default function PostList({posts, showJoin = false, showKind = false} : { posts: PostProps[], showJoin?: boolean, showKind?: boolean} ) {
 

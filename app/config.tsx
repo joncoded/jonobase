@@ -1,7 +1,7 @@
 
 /*
 jonobase by @jonchius
-/app/lib/app.config.tsx
+/app/config.tsx
 developer configuration 
 stretch goal: try to make this updatable via backend?
 */

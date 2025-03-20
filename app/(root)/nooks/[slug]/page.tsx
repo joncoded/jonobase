@@ -8,7 +8,7 @@ the nooks (lists of "posts from nook (tag) X") page
 
 import { getBase, getPosts, getPostsCount } from "@/sanity/actions"
 import { NookProps } from "@/sanity/myprops"
-import { text, styling } from "@/lib/app.config"
+import { text, styling } from "@/app/config"
 import { Sect, Span } from "@/components/base/html/main"
 import ScrollToTop from "@/components/base/util/ttop"
 import PostList from "@/components/post/post-list"

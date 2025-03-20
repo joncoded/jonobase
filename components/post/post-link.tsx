@@ -7,8 +7,8 @@ just takes in a link with "visit URL" as a label
 */
 
 import Link from "next/link"
-import { styling } from "@/lib/app.config"
-import { text } from "@/lib/app.config"
+import { styling } from "@/app/config"
+import { text } from "@/app/config"
 
 export default function PostLink( {link} : { link : URL } ) {
 

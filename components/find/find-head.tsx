@@ -5,7 +5,7 @@ search results counter
 */
 
 
-import { text } from "@/lib/app.config"
+import { text } from "@/app/config"
 import { FindHeadProps } from "@/sanity/myprops"
 
 const FindHead = ({count, query, kind}: FindHeadProps) => {

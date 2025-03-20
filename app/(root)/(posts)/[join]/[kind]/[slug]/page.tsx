@@ -11,7 +11,7 @@ import { getBase, getPost, getPostAdjacent } from "@/sanity/actions"
 import { serializers } from "@/components/base/util/rich"
 import { Sect } from "@/components/base/html/main"
 
-import { colors, text  } from "@/lib/app.config"
+import { colors, text  } from "@/app/config"
 
 import ScrollToTop from "@/components/base/util/ttop"
 import None from "@/components/base/util/none"

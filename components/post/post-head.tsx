@@ -8,7 +8,7 @@ shows the emoji (or background image) + title + subtitle + date
 
 import { PostProps } from "@/sanity/myprops"
 import getFormattedDate from "../base/util/date-form"
-import { timezone } from "@/lib/app.config"
+import { timezone } from "@/app/config"
 
 export default function OpusHead( { post } : { post : PostProps } ) {
 

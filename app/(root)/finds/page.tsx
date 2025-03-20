@@ -7,7 +7,7 @@ the finds (search) page
 
 import { getBase, getPosts, getPostsCount } from "@/sanity/actions"
 import { FindProps } from "@/sanity/myprops"
-import { text } from "@/lib/app.config"
+import { text } from "@/app/config"
 import { Sect } from "@/components/base/html/main"
 import ScrollToTop from "@/components/base/util/ttop"
 import Find from "@/components/find/find"

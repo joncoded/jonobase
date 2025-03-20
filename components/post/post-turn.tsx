@@ -6,7 +6,7 @@ just takes in the newer (post) and older (post) as parameters
 */
 
 import Link from "next/link"
-import { colors, text } from "@/lib/app.config"
+import { colors, text } from "@/app/config"
 
 import { PostAdjacentProps } from "@/sanity/myprops"
 

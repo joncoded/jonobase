@@ -8,8 +8,8 @@ the link to each post (used for lists)
 import Image from 'next/image'
 import Link from 'next/link'
 import { UtilDOMChildrenProps, PostListProps } from '@/sanity/myprops'
-import { text } from '@/lib/app.config'
-import { timezone, colors, styling } from '@/lib/app.config'
+import { text } from '@/app/config'
+import { timezone, colors, styling } from '@/app/config'
 
 const linkColors = `${colors.link} dark:${colors.darkLink} hover:${colors.linkHover} dark:hover:${colors.darkLinkHover} hover:underline`
 

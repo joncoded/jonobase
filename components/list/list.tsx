@@ -7,7 +7,7 @@ a list, a horizontal section of a heap (i.e. "back-end" driven page of a list of
 import Link from "next/link"
 import BlockContent from "@sanity/block-content-to-react"
 import { getPosts, getPostsRandomly } from "@/sanity/actions"
-import { styling } from "@/lib/app.config"
+import { styling } from "@/app/config"
 import { serializers } from "../base/util/rich"
 import { Sect } from "../base/html/main"
 import PostList from "../post/post-list"
@@ -62,6 +62,7 @@ export default async function List({ heapList }: any) {
 
   let posts: any[] = []
 
+  // get the actual post data for this list
   if (querybuilder) {
     posts = order === 'random'
       ? await getPostsRandomly({ query, join, kind, nook }, count ?? 1) || []
@@ -76,6 +77,7 @@ export default async function List({ heapList }: any) {
         }) || [];
   }
 
+  // display the list
   return (
     <Sect
       key={_id}

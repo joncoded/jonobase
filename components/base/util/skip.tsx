@@ -7,7 +7,7 @@ the "skip to main content" button
 */
 
 import Link from "next/link"
-import { text } from "@/lib/app.config"
+import { text } from "@/app/config"
 
 export default function Skip() {
 

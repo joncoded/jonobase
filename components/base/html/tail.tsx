@@ -8,7 +8,7 @@ the footer of each page
 import { getBase } from '@/sanity/actions'
 import BlockContent from '@sanity/block-content-to-react'
 import { serializers } from '../util/rich'
-import { colors } from '@/lib/app.config'
+import { colors } from '@/app/config'
 
 export default async function Tail() {  
 

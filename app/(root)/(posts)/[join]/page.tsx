@@ -6,7 +6,7 @@ the join (the first level category list of posts)
 */
 
 import { getBase, getPosts, getPostsCount } from "@/sanity/actions"
-import { styling } from "@/lib/app.config"
+import { styling } from "@/app/config"
 import { Sect } from "@/components/base/html/main"
 import ScrollToTop from "@/components/base/util/ttop"
 import None from "@/components/base/util/none"

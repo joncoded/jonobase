@@ -10,7 +10,7 @@ breadcrumbs for top of each page
 
 import Link from "next/link"
 import { Span } from "./main"
-import { colors } from "@/lib/app.config"
+import { colors } from "@/app/config"
 
 export default function Apex( { first, second, post = false } : { first: string, second?: string, post?: boolean }) {
 
