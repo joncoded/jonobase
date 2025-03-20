@@ -37,10 +37,11 @@ export const styling = {
   `,
 
   "home-head-main" : `
-    w-3/4 md:w-full max-w-screen-lg mx-auto prose
-    prose-h2:text-4xl md:prose-h2:text-5xl prose-h2:mb-5 
-    prose-h3:text-3xl md:prose-h3:text-4xl prose-h3:mb-5 
-    prose-p:text-lg md:prose-p:text-2xl text-black dark:text-white`,
+    w-3/4 md:w-full max-w-screen-lg mx-auto prose 
+    prose-h2:text-4xl md:prose-h2:text-5xl prose-h2:mb-5 prose-h2:font-sans 
+    prose-h3:text-3xl md:prose-h3:text-4xl prose-h3:mb-5 prose-h3:font-sans  
+    prose-p:text-lg prose-p:font-serif prose-p:mb-5 prose-p:leading-relaxed
+    text-black dark:text-white`,
 
 }
 
