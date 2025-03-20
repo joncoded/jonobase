@@ -138,7 +138,7 @@ export default function Menu({myBase} : any) {
       >
         <button onClick={closeMenu}>
           <Span 
-            aria-hidden="true" 
+            aria-hidden={true}
             className={`sm:mr-2`}>❌</Span>
           <br className={`sm:hidden`} />
           <Span>{text['close menu']}</Span>
@@ -156,7 +156,7 @@ export default function Menu({myBase} : any) {
       >
         <button onClick={handleTheme}>
           <Span 
-            aria-hidden="true"
+            aria-hidden={true}
             className={`sm:mr-2`}>
             {theme === 'dark' ? '💡' : '🌜' }
           </Span>
