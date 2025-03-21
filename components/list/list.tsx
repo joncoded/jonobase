@@ -129,6 +129,7 @@ export default async function List({ heapList }: any) {
           <Link
             className={`${styling.button} text-center`}
             href={cta.url}
+            target={cta.url.startsWith('http') ? '_blank' : '_self'}
           >
             {cta.title}
           </Link>
