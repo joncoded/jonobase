@@ -86,8 +86,25 @@ export const styling = {
     prose-headings:font-sans prose-headings:font-bold prose-headings:mt-5 
     prose-h2:text-4xl prose-h3:text-3xl prose-code:text-white prose-code:bg-[#23241f]
     font-serif
-  `
+  `,
 
+  "tail-wrap" : `
+    w-full 
+    border-t border-gray-300 mt-auto p-5
+    bg-gradient-to-b from-black to-gray-900
+  `,
+
+  "tail-prop" : `
+    flex max-md:flex-col justify-between gap-0 md:gap-5  
+    max-w-screen-lg mx-auto p-5    
+    prose prose-p:text-white prose-p:my-2 md:prose-p:my-0 
+    prose-a:${colors.link} 
+    dark:prose-a:${colors.darkLink} 
+    hover:prose-a:${colors.darkLinkHover}         
+    dark:hover:prose-a:${colors.darkLinkHover} 
+    prose-a:font-bold prose-a:no-underline 
+    hover:prose-a:underline
+  `,
 }
 
 // localization

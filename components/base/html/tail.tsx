@@ -8,7 +8,7 @@ the footer of each page
 import { getBase } from "@/sanity/actions"
 import BlockContent from "@sanity/block-content-to-react"
 import { serializers } from "../util/rich"
-import { colors } from "@/app/config"
+import { styling } from "@/app/config"
 
 export default async function Tail() {  
 
@@ -43,18 +43,8 @@ export default async function Tail() {
   }
 
   return (
-    <footer className={`tail-wrapper 
-      w-full border-t border-gray-300 bg-gradient-to-b from-black to-gray-900 mt-auto p-5
-    `}>
-      <div className={`tail-prop 
-        max-w-screen-lg flex max-md:flex-col justify-between gap-0 mx-auto 
-        prose prose-p:text-white prose-p:my-2 md:propse-p:my-0 
-        prose-a:${colors.link} prose-a:font-bold prose-a:no-underline 
-        dark:prose-a:${colors.darkLink} 
-        hover:prose-a:${colors.darkLinkHover} 
-        hover:prose-a:underline p-5 xl:p-0 
-        dark:hover:prose-a:${colors.darkLinkHover} 
-      `}>
+    <footer id="tail-wrap" className={`${styling['tail-wrap']}`}>    
+      <div className={`${styling['tail-prop']}`}>      
         <Colophon1 />
         <Colophon2 />
       </div>
