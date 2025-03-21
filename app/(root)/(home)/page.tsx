@@ -6,7 +6,6 @@ the root homepage (adjustable in sanity back-end via the "base" entry in the "ho
 */
 
 import { getBase } from "@/sanity/actions"
-import ScrollToTop from "@/components/base/util/ttop"
 import Heap from "../heaps/[slug]/page"
 
 export const revalidate = 10
