@@ -13,7 +13,7 @@ import { timezone, colors, styling } from "@/app/config"
 
 const linkColors = `${colors.link} dark:${colors.darkLink} hover:${colors.linkHover} dark:hover:${colors.darkLinkHover} hover:underline`
 
-const PostLine = ({post : { join, kind, slug, image, emoji, title, subtitle, link, date, showDate}, showJoin = false, showKind = false}: PostListProps) => {
+const ListPost = ({post : { join, kind, slug, image, emoji, title, subtitle, link, date, showDate}, showJoin = false, showKind = false}: PostListProps) => {
 
   const ListPostContainer = ({children} : UtilDOMChildrenProps) => {
     return (
@@ -139,4 +139,4 @@ const PostLine = ({post : { join, kind, slug, image, emoji, title, subtitle, lin
   )
 }
 
-export default PostLine
+export default ListPost

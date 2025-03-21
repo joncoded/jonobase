@@ -12,7 +12,7 @@ import ScrollToTop from "@/components/base/util/ttop"
 import None from "@/components/base/util/none"
 import Apex from "@/components/base/html/main-apex"
 import Paginate from "@/components/base/util/pagi"
-import PostLine from "@/components/list/list-post"
+import ListPost from "@/components/list/list-post"
 
 export const revalidate = 10
 export const dynamic = 'force-dynamic'
@@ -59,7 +59,7 @@ export default async function Main({ params, searchParams } : any) {
               grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-center mt-0`}
             >
               {myPosts.map((post: any) => (
-                <PostLine key={post._id} post={post} showJoin={false} showKind={true} />
+                <ListPost key={post._id} post={post} showJoin={false} showKind={true} />
               ))}    
               
             </div>

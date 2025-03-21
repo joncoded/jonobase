@@ -13,7 +13,7 @@ import { FindPageParams } from "@/sanity/myprops"
 import { text, styling } from "@/app/config"
 import { Span } from "../base/html/main"
 import FindHead from "./find-head"
-import PostLine from "../list/list-post"
+import ListPost from "../list/list-post"
 
 export default function Find({ posts, totalPostsCount, urlParams }: FindPageParams) {
 
@@ -97,7 +97,7 @@ export default function Find({ posts, totalPostsCount, urlParams }: FindPagePara
                 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-center mt-0`}
               >
                 {posts.map((post: any) => (
-                  <PostLine key={post._id} post={post} showJoin={true} showKind={true} />
+                  <ListPost key={post._id} post={post} showJoin={true} showKind={true} />
                 ))}
               </div>
               
