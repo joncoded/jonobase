@@ -49,6 +49,30 @@ export const styling = {
     bg-green-800 hover:bg-black border-white dark:border-gray-200 
   `,
 
+  "head-wrap" : `
+    w-full py-5 sticky top-0 !z-[200] 
+    bg-gradient-to-t from-gray-900 to-gray-600 
+    text-white shadow-xl 
+  `,
+
+  "head-wrap-navs" : `
+    w-full max-w-screen-lg mx-auto px-5 
+    flex items-center justify-between gap-5
+  `,
+
+  "head-branding-logo" : `
+    border-4 border-white mr-5 rounded-full
+    drop-shadow 
+  `,
+
+  "head-branding-name" : `
+    text-3xl uppercase
+  `,
+
+  "head-branding-subs" : `
+    hidden md:inline text-sm
+  `,
+
   "main-apex" : `bg-zinc-100 dark:bg-zinc-800
   `,
 
