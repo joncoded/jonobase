@@ -13,7 +13,7 @@ import { FindPageParams } from "@/sanity/myprops"
 import { text } from "@/app/config"
 import { Span } from "../base/html/main"
 import FindHead from "./find-head"
-import PostLine from "../post/post-line"
+import PostLine from "../list/list-post"
 
 export default function Find({ posts, totalPostsCount, urlParams }: FindPageParams) {
 

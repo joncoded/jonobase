@@ -12,7 +12,7 @@ import { Sect } from "@/components/base/html/main"
 import ScrollToTop from "@/components/base/util/ttop"
 import None from "@/components/base/util/none"
 import Apex from "@/components/base/html/main-apex"
-import PostLine from "@/components/post/post-line"
+import PostLine from "@/components/list/list-post"
 import Paginate from "@/components/base/util/pagi"
 
 export const revalidate = 10
