@@ -63,9 +63,9 @@ iframe[title="YouTube video player"] {
 }
 
 blockquote {
-  margin-left: 15px;
+  margin: 30px;
   border-left: 6px solid #bbb;
-  padding-left: 15px;
+  padding-left: 30px;
 }
 
 /* code snippets */
