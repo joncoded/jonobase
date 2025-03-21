@@ -9,8 +9,9 @@ the nooks (lists of "posts from nook (tag) X") page
 import { getBase, getPosts, getPostsCount } from "@/sanity/actions"
 import { NookProps } from "@/sanity/myprops"
 import { text, styling } from "@/app/config"
-import { Sect, Span } from "@/components/base/html/main"
+import { Sect } from "@/components/base/html/main"
 import ScrollToTop from "@/components/base/util/ttop"
+import Apex from "@/components/base/html/main-apex"
 import ListLine from "@/components/list/list-line"
 import Paginate from "@/components/base/util/pagi"
 
@@ -24,7 +25,7 @@ export async function generateMetadata({params}: any) {
   const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!) || {}  
   
   return {
-    title: `${decodeURIComponent(slug)} @ ${myBase?.title}`,
+    title: `#${decodeURIComponent(slug)} @ ${myBase?.title}`,
     description: `${decodeURIComponent(slug)} on ${myBase?.title}`    
   }
   
@@ -45,9 +46,8 @@ export default async function Main({ params, searchParams }: NookProps) {
 
   const totalPostsCount = await getPostsCount({     
     nook: slug,
-    page,
-    perPage   
-  })
+    page    
+  })  
 
   return (
     
@@ -55,18 +55,11 @@ export default async function Main({ params, searchParams }: NookProps) {
 
       <ScrollToTop />
 
-      <Sect className={`nook-apex ${styling['main-apex']}`}>
-        <h2 className={`nook-apex-head uppercase text-lg md:text-2xl`}>
-          <Span>{text['nooks']}</Span>
-          <Span ariaHidden={true}> / </Span>
-          <Span className={`text-sm md:text-lg`}>
-            {params.slug ? decodeURI(params.slug) : ''}
-          </Span> 
-        </h2>
-        <p className={`nook-apex-tail text-sm md:text-lg mt-0`}>{text['nooks explained']}</p>
+      <Sect id="nook-apex" className={`${styling['main-apex']}`}>
+        <Apex first={text['nooks']} second={decodeURIComponent(slug!)} />        
       </Sect>
 
-      <Sect className={`nook-list`}>
+      <Sect id="nook-list" className={`nook-list`}>
         <ListLine posts={posts} showJoin={true} showKind={true} />
       </Sect>    
 

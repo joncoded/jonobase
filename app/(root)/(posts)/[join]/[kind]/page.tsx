@@ -12,7 +12,7 @@ import { Sect } from "@/components/base/html/main"
 import ScrollToTop from "@/components/base/util/ttop"
 import None from "@/components/base/util/none"
 import Apex from "@/components/base/html/main-apex"
-import ListPost from "@/components/list/list-post"
+import ListLine from "@/components/list/list-line"
 import Paginate from "@/components/base/util/pagi"
 
 export const revalidate = 10
@@ -26,7 +26,7 @@ export async function generateMetadata({params}: any) {
 
   if (kind) {
     return {
-      title: `${kind} in ${join} @ ${myBase?.title}`
+      title: `${kind} - ${join} @ ${myBase?.title}`
     }
   }
 
@@ -36,9 +36,9 @@ export default async function Main({ searchParams, params } : any) {
 
   const { join, kind } = await params
   const { page, perPage } = searchParams
-  const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)    
-  const myPosts = await getPosts({join, kind, page, perPage})
-  const myPostsCount = await getPostsCount({join, kind, page, perPage})
+  const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
+  const myPosts = await getPosts({join, kind, page, perPage: perPage || myBase.perPage})
+  const myPostsCount = await getPostsCount({join, kind})
 
   if (!myPosts || myPosts.length === 0) return <None />
 
@@ -53,22 +53,11 @@ export default async function Main({ searchParams, params } : any) {
       </Sect>
 
       <Sect id="kind-main">
-        {myPosts && (
-          <>
-            <div
-              className={`kind-list 
-              grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-center mt-0`}
-            >
-              {myPosts.map((post: any) => (
-                <ListPost key={post._id} post={post} showJoin={false} showKind={false} />
-              ))}              
-            </div>
-          </>
-        )}        
+        <ListLine posts={myPosts} showJoin={false} showKind={false} />
       </Sect>
 
       <Paginate myBase={myBase} totalPostsCount={myPostsCount} searchParams={searchParams} />
-      
+
     </main>
 
   )
