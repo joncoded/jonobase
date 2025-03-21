@@ -32,13 +32,7 @@ export default async function Home() {
   
   return (
 
-    <main id="main" tabIndex={-1}>
-
-      <ScrollToTop />
-
-      <Heap params={{ slug: homeheap }} />
-
-    </main>
+    <Heap params={{ slug: homeheap }} />
 
   )
 
