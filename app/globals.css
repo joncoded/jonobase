@@ -1,3 +1,10 @@
+/* 
+jonobase by @jonchius
+/app/globals.css
+tailwind overrides and custom styles
+other "stylings" exist in the app/config.tsx file under the "styling" object
+*/
+
 @import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600&display=swap');
 
@@ -15,9 +22,7 @@ body {
   font-size: 18px;
 }
 
-.post-main p {
-  margin: 15px 0;
-}
+/* for use with pagination only */
 
 main .button {
   background: white;  
@@ -41,6 +46,12 @@ main .pagination.button.current {
   color: white;
 }
 
+/* rich content */
+
+.post-main p {
+  margin: 15px 0;
+}
+
 iframe {
   width: 100%;
 }
@@ -56,6 +67,8 @@ blockquote {
   border-left: 6px solid #bbb;
   padding-left: 15px;
 }
+
+/* code snippets */
 
 code {
   background: #999;  
