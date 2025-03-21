@@ -75,6 +75,10 @@ export const styling = {
     text-sm lg:text-md py-5
   `,
 
+  "post-nook-item" :`    
+    focus:ring-offset-2 dark:focus:ring-4
+  `,
+
   "post-xtra-sect" : `
     border-t hover:prose-a:underline 
     prose-a:${colors.link} dark:prose-a:${colors.darkLink} 
