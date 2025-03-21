@@ -48,10 +48,6 @@ main .pagination.button.current {
 
 /* rich content */
 
-.post-main p {
-  margin: 15px 0;
-}
-
 iframe {
   width: 100%;
 }

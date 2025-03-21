@@ -18,7 +18,7 @@ import PostLink from "@/components/post/post-link"
 import PostNook from "@/components/post/post-nook"
 import PostTurn from "@/components/post/post-turn"
 
-export const revalidate = 60
+export const revalidate = 30
 export const dynamic = 'force-dynamic'
 export const fetchCache = 'force-no-store'
 
@@ -41,21 +41,25 @@ export async function generateMetadata({params}: any) {
 export default async function Main({ params } : any) {
 
   const { join, kind, slug } = await params
-  const post = await getPost({slug})
-
-  if (!post) return <None />
+  
+  // get post data
+  const post = await getPost({ slug })
 
   // get specific post data
   const { image, link: myLink, content, extra, nooks, date: myDate } = post
 
   // get page turner data
-  const newerInKind = await getPostAdjacent(myDate, 'newer', join, kind)
-  const olderInKind = await getPostAdjacent(myDate, 'older', join, kind)
-  const newerInJoin = await getPostAdjacent(myDate, 'newer', join, kind)
-  const olderInJoin = await getPostAdjacent(myDate, 'older', join, kind)
-  const newerInOmni = await getPostAdjacent(myDate, 'newer', "", "")
-  const olderInOmni = await getPostAdjacent(myDate, 'older', "", "")
+  const [newerInKind, olderInKind, newerInJoin, olderInJoin, newerInOmni, olderInOmni] = await Promise.all([    
+    getPostAdjacent(myDate, 'newer', "", kind),
+    getPostAdjacent(myDate, 'older', "", kind),
+    getPostAdjacent(myDate, 'newer', join, ""),
+    getPostAdjacent(myDate, 'older', join, ""),
+    getPostAdjacent(myDate, 'newer', "", ""),
+    getPostAdjacent(myDate, 'older', "", ""),
+  ])
 
+  if (!post) return <None />
+  
   return (
 
     <main id="main" tabIndex={-1}>

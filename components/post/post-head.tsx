@@ -29,22 +29,22 @@ export default function PostHead( { post } : { post : PostProps } ) {
         {emoji}
       </div>
       }
-      <div>
+      <div className={`flex flex-col gap-2 md:gap-5`}>
         <h1 className={`${styling['post-head-title']}`}>
           {title}
         </h1>
         { subtitle &&
-        <p className={`${styling['post-head-subtitle']}`}>
+        <div className={`${styling['post-head-subtitle']}`}>
           {subtitle}
-        </p>
+        </div>
         }
-        <p className={`${styling['post-head-date']}`}>
+        <div className={`${styling['post-head-date']}`}>
           {showDate &&
-            <span>{formattedDate}</span>}
+            <span>{formattedDate}</span>}        
           {_updatedAt && (date !== _updatedAt) &&
-            <span className="text-xs md:text-sm"> {text['updated']} {formattedUpdated}</span>
+            <span className="text-sm md:text-lg"> // {text['updated']} {formattedUpdated}</span>
           }
-        </p>
+        </div>
       </div>
     </div>
   )

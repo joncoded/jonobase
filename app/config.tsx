@@ -98,18 +98,19 @@ export const styling = {
 
   "post-head-title" : `text-3xl md:text-5xl font-bold`,
 
-  "post-head-subtitle" : `text-xl md:text-2xl mt-2`,
+  "post-head-subtitle" : `text-xl md:text-2xl`,
 
-  "post-head-date" : `"text-sm md:text-lg mt-6"`,
+  "post-head-date" : `"text-md md:text-xl"`,
 
   "post-main-sect" : `
     border-t dark:border-t-gray-600 
     prose-headings:font-sans prose-headings:font-bold prose-headings:mt-5 
     prose-h2:text-4xl prose-h3:text-3xl prose-h4:text-xl 
+    prose-p:my-5 prose-li:mb-2
     prose-code:text-white prose-code:bg-[#23241f] 
-    prose-a:${colors.link} dark:prose-a:${colors.darkLink} 
+    prose-a:${colors.link} dark:prose-a:${colors.darkLink}   
     hover:prose-a:${colors.linkHover} dark:hover:prose-a:${colors.darkLinkHover} 
-    hover:prose-a:underline font-serif
+    hover:prose-a:underline font-serif font-light prose-strong:font-bold
   `,
 
   "post-nook-sect" : `
@@ -123,11 +124,14 @@ export const styling = {
 
   "post-xtra-sect" : `
     border-t hover:prose-a:underline 
+    prose-p:my-5 
     prose-a:${colors.link} dark:prose-a:${colors.darkLink} 
     hover:prose-a:${colors.linkHover} dark:hover:prose-a:${colors.darkLinkHover} 
-    prose-headings:font-sans prose-headings:font-bold prose-headings:mt-5 
-    prose-h2:text-4xl prose-h3:text-3xl prose-code:text-white prose-code:bg-[#23241f]
-    font-serif
+    prose-headings:font-sans prose-headings:font-bold 
+    prose-headings:mt-5 
+    font-light prose-strong:font-bold 
+    prose-h2:text-4xl prose-h3:text-3xl prose-code:text-white prose-code:bg-[#23241f] 
+    font-serif 
   `,
 
   "tail-wrap" : `
