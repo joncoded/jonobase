@@ -11,7 +11,7 @@ import { NookProps } from "@/sanity/myprops"
 import { text, styling } from "@/app/config"
 import { Sect, Span } from "@/components/base/html/main"
 import ScrollToTop from "@/components/base/util/ttop"
-import PostList from "@/components/post/post-list"
+import ListLine from "@/components/list/list-line"
 import Paginate from "@/components/base/util/pagi"
 
 export const revalidate = 10
@@ -67,7 +67,7 @@ export default async function Main({ params, searchParams }: NookProps) {
       </Sect>
 
       <Sect className={`nook-list`}>
-        <PostList posts={posts} showJoin={true} showKind={true} />
+        <ListLine posts={posts} showJoin={true} showKind={true} />
       </Sect>    
 
       <Paginate myBase={myBase} totalPostsCount={totalPostsCount} searchParams={searchParams} />     

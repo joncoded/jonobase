@@ -1,30 +1,32 @@
 
 /*
 jonobase by @jonchius
-/app/components/post/post-list.tsx
+/app/components/list/list-line.tsx
 the list of posts
 */
 
 "use client"
 
 import { PostProps } from "@/sanity/myprops"
-import PostLine from "./post-line"
 import { text } from "@/app/config"
+import PostLine from "../post/post-line"
 
-export default function PostList({posts, showJoin = false, showKind = false} : { posts: PostProps[], showJoin?: boolean, showKind?: boolean} ) {
+export default function ListLine({posts, showJoin = false, showKind = false} : { posts: PostProps[], showJoin?: boolean, showKind?: boolean} ) {
 
   return (
-    <div className="post-list-base w-full sm:justify-start">
+    <div className="list-line-bloc w-full sm:justify-start">
 
       {posts?.length === 0 &&
-        <div className="post-list-meat py-0 md:py-5">
+        <div className="list-line-meat py-0 md:py-5">
           <p className="text-center">{text['results found none']}</p>
         </div>
       }
 
       {posts?.length > 0 &&
         <>
-          <div className="post-list-meat grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-0 md:py-5 gap-10">
+          <div className={`
+            list-line-meat py-0 md:py-5 
+            grid gap-10 grid-cols-1 ${posts?.length > 1 && `md:grid-cols-2`} ${posts?.length > 2 && `lg:grid-cols-3`}`}>
 
             {posts.map((post: any) => (
 

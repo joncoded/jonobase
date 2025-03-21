@@ -10,7 +10,7 @@ import { getPosts, getPostsRandomly } from "@/sanity/actions"
 import { styling } from "@/app/config"
 import { serializers } from "../base/util/rich"
 import { Sect } from "../base/html/main"
-import PostList from "../post/post-list"
+import ListLine from "./list-line"
 
 export const revalidate = 10
 
@@ -111,7 +111,7 @@ export default async function List({ heapList }: any) {
 
       {showposts &&
 
-        <PostList posts={posts} showJoin={showjoin} showKind={showkind} />
+        <ListLine posts={posts} showJoin={showjoin} showKind={showkind} />
 
       }
 

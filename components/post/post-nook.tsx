@@ -1,12 +1,13 @@
 /*
 jonobase by @jonchius
 /app/components/post/post-nook.tsx
-displays all "nooks" (tags) of a "post" 
+displays all "nooks" (tags) of a "post"
 */
 
 'use client'
 
 import Link from "next/link"
+import { styling } from "@/app/config"
 
 export default function PostNook({nooks}: any) {
 
@@ -15,11 +16,7 @@ export default function PostNook({nooks}: any) {
       {nooks.map((nook: any) => {
         return (
           <Link
-            className={`
-              post-nook-item border border-black dark:border-white p-2 px-5
-              bg-white hover:bg-black text-black hover:text-white
-              dark:focus:ring-4 focus:ring-offset-2
-            `}
+            className={`${styling['button']} ${styling['post-nook-item']}`}
             href={`/nooks/${encodeURI(nook)}`}
             key={nook}
           >
