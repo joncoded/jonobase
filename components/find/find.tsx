@@ -19,7 +19,7 @@ export default function Find({ posts, totalPostsCount, urlParams }: FindPagePara
 
   const searchParams = useSearchParams()
   const router = useRouter()
-  const [query, setQuery] = useState(urlParams.query || "")  
+  const [query, setQuery] = useState(urlParams.query || "")
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
@@ -42,7 +42,7 @@ export default function Find({ posts, totalPostsCount, urlParams }: FindPagePara
   }, [query])
 
   useEffect(() => {
-    setQuery(urlParams.query!)    
+    setQuery(urlParams.query!)
   }, [urlParams.query])
 
   const handleQuery = (event: any) => {
@@ -77,33 +77,31 @@ export default function Find({ posts, totalPostsCount, urlParams }: FindPagePara
         <input
           type="text"
           placeholder={text['search']}
-          className={`${styling['find-bar-big']}`}         
+          className={`${styling['find-bar-big']}`}
           value={query}
           onChange={handleQuery}
-        />        
-      </form>      
+        />
+      </form>
 
       <section id="find-main" className={`w-full flex flex-col justify-center`}>
         <div className={`w-full sm:justify-start my-5`}>
+          <div className={`text-center mt-0 mb-10`}>
+            <h2 className={`text-lg`}>
+              <FindHead count={totalPostsCount} query={query ?? ""} kind={urlParams.kind ?? ""} />
+            </h2>
+          </div>
           {posts?.length > 0 && (
-            <>
-              <div className={`text-center mt-0 mb-10`}>
-                <h2 className="text-lg">
-                  <FindHead count={totalPostsCount} query={query ?? ""} kind={urlParams.kind ?? ""} />
-                </h2>
-              </div>
-              <div
-                className={`py-0 md:py-5 grid gap-10 grid-cols-1 
-                  ${posts?.length == 2 ? `md:grid-cols-2` : ``}            
-                  ${posts?.length == 3 ? `md:grid-cols-1 lg:grid-cols-3` : ``}
-                  ${posts?.length == 4 ? `md:grid-cols-2` : ``}
-                  ${posts?.length >= 5 ? `md:grid-cols-2 lg:grid-cols-3` : ``}`}
-              >
-                {posts.map((post: any) => (
-                  <ListPost key={post._id} post={post} showJoin={true} showKind={true} />
-                ))}
-              </div>              
-            </>
+          <div
+            className={`py-0 md:py-5 grid gap-10 grid-cols-1
+              ${posts?.length == 2 ? `md:grid-cols-2` : ``}
+              ${posts?.length == 3 ? `md:grid-cols-1 lg:grid-cols-3` : ``}
+              ${posts?.length == 4 ? `md:grid-cols-2` : ``}
+              ${posts?.length >= 5 ? `md:grid-cols-2 lg:grid-cols-3` : ``}`}
+          >
+            {posts.map((post: any) => (
+              <ListPost key={post._id} post={post} showJoin={true} showKind={true} />
+            ))}
+          </div>
           )}
         </div>
       </section>
