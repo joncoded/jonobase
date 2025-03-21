@@ -88,14 +88,14 @@ export default async function List({ heapList }: any) {
         }`}
     >
 
-      <div id={`list-head-${slug}`} className={`text-center mb-5`}>
+      <div id={`list-head-${slug}`} className={`text-center`}>
 
         {showtitle &&
-          <h2 id={`list-name-${slug}`} className={`uppercase text-center text-3xl md:text-4xl font-bold`}>{title}</h2>
+          <h2 id={`list-name-${slug}`} className={`text-center my-5 text-3xl md:text-4xl font-bold uppercase`}>{title}</h2>
         }
 
         {showsubtitle &&
-          <p id={`list-subt-${slug}`} className={`text-lg md:text-xl text-center`}>{subtitle}</p>
+          <p id={`list-subt-${slug}`} className={`text-center my-5 text-lg md:text-xl`}>{subtitle}</p>
         }
 
       </div>
@@ -115,7 +115,7 @@ export default async function List({ heapList }: any) {
 
       }
 
-      {postcontent && <div id={`list-posc-${slug}`} className={`my-5 text-center ${styling['list-text']}`}>
+      {postcontent && <div id={`list-posc-${slug}`} className={`text-center my-5 ${styling['list-text']}`}>
         <BlockContent
           blocks={postcontent}
           serializers={serializers}
@@ -125,14 +125,16 @@ export default async function List({ heapList }: any) {
       </div>}
 
       {showlink && cta.url &&
-        <div id={`list-link-${slug}`} className="my-5 text-center">
-          <Link
-            className={`${styling.button} text-center`}
-            href={cta.url}
-            target={cta.url.startsWith('http') ? '_blank' : '_self'}
-          >
-            {cta.title}
-          </Link>
+        <div id={`list-link-${slug}`} className={`${styling['list-text-ctas-wrap']}`}>
+          <p>
+            <Link
+              className={`${styling.button} text-center`}
+              href={cta.url}
+              target={cta.url.startsWith('http') ? '_blank' : '_self'}
+            >
+              {cta.title}
+            </Link>
+          </p>
         </div>
       }
 

@@ -92,6 +92,10 @@ export const styling = {
     text-black dark:text-white
   `,
 
+  "list-text-ctas-wrap" : `
+    my-5 py-2 flex justify-center text-center 
+  `,
+
   "post-head-sect" : `
     !bg-gradient-to-b from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900 dark:text-white py-5
   `,
