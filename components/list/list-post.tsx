@@ -1,7 +1,7 @@
 
 /*
 jonobase by @jonchius
-/app/components/post/post-line.tsx
+/app/components/list/list-post.tsx
 the link to each post (used for lists)
 */
 
@@ -15,9 +15,9 @@ const linkColors = `${colors.link} dark:${colors.darkLink} hover:${colors.linkHo
 
 const PostLine = ({post : { join, kind, slug, image, emoji, title, subtitle, link, date, showDate}, showJoin = false, showKind = false}: PostListProps) => {
 
-  const PostLine = ({children} : UtilDOMChildrenProps) => {
+  const ListPostContainer = ({children} : UtilDOMChildrenProps) => {
     return (
-      <article className={`card-unit w-full`}>
+      <article className={` w-full`}>
         <div className={`flex gap-5`}>
           {children}
         </div>
@@ -25,18 +25,18 @@ const PostLine = ({post : { join, kind, slug, image, emoji, title, subtitle, lin
     )
   }
 
-  const PostLineSide = ({children}: UtilDOMChildrenProps) => {
+  const ListPostSide = ({children}: UtilDOMChildrenProps) => {
     return (
-      <div className={`card-side flex flex-col gap-5`}>
+      <div className={` flex flex-col gap-5`}>
         {children}
       </div>
     )
   }
 
-  const PostLineImage = () => {
+  const ListPostImage = () => {
 
     return (
-      <div className={`card-image
+      <div className={`
         text-7xl max-w-[80px] min-h-[80px] w-[80px] h-[80px] max-h-[80px] min-h-[80px] rounded-full
       `}>
         {image &&
@@ -62,13 +62,13 @@ const PostLine = ({post : { join, kind, slug, image, emoji, title, subtitle, lin
     )
   }
 
-  const PostLineMeta = () => {
+  const ListPostMeta = () => {
 
     let newDate = new Date(Date.parse(date))
     let formattedDate = new Intl.DateTimeFormat("sv-SE", { year: "numeric", month: "2-digit", day: "2-digit", timeZone: timezone }).format(newDate)
 
     return (
-      <div className={`card-meta text-center text-sm`}>
+      <div className={`text-center text-sm`}>
         {showDate === true && <p className={`!my-0`}>{formattedDate}</p>}
         {showJoin === true && <p className={`!my-0`} aria-hidden="true"><Link tabIndex={-1} className={linkColors} href={`/${join}`}>{join}</Link></p>}
         {showKind === true && <p className={`!my-0`} aria-hidden="true">[<Link tabIndex={-1} className={linkColors} href={`/${join}/${kind}`}>{kind}</Link>]</p>}
@@ -76,37 +76,37 @@ const PostLine = ({post : { join, kind, slug, image, emoji, title, subtitle, lin
     )
   }
 
-  const PostLineBody = ({children}: UtilDOMChildrenProps) => {
+  const ListPostBody = ({children}: UtilDOMChildrenProps) => {
     return (
-      <div className={`card-body flex flex-col`}>
+      <div className={`flex flex-col gap-2`}>
         {children}
       </div>
     )
   }
 
-  const PostLineTitle = () => {
+  const ListPostTitle = () => {
     return (
-      <div className={`card-title`}>
-        <h3 className={`font-semibold text-2xl ${colors.link} dark:${colors.darkLink} hover:${colors.linkHover} dark:hover:${colors.darkLinkHover} hover:underline !mt-2`}>
+      <div className={``}>
+        <h3 className={`!mt-2 ${colors.link} dark:${colors.darkLink} hover:${colors.linkHover} dark:hover:${colors.darkLinkHover} hover:underline text-lg md:text-2xl font-semibold`}>
           {title}
         </h3>
       </div>
     )
   }
 
-  const PostLineSubtitle = () => {
+  const ListPostSubtitle = () => {
     return (
-      <div className={`card-subtitle`}>
-        <p className={`text-sm md:text-lg !mt-2 font-serif`}>
+      <div className={``}>
+        <p className={`!mt-2 text-sm md:text-lg font-serif`}>
           {subtitle}
         </p>
       </div>
     )
   }
 
-  const PostLineExternalLink = () => {
+  const ListPostExternalLink = () => {
     return (
-      <div className={`card-link my-5 ${!link && `hidden`}`}>
+      <div className={`my-5 ${!link && `hidden`}`}>
         {link &&
           <Link
             className={`${styling['button']}`}
@@ -122,19 +122,19 @@ const PostLine = ({post : { join, kind, slug, image, emoji, title, subtitle, lin
 
   return (
 
-    <PostLine className={`card w-full`}>
-      <PostLineSide>
-        <PostLineImage />
-        <PostLineMeta />
-      </PostLineSide>
-      <PostLineBody>
+    <ListPostContainer className={`w-full`}>
+      <ListPostSide>
+        <ListPostImage />
+        <ListPostMeta />
+      </ListPostSide>
+      <ListPostBody>
         <Link href={`/${join}/${kind}/${slug}`}>
-          <PostLineTitle />
+          <ListPostTitle />
         </Link>
-        <PostLineSubtitle />
-        <PostLineExternalLink />
-      </PostLineBody>
-    </PostLine>
+        <ListPostSubtitle />
+        <ListPostExternalLink />
+      </ListPostBody>
+    </ListPostContainer>
 
   )
 }
