@@ -13,12 +13,14 @@ export interface FindProps {
   }
 }
 
+// get post count for "finds" results page
 export interface FindHeadProps {
   count: number;
   query: string;
   kind: string;
 }
 
+// get "finds" results page for certain offset
 export interface FindPageParams {
   posts: PostListProps[];
   totalPostsCount: number;
