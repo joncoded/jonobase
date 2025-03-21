@@ -10,7 +10,7 @@ import { useEffect, useState } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { formUrlQuery } from "@/sanity/utils"
 import { FindPageParams } from "@/sanity/myprops"
-import { text } from "@/app/config"
+import { text, styling } from "@/app/config"
 import { Span } from "../base/html/main"
 import FindHead from "./find-head"
 import PostLine from "../list/list-post"
@@ -72,23 +72,19 @@ export default function Find({ posts, totalPostsCount, urlParams }: FindPagePara
       <FindApex />
 
       {/* moving this to a separate component will make the API struggle */}
-      <form id="find-form" className={`find-form w-full flex text-center`} onSubmit={handleSubmit}>
+      <form id="find-form" className={`w-full flex`} onSubmit={handleSubmit}>
         <label className={`w-full max-w-full md:max-w-screen-md mx-auto sr-only`}></label>
         <input
           type="text"
           placeholder={text['search']}
-          className={` 
-            w-full border-0 dark:border dark:border-gray-200 px-5 py-2 
-            bg-gray-200 dark:bg-black focus:!ring-2
-            text-2xl placeholder:text-gray-300 placeholder:text-3xl
-          `}
+          className={`${styling['find-bar-big']}`}         
           value={query}
           onChange={handleQuery}
         />        
       </form>      
 
-      <section id="find-main" className={`flex justify-center w-full flex-col`}>
-        <div className={`find-post w-full sm:justify-start my-5`}>
+      <section id="find-main" className={`w-full flex flex-col justify-center`}>
+        <div className={`w-full sm:justify-start my-5`}>
           {posts && (
             <>
               <div className={`text-center mt-0 mb-10`}>

@@ -37,6 +37,14 @@ export const styling = {
     dark:bg-black text-black dark:text-white
   `,
 
+  "find-bar-big" : `
+    w-full px-5 py-2 
+    border-0 dark:border dark:border-gray-200  
+    bg-gray-200 dark:bg-black     
+    placeholder:text-gray-300 placeholder:text-3xl
+    focus:!ring-2 text-2xl 
+  `,
+
   "find-button" : `
     bg-green-800 hover:bg-black border-white dark:border-gray-200 
   `,
