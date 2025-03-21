@@ -85,7 +85,7 @@ export default function Find({ posts, totalPostsCount, urlParams }: FindPagePara
 
       <section id="find-main" className={`w-full flex flex-col justify-center`}>
         <div className={`w-full sm:justify-start my-5`}>
-          {posts && (
+          {posts?.length > 0 && (
             <>
               <div className={`text-center mt-0 mb-10`}>
                 <h2 className="text-lg">
@@ -93,14 +93,16 @@ export default function Find({ posts, totalPostsCount, urlParams }: FindPagePara
                 </h2>
               </div>
               <div
-                className={`find-post-list 
-                grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-center mt-0`}
+                className={`py-0 md:py-5 grid gap-10 grid-cols-1 
+                  ${posts?.length == 2 ? `md:grid-cols-2` : ``}            
+                  ${posts?.length == 3 ? `md:grid-cols-1 lg:grid-cols-3` : ``}
+                  ${posts?.length == 4 ? `md:grid-cols-2` : ``}
+                  ${posts?.length >= 5 ? `md:grid-cols-2 lg:grid-cols-3` : ``}`}
               >
                 {posts.map((post: any) => (
                   <ListPost key={post._id} post={post} showJoin={true} showKind={true} />
                 ))}
-              </div>
-              
+              </div>              
             </>
           )}
         </div>

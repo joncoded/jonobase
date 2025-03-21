@@ -55,8 +55,11 @@ export default async function Main({ params, searchParams } : any) {
         {myPosts && (
           <>
             <div
-              className={`join-list 
-              grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-center mt-0`}
+              className={`py-0 md:py-5 grid gap-10 grid-cols-1 
+                  ${myPosts?.length == 2 ? `md:grid-cols-2` : ``}            
+                  ${myPosts?.length == 3 ? `md:grid-cols-1 lg:grid-cols-3` : ``}
+                  ${myPosts?.length == 4 ? `md:grid-cols-2` : ``}
+                  ${myPosts?.length >= 5 ? `md:grid-cols-2 lg:grid-cols-3` : ``}`}
             >
               {myPosts.map((post: any) => (
                 <ListPost key={post._id} post={post} showJoin={false} showKind={true} />
