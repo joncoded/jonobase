@@ -22,20 +22,23 @@ export default function ListLine({posts, showJoin = false, showKind = false} : {
         </div>
       }
 
-      {posts?.length > 0 &&
-        <>
-          <div className={`
-            list-line-meat py-0 md:py-5 
-            grid gap-10 grid-cols-1 ${posts?.length > 1 && `md:grid-cols-2`} ${posts?.length > 2 && `lg:grid-cols-3`}`}>
+      {posts?.length > 0 &&         
+        <div className={`
+          list-line-meat py-0 md:py-5 
+          grid gap-10 grid-cols-1 
+          ${posts?.length == 2 ? `md:grid-cols-2` : ``}            
+          ${posts?.length == 3 ? `md:grid-cols-1 lg:grid-cols-3` : ``}
+          ${posts?.length == 4 ? `md:grid-cols-2` : ``}
+          ${posts?.length >= 5 ? `md:grid-cols-2 lg:grid-cols-3` : ``}      
+        `}>
 
-            {posts.map((post: any) => (
+          {posts.map((post: any) => (
 
-              <PostLine key={post._id} post={post} showJoin={showJoin} showKind={showKind} />
+            <PostLine key={post._id} post={post} showJoin={showJoin} showKind={showKind} />
 
-            ))}
+          ))}
 
-          </div>
-        </>
+        </div>        
       }
 
     </div>
