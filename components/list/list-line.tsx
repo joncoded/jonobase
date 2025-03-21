@@ -14,17 +14,17 @@ import PostLine from "./list-post"
 export default function ListLine({posts, showJoin = false, showKind = false} : { posts: PostProps[], showJoin?: boolean, showKind?: boolean} ) {
 
   return (
-    <div className="list-line-bloc w-full sm:justify-start">
+    <div className="w-full sm:justify-start">
 
       {posts?.length === 0 &&
-        <div className="list-line-meat py-0 md:py-5">
+        <div className="py-0 md:py-5">
           <p className="text-center">{text['results found none']}</p>
         </div>
       }
 
       {posts?.length > 0 &&         
         <div className={`
-          list-line-meat py-0 md:py-5 
+          py-0 md:py-5 
           grid gap-10 grid-cols-1 
           ${posts?.length == 2 ? `md:grid-cols-2` : ``}            
           ${posts?.length == 3 ? `md:grid-cols-1 lg:grid-cols-3` : ``}
