@@ -84,11 +84,11 @@ export const styling = {
     from-green-200 dark:from-green-900 to-green-300 dark:to-green-800 py-10 
   `,
 
-  "home-head-main" : `
+  "list-text" : `
     w-3/4 md:w-full max-w-screen-lg mx-auto prose 
     prose-h2:text-4xl md:prose-h2:text-5xl prose-h2:mb-5 prose-h2:font-sans 
     prose-h3:text-3xl md:prose-h3:text-4xl prose-h3:mb-5 prose-h3:font-sans  
-    prose-p:text-lg prose-p:font-serif prose-p:mb-5 prose-p:leading-relaxed
+    prose-p:text-lg prose-p:font-serif prose-p:my-5 prose-p:leading-relaxed
     text-black dark:text-white
   `,
 

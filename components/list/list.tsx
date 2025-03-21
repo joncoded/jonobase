@@ -100,7 +100,7 @@ export default async function List({ heapList }: any) {
 
       </div>
 
-      {precontent && <div id={`list-prec-${slug}`} className={`text-center my-5 ${styling['home-head-main']}`}>
+      {precontent && <div id={`list-prec-${slug}`} className={`text-center my-5 ${styling['list-text']}`}>
         <BlockContent
           blocks={precontent}
           serializers={serializers}
@@ -115,7 +115,7 @@ export default async function List({ heapList }: any) {
 
       }
 
-      {postcontent && <div id={`list-posc-${slug}`} className={`my-5 text-center ${styling['home-head-main']}`}>
+      {postcontent && <div id={`list-posc-${slug}`} className={`my-5 text-center ${styling['list-text']}`}>
         <BlockContent
           blocks={postcontent}
           serializers={serializers}
