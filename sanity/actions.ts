@@ -73,7 +73,7 @@ export const getList = async (slug: string) => {
 
 }
 
-// get multiple "posts" - either all items (everything blank) or filtered by a search term
+// get multiple posts - either all items (everything blank) or filtered by a search term
 export const getPosts = async (criteria: myprops.PostGetterProps) => {
 
   const { query = '', join = '', kind = '', page = '1', nook = '', perPage = '6', order = 'date', ascDesc = 'desc'} = criteria
@@ -102,7 +102,7 @@ export const getPosts = async (criteria: myprops.PostGetterProps) => {
 
 }
 
-// get X number of random post (i.e. "post"es)
+// get X number of random post(s)
 export const getPostsRandomly = async (criteria: myprops.PostGetterProps, count: number) => {
 
   try {
