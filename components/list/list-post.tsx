@@ -78,7 +78,7 @@ const PostLine = ({post : { join, kind, slug, image, emoji, title, subtitle, lin
 
   const ListPostBody = ({children}: UtilDOMChildrenProps) => {
     return (
-      <div className={`flex flex-col gap-2`}>
+      <div className={`flex flex-col`}>
         {children}
       </div>
     )
