@@ -9,7 +9,7 @@ the find (search) UI for the head menu
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { UtilMenuFindProps } from "@/sanity/myprops"
-import { text } from "@/app/config"
+import { styling, text } from "@/app/config"
 
 export default function MenuFind({showMenu, inputName, placeholder = "🔎"}: UtilMenuFindProps) {
 
@@ -29,7 +29,7 @@ export default function MenuFind({showMenu, inputName, placeholder = "🔎"}: Ut
   }
 
   return (
-    <div className={`flex justify-center `}>
+    <div className={`flex justify-center`}>
       <form 
         className={`flex gap-5 w-full`}
         onSubmit={handleSubmit}
@@ -41,22 +41,14 @@ export default function MenuFind({showMenu, inputName, placeholder = "🔎"}: Ut
           type="text"
           name={inputName}
           id={inputName}
-          className={`px-5 w-full border
-            border-black dark:bg-black
-            border-gray-800 dark:border-gray-600
-            text-black dark:text-white`}
+          className={`${styling['find-bar']}`}
           placeholder={placeholder}
           onChange={handleFindChange}
         />
         <input 
           type="submit"
           value={text['search go']}
-          className={`
-            bg-green-900 dark:bg-lime-300 border border-gray-200 dark:border-gray-500 
-            text-white dark:text-black cursor-pointer p-2 px-5 
-            focus:bg-white focus:text-black dark:focus:bg-black dark:focus:text-white 
-            hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white 
-          `}
+          className={`${styling['button']} ${styling['find-button']}`}
         />
       </form>
     </div>

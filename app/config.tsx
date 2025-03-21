@@ -28,8 +28,18 @@ export const colors = {
 // common tailwind styles
 export const styling = {
 
-  "button" : `p-2 px-5 border border-black dark:hover:border-white dark:border-white bg-white dark:bg-black text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black
+  "button" : `p-2 px-5 border border-black dark:hover:border-white dark:border-white bg-white dark:bg-black text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black cursor-pointer
   `, 
+
+  "find-bar" : `
+    w-full px-5 
+    border border-black border-gray-800 dark:border-gray-200
+    dark:bg-black text-black dark:text-white
+  `,
+
+  "find-button" : `
+    bg-green-800 hover:bg-black border-white dark:border-gray-200 
+  `,
 
   "main-apex" : `bg-zinc-100 dark:bg-zinc-800
   `,
