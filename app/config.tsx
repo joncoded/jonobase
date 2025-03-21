@@ -54,6 +54,12 @@ export const styling = {
     !bg-gradient-to-b from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900 dark:text-white py-5
   `,
 
+  "post-head-title" : `text-3xl md:text-5xl font-bold`,
+
+  "post-head-subtitle" : `text-xl md:text-2xl mt-2`,
+
+  "post-head-date" : `"text-sm md:text-lg mt-6"`,
+
   "post-main-sect" : `
     border-t dark:border-t-gray-600 
     prose-headings:font-sans prose-headings:font-bold prose-headings:mt-5 
@@ -181,6 +187,9 @@ export const text = {
 
   "switch to light mode"
   : "switch to light mode",
+
+  "updated"
+  : "updated", 
 
   "visit url"     
   : "visit URL",
