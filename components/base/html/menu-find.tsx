@@ -7,13 +7,13 @@ the find (search) UI for the head menu
 */
 
 import { useState } from "react"
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation"
 import { UtilMenuFindProps } from "@/sanity/myprops"
 import { text } from "@/app/config"
 
-export default function MenuFind({showMenu, inputName, placeholder = '🔎'}: UtilMenuFindProps) {
+export default function MenuFind({showMenu, inputName, placeholder = "🔎"}: UtilMenuFindProps) {
 
-  const [ findTerm, setFindTerm ] = useState('')
+  const [ findTerm, setFindTerm ] = useState("")
   const router = useRouter()
 
   const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>): void => {
@@ -35,7 +35,7 @@ export default function MenuFind({showMenu, inputName, placeholder = '🔎'}: Ut
         onSubmit={handleSubmit}
       >  
         <label htmlFor={inputName} className="sr-only">
-          {text['search']}
+          {text["search"]}
         </label>
         <input 
           type="text"
@@ -50,7 +50,7 @@ export default function MenuFind({showMenu, inputName, placeholder = '🔎'}: Ut
         />
         <input 
           type="submit"
-          value={text["search go"]}
+          value={text['search go']}
           className={`
             bg-green-900 dark:bg-lime-300 border border-gray-200 dark:border-gray-500 
             text-white dark:text-black cursor-pointer p-2 px-5 

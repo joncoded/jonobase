@@ -5,11 +5,11 @@ jonobase by @jonchius
 the link to each post (used for lists)
 */
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { UtilDOMChildrenProps, PostListProps } from '@/sanity/myprops'
-import { text } from '@/app/config'
-import { timezone, colors, styling } from '@/app/config'
+import Image from "next/image"
+import Link from "next/link"
+import { UtilDOMChildrenProps, PostListProps } from "@/sanity/myprops"
+import { text } from "@/app/config"
+import { timezone, colors, styling } from "@/app/config"
 
 const linkColors = `${colors.link} dark:${colors.darkLink} hover:${colors.linkHover} dark:hover:${colors.darkLinkHover} hover:underline`
 
@@ -65,7 +65,7 @@ const PostLine = ({post : { join, kind, slug, image, emoji, title, subtitle, lin
   const PostLineMeta = () => {
 
     let newDate = new Date(Date.parse(date))
-    let formattedDate = new Intl.DateTimeFormat("sv-SE", { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: timezone }).format(newDate)
+    let formattedDate = new Intl.DateTimeFormat("sv-SE", { year: "numeric", month: "2-digit", day: "2-digit", timeZone: timezone }).format(newDate)
 
     return (
       <div className={`card-meta text-center text-sm`}>

@@ -6,7 +6,7 @@ scrolls to top on page load
 */
 
 'use client'
-import { useEffect } from 'react'
+import { useEffect } from "react"
 
 export default function ScrollToTop() {
   useEffect(() => {

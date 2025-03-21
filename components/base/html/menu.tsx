@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 /*
 jonobase by @jonchius
@@ -6,16 +6,16 @@ jonobase by @jonchius
 the "menu" of the header
 */
 
-import { useState, useEffect } from 'react'
-import { useTheme } from 'next-themes'
-import { useHotkeys } from 'react-hotkeys-hook'
-import { UtilDOMChildrenProps, UtilMenuFindWrapperProps } from '@/sanity/myprops'
-import BlockContent from '@sanity/block-content-to-react'
-import { Span } from './main'
-import { colors, text } from '@/app/config'
-import FocusTrap from 'focus-trap-react'
-import MenuFind from './menu-find'
-import { serializers } from '../util/rich'
+import { useState, useEffect } from "react"
+import { useTheme } from "next-themes"
+import { useHotkeys } from "react-hotkeys-hook"
+import { UtilDOMChildrenProps, UtilMenuFindWrapperProps } from "@/sanity/myprops"
+import BlockContent from "@sanity/block-content-to-react"
+import { Span } from "./main"
+import { colors, text } from "@/app/config"
+import FocusTrap from "focus-trap-react"
+import MenuFind from "./menu-find"
+import { serializers } from "../util/rich"
 
 export default function Menu({myBase} : any) {
   
@@ -23,9 +23,9 @@ export default function Menu({myBase} : any) {
   const [ menuOpenedAlready, setMenuOpenedAlready ] = useState(false)  
 
   /* def hot keys */
-  useHotkeys('ctrl+k, meta+k', () => document.getElementById('desktop-search-in-nav')?.focus())
-  useHotkeys('ctrl+/, meta+/', () => document.getElementById('open-menu')?.click())
-  useHotkeys('escape', () => closeMenu())
+  useHotkeys("ctrl+k, meta+k", () => document.getElementById("desktop-search-in-nav")?.focus())
+  useHotkeys("ctrl+/, meta+/", () => document.getElementById("open-menu")?.click())
+  useHotkeys("escape", () => closeMenu())
   /* end hot keys */
 
   /* def dark mode */
@@ -33,7 +33,7 @@ export default function Menu({myBase} : any) {
 
   const handleTheme = (event: React.FormEvent<HTMLButtonElement>): void => {
     event.preventDefault()    
-    setTheme(theme === 'dark' ? 'light' : 'dark')    
+    setTheme(theme === "dark" ? "light" : "dark")    
   }
   /* end dark mode */
   
@@ -48,7 +48,7 @@ export default function Menu({myBase} : any) {
   }
 
   useEffect(() => {
-    if (menuOpenedAlready) document.getElementById('open-menu')?.focus()
+    if (menuOpenedAlready) document.getElementById("open-menu")?.focus()
   }, [showMenu, menuOpenedAlready])
 
   const MenuButton = () => {
@@ -56,7 +56,7 @@ export default function Menu({myBase} : any) {
       <div className={`menu-button ml-2`}>
         <button className={`text-sm uppercase`} onClick={openMenu} id="open-menu">
           <Span className={`mr-1 text-2xl`} ariaHidden={true}>≡</Span>
-          <Span className={`mx-1 text-2xl`}>{text['menu']}</Span>
+          <Span className={`mx-1 text-2xl`}>{text["menu"]}</Span>
           <Span className={`ml-1 text-gray-400 hidden sm:inline`}>(⌘/)</Span>
         </button>
       </div>
@@ -66,7 +66,7 @@ export default function Menu({myBase} : any) {
   const MenuDialog = ({children}: UtilDOMChildrenProps) => {
     return (
       <dialog 
-        aria-label={text['menu']} 
+        aria-label={text["menu"]} 
         className={`menu-dialog 
           bg-gradient-to-b from-white to-zinc-200
           dark:from-black dark:to-gray-800
@@ -100,7 +100,7 @@ export default function Menu({myBase} : any) {
     return (
       <div className={`menu-heading`}>
         <Span className={`text-3xl font-bold mr-2 uppercase`}>{myBase.title}</Span>
-        <Span className={`text-xl font-light`}>{text['menu']}</Span>
+        <Span className={`text-xl font-light`}>{text["menu"]}</Span>
       </div>
     )
   }
@@ -141,7 +141,7 @@ export default function Menu({myBase} : any) {
             aria-hidden={true}
             className={`sm:mr-2`}>❌</Span>
           <br className={`sm:hidden`} />
-          <Span>{text['close menu']}</Span>
+          <Span>{text["close menu"]}</Span>
         </button>
       </div>
     )
@@ -158,13 +158,13 @@ export default function Menu({myBase} : any) {
           <Span 
             aria-hidden={true}
             className={`sm:mr-2`}>
-            {theme === 'dark' ? '💡' : '🌜' }
+            {theme === "dark" ? "💡" : "🌜" }
           </Span>
           <br className={`sm:hidden`} />
           <Span>
-            {theme === 'dark' 
-              ? text['switch to light mode'] 
-              : text['switch to dark mode'] 
+            {theme === "dark" 
+              ? text["switch to light mode"] 
+              : text["switch to dark mode"] 
             }
           </Span>
         </button>
@@ -235,7 +235,7 @@ export default function Menu({myBase} : any) {
                   <MenuFind                     
                     showMenu={setShowMenu} 
                     inputName={`mobile-search-in-menu`} 
-                    placeholder={`🔎 ${text['search']}`} 
+                    placeholder={`🔎 ${text["search"]}`} 
                   />
                 </MenuFindWrapper>
                 <MenuContent />
@@ -243,7 +243,7 @@ export default function Menu({myBase} : any) {
                   <MenuFind                     
                     showMenu={setShowMenu} 
                     inputName={`desktop-search-in-menu`} 
-                    placeholder={`🔎 ${text['search']}`} 
+                    placeholder={`🔎 ${text["search"]}`} 
                   />
                 </MenuFindWrapper>
               </MenuWrapper>

@@ -5,16 +5,16 @@ jonobase by @jonchius
 the footer of each page
 */
 
-import { getBase } from '@/sanity/actions'
-import BlockContent from '@sanity/block-content-to-react'
-import { serializers } from '../util/rich'
-import { colors } from '@/app/config'
+import { getBase } from "@/sanity/actions"
+import BlockContent from "@sanity/block-content-to-react"
+import { serializers } from "../util/rich"
+import { colors } from "@/app/config"
 
 export default async function Tail() {  
 
   const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
 
-  const { colophon1, colophon2 } = myBase || ''
+  const { colophon1, colophon2 } = myBase || ""
 
   const Colophon1 = () => {
     return (

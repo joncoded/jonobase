@@ -11,11 +11,11 @@ a collection of various functions that gets content from the sanity back-end
 
 */
 
-import { groq } from 'next-sanity'
-import { readClient } from './lib/client'
-import { buildQuery } from './utils'
-import * as myprops from './myprops'
-import * as fields from './fields'
+import { groq } from "next-sanity"
+import { readClient } from "./lib/client"
+import { buildQuery } from "./utils"
+import * as myprops from "./myprops"
+import * as fields from "./fields"
 
 // get single "base" (i.e. website) data
 export const getBase = async (slug: string) => {

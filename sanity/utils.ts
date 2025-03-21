@@ -6,8 +6,8 @@ query building helper methods
 */
 
 
-import qs from 'query-string'
-import { UtilQueryBuildingProps, UtilQueryURLProps } from '@/sanity/myprops'
+import qs from "query-string"
+import { UtilQueryBuildingProps, UtilQueryURLProps } from "@/sanity/myprops"
 
 // used to build long queries with many components, some of which may or may not appear
 export function buildQuery(params: UtilQueryBuildingProps) {

@@ -6,7 +6,7 @@ beams things up to the <head> tag, e.g.:
 - favicon
 */
 
-import { getBase } from '@/sanity/actions'
+import { getBase } from "@/sanity/actions"
 
 export default async function OverHead() {
 

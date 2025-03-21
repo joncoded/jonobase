@@ -1,8 +1,8 @@
-import './globals.css'
-import Head from '@/components/base/html/head'
+import "./globals.css"
+import Head from "@/components/base/html/head"
 import Tail from "@/components/base/html/tail"
 import Skip from "@/components/base/util/skip"
-import { ThemeProvider } from '@/components/base/util/lite-dark'
+import { ThemeProvider } from "@/components/base/util/lite-dark"
 import OverHead from "@/components/base/html/over-head"
 
 export default function RootLayout({

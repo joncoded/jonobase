@@ -56,7 +56,7 @@ export default function Find({ posts, totalPostsCount, urlParams }: FindPagePara
   const FindApex = () => {
     return (
       <aside className={`find-apex uppercase text-lg md:text-2xl`}>
-        <Span>{text["finds"]}</Span>
+        <Span>{text['finds']}</Span>
         {query && (
           <>
             <Span ariaHidden={true}> / </Span>
@@ -76,7 +76,7 @@ export default function Find({ posts, totalPostsCount, urlParams }: FindPagePara
         <label className={`w-full max-w-full md:max-w-screen-md mx-auto sr-only`}></label>
         <input
           type="text"
-          placeholder={text["search"]}
+          placeholder={text['search']}
           className={` 
             w-full border-0 dark:border dark:border-gray-200 px-5 py-2 
             bg-gray-200 dark:bg-black focus:!ring-2

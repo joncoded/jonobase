@@ -5,12 +5,12 @@ jonobase by @jonchius
 the site header
 */
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { UtilDOMChildrenProps } from '@/sanity/myprops'
-import { getBase } from '@/sanity/actions'
-import Menu from './menu'
-import { Span } from './main'
+import Image from "next/image"
+import Link from "next/link"
+import { UtilDOMChildrenProps } from "@/sanity/myprops"
+import { getBase } from "@/sanity/actions"
+import Menu from "./menu"
+import { Span } from "./main"
 
 export default async function Head() {
   

@@ -5,11 +5,11 @@ jonobase by @jonchius
 the list of posts
 */
 
-'use client'
+"use client"
 
-import { PostProps } from '@/sanity/myprops'
-import PostLine from './post-line'
-import { text } from '@/app/config'
+import { PostProps } from "@/sanity/myprops"
+import PostLine from "./post-line"
+import { text } from "@/app/config"
 
 export default function PostList({posts, showJoin = false, showKind = false} : { posts: PostProps[], showJoin?: boolean, showKind?: boolean} ) {
 
