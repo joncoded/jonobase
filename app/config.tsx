@@ -12,7 +12,7 @@ export const timezone = "America/Toronto"
 export const colors = {
 
   "link"
-  : "text-sky-600",
+  : "text-sky-700",
 
   "darkLink"
   : "text-lime-300",
