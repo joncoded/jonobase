@@ -53,7 +53,7 @@ const schema = {
       validation: (Rule: any) => Rule.required(),
       of: [
         {
-          type: 'block',
+          type: 'block'                 
         },
         {
           type: 'image',
@@ -71,6 +71,9 @@ const schema = {
         },
         {
           type: 'table'
+        },
+        {
+          type: 'tube'
         }
       ]
     },

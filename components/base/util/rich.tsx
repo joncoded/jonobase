@@ -15,8 +15,8 @@ export const serializers = {
       <a href={mark.href} target={mark.href.startsWith('http') ? '_blank' : ''} rel="noopener noreferer">
         {children}
       </a>
-    ),
-  },
+    )
+  },  
   types: {
     // code snippets
     code: ({node}: any) => {
@@ -58,6 +58,25 @@ export const serializers = {
           </tbody>      
         </table>
       )
-    }
+    },
+    tube: ({ node }: any) => {
+      
+      const { url } = node      
+      const youtubeId = url
+        .replace('https://www.youtube.com/watch?v=', '')
+        .replace('https://youtu.be/', '')
+
+      return (
+        <div className={`youtube-container`}>
+          <iframe 
+            className={`youtube-video w-full h-[56.25vw] md:h-[31.25vw]`}
+            src={`https://www.youtube.com/embed/${youtubeId}`}            
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div>
+      )
+
+    }    
   }
 }
