@@ -91,7 +91,7 @@ export default async function List({ heapList }: any) {
       <div id={`list-head-${slug}`} className={`text-center`}>
 
         {showtitle &&
-          <h2 id={`list-name-${slug}`} className={`text-center my-5 text-3xl md:text-4xl font-bold uppercase`}>{title}</h2>
+          <h2 id={`list-name-${slug}`} className={`text-center mb-5 text-3xl md:text-4xl font-bold uppercase`}>{title}</h2>
         }
 
         {showsubtitle &&
