@@ -1,6 +1,6 @@
 const schema = {
   name: 'tube',  
-  title: 'YouTube Embed',
+  title: 'YouTube',
   type: 'object',
   fields: [
     {
