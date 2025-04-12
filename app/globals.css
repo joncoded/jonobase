@@ -111,3 +111,11 @@ main img {
   margin: 15px 0;
   border: 1px solid #666;
 }
+
+.post-main h2:not(:nth-child(1)) {
+  margin-top: 90px;
+}
+
+.post-main h3 {
+  margin-top: 60px;
+}
