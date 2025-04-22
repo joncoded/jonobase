@@ -37,7 +37,7 @@ export default async function Main({ searchParams, params } : any) {
   const { join, kind } = await params
   const { page, perPage } = searchParams
   const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
-  const myPosts = await getPosts({join, kind, page, perPage: perPage || myBase.perPage})
+  const myPosts = await getPosts({join, kind, page, perPage: perPage || myBase.perPage, ascDesc: kind.includes('book') ? 'asc' : 'desc'})
   const myPostsCount = await getPostsCount({join, kind})
 
   if (!myPosts || myPosts.length === 0) return <None />
