@@ -153,6 +153,12 @@ const schema = {
       type: 'boolean'
     }
   ],
+  preview: {
+    select: {
+      title: 'title', 
+      subtitle: 'slug.current', 
+    }
+  },
   initialValue: {
     showtype: false,
     showkind: false,
