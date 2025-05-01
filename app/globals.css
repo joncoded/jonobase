@@ -119,3 +119,7 @@ main img {
 .post-main h3 {
   margin-top: 60px;
 }
+
+.post-main {
+  line-height: 2;
+}
