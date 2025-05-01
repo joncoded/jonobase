@@ -192,13 +192,14 @@ export const getPostAdjacent = async (date: string, mode: 'older' | 'newer', joi
   try {
 
     const operation = (mode === 'older' ? '<' : '>')
+    const order = (mode === 'older' ? 'desc' : 'asc')
     
     const adjacentQuery = `*[      
       ${join ? `lower(join) == '${join.toLowerCase()}' &&` : ``}
       ${kind ? `lower(kind) == '${kind.toLowerCase()}' &&` : ``}
       ${nook ? `lower('${nook}') in nooks &&` : ``}     
       date ${operation} '${date}'
-    ] | order(date desc){${fields.postLite}}`
+    ] | order(date ${order}){${fields.postLite}}`
 
     const posts = await readClient.fetch(
       groq`${adjacentQuery}`
