@@ -39,7 +39,7 @@ export default async function Head() {
             <Image className={`${styling['head-branding-logo']}`} src={myBase.logo} alt="logo" width={40} height={40} />
           }
           <div className="flex flex-col gap-1">
-            <h1 className={`${styling['head-branding-name']}`}>{title}</h1>
+            <div className={`${styling['head-branding-name']}`}>{title}</div>
             <Span className={`${styling['head-branding-subs']}`}>{tagline}</Span>
           </div>
         </Link>
