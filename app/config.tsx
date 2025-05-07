@@ -110,8 +110,8 @@ export const styling = {
     border-t dark:border-t-gray-600
     prose-headings:font-sans prose-headings:font-bold prose-headings:mt-5
     prose-h2:text-4xl prose-h3:text-3xl prose-h4:text-xl
-    prose-p:my-5 prose-li:mb-2
-    prose-code:text-white prose-code:bg-[#23241f]
+    prose-p:my-5 prose-pre:my-10 prose-li:mb-2
+    prose-code:text-white prose-code:bg-[#23241f] 
     prose-a:${colors.link} dark:prose-a:${colors.darkLink}
     hover:prose-a:${colors.linkHover} dark:hover:prose-a:${colors.darkLinkHover}
     hover:prose-a:underline font-serif font-light prose-strong:font-bold
