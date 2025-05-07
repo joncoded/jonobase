@@ -27,11 +27,7 @@ export default async function Paginate({myBase, totalPostsCount, searchParams} :
   let pageNumbers = []
   for (let p = 1; p <= totalPages; p++) {
     pageNumbers.push(p)
-  }    
-
-  console.log("total posts count === ", totalPostsCount)
-  console.log("per page === ", parseInt(perPage))
-  console.log("total pages === ", totalPages)
+  }   
   
 
   return (

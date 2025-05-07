@@ -48,8 +48,6 @@ export default async function Main({ params, searchParams }: NookProps) {
     nook: decodeURIComponent(slug!)    
   })  
 
-  console.log("per page", perPage)
-
   return (
     
     <main id="main" tabIndex={-1}>
