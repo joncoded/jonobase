@@ -86,10 +86,10 @@ export const styling = {
 
   "list-text" : `
     w-3/4 md:w-full max-w-screen-lg mx-auto prose
-    prose-h2:text-4xl md:prose-h2:text-5xl prose-h2:mb-5 prose-h2:font-sans
-    prose-h3:text-3xl md:prose-h3:text-4xl prose-h3:mb-5 prose-h3:font-sans
+    prose-h1:text-4xl md:prose-h1:text-6xl prose-h2:text-3xl md:prose-h2:text-5xl prose-h2:mb-5 prose-h2:font-sans
+    prose-h3:text-2xl md:prose-h3:text-4xl prose-h3:mb-5 prose-h3:font-sans
     prose-p:text-lg prose-p:font-serif prose-p:my-5 prose-p:leading-relaxed
-    text-black dark:text-white
+    text-black dark:text-white dark:prose-h1:text-white dark:prose-strong:!text-white
   `,
 
   "list-text-ctas-wrap" : `
