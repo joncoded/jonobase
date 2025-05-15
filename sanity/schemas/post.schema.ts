@@ -170,8 +170,8 @@ const schema = {
     },
   },
   initialValue: {
-    join: 'side',
-    kind: 'writings',
+    join: '',
+    kind: '',
     showDate: true,
     date: Date.now()
   }
