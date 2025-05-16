@@ -181,7 +181,7 @@ export default function Menu({myBase} : any) {
           md:prose-h2:text-4xl md:prose-h3:text-3xl md:prose-p:text-2xl 
           prose-a:${colors.link} dark:prose-a:${colors.darkLink} 
           hover:prose-a:${colors.linkHover} dark:hover:prose-a:${colors.darkLinkHover} 
-          hover:prose-a:font-semibold 
+          hover:prose-a:font-semibold prose-p:mb-3
         `} 
       >
         <BlockContent 
