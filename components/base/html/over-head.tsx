@@ -15,7 +15,7 @@ export default async function OverHead() {
   return (
     <>
       
-      <link rel="icon" href={logo + '?v=new'} />
+      { logo && <link rel="icon" href={logo + '?v=new'} /> }
       
     </>
   )
