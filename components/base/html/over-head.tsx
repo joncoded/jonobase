@@ -10,7 +10,7 @@ import { getBase } from "@/sanity/actions"
 
 export default async function OverHead() {
 
-  const { logo } = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)      
+  const { logo } = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!) || {}    
   
   return (
     <>
