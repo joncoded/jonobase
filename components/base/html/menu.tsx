@@ -102,7 +102,10 @@ export default function Menu({myBase} : any) {
 
     useEffect(() => {
       if (typeof window !== "undefined") {
-        setDomain(window.location.hostname)
+        let host = window.location.hostname
+        host = host.replace(/^www\./, "") 
+        host = host.replace(/\.[^.]+$/, "") 
+        setDomain(host)
       }
     }, [])
 
