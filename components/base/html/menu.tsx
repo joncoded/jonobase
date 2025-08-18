@@ -97,9 +97,18 @@ export default function Menu({myBase} : any) {
   }
 
   const MenuHeading = () => {
+
+    const [domain, setDomain] = useState<string>("")
+
+    useEffect(() => {
+      if (typeof window !== "undefined") {
+        setDomain(window.location.hostname)
+      }
+    }, [])
+
     return (
       <div className={`menu-heading`}>
-        <Span className={`text-3xl font-bold mr-2 uppercase`}>{myBase.title}</Span>
+        <Span className={`text-3xl font-bold mr-2 uppercase`}>{domain}</Span>
         <Span className={`text-xl font-light`}>{text["menu"]}</Span>
       </div>
     )

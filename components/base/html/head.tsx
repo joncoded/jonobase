@@ -1,3 +1,4 @@
+"use client"
 
 /*
 jonobase by @jonchius
@@ -5,6 +6,7 @@ jonobase by @jonchius
 the site header
 */
 
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { UtilDOMChildrenProps } from "@/sanity/myprops"
@@ -32,14 +34,22 @@ export default async function Head() {
 
   const HeadBranding = () => {
 
+    const [domain, setDomain] = useState<string>("")
+
+    useEffect(() => {
+      if (typeof window !== "undefined") {
+        setDomain(window.location.hostname)
+      }
+    }, [])
+
     return (
       <div id="head-branding">
         <Link href="/" className="flex items-center">
           {myBase.logo &&
-            <Image className={`${styling['head-branding-logo']}`} src={myBase.logo} alt="logo" width={40} height={40} />
+            <Image className={`${styling['head-branding-logo']}`} src={myBase.logo} alt="" width={40} height={40} />
           }
           <div className="flex flex-col gap-1">
-            <div className={`${styling['head-branding-name']}`}>{title}</div>
+            <div className={`${styling['head-branding-name']}`}>{domain}</div>
             <Span className={`${styling['head-branding-subs']}`}>{tagline}</Span>
           </div>
         </Link>
