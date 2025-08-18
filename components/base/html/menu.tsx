@@ -98,7 +98,7 @@ export default function Menu({myBase} : any) {
 
   const MenuHeading = () => {
 
-    const [domain, setDomain] = useState<string>("")
+    const [domain, setDomain] = useState<string>(myBase?.title || "")
 
     useEffect(() => {
       if (typeof window !== "undefined") {

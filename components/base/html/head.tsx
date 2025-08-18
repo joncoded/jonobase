@@ -34,7 +34,7 @@ export default async function Head() {
 
   const HeadBranding = () => {
 
-    const [domain, setDomain] = useState<string>("")
+    const [domain, setDomain] = useState<string>(myBase?.title || "")
 
     useEffect(() => {
       if (typeof window !== "undefined") {
