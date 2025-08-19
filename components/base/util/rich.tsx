@@ -84,7 +84,7 @@ export const serializers = {
 
       return (
         <div className={`codepen-container`}>
-          <iframe height="300" width="100%" src={embedUrl} loading="lazy" allowTransparency={true} allowFullScreen={true}>
+          <iframe width="100%" src={embedUrl} loading="lazy" allowTransparency={true} allowFullScreen={true}>
             See the Pen @ <a href={url}>{url}</a>
           </iframe>
         </div>

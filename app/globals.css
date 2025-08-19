@@ -50,12 +50,16 @@ main .pagination.button.current {
 
 iframe {
   width: 100%;
+  margin: 30px 0;
 }
 
 iframe[title="YouTube video player"] {
   aspect-ratio: 16 / 9;
-  height: 50vh;    
-  margin: 0 auto;
+  height: 50vh;      
+}
+
+.codepen-container iframe {
+  height: 500px;
 }
 
 blockquote {
