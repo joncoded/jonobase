@@ -121,8 +121,7 @@ const schema = {
         dateFormat: 'YYYY-MM-DD',
         timeFormat: 'HH:mm',
         calendarTodayLabel: 'Today'
-      },
-      validation: (Rule: any) => Rule.required(),
+      }
     },
     {
       name: 'showDate',
@@ -173,7 +172,7 @@ const schema = {
     join: '',
     kind: '',
     showDate: true,
-    date: Date.now()
+    date: new Date().toISOString()  
   }
 }
 
