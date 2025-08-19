@@ -73,6 +73,9 @@ const schema = {
           type: 'table'
         },
         {
+          type: 'pens'
+        },
+        {
           type: 'tube'
         }
       ]

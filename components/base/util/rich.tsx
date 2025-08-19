@@ -77,6 +77,18 @@ export const serializers = {
         </div>
       )
 
-    }    
+    },
+    pens: ({ node }: any) => {
+      const { url } = node      
+      const embedUrl = url.replace('pen', 'embed') + '?default-tab=js,html,css,result&editable=true&theme-id=dark'
+
+      return (
+        <div className={`codepen-container`}>
+          <iframe height="300" width="100%" src={embedUrl} loading="lazy" allowTransparency={true} allowFullScreen={true}>
+            See the Pen @ <a href={url}>{url}</a>
+          </iframe>
+        </div>
+      )
+    }
   }
 }
