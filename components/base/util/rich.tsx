@@ -80,7 +80,7 @@ export const serializers = {
     },
     pens: ({ node }: any) => {
       const { url } = node      
-      const embedUrl = url.replace('pen', 'embed') + '?default-tab=js,html,css,result&editable=true&theme-id=dark'
+      const embedUrl = url.replace('/pen/', '/embed/') + '?default-tab=js,html,css,result&editable=true&theme-id=dark'
 
       return (
         <div className={`codepen-container`}>
