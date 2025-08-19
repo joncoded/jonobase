@@ -159,6 +159,36 @@ const schema = {
       subtitle: 'slug.current', 
     }
   },
+  orderings: [
+    {
+      title: 'Slug, ascending',
+      name: 'dateDesc',
+      by: [
+        { field: 'slug.current', direction: 'asc'}
+      ]
+    },
+    {
+      title: 'Slug, descending',
+      name: 'dateAsc',
+      by: [
+        { field: 'slug.current', direction: 'desc'}
+      ]
+    },
+    {
+      title: 'Title, ascending',
+      name: 'titleAsc',
+      by: [
+        { field: 'title', direction: 'asc'}
+      ]
+    },
+    {
+      title: 'Title, descending',
+      name: 'titleDesc',
+      by: [
+        { field: 'title', direction: 'desc'}
+      ]
+    }
+  ],
   initialValue: {
     showtype: false,
     showkind: false,
