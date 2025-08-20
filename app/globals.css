@@ -82,6 +82,14 @@ pre code {
   background: inherit;
   border: 0;
   padding: 0;
+  line-height: 1.5 !important;
+  font-size: 12px !important;
+}
+
+@media (min-width: 768px) {
+  pre code {    
+    font-size: 16px !important;
+  }
 }
 
 /* custom lists */
@@ -117,11 +125,11 @@ main img {
 }
 
 .post-main h2:not(:nth-child(1)) {
-  margin-top: 90px;
+  margin-top: 60px;
 }
 
 .post-main h3 {
-  margin-top: 60px;
+  margin-top: 30px;
 }
 
 .post-main {

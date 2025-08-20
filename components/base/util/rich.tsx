@@ -24,7 +24,7 @@ export const serializers = {
       if (!code){
           return null
       }
-      return <SyntaxHighlighter style={monokaiSublime} language={language ||'text'} wrapLines={true}>
+      return <SyntaxHighlighter style={monokaiSublime} language={language ||'text'} showLineNumbers={true} wrapLongLines={true}>
         {code}
       </SyntaxHighlighter>
     },
@@ -84,7 +84,7 @@ export const serializers = {
 
       return (
         <div className={`codepen-container`}>
-          <iframe width="100%" src={embedUrl} loading="lazy" allowTransparency={true} allowFullScreen={true}>
+          <iframe width="100%" src={embedUrl} loading="lazy" allowFullScreen={true}>
             See the Pen @ <a href={url}>{url}</a>
           </iframe>
         </div>
