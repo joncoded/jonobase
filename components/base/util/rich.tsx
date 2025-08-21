@@ -28,6 +28,14 @@ export const serializers = {
         {code}
       </SyntaxHighlighter>
     },
+    // any embeddable HTML
+    mbed: ({ node }: any) => {      
+      const { html } = node
+      if (!html) return null
+      return (            
+        <div className="custom-embed my-5" dangerouslySetInnerHTML={{ __html: html }} />
+      )
+    },
     // tables with rows and columns
     table: ({node}: any) => { 
       const thead = node.rows[0]          
@@ -89,6 +97,7 @@ export const serializers = {
           </iframe>
         </div>
       )
-    }
+    },
+
   }
 }

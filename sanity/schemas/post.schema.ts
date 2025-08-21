@@ -77,6 +77,9 @@ const schema = {
         },
         {
           type: 'tube'
+        },
+        {
+          type: 'mbed'
         }
       ]
     },
