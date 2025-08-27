@@ -104,7 +104,7 @@ export const styling = {
 
   "post-head-subtitle" : `text-xl md:text-2xl`,
 
-  "post-head-date" : `"text-md md:text-xl"`,
+  "post-head-date" : `text-md md:text-xl`,
 
   "post-main-sect" : `
     border-t dark:border-t-gray-600

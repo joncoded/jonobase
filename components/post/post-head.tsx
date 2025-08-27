@@ -12,7 +12,7 @@ import { timezone, styling, text } from "@/app/config"
 import getFormattedDate from "../base/util/date-form"
 
 export default function PostHead( { post } : { post : PostProps } ) {
-  const { _id, _updatedAt, title, emoji, subtitle, image, date, showDate } = post
+  const { _id, _updatedAt, title, emoji, subtitle, image = "", date, showDate } = post
 
   const formattedDate = getFormattedDate({date, timezone, time: true})
   const formattedUpdated = getFormattedDate({date: _updatedAt, timezone, time: true})
@@ -25,10 +25,11 @@ export default function PostHead( { post } : { post : PostProps } ) {
       }
     `}>
 
-      
-      <div className={`${styling['post-head-title']}`} aria-hidden={true}>
-        {emoji && emoji} <br />
-        <Link href={`/studio/structure/post;${_id}`}>edit</Link> 
+      <div className={`flex flex-col gap-2 md:gap-5`} aria-hidden={true}>
+        {emoji && <div className={`${styling['post-head-title']}`}>{emoji}</div>} 
+        <div className={`${styling['post-head-date']} text-sky-700 text-center hover:text-black`}>
+          <Link href={`/studio/structure/post;${_id}`}>edit</Link>
+        </div> 
       </div>
       
       <div className={`flex flex-col gap-2 md:gap-5`}>
@@ -41,7 +42,7 @@ export default function PostHead( { post } : { post : PostProps } ) {
         </div>
         }
         <div className={`${styling['post-head-date']}`}>       
-          {showDate && <span> | {formattedDate}</span>}
+          {showDate && <span>{formattedDate}</span>}
           {_updatedAt && (date !== _updatedAt) &&
             <>
               <br className="md:hidden" />
@@ -50,8 +51,8 @@ export default function PostHead( { post } : { post : PostProps } ) {
           }
         </div>
       </div>
+
     </div>
   )
 
 }
-
