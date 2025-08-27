@@ -28,7 +28,7 @@ export default function PostHead( { post } : { post : PostProps } ) {
       <div className={`flex flex-col gap-2 md:gap-5`} aria-hidden={true}>
         {emoji && <div className={`${styling['post-head-title']}`}>{emoji}</div>} 
         <div className={`${styling['post-head-date']} text-sky-700 text-center hover:text-black`}>
-          <Link href={`/studio/structure/post;${_id}`}>edit</Link>
+          <Link href={`/studio/structure/post;${_id}`} target="_blank">edit</Link>
         </div> 
       </div>
       
