@@ -4,6 +4,7 @@ import Tail from "@/components/base/html/tail"
 import Skip from "@/components/base/util/skip"
 import { ThemeProvider } from "@/components/base/util/lite-dark"
 import OverHead from "@/components/base/html/over-head"
+import { Analytics } from "@vercel/analytics/next"
 
 export default function RootLayout({
   children,
@@ -20,6 +21,7 @@ export default function RootLayout({
           <Head />
           {children}
           <Tail />
+          <Analytics />
         </ThemeProvider>        
       </body>      
     </html>
