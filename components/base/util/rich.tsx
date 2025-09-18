@@ -8,6 +8,9 @@ serializers for rich text editor generated content
 import { PostLinkProps } from "@/sanity/myprops"
 import SyntaxHighlighter from "react-syntax-highlighter"
 import { monokaiSublime } from "react-syntax-highlighter/dist/cjs/styles/hljs"
+import dynamic from "next/dynamic"
+
+const CodePenEmbed = dynamic(() => import('./pens'), { ssr: false })
 
 export const serializers = {
   marks: {
@@ -67,8 +70,8 @@ export const serializers = {
         </table>
       )
     },
-    tube: ({ node }: any) => {
-      
+    // youtube videos
+    tube: ({ node }: any) => {      
       const { url } = node      
       const youtubeId = url
         .replace('https://www.youtube.com/watch?v=', '')
@@ -84,20 +87,11 @@ export const serializers = {
           ></iframe>
         </div>
       )
-
     },
+    // codepen embeds
     pens: ({ node }: any) => {
       const { url } = node      
-      const embedUrl = url.replace('/pen/', '/embed/') + '?default-tab=js,html,css,result&editable=true&theme-id=dark'
-
-      return (
-        <div className={`codepen-container`}>
-          <iframe width="100%" src={embedUrl} loading="lazy" allowFullScreen={true}>
-            See the Pen @ <a href={url}>{url}</a>
-          </iframe>
-        </div>
-      )
+      return <CodePenEmbed url={url} />
     },
-
   }
 }
