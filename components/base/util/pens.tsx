@@ -1,8 +1,8 @@
 import React from "react"
 
-export default function CodePenEmbed({ url }: { url: string }) {
+export default function CodePenEmbed({ url, tabs = "html,result" }: { url: string, tabs: string }) {
   
-  const embedUrl = url.replace('/pen/', '/embed/') + '?default-tab=js,html,css,result&editable=true&theme-id=dark'
+  const embedUrl = url.replace('/pen/', '/embed/') + '?default-tab=' + tabs + '&editable=true&theme-id=dark'
   
   return (
     <div className="codepen-container">
