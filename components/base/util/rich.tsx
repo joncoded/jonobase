@@ -90,8 +90,8 @@ export const serializers = {
     },
     // codepen embeds
     pens: ({ node }: any) => {
-      const { url } = node      
-      return <CodePenEmbed url={url} />
+      const { url, tabs } = node      
+      return <CodePenEmbed url={url} tabs={tabs} />
     },
   }
 }
