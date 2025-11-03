@@ -27,7 +27,7 @@ export const serializers = {
       if (!code){
           return null
       }
-      return <SyntaxHighlighter style={monokaiSublime} language={language ||'text'} showLineNumbers={true} wrapLongLines={true}>
+      return <SyntaxHighlighter style={monokaiSublime} language={language ||'text'} wrapLongLines={true}>
         {code}
       </SyntaxHighlighter>
     },
