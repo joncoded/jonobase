@@ -46,7 +46,7 @@ export default async function Main({ params } : any) {
   const post = await getPost({ slug })
 
   // get specific post data
-  const { image, link: myLink, content, extra, nooks, date: myDate } = post
+  const { content, extra, nooks, date: myDate } = post  
 
   // get page turner data
   const [newerInKind, olderInKind, newerInJoin, olderInJoin, newerInOmni, olderInOmni] = await Promise.all([    
@@ -71,9 +71,9 @@ export default async function Main({ params } : any) {
         <Apex first={join} second={kind} post={true} />
       </Sect>
 
-      <Sect id="post-head" className={`${image ? `py-0` : `${styling['post-head-sect']}`}`} bgImage={image}>
+      <Sect id="post-head" className={`${post.image ? `py-0` : `${styling['post-head-sect']}`}`} {...(post.image ? { bgImage: post.image } : {})}>
         <PostHead post={post} />
-        { myLink && <PostLink link={myLink} />}
+        { post.link && <PostLink link={post.link} />}
       </Sect>
 
       <Sect id="post-main" className={`${styling['post-main-sect']}`}>
