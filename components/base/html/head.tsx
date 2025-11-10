@@ -15,9 +15,19 @@ import Menu from "./menu"
 import { Span } from "./main"
 import { styling } from "@/app/config"
 
-export default async function Head() {
+export default function Head() {
 
-  const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
+  const [myBase, setMyBase] = useState<any>(null)
+
+  useEffect(() => {
+    let mounted = true
+    getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
+      .then(base => { if (mounted) setMyBase(base) })
+      .catch((error) => { console.log(error) })
+    return () => { mounted = false }
+  }, [])
+
+  if (!myBase) return null
 
   const { title } = myBase || ""
   const { tagline } = myBase || ""
