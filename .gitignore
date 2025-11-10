@@ -40,3 +40,4 @@ production.tar.gz
 .sanity/runtime/index.html
 /dist/
 /studio-*/
+sanity/migrations
