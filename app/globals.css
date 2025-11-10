@@ -22,30 +22,6 @@ body {
   font-size: 18px;
 }
 
-/* for use with pagination only */
-
-main .button {
-  background: white;  
-  color: black;  
-  display: inline-block;
-  border: 1px solid black;
-  margin: 0;
-  padding: 0.5rem 1.25rem;
-  cursor: pointer;
-}
-
-main .button:hover {
-  background-color: black;   
-  color: white;
-  text-decoration: none;
-}
-
-main .pagination.button.current {
-  background-color: #333;
-  border: 1px solid #333;
-  color: white;
-}
-
 /* rich content */
 
 iframe {
@@ -62,13 +38,7 @@ iframe[title="YouTube video player"] {
   height: 500px;
 }
 
-blockquote {
-  margin: 30px;
-  border-left: 6px solid #bbb;
-  padding-left: 30px;
-}
-
-/* code snippets */
+/* syntax highlighting */
 
 code {
   background: #999;  
@@ -90,6 +60,30 @@ pre code {
   pre code {    
     font-size: 16px !important;
   }
+}
+
+/* custom pagination buttons */
+
+main .button {
+  background: white;  
+  color: black;  
+  display: inline-block;
+  border: 1px solid black;
+  margin: 0;
+  padding: 0.5rem 1.25rem;
+  cursor: pointer;
+}
+
+main .button:hover {
+  background-color: black;   
+  color: white;
+  text-decoration: none;
+}
+
+main .pagination.button.current {
+  background-color: #333;
+  border: 1px solid #333;
+  color: white;
 }
 
 /* custom lists */
@@ -124,6 +118,8 @@ main img {
   border: 1px solid #666;
 }
 
+/* custom heading spacing */
+
 .post-main h2:not(:nth-child(1)) {
   margin-top: 60px;
 }
@@ -134,4 +130,12 @@ main img {
 
 .post-main {
   line-height: 2;
+}
+
+/* assorted custom styling */
+
+blockquote {
+  margin: 30px;
+  border-left: 6px solid #bbb;
+  padding-left: 30px;
 }
