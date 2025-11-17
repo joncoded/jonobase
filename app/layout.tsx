@@ -10,20 +10,20 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
-}) {      
+}) {
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <OverHead />
-      <body 
-        className="flex flex-col min-h-screen font-sans">                          
-        <ThemeProvider attribute={`class`} defaultTheme={`light`} enableSystem>          
-          <Skip />          
+      <body
+        className="flex flex-col min-h-screen font-sans">
+        <ThemeProvider attribute={`class`} defaultTheme={`light`} enableSystem>
+          <Skip />
           <Head />
           {children}
           <Tail />
           <Analytics />
-        </ThemeProvider>        
-      </body>      
+        </ThemeProvider>
+      </body>
     </html>
   )
 }

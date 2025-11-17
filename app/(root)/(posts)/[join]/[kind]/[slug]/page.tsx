@@ -45,6 +45,12 @@ export default async function Main({ params } : any) {
   // get post data
   const post = await getPost({ slug })
 
+  if (!post) return (
+    <main id="main">
+      <None />
+    </main>
+  )
+
   // get specific post data
   const { content, extra, nooks, date: myDate } = post  
 
@@ -57,9 +63,6 @@ export default async function Main({ params } : any) {
     getPostAdjacent(myDate, 'newer', "", ""),
     getPostAdjacent(myDate, 'older', "", ""),
   ])
-
-
-  if (!post) return <None />
   
   return (
 
