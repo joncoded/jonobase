@@ -113,8 +113,12 @@ main ol ol ol li {
   list-style-type: lower-roman;
 }
 
-main img {
+main figure {
   margin: 15px 0;
+}
+
+main img {
+  margin: auto;
   border: 1px solid #666;
 }
 
