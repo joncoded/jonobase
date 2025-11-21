@@ -16,7 +16,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        serif: ["Inria Serif", "serif"],
+        serif: ["Spectral", "serif"],
         sans: ["Barlow Condensed", "sans-serif"]        
       }
     },
