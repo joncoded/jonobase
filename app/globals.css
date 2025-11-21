@@ -136,6 +136,10 @@ main img {
   line-height: 2;
 }
 
+nav.menu-content h3 {
+  margin-top: 15px;
+}
+
 /* assorted custom styling */
 
 blockquote {
