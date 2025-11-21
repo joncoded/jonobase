@@ -250,14 +250,7 @@ export default function Menu({myBase} : any) {
                     placeholder={`🔎 ${text["search"]}`} 
                   />
                 </MenuFindWrapper>
-                <MenuContent />
-                <MenuFindWrapper className={`hidden md:block mt-5`}>                
-                  <MenuFind                     
-                    showMenu={setShowMenu} 
-                    inputName={`desktop-search-in-menu`} 
-                    placeholder={`🔎 ${text["search"]}`} 
-                  />
-                </MenuFindWrapper>
+                <MenuContent />              
               </MenuWrapper>
             </MenuDialog>
           </div>
