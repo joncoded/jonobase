@@ -18,11 +18,11 @@ import * as myprops from "./myprops"
 import * as fields from "./fields"
 
 // get single "base" (i.e. website) data
-export const getBase = async (slug: string) => {
+export const getBase = async (domain: string) => {
 
   try {
     const base = await readClient.fetch(
-      groq`*[_type == "base" && slug.current == '${slug}'] {${fields.base}}`
+      groq`*[_type == "base" && domain == '${domain}'] {${fields.base}}`
     )
 
     return base[0]

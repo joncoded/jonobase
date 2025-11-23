@@ -24,7 +24,14 @@ const schema = {
       type: 'slug', 
       options: { source: 'title' },
       validation: (Rule: any) => Rule.required()
-    },           
+    },
+    {
+      name: 'domain',
+      title: 'Domain', 
+      description: 'domain name of the site', 
+      type: 'string',
+      validation: (Rule: any) => Rule.required()
+    },          
     {
       name: 'tagline',
       title: 'Tagline',
