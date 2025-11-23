@@ -8,9 +8,9 @@ beams things up to the <head> tag, e.g.:
 
 import { getBase } from "@/sanity/actions"
 
-export default async function OverHead() {
+export default async function OverHead(base: any) {
 
-  const { logo } = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!) || {}    
+  const { logo } = await getBase(base) || {}    
   
   return (
     <>

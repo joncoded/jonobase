@@ -1,3 +1,4 @@
+"use client"
 
 /*
 jonobase by @jonchius
@@ -10,11 +11,9 @@ import BlockContent from "@sanity/block-content-to-react"
 import { serializers } from "../util/rich"
 import { styling } from "@/app/config"
 
-export default async function Tail() {  
+export default function Tail({ base }: { base: any }) {
 
-  const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
-
-  const { colophon1, colophon2 } = myBase || ""
+  const { colophon1, colophon2 } = base || ""
 
   const Colophon1 = () => {
     return (

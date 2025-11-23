@@ -17,7 +17,7 @@ import FocusTrap from "focus-trap-react"
 import MenuFind from "./menu-find"
 import { serializers } from "../util/rich"
 
-export default function Menu({myBase} : any) {
+export default function Menu({base} : any) {
   
   const [ showMenu, setShowMenu ] = useState(false)  
   const [ menuOpenedAlready, setMenuOpenedAlready ] = useState(false)  
@@ -96,22 +96,10 @@ export default function Menu({myBase} : any) {
     )
   }
 
-  const MenuHeading = () => {
-
-    const [domain, setDomain] = useState<string>(myBase?.title || "")
-
-    useEffect(() => {
-      if (typeof window !== "undefined") {
-        let host = window.location.hostname
-        host = host.replace(/^www\./, "") 
-        host = host.replace(/\.[^.]+$/, "") 
-        setDomain(host)
-      }
-    }, [])
-
+  const MenuHeading = () => {    
     return (
       <div className={`menu-heading`}>
-        <Span className={`text-3xl font-bold mr-2 uppercase`}>{domain}</Span>
+        <Span className={`text-3xl font-bold mr-2 uppercase`}>{base?.title || ""}</Span>
         <Span className={`text-xl font-light`}>{text["menu"]}</Span>
       </div>
     )
@@ -124,7 +112,7 @@ export default function Menu({myBase} : any) {
           block sm:hidden text-center my-2
         `}
       >
-        <Span>{myBase.tagline}</Span>
+        <Span>{base.tagline}</Span>
       </div>
     )
   }
@@ -197,7 +185,7 @@ export default function Menu({myBase} : any) {
         `} 
       >
         <BlockContent 
-          blocks={myBase.menu} 
+          blocks={base.menu} 
           serializers={serializers} 
           dataset="production"
           projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}  
