@@ -4,6 +4,15 @@ const schema = {
   type: 'document',
   fields: [
     {
+      name: 'base',
+      title: 'Base',
+      description: 'the website to which this post belongs',
+      type: 'array', 
+      of: [
+        {type: 'reference', to: [{type: 'base'}]}
+      ]      
+    },
+    {
       name: 'title',
       title: 'Title',
       description: 'required: the official title of this post', 
