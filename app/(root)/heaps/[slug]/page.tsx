@@ -5,6 +5,7 @@ jonobase by @jonchius
 the heaps (stacked custom sections) page
 */
 
+import { headers } from "next/headers"
 import { HeapProps, ListProps } from "@/sanity/myprops"
 import { getBase, getHeap, getList } from "@/sanity/actions"
 import { Sect } from "@/components/base/html/main"
@@ -20,8 +21,9 @@ export const fetchCache = 'force-no-store'
 export async function generateMetadata({ params }: HeapProps) {
 
   const { slug } = await params  
-  const [myBase, myHeap] = await Promise.all([
-    getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!),
+  const hostname = headers().get("x-forwarded-host") || headers().get("host") || ""
+  const [myBase, myHeap] = await Promise.all([    
+    getBase(hostname),
     getHeap(slug)
   ]) 
   

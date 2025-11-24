@@ -5,6 +5,7 @@ jonobase by @jonchius
 the kind (the second level sub-category list of posts)
 */
 
+import { headers } from "next/headers"
 import { getBase, getPosts, getPostsCount } from "@/sanity/actions"
 import { styling } from "@/app/config"
 
@@ -21,8 +22,9 @@ export const fetchCache = 'force-no-store'
 
 export async function generateMetadata({params}: any) {
 
+  const hostname = headers().get("x-forwarded-host") || headers().get("host") || ""
   const { join, kind } = await params
-  const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!) || {}
+  const myBase = await getBase(hostname) || {}
 
   if (kind) {
     return {
@@ -34,10 +36,11 @@ export async function generateMetadata({params}: any) {
 
 export default async function Main({ searchParams, params } : any) {
 
+  const hostname = headers().get("x-forwarded-host") || headers().get("host") || ""
   const { join, kind } = await params
   const { page, perPage } = searchParams
-  const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
-  const myPosts = await getPosts({join, kind, page, perPage: perPage || myBase.perPage, ascDesc: kind.includes('book') ? 'asc' : 'desc'})
+  const myBase = await getBase(hostname)
+  const myPosts = await getPosts({join, kind, page, perPage: perPage || myBase.perPage || 6, ascDesc: kind.includes('book') ? 'asc' : 'desc'})
   const myPostsCount = await getPostsCount({join, kind})
 
   if (!myPosts || myPosts.length === 0) return <None />

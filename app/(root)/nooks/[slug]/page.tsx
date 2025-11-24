@@ -6,6 +6,7 @@ the nooks (lists of "posts from nook (tag) X") page
 (replacement for nooks)
 */
 
+import { headers } from "next/headers"
 import { getBase, getPosts, getPostsCount } from "@/sanity/actions"
 import { NookProps } from "@/sanity/myprops"
 import { text, styling } from "@/app/config"
@@ -21,8 +22,9 @@ export const fetchCache = 'force-no-store'
 
 export async function generateMetadata({params}: any) {
 
-  const { slug } = await params  
-  const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!) || {}  
+  const { slug } = await params
+  const hostname = headers().get("x-forwarded-host") || headers().get("host") || ""
+  const myBase = await getBase(hostname) || {}  
   
   return {
     title: `#${decodeURIComponent(slug)} @ ${myBase?.title}`,
@@ -33,15 +35,16 @@ export async function generateMetadata({params}: any) {
 
 export default async function Main({ params, searchParams }: NookProps) {
 
-  const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!) || {}
+  const hostname = headers().get("x-forwarded-host") || headers().get("host") || ""
+  const myBase = await getBase(hostname) || {}
 
   const { slug } = await params
-  const { page, perPage } = searchParams
+  const { page } = searchParams
 
   const posts = await getPosts({        
     nook: slug,
     page,
-    perPage: perPage || myBase.perPage
+    perPage: searchParams.perPage
   })  
 
   const totalPostsCount = await getPostsCount({     
