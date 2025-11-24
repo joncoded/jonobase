@@ -17,7 +17,7 @@ export async function generateMetadata() {
   const myBase = await getBase(hostname)
 
   return {
-    title: myBase.title,
+    title: myBase.title + " - " + myBase.tagline,
     description: myBase.tagline,
     keywords: myBase.metakeywords
   }
