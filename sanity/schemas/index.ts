@@ -1,7 +1,11 @@
+
+// document schemas
 import base from "./base.schema"
 import heap from "./heap.schema"
 import list from "./list.schema"
 import post from "./post.schema"
+
+// post object schemas
 import tube from "./tube.schema"
 import pens from "./pens.schema"
 import mbed from "./mbed.schema"

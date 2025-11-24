@@ -1,26 +1,32 @@
 import "./globals.css"
+import { headers } from "next/headers"
 import Head from "@/components/base/html/head"
 import Tail from "@/components/base/html/tail"
 import Skip from "@/components/base/util/skip"
 import { ThemeProvider } from "@/components/base/util/lite-dark"
 import OverHead from "@/components/base/html/over-head"
 import { Analytics } from "@vercel/analytics/next"
+import { getBase } from "@/sanity/actions"
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+
+  const hostname = headers().get("x-forwarded-host") || headers().get("host") || ""
+  const myBase = await getBase(hostname)
+
   return (
     <html lang="en" suppressHydrationWarning={true}>
-      <OverHead />
+      <OverHead base={myBase} />
       <body
         className="flex flex-col min-h-screen font-sans">
         <ThemeProvider attribute={`class`} defaultTheme={`light`} enableSystem>
           <Skip />
-          <Head />
+          <Head base={myBase} />
           {children}
-          <Tail />
+          <Tail base={myBase} />
           <Analytics />
         </ThemeProvider>
       </body>

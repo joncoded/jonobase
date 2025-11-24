@@ -5,6 +5,7 @@ jonobase by @jonchius
 the post (single article) template
 */
 
+import { headers } from "next/headers"
 import BlockContent from "@sanity/block-content-to-react"
 import { text, styling } from "@/app/config"
 import { getBase, getPost, getPostAdjacent } from "@/sanity/actions"
@@ -24,8 +25,9 @@ export const fetchCache = 'force-no-store'
 
 export async function generateMetadata({params}: any) {
 
+  const hostname = headers().get("x-forwarded-host") || headers().get("host") || ""
   const { join, kind, slug } = await params
-  const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!) || {}
+  const myBase = await getBase(hostname) || {}
   const post = await getPost({slug})
 
   if (post) {

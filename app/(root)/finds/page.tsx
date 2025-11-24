@@ -5,6 +5,7 @@ jonobase by @jonchius
 the finds (search) page
 */
 
+import { headers } from "next/headers"
 import { getBase, getPosts, getPostsCount } from "@/sanity/actions"
 import { FindProps } from "@/sanity/myprops"
 import { text } from "@/app/config"
@@ -19,7 +20,8 @@ export const fetchCache = 'force-no-store'
 
 export async function generateMetadata({searchParams}: any) {
 
-  const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
+  const hostname = headers().get("x-forwarded-host") || headers().get("host") || ""
+  const myBase = await getBase(hostname)
 
   return {
     title: `${text['finds']} : ${searchParams.query ?? text['posts']} @ ${myBase?.title}`    
@@ -29,7 +31,8 @@ export async function generateMetadata({searchParams}: any) {
 
 export default async function Main({ searchParams }: FindProps) {
 
-  const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
+  const hostname = headers().get("x-forwarded-host") || headers().get("host") || ""
+  const myBase = await getBase(hostname)
 
   const posts = await getPosts({       
     query: searchParams?.query || '',

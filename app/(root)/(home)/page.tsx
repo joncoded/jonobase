@@ -1,10 +1,10 @@
-
 /*
 jonobase by @jonchius
 /app/(root)/(home)/page.tsx
 the root homepage (adjustable in sanity back-end via the "base" entry in the "home heap" field) 
 */
 
+import { headers } from "next/headers"
 import { getBase } from "@/sanity/actions"
 import Heap from "../heaps/[slug]/page"
 
@@ -14,7 +14,8 @@ export const fetchCache = 'force-no-store'
 
 export async function generateMetadata() {
 
-  const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
+  const hostname = headers().get("x-forwarded-host") || headers().get("host") || ""
+  const myBase = await getBase(hostname)
 
   return {
     title: myBase.title,
@@ -25,7 +26,8 @@ export async function generateMetadata() {
 
 export default async function Home() {
 
-  const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
+  const hostname = headers().get("x-forwarded-host") || headers().get("host") || ""
+  const myBase = await getBase(hostname)
 
   const { homeheap } = myBase
   

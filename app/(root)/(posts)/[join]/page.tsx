@@ -5,6 +5,7 @@ jonobase by @jonchius
 the join (the first level category list of posts)
 */
 
+import { headers } from "next/headers"
 import { getBase, getPosts, getPostsCount } from "@/sanity/actions"
 import { styling } from "@/app/config"
 import { Sect } from "@/components/base/html/main"
@@ -20,8 +21,9 @@ export const fetchCache = 'force-no-store'
 
 export async function generateMetadata({params}: any) {
 
+  const hostname = headers().get("x-forwarded-host") || headers().get("host") || ""
   const { join } = await params
-  const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!) || {}
+  const myBase = await getBase(hostname) || {}
 
   if (join) {
     return {
@@ -33,10 +35,11 @@ export async function generateMetadata({params}: any) {
 
 export default async function Main({ params, searchParams } : any) {
   
+  const hostname = headers().get("x-forwarded-host") || headers().get("host") || ""
   const { join } = await params
   const { page, perPage } = searchParams
-  const myBase = await getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)  
-  const myPosts = await getPosts({join, page: page, perPage: perPage || myBase.perPage})
+  const myBase = await getBase(hostname)  
+  const myPosts = await getPosts({join, page: page, perPage: perPage || myBase.perPage || "6"})
   const myPostsCount = await getPostsCount({ join })
   
   if (!myPosts || myPosts.length === 0) return <None />

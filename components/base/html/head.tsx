@@ -6,31 +6,16 @@ jonobase by @jonchius
 the site header
 */
 
-import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { UtilDOMChildrenProps } from "@/sanity/myprops"
-import { getBase } from "@/sanity/actions"
 import Menu from "./menu"
 import { Span } from "./main"
 import { styling } from "@/app/config"
 
-export default function Head() {
-
-  const [myBase, setMyBase] = useState<any>(null)
-
-  useEffect(() => {
-    let mounted = true
-    getBase(process.env.NEXT_PUBLIC_SANITY_BASE_SLUG!)
-      .then(base => { if (mounted) setMyBase(base) })
-      .catch((error) => { console.log(error) })
-    return () => { mounted = false }
-  }, [])
-
-  if (!myBase) return null
-
-  const { title } = myBase || ""
-  const { tagline } = myBase || ""
+export default function Head({ base }: { base: any }) {
+    
+  const { logo, title, tagline } = base || ""
 
   const HeadWrap = ({children}: UtilDOMChildrenProps) => {
     return (
@@ -44,25 +29,14 @@ export default function Head() {
 
   const HeadBranding = () => {
 
-    const [domain, setDomain] = useState<string>(myBase?.title || "")
-
-    useEffect(() => {
-      if (typeof window !== "undefined") {
-        let host = window.location.hostname
-        host = host.replace(/^www\./, "") 
-        host = host.replace(/\.[^.]+$/, "") 
-        setDomain(host)
-      }
-    }, [])
-
     return (
       <div id="head-branding">
         <Link href="/" className="flex items-center">
-          {myBase.logo &&
-            <Image className={`${styling['head-branding-logo']}`} src={myBase.logo} alt="" width={40} height={40} />
+          {base?.logo &&
+            <Image className={`${styling['head-branding-logo']}`} src={logo} alt="" width={40} height={40} />
           }
           <div className="flex flex-col gap-1">
-            <div className={`${styling['head-branding-name']}`}>{domain}</div>
+            <div className={`${styling['head-branding-name']}`}>{title}</div>
             <Span className={`${styling['head-branding-subs']}`}>{tagline}</Span>
           </div>
         </Link>
@@ -73,7 +47,7 @@ export default function Head() {
 
   const HeadMenu = () => {
     return (
-      <Menu myBase={myBase} />
+      <Menu base={base} />
     )
   }
 

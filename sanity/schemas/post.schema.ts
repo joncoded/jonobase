@@ -4,9 +4,18 @@ const schema = {
   type: 'document',
   fields: [
     {
+      name: 'base',
+      title: 'Base',
+      description: 'the website to which this post belongs',
+      type: 'array', 
+      of: [
+        {type: 'reference', to: [{type: 'base'}]}
+      ]      
+    },
+    {
       name: 'title',
       title: 'Title',
-      description: 'this post\'s name',
+      description: 'required: the official title of this post', 
       type: 'string',
       require: true,
       validation: (Rule: any) => Rule.required()
@@ -14,7 +23,7 @@ const schema = {
     {
       name: 'slug',
       title: 'Slug',
-      description: 'a machine-friendly version of the title (characters allowed: a-z, 0-9, - [dashes, no spaces]), also this post\'s URL, e.g. yourname.com/yourjoin/yourkind/yourpost',
+      description: 'required: a machine-friendly version of the title (characters allowed: a-z, 0-9, - [dashes, no spaces]), also this post\'s URL, e.g. yourname.com/yourjoin/yourkind/yourpost',
       type: 'slug',
       options: { source: 'title' }
     },
