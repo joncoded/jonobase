@@ -21,11 +21,18 @@ import * as fields from "./fields"
 export const getBase = async (domain: string) => {
 
   try {
-    const base = await readClient.fetch(
+    let base = await readClient.fetch(
       groq`*[_type == "base" && domain == '${domain}'] {${fields.base}}`
     )
 
-    return base[0]
+    if (!base[0]) {
+      // just return the first base found if domain is invalid
+      base = await readClient.fetch(
+        groq`*[_type == "base"] {${fields.base}}`
+      )
+    }
+
+    return base[0] 
 
   } catch (error) {
 
