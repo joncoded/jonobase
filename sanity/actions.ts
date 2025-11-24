@@ -21,9 +21,16 @@ import * as fields from "./fields"
 export const getBase = async (domain: string) => {
 
   try {
-    const base = await readClient.fetch(
+    let base = await readClient.fetch(
       groq`*[_type == "base" && domain == '${domain}'] {${fields.base}}`
     )
+
+    // just let it get the first base if no domain matched
+    if (!base[0]) {
+      base = await readClient.fetch(
+        groq`*[_type == "base"] {${fields.base}}`
+      )
+    }
 
     return base[0]
 
