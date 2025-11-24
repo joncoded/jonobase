@@ -14,7 +14,7 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
 
-  const hostname = headers().get("x-forwarded-host") || headers().get("host") || ""
+  const hostname = await headers().get("x-forwarded-host") || headers().get("host") || ""
   const myBase = await getBase(hostname)
 
   return (

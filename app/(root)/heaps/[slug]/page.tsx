@@ -21,7 +21,7 @@ export const fetchCache = 'force-no-store'
 export async function generateMetadata({ params }: HeapProps) {
 
   const { slug } = await params  
-  const hostname = headers().get("x-forwarded-host") || headers().get("host") || ""
+  const hostname = await headers().get("x-forwarded-host") || headers().get("host") || ""
   const [myBase, myHeap] = await Promise.all([    
     getBase(hostname),
     getHeap(slug)

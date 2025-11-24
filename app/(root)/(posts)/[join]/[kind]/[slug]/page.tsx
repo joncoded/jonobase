@@ -25,7 +25,7 @@ export const fetchCache = 'force-no-store'
 
 export async function generateMetadata({params}: any) {
 
-  const hostname = headers().get("x-forwarded-host") || headers().get("host") || ""
+  const hostname = await headers().get("x-forwarded-host") || headers().get("host") || ""
   const { join, kind, slug } = await params
   const myBase = await getBase(hostname) || {}
   const post = await getPost({slug})
