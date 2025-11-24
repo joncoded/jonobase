@@ -19,7 +19,6 @@ import PostLink from "@/components/post/post-link"
 import PostNook from "@/components/post/post-nook"
 import PostTurn from "@/components/post/post-turn"
 
-export const revalidate = 30
 export const dynamic = 'force-dynamic'
 export const fetchCache = 'force-no-store'
 

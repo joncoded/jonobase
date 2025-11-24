@@ -12,7 +12,7 @@ import { serializers } from "../base/util/rich"
 import { Sect } from "../base/html/main"
 import ListLine from "./list-line"
 
-export const revalidate = 10
+
 
 export default async function List({ heapList }: any) {
 

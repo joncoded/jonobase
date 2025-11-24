@@ -15,7 +15,6 @@ import Apex from "@/components/base/html/main-apex"
 import Paginate from "@/components/base/util/pagi"
 import ListLine from "@/components/list/list-line"
 
-export const revalidate = 10
 export const dynamic = 'force-dynamic'
 export const fetchCache = 'force-no-store'
 

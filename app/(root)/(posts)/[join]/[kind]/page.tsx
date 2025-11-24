@@ -8,7 +8,6 @@ the kind (the second level sub-category list of posts)
 import { headers } from "next/headers"
 import { getBase, getPosts, getPostsCount } from "@/sanity/actions"
 import { styling } from "@/app/config"
-
 import { Sect } from "@/components/base/html/main"
 import ScrollToTop from "@/components/base/util/ttop"
 import None from "@/components/base/util/none"
@@ -16,7 +15,6 @@ import Apex from "@/components/base/html/main-apex"
 import ListLine from "@/components/list/list-line"
 import Paginate from "@/components/base/util/pagi"
 
-export const revalidate = 10
 export const dynamic = 'force-dynamic'
 export const fetchCache = 'force-no-store'
 
