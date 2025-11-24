@@ -12,10 +12,9 @@ export const revalidate = 10
 export const dynamic = 'force-dynamic'
 export const fetchCache = 'force-no-store'
 
-const hostname = headers().get("x-forwarded-host") || headers().get("host") || ""
-
 export async function generateMetadata() {
 
+  const hostname = headers().get("x-forwarded-host") || headers().get("host") || ""
   const myBase = await getBase(hostname)
 
   return {
@@ -27,6 +26,7 @@ export async function generateMetadata() {
 
 export default async function Home() {
 
+  const hostname = headers().get("x-forwarded-host") || headers().get("host") || ""
   const myBase = await getBase(hostname)
 
   const { homeheap } = myBase
