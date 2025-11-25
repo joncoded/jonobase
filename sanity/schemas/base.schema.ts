@@ -52,9 +52,9 @@ const schema = {
     },
     {
       name: 'perPage',
-      title: 'Posts per page on homepage',
-      description: 'optional: number of posts to show per page on the homepage (default is 6)',
-      initialValue: '6',
+      title: 'Posts per page on list pages',
+      description: 'optional: number of posts to show per page on each list page (default is 12)',
+      initialValue: '12',
       type: 'string',
       options: {
         list:  ['1', '2', '3', '6', '12', '18', '24', '30']
