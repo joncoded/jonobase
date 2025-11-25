@@ -41,6 +41,7 @@ export async function generateMetadata({params}: any) {
 
 export default async function Main({ params } : any) {
 
+  const hostname = await headers().get("x-forwarded-host") || headers().get("host") || ""
   const { join, kind, slug } = await params
   
   // get post data
@@ -57,10 +58,10 @@ export default async function Main({ params } : any) {
 
   // get page turner data
   const [newerInKind, olderInKind, newerInOmni, olderInOmni] = await Promise.all([    
-    getPostAdjacent(myDate, 'newer', "", kind),
-    getPostAdjacent(myDate, 'older', "", kind),
-    getPostAdjacent(myDate, 'newer', "", ""),
-    getPostAdjacent(myDate, 'older', "", ""),
+    getPostAdjacent(hostname, myDate, 'newer', "", kind),
+    getPostAdjacent(hostname, myDate, 'older', "", kind),
+    getPostAdjacent(hostname, myDate, 'newer', "", ""),
+    getPostAdjacent(hostname, myDate, 'older', "", ""),
   ])
   
   return (

@@ -241,14 +241,15 @@ export const getPost = async ({ slug } : { slug : string }) => {
 }
 
 // get single "post", that is either older or newer than the date of a "current post" of a type (or none at all)
-export const getPostAdjacent = async (date: string, mode: 'older' | 'newer', join: string, kind: string, nook?: string) => {
+export const getPostAdjacent = async (domain: string, date: string, mode: 'older' | 'newer', join: string, kind: string, nook?: string) => {
 
   try {
 
     const operation = (mode === 'older' ? '<' : '>')
     const order = (mode === 'older' ? 'desc' : 'asc')
     
-    const adjacentQuery = `*[      
+    const adjacentQuery = `*[
+      ${domain ? `"${domain}" in base[]->.domain &&` : ``} 
       ${join ? `lower(join) == '${join.toLowerCase()}' &&` : ``}
       ${kind ? `lower(kind) == '${kind.toLowerCase()}' &&` : ``}
       ${nook ? `lower('${nook}') in nooks &&` : ``}     
