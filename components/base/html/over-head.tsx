@@ -1,4 +1,3 @@
-
 /*
 jonobase by @jonchius
 /app/components/base/html/over-head.tsx
@@ -6,18 +5,13 @@ beams things up to the <head> tag, e.g.:
 - favicon
 */
 
-import { getBase } from "@/sanity/actions"
+interface BaseProps {
+  logo?: string;
+  [key: string]: any;
+}
 
-export default async function OverHead(base: any) {
+export default async function OverHead(base: BaseProps) {  
 
-  const { logo } = await getBase(base) || {}    
-  
-  return (
-    <>
+  return <link rel="icon" href={base.base.logo + '?v=new'} />
       
-      { logo && <link rel="icon" href={logo + '?v=new'} /> }
-      
-    </>
-  )
-
 }
