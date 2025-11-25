@@ -180,7 +180,7 @@ export const text = {
   : "loading",
 
   "loading message"
-  : "page is loading shortly ... thanks for your patience!",
+  : "page will load shortly ... thanks for your patience!",
 
   "menu"
   : "Menu",
@@ -190,6 +190,9 @@ export const text = {
 
   "nooks"
   : "nooks",
+
+  "nooks filed under"
+  : "filed under",
 
   "nooks explained"
   : "think of 'nooks' as 'topic tags'",

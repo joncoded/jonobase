@@ -56,11 +56,9 @@ export default async function Main({ params } : any) {
   const { content, extra, nooks, date: myDate } = post  
 
   // get page turner data
-  const [newerInKind, olderInKind, newerInJoin, olderInJoin, newerInOmni, olderInOmni] = await Promise.all([    
+  const [newerInKind, olderInKind, newerInOmni, olderInOmni] = await Promise.all([    
     getPostAdjacent(myDate, 'newer', "", kind),
     getPostAdjacent(myDate, 'older', "", kind),
-    getPostAdjacent(myDate, 'newer', join, ""),
-    getPostAdjacent(myDate, 'older', join, ""),
     getPostAdjacent(myDate, 'newer', "", ""),
     getPostAdjacent(myDate, 'older', "", ""),
   ])
@@ -102,16 +100,13 @@ export default async function Main({ params } : any) {
 
       { nooks &&
       <Sect id="post-nook" className={`${styling['post-nook-sect']}`}>
+        <p className={`text-lg mb-5`}>{text['nooks filed under']}</p>
         <PostNook nooks={nooks} />
       </Sect>
       }
 
-      {(olderInKind || newerInKind) && <Sect id="post-turn-kind" className={`p-5 text-lg md:text-xl`}>
+      {(olderInKind || newerInKind) && <Sect id="post-turn-kind" className={`p-5 text-lg md:text-xl bg-gray-100 dark:bg-gray-800`}>
         <PostTurn newer={newerInKind ?? null} turnTitle={`in ${kind}`} older={olderInKind ?? null} />
-      </Sect>}
-
-      {(olderInJoin || newerInJoin) && <Sect id="post-turn-join" className={`p-5 bg-gray-100 dark:bg-gray-900 text-md md:text-lg`}>
-        <PostTurn newer={newerInJoin ?? null} turnTitle={`in ${join}`} older={olderInJoin ?? null} />
       </Sect>}
 
       {(olderInOmni || newerInOmni) && <Sect id="post-turn-omni" className={`p-5 text-md md:text-lg`}>
