@@ -34,6 +34,7 @@ export default async function Main({ searchParams }: FindProps) {
   const myBase = await getBase(hostname)
 
   const posts = await getPosts({       
+    domain: hostname,
     query: searchParams?.query || '',
     type: searchParams?.type || '',      
     kind: searchParams?.kind || '',     
@@ -43,6 +44,7 @@ export default async function Main({ searchParams }: FindProps) {
   })  
   
   const totalPostsCount = await getPostsCount({    
+    domain: hostname, 
     type: searchParams?.type || '', 
     query: searchParams?.query || '', 
     kind: searchParams?.kind || '', 

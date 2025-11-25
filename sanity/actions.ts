@@ -17,12 +17,36 @@ import { buildQuery } from "./utils"
 import * as myprops from "./myprops"
 import * as fields from "./fields"
 
+// Simple in-memory cache for local/dev speedups (per server instance)
+type CacheEntry = { ts: number; value: any }
+const CACHE_TTL = 1000 * 60 // 60 seconds
+const cache = new Map<string, CacheEntry>()
+
+function cacheGet(key: string) {
+  const entry = cache.get(key)
+  if (!entry) return null
+  if (Date.now() - entry.ts > CACHE_TTL) {
+    cache.delete(key)
+    return null
+  }
+  return entry.value
+}
+
+function cacheSet(key: string, value: any) {
+  cache.set(key, { ts: Date.now(), value })
+}
+
 // get single "base" (i.e. website) data
 export const getBase = async (domain: string) => {
 
+  const cacheKey = `base:${domain}`
+  const cached = cacheGet(cacheKey)
+  if (cached) return cached
+
   try {
     let base = await readClient.fetch(
-      groq`*[_type == "base" && domain == '${domain}'] {${fields.base}}`
+      groq`*[_type == "base" && domain == $domain] {${fields.base}}`,
+      { domain }
     )
 
     if (!base[0]) {
@@ -31,6 +55,7 @@ export const getBase = async (domain: string) => {
       )
     }
 
+    cacheSet(cacheKey, base[0])
     return base[0]
 
   } catch (error) {
@@ -44,12 +69,18 @@ export const getBase = async (domain: string) => {
 // get single "heap" (i.e. a custom page of "list"s, see below)
 export const getHeap = async (slug: string) => {
 
+  const cacheKey = `heap:${slug}`
+  const cached = cacheGet(cacheKey)
+  if (cached) return cached
+
   try {
 
     const heaps = await readClient.fetch(
-      groq`*[_type == 'heap' && slug.current == '${slug}']{${fields.heap}}`
+      groq`*[_type == 'heap' && slug.current == $slug]{${fields.heap}}`,
+      { slug }
     )
 
+    cacheSet(cacheKey, heaps[0])
     return heaps[0]
 
   } catch (error) {
@@ -63,12 +94,18 @@ export const getHeap = async (slug: string) => {
 // get single "list" (i.e. a horizontal section of a page)
 export const getList = async (slug: string) => {
 
+  const cacheKey = `list:${slug}`
+  const cached = cacheGet(cacheKey)
+  if (cached) return cached
+
   try {
 
     const lists = await readClient.fetch(
-      groq`*[_type == 'list' && slug.current == '${slug}']{${fields.list}}`
+      groq`*[_type == 'list' && slug.current == $slug]{${fields.list}}`,
+      { slug }
     )
     
+    cacheSet(cacheKey, lists[0])
     return lists[0]
 
   } catch (error) {
@@ -82,12 +119,16 @@ export const getList = async (slug: string) => {
 // get multiple posts - either all items (everything blank) or filtered by a search term
 export const getPosts = async (criteria: myprops.PostGetterProps) => {
 
-  const { query = '', join = '', kind = '', page = '1', nook = '', perPage = '6', order = 'date', ascDesc = 'desc'} = criteria
+  const { domain = '', query = '', join = '', kind = '', page = '1', nook = '', perPage = '6', order = 'date', ascDesc = 'desc'} = criteria
+
+  const cacheKey = `posts:${domain}:${query}:${join}:${kind}:${nook}:${page}:${perPage}:${order}:${ascDesc}`
+  const cached = cacheGet(cacheKey)
+  if (cached) return cached
 
   try {
 
     const postMeetingCriteria = await readClient.fetch(
-      groq`${buildQuery({query, join, kind,
+      groq`${buildQuery({domain, query, join, kind,
         nook: decodeURIComponent(nook),
         page: parseInt(page),
         perPage: parseInt(perPage),
@@ -98,6 +139,7 @@ export const getPosts = async (criteria: myprops.PostGetterProps) => {
       }`
     )    
 
+    cacheSet(cacheKey, postMeetingCriteria)
     return postMeetingCriteria
 
   } catch (error) {
@@ -114,7 +156,8 @@ export const getPostsRandomly = async (criteria: myprops.PostGetterProps, count:
   try {
 
     // get all post of the same criteria
-    const postMeetingCriteria = await getPosts({      
+    const postMeetingCriteria = await getPosts({
+      domain: criteria.domain || '*',
       query: criteria.query || '*',
       join: criteria.join || '',      
       kind: criteria.kind || '',
@@ -122,20 +165,23 @@ export const getPostsRandomly = async (criteria: myprops.PostGetterProps, count:
     })
 
     // get random indices as an array of numbers
-    let randomIndices = []    
-    while (randomIndices.length < count) {
-      const randomIndex = Math.floor(Math.random() * postMeetingCriteria.length)
-      // no repeat indices pushed!
-      if (randomIndices.indexOf(randomIndex) === -1)
-        randomIndices.push(randomIndex)
+    // handle empty result set
+    if (!postMeetingCriteria || postMeetingCriteria.length === 0) return []
+
+    // if requested count is greater or equal to available posts, return a slice
+    if (count >= postMeetingCriteria.length) {
+      return postMeetingCriteria.slice(0, count)
     }
 
-    // now we push the post
-    let randomPosts = []
-    for (let r = 0; r < randomIndices.length; r++) {
-      randomPosts.push(postMeetingCriteria[randomIndices[r]])
+    // get unique random indices
+    const randomIndices: number[] = []
+    while (randomIndices.length < count) {
+      const randomIndex = Math.floor(Math.random() * postMeetingCriteria.length)
+      if (randomIndices.indexOf(randomIndex) === -1) randomIndices.push(randomIndex)
     }
-    
+
+    // now collect the posts
+    const randomPosts = randomIndices.map(i => postMeetingCriteria[i])
     return randomPosts
     
   } catch (error) {
@@ -149,13 +195,14 @@ export const getPostsRandomly = async (criteria: myprops.PostGetterProps, count:
 // get the total count of a query before the perPage kicks in
 export const getPostsCount = async (criteria: myprops.PostGetterProps) => {
 
-  const { query = '', join = '', kind = '', nook = '' } = criteria
+  const { domain = '', query = '', join = '', kind = '', nook = '' } = criteria
 
   try {
 
     const postCount = await readClient.fetch(
-      groq`${buildQuery({    
-        isCount: true,             
+      groq`${buildQuery({        
+        isCount: true,
+        domain, 
         query,
         join,
         kind,
@@ -179,7 +226,8 @@ export const getPost = async ({ slug } : { slug : string }) => {
   try {
 
     const posts = await readClient.fetch(
-      groq`*[_type == 'post' && slug.current == '${slug}']{${fields.post}}`
+      groq`*[_type == 'post' && slug.current == $slug]{${fields.post}}`,
+      { slug }
     )
 
     return posts[0]
@@ -217,6 +265,40 @@ export const getPostAdjacent = async (date: string, mode: 'older' | 'newer', joi
 
     console.log("Adjacent post not found: ", error)
 
+  }
+
+}
+
+// get full heap with lists and list-specific posts in one GROQ request (best-effort)
+export const getHeapFull = async (slug: string, domain: string) => {
+  const cacheKey = `heapFull:${slug}:${domain}`
+  const cached = cacheGet(cacheKey)
+  if (cached) return cached
+
+  try {
+    const query = groq`
+      *[_type == 'heap' && slug.current == $slug][0]{
+        ${fields.heap},
+        lists[0...30]->{
+          ${fields.list},
+          "posts": *[_type == 'post' && (
+            (
+              defined(^.querybuilder.query) && (
+                (title match ('*' + lower(^.querybuilder.query) + '*')) ||
+                (subtitle match ('*' + lower(^.querybuilder.query) + '*'))
+              )
+            ) || true
+          ) && base[domain == $domain]] | order(date desc)[0...(^.querybuilder.count || 1)]{${fields.postCard}}
+        }
+      }
+    `
+
+    const heap = await readClient.fetch(query, { slug, domain })
+    cacheSet(cacheKey, heap)
+    return heap
+  } catch (error) {
+    console.error('getHeapFull failed, falling back:', error)
+    return null
   }
 
 }

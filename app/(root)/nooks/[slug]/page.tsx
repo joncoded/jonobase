@@ -40,7 +40,8 @@ export default async function Main({ params, searchParams }: NookProps) {
   const { slug } = await params
   const { page } = searchParams
 
-  const posts = await getPosts({        
+  const posts = await getPosts({  
+    domain: hostname,       
     nook: slug,
     page,
     perPage: searchParams.perPage

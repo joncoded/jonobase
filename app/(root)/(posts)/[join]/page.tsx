@@ -38,8 +38,8 @@ export default async function Main({ params, searchParams } : any) {
   const { join } = await params
   const { page, perPage } = searchParams
   const myBase = await getBase(hostname)  
-  const myPosts = await getPosts({join, page: page, perPage: perPage || myBase.perPage || "6"})
-  const myPostsCount = await getPostsCount({ join })
+  const myPosts = await getPosts({domain: hostname, join, page: page, perPage: perPage || myBase.perPage || "6"})
+  const myPostsCount = await getPostsCount({ domain: hostname,  join })
   
   if (!myPosts || myPosts.length === 0) return <None />
 

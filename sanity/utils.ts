@@ -14,6 +14,7 @@ export function buildQuery(params: UtilQueryBuildingProps) {
 
   /* get all the variables based on URL params and query strings (or use defaults listed below) */
   const {
+    domain = '',
     isCount = false,
     query = '*',
     join = '', 
@@ -56,6 +57,9 @@ export function buildQuery(params: UtilQueryBuildingProps) {
     conditions.push(`lower('${nook}') in nooks`)
   }
 
+  // by base
+  conditions.push(`"${domain}" in base[]->.domain`)
+
   // by date (do not show future posts)
   conditions.push(`dateTime(date) <= dateTime(now())`)
 
@@ -73,6 +77,7 @@ export function buildQuery(params: UtilQueryBuildingProps) {
   } else {
     final += `]| order(${order} ${ascDesc})[${offset}...${limit}]`
   }
+
 
   return final
 

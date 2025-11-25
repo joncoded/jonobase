@@ -126,6 +126,7 @@ export interface PostAdjacentProps {
 
 // get post query from URL
 export interface PostGetterProps {  
+  domain?: string;
   isCount?: boolean; 
   query?: string;
   type?: string;
@@ -191,6 +192,7 @@ export interface UtilPaginationProps {
 
 // queries
 export interface UtilQueryBuildingProps {
+  domain?: string;
   isCount?: boolean; 
   query?: string;
   join?: string; 

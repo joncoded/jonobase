@@ -4,6 +4,7 @@ jonobase by @jonchius
 a list, a horizontal section of a heap (i.e. "back-end" driven page of a list of posts)
 */
 
+import { headers } from "next/headers"
 import Link from "next/link"
 import BlockContent from "@sanity/block-content-to-react"
 import { getPosts, getPostsRandomly } from "@/sanity/actions"
@@ -12,35 +13,38 @@ import { serializers } from "../base/util/rich"
 import { Sect } from "../base/html/main"
 import ListLine from "./list-line"
 
+export default async function List({ heapList, preLoadedPosts }: any) {
 
+  const hostname = await headers().get("x-forwarded-host") || headers().get("host") || ""
+  
+  // Use preloaded posts if available, otherwise fetch them
+  let posts = preLoadedPosts || []
 
-export default async function List({ heapList }: any) {
+  if (!preLoadedPosts && heapList?.querybuilder) {
+    // Fallback: fetch posts if not preloaded
+    const {
+      query = '*',
+      join,
+      kind,
+      nook,
+      count,
+      order,
+      ascDesc
+    } = heapList.querybuilder || {}
 
-  // get query object from the list
-  const {
-    querybuilder = {}
-  }: {
-    querybuilder?: {
-      query?: string,
-      join?: any,
-      kind?: any,
-      nook?: any,
-      count?: number,
-      order?: string,
-      ascDesc?: string
-    }
-  } = heapList || {};
-
-  // get query data from the query object
-  const {
-    query = '*',
-    join,
-    kind,
-    nook,
-    count,
-    order,
-    ascDesc
-  } = heapList.querybuilder || {}
+    posts = order === 'random'
+      ? await getPostsRandomly({domain: hostname, query, join, kind, nook }, count ?? 1) || []
+      : await getPosts({
+          domain: hostname,
+          query: query ?? '*',
+          join,
+          kind,
+          nook,
+          perPage: count?.toString() ?? '1',
+          order: order as 'date' | 'title',
+          ascDesc: ascDesc as 'asc' | 'desc' | undefined
+        }) || [];
+  }
 
   // get list data from the list object
   const {
@@ -59,23 +63,6 @@ export default async function List({ heapList }: any) {
     showlink,
     cta
   } = heapList
-
-  let posts: any[] = []
-
-  // get the actual post data for this list
-  if (querybuilder) {
-    posts = order === 'random'
-      ? await getPostsRandomly({ query, join, kind, nook }, count ?? 1) || []
-      : await getPosts({
-          query: query ?? '*',
-          join,
-          kind,
-          nook,
-          perPage: count?.toString() ?? '1',
-          order: order as 'date' | 'title',
-          ascDesc: ascDesc as 'asc' | 'desc' | undefined
-        }) || [];
-  }
 
   // display the list
   return (
