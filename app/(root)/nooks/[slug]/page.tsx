@@ -44,12 +44,14 @@ export default async function Main({ params, searchParams }: NookProps) {
     domain: hostname,       
     nook: slug,
     page,
-    perPage: searchParams.perPage
+    perPage: myBase.perPage || searchParams.perPage
   })  
 
-  const totalPostsCount = await getPostsCount({     
-    nook: decodeURIComponent(slug!)    
+  const totalPostsCount = await getPostsCount({
+    domain: hostname,
+    nook: decodeURIComponent(slug || '')
   })  
+  console.log(totalPostsCount)
 
   return (
     
