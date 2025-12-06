@@ -24,7 +24,8 @@ export const fetchCache = 'force-no-store'
 
 export async function generateMetadata({params}: any) {
 
-  const hostname = await headers().get("x-forwarded-host") || headers().get("host") || ""
+  const headersList = await headers()
+  const hostname = headersList.get("x-forwarded-host") || headersList.get("host") || ""
   const { join, kind, slug } = await params
   const myBase = await getBase(hostname) || {}
   const post = await getPost({slug})
@@ -41,7 +42,8 @@ export async function generateMetadata({params}: any) {
 
 export default async function Main({ params } : any) {
 
-  const hostname = await headers().get("x-forwarded-host") || headers().get("host") || ""
+  const headersList = await headers()
+  const hostname = headersList.get("x-forwarded-host") || headersList.get("host") || ""
   const { join, kind, slug } = await params
   
   // get post data
@@ -100,8 +102,7 @@ export default async function Main({ params } : any) {
       }
 
       { nooks &&
-      <Sect id="post-nook" className={`${styling['post-nook-sect']}`}>
-        <p className={`text-lg mb-5`}>{text['nooks filed under']}</p>
+      <Sect id="post-nook" className={`${styling['post-nook-sect']}`}>        
         <PostNook nooks={nooks} />
       </Sect>
       }

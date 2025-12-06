@@ -14,7 +14,7 @@ import { colors, styling } from "@/app/config"
 
 export default function Apex( { first, second, post = false } : { first: string, second?: string, post?: boolean }) {
 
-  const linkColors = `${colors.link} dark:${colors.darkLink} hover:${colors.linkHover} dark:hover:${colors.darkLinkHover}`
+  const linkColors = `${colors.link} dark:${colors.darkLink} hover:${colors.linkHover} hover:underline dark:hover:${colors.darkLinkHover}`
 
   return (
     <aside className={`uppercase`}>

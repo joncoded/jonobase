@@ -5,21 +5,36 @@ tailwind overrides and custom styles
 other "stylings" exist in the app/config.tsx file under the "styling" object
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,700;1,400;1,700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where(.dark, .dark *));
+@source inline('{dark:,}{bg,text}-{slate,gray,zinc,neutral,stone,red,orange,amber,yellow,lime,green,emerald,teal,cyan,sky,blue,indigo,violet,purple,fuchsia,pink,rose}-{50,{100..900..100},950}');
 
 html {
   max-width: 100vw;
-  overflow-x: hidden;
+  overflow-x: hidden;  
 }
 
 body {
   scroll-padding-top: auto;
-  font-size: 18px;
+  font-family: "Spectral", serif;
+  font-size: 14pt;
+}
+
+header, nav, footer, h1, h2, h3, h4, h5, h6, th, aside, #post-head, #post-nook, [id^="post-turn"], .button {
+  font-family: "Barlow Condensed", sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+}
+
+button {
+  cursor: pointer;
 }
 
 /* rich content */
@@ -60,6 +75,10 @@ pre code {
   pre code {    
     font-size: 16px !important;
   }
+}
+
+.prose {
+  max-width: 100% !important;  
 }
 
 /* custom pagination buttons */
@@ -125,19 +144,24 @@ main img {
 /* custom heading spacing */
 
 .post-main h2:not(:nth-child(1)) {
-  margin-top: 60px;
+  margin-top: 45px;
 }
 
 .post-main h3 {
   margin-top: 30px;
 }
 
-.post-main {
-  line-height: 2;
+.post-main p {  
+  margin: 15px 0;
 }
 
-nav.menu-content h3 {
+nav.menu-content h2, nav.menu-content h3 {
   margin-top: 15px;
+  margin-bottom: 0;
+}
+
+nav.menu-content p {
+  margin-bottom: 0;
 }
 
 /* assorted custom styling */
@@ -146,4 +170,32 @@ blockquote {
   margin: 30px;
   border-left: 6px solid #bbb;
   padding-left: 30px;
+}
+
+.prose h1, .prose-h1 {
+  font-size: 3.75rem; 
+  line-height: 4rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.prose h2, .prose-h2 {
+  font-size: 1.875rem; 
+  line-height: 2.25rem;
+  margin-bottom: 1.25rem;
+  font-weight: 600;
+}
+
+.prose h3, .prose-h3 {
+  font-size: 1.5rem; 
+  line-height: 2rem;
+  margin-bottom: 1.25rem;
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="submit"],
+input[placeholder] {
+  background: #fff; 
+  border: 1px solid #666;  
 }

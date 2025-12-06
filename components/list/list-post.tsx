@@ -17,7 +17,7 @@ const ListPost = ({post : { join, kind, slug, image, emoji, title, subtitle, lin
 
   const ListPostContainer = ({children} : UtilDOMChildrenProps) => {
     return (
-      <article className={` w-full`}>
+      <article className={`w-full`}>
         <div className={`flex gap-5`}>
           {children}
         </div>
@@ -27,7 +27,7 @@ const ListPost = ({post : { join, kind, slug, image, emoji, title, subtitle, lin
 
   const ListPostSide = ({children}: UtilDOMChildrenProps) => {
     return (
-      <div className={` flex flex-col gap-5`}>
+      <div className={`flex flex-col gap-5`}>
         {children}
       </div>
     )
@@ -47,7 +47,7 @@ const ListPost = ({post : { join, kind, slug, image, emoji, title, subtitle, lin
             width={0}
             sizes={`(max-width: 768px) 25vw, 10vw`}
             quality={`100`}
-            className={`w-full h-full min-h-[80px] min-w-[80px] object-cover border-0 rounded-full shadow-xl !my-2`}
+            className={`w-full h-full min-h-[80px] min-w-[80px] object-cover border-0 rounded-full shadow-xl my-2!`}
           />
         }
         {!image &&
@@ -69,9 +69,9 @@ const ListPost = ({post : { join, kind, slug, image, emoji, title, subtitle, lin
 
     return (
       <div className={`text-center text-sm`}>
-        {showDate === true && <p className={`!my-0`}>{formattedDate}</p>}
-        {showJoin === true && <p className={`!my-0`} aria-hidden="true"><Link tabIndex={-1} className={linkColors} href={`/${join}`}>{join}</Link></p>}
-        {showKind === true && <p className={`!my-0`} aria-hidden="true">[<Link tabIndex={-1} className={linkColors} href={`/${join}/${kind}`}>{kind}</Link>]</p>}
+        {showDate === true && <p className={`my-0!`}>{formattedDate}</p>}
+        {showJoin === true && <p className={`my-0!`} aria-hidden="true"><Link tabIndex={-1} className={linkColors} href={`/${join}`}>{join}</Link></p>}
+        {showKind === true && <p className={`my-0!`} aria-hidden="true">[<Link tabIndex={-1} className={linkColors} href={`/${join}/${kind}`}>{kind}</Link>]</p>}
       </div>
     )
   }
@@ -87,7 +87,7 @@ const ListPost = ({post : { join, kind, slug, image, emoji, title, subtitle, lin
   const ListPostTitle = () => {
     return (
       <div className={``}>
-        <h3 className={`!mt-2 ${colors.link} dark:${colors.darkLink} hover:${colors.linkHover} dark:hover:${colors.darkLinkHover} hover:underline text-lg md:text-2xl font-semibold`}>
+        <h3 className={`mt-2! ${linkColors} hover:underline text-lg md:text-2xl font-semibold`}>
           {title}
         </h3>
       </div>
@@ -97,7 +97,7 @@ const ListPost = ({post : { join, kind, slug, image, emoji, title, subtitle, lin
   const ListPostSubtitle = () => {
     return (
       <div className={``}>
-        <p className={`!mt-2 text-sm md:text-lg font-serif`}>
+        <p className={`mt-2! text-sm md:text-lg`}>
           {subtitle}
         </p>
       </div>

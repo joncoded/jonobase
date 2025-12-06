@@ -22,7 +22,8 @@ export const fetchCache = 'force-no-store'
 export async function generateMetadata({params}: any) {
 
   const { slug } = await params
-  const hostname = await headers().get("x-forwarded-host") || headers().get("host") || ""
+  const headersList = await headers()
+  const hostname = headersList.get("x-forwarded-host") || headersList.get("host") || ""
   const myBase = await getBase(hostname) || {}  
   
   return {
@@ -34,7 +35,8 @@ export async function generateMetadata({params}: any) {
 
 export default async function Main({ params, searchParams }: NookProps) {
 
-  const hostname = await headers().get("x-forwarded-host") || headers().get("host") || ""
+  const headersList = await headers()
+  const hostname = headersList.get("x-forwarded-host") || headersList.get("host") || ""
   const myBase = await getBase(hostname) || {}
 
   const { slug } = await params

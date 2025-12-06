@@ -27,8 +27,8 @@ export default function PostHead( { post } : { post : PostProps } ) {
 
       <div className={`flex flex-col gap-2 md:gap-5`} aria-hidden={true}>
         {emoji && <div className={`${styling['post-head-title']}`}>{emoji}</div>} 
-        <div className={`${styling['post-head-date']} text-sky-700 text-center hover:text-black`}>
-          <Link href={`/studio/structure/post;${_id}`} target="_blank">edit</Link>
+        <div className={`${styling['post-head-date']} ${styling['post-head-edit']}`}>
+          <Link className={``} href={`/studio/structure/post;${_id}`} target="_blank">edit</Link>
         </div> 
       </div>
       
@@ -41,7 +41,7 @@ export default function PostHead( { post } : { post : PostProps } ) {
           {subtitle}
         </div>
         }
-        <div className={`${styling['post-head-date']}`}>       
+        <div className={`${styling['post-head-date']}`}>
           {showDate && <span>{formattedDate}</span>}
           {_updatedAt && (date !== _updatedAt) &&
             <>

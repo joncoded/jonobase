@@ -12,10 +12,10 @@ export const timezone = "America/Toronto"
 export const colors = {
 
   "link"
-  : "text-sky-700",
+  : "text-green-700",
 
   "darkLink"
-  : "text-lime-300",
+  : "text-green-300",
 
   "linkHover"
   : "text-black",
@@ -28,25 +28,30 @@ export const colors = {
 // common tailwind styles
 export const styling = {
 
-  "button" : `p-2 px-5 border border-black dark:hover:border-white dark:border-white bg-white dark:bg-black text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black cursor-pointer
+  "button" : `
+    p-2 px-5 
+    border border-black dark:border-white!
+    bg-white dark:bg-black hover:bg-black dark:hover:bg-white 
+    text-black dark:text-white hover:text-white dark:hover:text-black 
+    cursor-pointer button
   `,
 
   "find-bar" : `
-    w-full px-5
-    border border-black border-gray-800 dark:border-gray-200
-    dark:bg-black text-black dark:text-white
+    w-full px-5 py-2
+    border border-black dark:border-gray-200
+    dark:bg-black! text-black dark:text-white!
   `,
 
   "find-bar-big" : `
     w-full px-5 py-2
     border-0 dark:border dark:border-gray-200
-    bg-gray-200 dark:bg-black
+    bg-gray-200 dark:bg-black!
     placeholder:text-gray-300 placeholder:text-3xl
-    focus:!ring-2 text-2xl
+    focus:ring-2! text-2xl
   `,
 
   "find-button" : `
-    bg-green-800 hover:bg-black border-white dark:border-gray-200
+    bg-green-800! hover:bg-black text-white hover:bg-green-600! hover:text-white! border-green-800! hover:border-green-600!
   `,
 
   "head-wrap" : `
@@ -73,11 +78,8 @@ export const styling = {
     hidden md:inline text-sm
   `,
 
-  "main-apex" : `bg-zinc-100 dark:bg-zinc-800
-  `,
-
+  "main-apex" : `bg-zinc-100 dark:bg-zinc-800`,
   "main-apex-first" : `text-lg md:text-2xl`,
-
   "main-apex-second" : `text-sm md:text-lg`,
 
   "home-head" : `bg-gradient-to-b drop-shadow-md
@@ -88,7 +90,10 @@ export const styling = {
     w-3/4 md:w-full max-w-screen-lg mx-auto prose
     prose-h1:text-4xl md:prose-h1:text-6xl prose-h2:text-3xl md:prose-h2:text-5xl prose-h2:mb-5 prose-h2:font-sans
     prose-h3:text-2xl md:prose-h3:text-4xl prose-h3:mb-5 prose-h3:font-sans
-    prose-p:text-lg prose-p:font-serif prose-p:my-5 prose-p:leading-relaxed
+    prose-p:text-lg prose-p:my-5 prose-p:leading-relaxed     
+    prose-a:${colors.link}! dark:prose-a:${colors.darkLink}!
+    prose-a:hover:${colors.linkHover}! dark:prose-a:hover:${colors.darkLinkHover}!
+    prose-a:no-underline prose-a:hover:underline 
     text-black dark:text-white dark:prose-h1:text-white dark:prose-strong:!text-white
   `,
 
@@ -106,15 +111,17 @@ export const styling = {
 
   "post-head-date" : `text-md md:text-xl`,
 
+  "post-head-edit" : `text-center hover:underline`,
+
   "post-main-sect" : `
     border-t dark:border-t-gray-600
-    prose-headings:font-sans prose-headings:font-bold prose-headings:mt-5
+    prose-headings:mt-5
     prose-h2:text-4xl prose-h3:text-3xl prose-h4:text-xl
     prose-p:my-5 prose-pre:my-10 prose-li:mb-2
     prose-code:text-white prose-code:bg-[#23241f] 
     prose-a:${colors.link} dark:prose-a:${colors.darkLink}
-    hover:prose-a:${colors.linkHover} dark:hover:prose-a:${colors.darkLinkHover}
-    hover:prose-a:underline font-serif font-light prose-strong:font-bold
+    prose-a:hover:${colors.linkHover} dark:prose-a:hover:${colors.darkLinkHover}
+    prose-a:hover:underline font-light 
   `,
 
   "post-nook-sect" : `
@@ -124,18 +131,22 @@ export const styling = {
 
   "post-nook-item" :`
     focus:ring-offset-2 dark:focus:ring-4
+    bg-white dark:bg-black! hover:bg-black dark:hover:bg-gray-300!
+    text-black dark:text-white! hover:text-white dark:hover:text-black!
+    border border-black dark:border-gray-600!
+    p-2 px-5 m-2 inline-block
+    cursor-pointer
   `,
 
   "post-xtra-sect" : `
-    border-t hover:prose-a:underline
+    border-t prose-a:hover:underline
     prose-p:my-5
     prose-a:${colors.link} dark:prose-a:${colors.darkLink}
-    hover:prose-a:${colors.linkHover} dark:hover:prose-a:${colors.darkLinkHover}
+    prose-a:hover:${colors.linkHover} dark:prose-a:hover:${colors.darkLinkHover}
     prose-headings:font-sans prose-headings:font-bold
     prose-headings:mt-5
     font-light prose-strong:font-bold
     prose-h2:text-4xl prose-h3:text-3xl prose-code:text-white prose-code:bg-[#23241f]
-    font-serif
   `,
 
   "tail-wrap" : `
@@ -148,10 +159,9 @@ export const styling = {
     flex max-md:flex-col justify-between gap-0 md:gap-5
     max-w-screen-lg mx-auto p-5
     prose prose-p:text-white prose-p:my-2 md:prose-p:my-0
-    prose-a:text-sky-300    
-    hover:prose-a:text-white    
+    prose-a:text-green-300
     prose-a:font-bold prose-a:no-underline
-    hover:prose-a:underline
+    prose-a:hover:underline prose-a:hover:text-white
   `,
 }
 

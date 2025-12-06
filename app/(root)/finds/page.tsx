@@ -19,7 +19,8 @@ export const fetchCache = 'force-no-store'
 
 export async function generateMetadata({searchParams}: any) {
 
-  const hostname = await headers().get("x-forwarded-host") || headers().get("host") || ""
+  const headersList = await headers()
+  const hostname = headersList.get("x-forwarded-host") || headersList.get("host") || ""
   const myBase = await getBase(hostname)
 
   return {
@@ -30,7 +31,8 @@ export async function generateMetadata({searchParams}: any) {
 
 export default async function Main({ searchParams }: FindProps) {
 
-  const hostname = await headers().get("x-forwarded-host") || headers().get("host") || ""
+  const headersList = await headers()
+  const hostname = headersList.get("x-forwarded-host") || headersList.get("host") || ""
   const myBase = await getBase(hostname)
 
   const posts = await getPosts({       
