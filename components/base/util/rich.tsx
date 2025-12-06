@@ -8,9 +8,7 @@ serializers for rich text editor generated content
 import { PostLinkProps } from "@/sanity/myprops"
 import SyntaxHighlighter from "react-syntax-highlighter"
 import { monokaiSublime } from "react-syntax-highlighter/dist/cjs/styles/hljs"
-import dynamic from "next/dynamic"
-
-const CodePenEmbed = dynamic(() => import('./pens'), { ssr: false })
+import CodePenEmbed from './pens'
 
 export const serializers = {
   marks: {
@@ -44,13 +42,13 @@ export const serializers = {
       const thead = node.rows[0]          
       const tbody = node.rows.slice(1)
       return (
-        <table className={`table-auto w-full border border-spacing-2 my-5`}>
+        <table className={`table-auto w-full border border-spacing-2 text-xl my-5`}>
           <caption className={`sr-only`}>table</caption>
           <thead>              
-            <tr key={thead._key} className={`bg-slate-200`}>
+            <tr key={thead._key} className={`bg-slate-200 dark:bg-slate-800`}>
               {thead.cells.map((cell: any) => {
                 return (
-                  <th className={`border border-slate-300 px-5 py-3 text-left`} key={cell._key}>{cell}</th>
+                  <th className={`border border-slate-300 px-5 py-3 text-left`} key={cell._key + Date.now()}>{cell}</th>
                 )
               })}                
             </tr>
@@ -61,7 +59,7 @@ export const serializers = {
                 <tr key={row._key}>
                   {row.cells.map((cell: any) => {
                   return (
-                    <td className={`border border-slate-300 px-5 py-3`} key={cell._key}>{cell}</td>
+                    <td className={`border border-slate-300 px-5 py-3`} key={cell._key + Date.now()}>{cell}</td>
                   )})}
                 </tr>
               )

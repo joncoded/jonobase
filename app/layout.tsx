@@ -14,15 +14,16 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
 
-  const hostname = await headers().get("x-forwarded-host") || headers().get("host") || ""
+  const headersList = await headers()
+  const hostname = headersList.get("x-forwarded-host") || headersList.get("host") || ""
   const myBase = await getBase(hostname)
 
   return (
-    <html lang="en" suppressHydrationWarning={true}>
+    <html lang="en" suppressHydrationWarning>
       <OverHead base={myBase} />
       <body
-        className="flex flex-col min-h-screen font-sans">
-        <ThemeProvider attribute={`class`} defaultTheme={`light`} enableSystem>
+        className="flex flex-col min-h-screen">
+        <ThemeProvider attribute={`class`} defaultTheme={`light`} enableSystem storageKey="theme">
           <Skip />
           <Head base={myBase} />
           {children}

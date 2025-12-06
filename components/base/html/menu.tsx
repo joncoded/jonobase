@@ -12,15 +12,15 @@ import { useHotkeys } from "react-hotkeys-hook"
 import { UtilDOMChildrenProps, UtilMenuFindWrapperProps } from "@/sanity/myprops"
 import BlockContent from "@sanity/block-content-to-react"
 import { Span } from "./main"
-import { colors, text } from "@/app/config"
+import { colorsstyling, text } from "@/app/config"
 import FocusTrap from "focus-trap-react"
 import MenuFind from "./menu-find"
 import { serializers } from "../util/rich"
 
 export default function Menu({base} : any) {
-  
-  const [ showMenu, setShowMenu ] = useState(false)  
-  const [ menuOpenedAlready, setMenuOpenedAlready ] = useState(false)  
+
+  const [ showMenu, setShowMenu ] = useState(false)
+  const [ menuOpenedAlready, setMenuOpenedAlready ] = useState(false)
 
   /* def hot keys */
   useHotkeys("ctrl+k, meta+k", () => document.getElementById("desktop-search-in-nav")?.focus())
@@ -32,19 +32,19 @@ export default function Menu({base} : any) {
   const { theme, setTheme } = useTheme()
 
   const handleTheme = (event: React.FormEvent<HTMLButtonElement>): void => {
-    event.preventDefault()    
-    setTheme(theme === "dark" ? "light" : "dark")    
+    event.preventDefault()
+    setTheme(theme === "dark" ? "light" : "dark")
   }
   /* end dark mode */
-  
+
   /* def menu ui */
   const openMenu = () => {
-    setShowMenu(true) 
-    setMenuOpenedAlready(true)   
+    setShowMenu(true)
+    setMenuOpenedAlready(true)
   }
 
   const closeMenu = () => {
-    setShowMenu(false)    
+    setShowMenu(false)
   }
 
   useEffect(() => {
@@ -65,13 +65,12 @@ export default function Menu({base} : any) {
 
   const MenuDialog = ({children}: UtilDOMChildrenProps) => {
     return (
-      <dialog 
-        aria-label={text["menu"]} 
-        className={`menu-dialog 
-          bg-gradient-to-b from-white to-zinc-200
-          dark:from-black dark:to-gray-800
-          flex overflow-y-auto 
-          w-full h-screen fixed top-0 left-0 p-10 !z-[200]
+      <dialog
+        aria-label={text["menu"]}
+        className={`menu-dialog
+          bg-white dark:bg-black
+          flex overflow-y-auto
+          w-full h-screen fixed top-0 left-0 p-10 z-200!
       `}>
         {children}
       </dialog>
@@ -88,7 +87,7 @@ export default function Menu({base} : any) {
 
   const MenuHead = ({children}: UtilDOMChildrenProps) => {
     return (
-      <div className={`menu-head 
+      <div className={`menu-head
         flex flex-col sm:flex-row justify-between items-center sm:items-end mb-10
       `}>
         {children}
@@ -96,7 +95,7 @@ export default function Menu({base} : any) {
     )
   }
 
-  const MenuHeading = () => {    
+  const MenuHeading = () => {
     return (
       <div className={`menu-heading`}>
         <Span className={`text-3xl font-bold mr-2 uppercase`}>{base?.title || ""}</Span>
@@ -107,8 +106,8 @@ export default function Menu({base} : any) {
 
   const MenuTagline = () => {
     return (
-      <div 
-        className={`menu-tagline 
+      <div
+        className={`menu-tagline
           block sm:hidden text-center my-2
         `}
       >
@@ -119,8 +118,8 @@ export default function Menu({base} : any) {
 
   const MenuOptions = ({children} : UtilDOMChildrenProps) => {
     return (
-      <div 
-        className={`menu-options 
+      <div
+        className={`menu-options
           flex justify-center gap-5
         `}
       >
@@ -131,13 +130,13 @@ export default function Menu({base} : any) {
 
   const MenuCloseOption = () => {
     return (
-      <div 
-        className={`menu-close 
+      <div
+        className={`menu-close
           mt-5
         `}
       >
         <button onClick={closeMenu}>
-          <Span 
+          <Span
             aria-hidden={true}
             className={`sm:mr-2`}>❌</Span>
           <br className={`sm:hidden`} />
@@ -149,22 +148,22 @@ export default function Menu({base} : any) {
 
   const MenuThemeOption = () => {
     return (
-      <div 
+      <div
         className={`menu-theme
           mt-5
         `}
       >
         <button onClick={handleTheme}>
-          <Span 
+          <Span
             aria-hidden={true}
             className={`sm:mr-2`}>
             {theme === "dark" ? "💡" : "🌜" }
           </Span>
           <br className={`sm:hidden`} />
           <Span>
-            {theme === "dark" 
-              ? text["switch to light mode"] 
-              : text["switch to dark mode"] 
+            {theme === "dark"
+              ? text["switch to light mode"]
+              : text["switch to dark mode"]
             }
           </Span>
         </button>
@@ -173,32 +172,30 @@ export default function Menu({base} : any) {
   }
 
   const MenuContent = () => {
+
     return (
       <nav
-        className={`menu-content 
-          pb-10 md:pb-5 text-center prose-h2:my-5 
-          prose-h2:text-2xl prose-h3:text-xl prose-p:text-lg 
-          md:prose-h2:text-4xl md:prose-h3:text-3xl md:prose-p:text-2xl 
-          prose-a:${colors.link} dark:prose-a:${colors.darkLink} 
-          hover:prose-a:${colors.linkHover} dark:hover:prose-a:${colors.darkLinkHover} 
-          hover:prose-a:font-semibold 
-        `} 
+        className={`menu-content pb-10 md:pb-5 text-center 
+          prose prose-a:no-underline prose-a:hover:underline 
+          prose-h2:text-4xl! prose-h3:text-3xl! text-lg dark:text-gray-300
+          prose-a:text-green-700 dark:prose-a:text-green-300
+          prose-a:hover:text-black dark:prose-a:hover:text-white`}
       >
-        <BlockContent 
-          blocks={base.menu} 
-          serializers={serializers} 
+        <BlockContent
+          blocks={base.menu}
+          serializers={serializers}
           dataset="production"
-          projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}  
-        /> 
+          projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
+        />
       </nav>
-      
+
     )
   }
 
   const MenuFindWrapper = ({children, className}: UtilMenuFindWrapperProps) => {
     return (
-      <div 
-        className={`menu-find-wrapper 
+      <div
+        className={`menu-find-wrapper
           ${className}
         `}
       >
@@ -209,12 +206,12 @@ export default function Menu({base} : any) {
   /* end menu ui */
 
   return (
-    <>      
+    <>
       <MenuFindWrapper className={`hidden md:block`}>
-        <MenuFind 
-          showMenu={setShowMenu} 
-          inputName={`desktop-search-in-nav`} 
-          placeholder={`🔎 ${text.search} (⌘K)`} 
+        <MenuFind
+          showMenu={setShowMenu}
+          inputName={`desktop-search-in-nav`}
+          placeholder={`🔎 ${text.search} (⌘K)`}
         />
       </MenuFindWrapper>
       <MenuButton />
@@ -231,14 +228,14 @@ export default function Menu({base} : any) {
                     <MenuThemeOption />
                   </MenuOptions>
                 </MenuHead>
-                <MenuFindWrapper className={`block md:hidden mb-5`}>                  
-                  <MenuFind                     
-                    showMenu={setShowMenu} 
-                    inputName={`mobile-search-in-menu`} 
-                    placeholder={`🔎 ${text["search"]}`} 
+                <MenuFindWrapper className={`block md:hidden mb-5`}>
+                  <MenuFind
+                    showMenu={setShowMenu}
+                    inputName={`mobile-search-in-menu`}
+                    placeholder={`🔎 ${text["search"]}`}
                   />
                 </MenuFindWrapper>
-                <MenuContent />              
+                <MenuContent />
               </MenuWrapper>
             </MenuDialog>
           </div>

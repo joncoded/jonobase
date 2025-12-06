@@ -13,7 +13,8 @@ export const fetchCache = 'force-no-store'
 
 export async function generateMetadata() {
 
-  const hostname = await headers().get("x-forwarded-host") || headers().get("host") || ""
+  const headersList = await headers()
+  const hostname = headersList.get("x-forwarded-host") || headersList.get("host") || ""
   const myBase = await getBase(hostname)
 
   return {
@@ -25,7 +26,8 @@ export async function generateMetadata() {
 
 export default async function Home() {
 
-  const hostname = await headers().get("x-forwarded-host") || headers().get("host") || ""  
+  const headersList = await headers()
+  const hostname = headersList.get("x-forwarded-host") || headersList.get("host") || ""
   const myBase = await getBase(hostname)
 
   const { homeheap } = myBase

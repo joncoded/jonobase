@@ -1,4 +1,4 @@
-import React from "react"
+"use client"
 
 export default function CodePenEmbed({ url, tabs = "html,result" }: { url: string, tabs: string }) {
   
