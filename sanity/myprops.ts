@@ -6,6 +6,8 @@ a set of restrictions for various props and parameters
 (used everywhere - in app, components, sanity, schema!)
 */
 
+import React from 'react';
+
 // get results for "finds" (i.e. the omnisearch) 
 export interface FindProps {
   searchParams: {
