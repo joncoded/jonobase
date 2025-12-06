@@ -47,7 +47,7 @@ export interface ListProps {
   subtitle: string;
   showSubtitle: boolean;
   bgColor: string;
-  precontent: JSX.Element[] | JSX.Element;
+  precontent: React.ReactNode;
   querybuilder?: {
     query?: string;
     type?: string;
@@ -58,7 +58,7 @@ export interface ListProps {
     order?: 'date' | 'title';
     ascDesc?: 'asc' | 'desc';
   };
-  postcontent: JSX.Element[] | JSX.Element;
+  postcontent: React.ReactNode;
   cta?: {
     url?: string;
     title?: string;
@@ -102,8 +102,8 @@ export interface PostProps {
   join: string;
   kind: string;
   nooks?: string[];
-  content: JSX.Element[] | JSX.Element;
-  extra?: JSX.Element[] | JSX.Element;
+  content: React.ReactNode;
+  extra?: React.ReactNode;
   link?: URL | undefined;        
   date: string;
   showDate: boolean;
@@ -151,20 +151,20 @@ export interface PostLinkProps {
 // utils (mostly HTML wrappers)
 
 export interface UtilDOMChildrenProps {
-  children: JSX.Element[] | JSX.Element;
+  children: React.ReactNode;
   className?: string;
   bgImage?: string;
 }
 
 export interface UtilDOMSectProps {
-  children: JSX.Element | JSX.Element[];
+  children: React.ReactNode;
   id?: string;
   className?: string;  
   bgImage?: string;
 }
 
 export interface UtilDOMSpanProps {
-  children: JSX.Element | JSX.Element[] | string | string[];
+  children: React.ReactNode;
   className?: string;  
   ariaHidden?: boolean;
   ariaLabel?: string;
