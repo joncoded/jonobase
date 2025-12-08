@@ -38,7 +38,8 @@ export default async function Main({ searchParams, params } : any) {
   const headersList = await headers()
   const hostname = headersList.get("x-forwarded-host") || headersList.get("host") || ""
   const { join, kind } = await params
-  const { page, perPage } = searchParams
+  const resolvedSearchParams = await searchParams
+  const { page, perPage } = resolvedSearchParams
   const myBase = await getBase(hostname)
   const myPosts = await getPosts({domain: hostname, join, kind, page, perPage: perPage || myBase.perPage || 6, ascDesc: kind.includes('book') ? 'asc' : 'desc'})
   const myPostsCount = await getPostsCount({domain: hostname, join, kind})
@@ -59,7 +60,7 @@ export default async function Main({ searchParams, params } : any) {
         <ListLine posts={myPosts} showJoin={false} showKind={false} />
       </Sect>
 
-      <Paginate myBase={myBase} totalPostsCount={myPostsCount} searchParams={searchParams} />
+      <Paginate myBase={myBase} totalPostsCount={myPostsCount} searchParams={resolvedSearchParams} />
 
     </main>
 

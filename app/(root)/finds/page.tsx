@@ -19,12 +19,13 @@ export const fetchCache = 'force-no-store'
 
 export async function generateMetadata({searchParams}: any) {
 
+  const rSearchParams = await searchParams
   const headersList = await headers()
   const hostname = headersList.get("x-forwarded-host") || headersList.get("host") || ""
   const myBase = await getBase(hostname)
 
   return {
-    title: `${text['finds']} : ${searchParams.query ?? text['posts']} @ ${myBase?.title}`    
+    title: `${text['finds']} : ${rSearchParams.query ?? text['posts']} @ ${myBase?.title}`    
   }
 
 }
@@ -34,23 +35,24 @@ export default async function Main({ searchParams }: FindProps) {
   const headersList = await headers()
   const hostname = headersList.get("x-forwarded-host") || headersList.get("host") || ""
   const myBase = await getBase(hostname)
+  const rSearchParams = await searchParams
 
   const posts = await getPosts({       
     domain: hostname,
-    query: searchParams?.query || '',
-    type: searchParams?.type || '',      
-    kind: searchParams?.kind || '',     
-    nook: searchParams?.nook || '', 
-    page: searchParams?.page || '1',
-    perPage: searchParams?.perPage || myBase.perPage || '6'
+    query: rSearchParams?.query || '',
+    type: rSearchParams?.type || '',      
+    kind: rSearchParams?.kind || '',     
+    nook: rSearchParams?.nook || '', 
+    page: rSearchParams?.page || '1',
+    perPage: rSearchParams?.perPage || myBase.perPage || '6'
   })  
   
   const totalPostsCount = await getPostsCount({    
     domain: hostname, 
-    type: searchParams?.type || '', 
-    query: searchParams?.query || '', 
-    kind: searchParams?.kind || '', 
-    nook: searchParams?.nook || ''
+    type: rSearchParams?.type || '', 
+    query: rSearchParams?.query || '', 
+    kind: rSearchParams?.kind || '', 
+    nook: rSearchParams?.nook || ''
   })
 
   return (

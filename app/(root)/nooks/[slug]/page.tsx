@@ -40,7 +40,7 @@ export default async function Main({ params, searchParams }: NookProps) {
   const myBase = await getBase(hostname) || {}
 
   const { slug } = await params
-  const { page } = searchParams
+  const { page } = await searchParams
 
   const posts = await getPosts({  
     domain: hostname,       
@@ -53,7 +53,6 @@ export default async function Main({ params, searchParams }: NookProps) {
     domain: hostname,
     nook: decodeURIComponent(slug || '')
   })  
-  console.log(totalPostsCount)
 
   return (
     

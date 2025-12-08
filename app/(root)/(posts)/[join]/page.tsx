@@ -38,7 +38,7 @@ export default async function Main({ params, searchParams } : any) {
   const headersList = await headers()
   const hostname = headersList.get("x-forwarded-host") || headersList.get("host") || ""
   const { join } = await params
-  const { page, perPage } = searchParams
+  const { page, perPage } = await searchParams
   const myBase = await getBase(hostname)  
   const myPosts = await getPosts({domain: hostname, join, page: page, perPage: perPage || myBase.perPage || "6"})
   const myPostsCount = await getPostsCount({ domain: hostname,  join })

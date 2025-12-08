@@ -12,14 +12,16 @@ import { text } from "@/app/config"
 
 export default async function Paginate({myBase, totalPostsCount, searchParams} : UtilPaginationProps) {
 
+  const rSearchParams = await searchParams
+
   // for finds pages
-  const query = searchParams?.query || ''
+  const query = rSearchParams?.query || ''
 
   // get current page based on search params or default to first page
-  const currentPage = parseInt(searchParams?.page || '1')
+  const currentPage = parseInt(rSearchParams?.page || '1')
 
   // get posts per page based on search params or CMS or default to 6 post per page 
-  const perPage = searchParams?.perPage || myBase.perPage || '6'
+  const perPage = rSearchParams?.perPage || myBase.perPage || '6'
 
   // get # of pages (total post count divided by posts per page)
   const totalPages = Math.ceil(totalPostsCount / parseInt(perPage))
