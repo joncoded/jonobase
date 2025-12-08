@@ -102,7 +102,7 @@ export const styling = {
   `,
 
   "post-head-sect" : `
-    !bg-gradient-to-b from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900 dark:text-white py-5
+    !bg-gradient-to-b from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900 dark:text-white py-5 border-t border-t-gray-200 dark:border-t-gray-600
   `,
 
   "post-head-title" : `text-3xl md:text-5xl font-bold`,
@@ -114,7 +114,7 @@ export const styling = {
   "post-head-edit" : `text-center hover:underline`,
 
   "post-main-sect" : `
-    border-t dark:border-t-gray-600
+    border-t border-t-gray-200 dark:border-t-gray-600
     prose-headings:mt-5
     prose-h2:text-4xl prose-h3:text-3xl prose-h4:text-xl
     prose-p:my-5 prose-pre:my-10 prose-li:mb-2
@@ -122,6 +122,7 @@ export const styling = {
     prose-a:${colors.link} dark:prose-a:${colors.darkLink}
     prose-a:hover:${colors.linkHover} dark:prose-a:hover:${colors.darkLinkHover}
     prose-a:hover:underline font-light 
+    prose-headings:font-bold prose-strong:font-bold prose-headings:mt-5
   `,
 
   "post-nook-sect" : `
@@ -139,12 +140,12 @@ export const styling = {
   `,
 
   "post-xtra-sect" : `
-    border-t prose-a:hover:underline
-    prose-p:my-5
-    prose-a:${colors.link} dark:prose-a:${colors.darkLink}
+    border-t border-t-gray-200 dark:border-t-gray-600  
+    prose-a:${colors.link} dark:prose-a:${colors.darkLink} prose-a:hover:underline
     prose-a:hover:${colors.linkHover} dark:prose-a:hover:${colors.darkLinkHover}
-    prose-headings:font-sans prose-headings:font-bold
+    prose-headings:font-bold
     prose-headings:mt-5
+    prose-p:my-5
     font-light prose-strong:font-bold
     prose-h2:text-4xl prose-h3:text-3xl prose-code:text-white prose-code:bg-[#23241f]
   `,
