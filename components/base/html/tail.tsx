@@ -42,10 +42,12 @@ export default function Tail({ base }: { base: any }) {
   }
 
   return (
-    <footer id="tail-wrap" className={`${styling['tail-wrap']}`}>    
-      <div className={`${styling['tail-prop']}`}>      
-        <Colophon1 />
-        <Colophon2 />
+    <footer id="tail-wrap" className={`${styling['tail-wrap']}`}>
+      <div className="max-w-5xl mx-auto">
+        <div className={`${styling['tail-prop']}`}>      
+          <Colophon1 />
+          <Colophon2 />
+        </div>
       </div>
     </footer>
   )

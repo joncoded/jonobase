@@ -151,14 +151,12 @@ export const styling = {
   `,
 
   "tail-wrap" : `
-    w-full
     border-t border-gray-300 mt-auto p-5
     bg-gradient-to-b from-black to-gray-900
   `,
 
   "tail-prop" : `
-    flex max-md:flex-col justify-between gap-0 md:gap-5
-    max-w-screen-lg mx-auto p-5
+    flex max-md:flex-col justify-between gap-0 md:gap-5 p-5
     prose prose-p:text-white prose-p:my-2 md:prose-p:my-0
     prose-a:text-green-300
     prose-a:font-bold prose-a:no-underline
