@@ -46,7 +46,8 @@ export default async function Main({ params, searchParams }: NookProps) {
     domain: hostname,       
     nook: slug,
     page,
-    perPage: myBase.perPage || searchParams.perPage
+    perPage: myBase.perPage || searchParams.perPage,
+    ascDesc: slug?.includes('book') ? 'asc' : 'desc'
   })  
 
   const totalPostsCount = await getPostsCount({
