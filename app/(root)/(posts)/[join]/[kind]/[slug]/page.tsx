@@ -18,6 +18,7 @@ import PostHead from "@/components/post/post-head"
 import PostLink from "@/components/post/post-link"
 import PostNook from "@/components/post/post-nook"
 import PostTurn from "@/components/post/post-turn"
+import PostToc from "@/components/post/post-toc"
 
 export const dynamic = 'force-dynamic'
 export const fetchCache = 'force-no-store'
@@ -71,6 +72,7 @@ export default async function Main({ params } : any) {
     <main id="main" tabIndex={-1}>
 
       <ScrollToTop />
+      <PostToc />
 
       <Sect id="post-apex">
         <Apex first={join} second={kind} post={true} />
