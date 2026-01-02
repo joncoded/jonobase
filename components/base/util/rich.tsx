@@ -6,9 +6,8 @@ serializers for rich text editor generated content
 */
 
 import { PostLinkProps } from "@/sanity/myprops"
-import SyntaxHighlighter from "react-syntax-highlighter"
-import { monokaiSublime } from "react-syntax-highlighter/dist/cjs/styles/hljs"
 import CodePenEmbed from './pens'
+import CodeBlockWithCopy from './rich-code'
 
 export const serializers = {
   marks: {
@@ -25,9 +24,7 @@ export const serializers = {
       if (!code){
           return null
       }
-      return <SyntaxHighlighter style={monokaiSublime} language={language ||'text'} wrapLongLines={true}>
-        {code}
-      </SyntaxHighlighter>
+      return <CodeBlockWithCopy code={code} language={language} />
     },
     // any embeddable HTML
     mbed: ({ node }: any) => {      
