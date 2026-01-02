@@ -179,9 +179,19 @@ const schema = {
   preview: {
     select: {
       title: 'title',
-      subtitle: 'date',
-      media: 'image',
+      join: 'join',
+      kind: 'kind',
+      date: 'date',
+      media: 'emoji',
     },
+    prepare(selection: any) {
+      const {title, join, kind, date, emoji} = selection
+      return {
+        title: title,
+        subtitle: `${date ? new Date(date).toISOString().split('T')[0] : 'undated'} in ${join}/${kind}`,
+        media: emoji
+      }
+    }
   },
   initialValue: {
     join: '',
