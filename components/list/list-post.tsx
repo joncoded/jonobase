@@ -11,6 +11,11 @@ import { UtilDOMChildrenProps, PostListProps } from "@/sanity/myprops"
 import { text } from "@/app/config"
 import { timezone, colors, styling } from "@/app/config"
 
+function countEmojis(str: String) {  
+  const segmenter = new Intl.Segmenter('en', { granularity: 'grapheme' });  
+  return [...segmenter.segment(str)].length;
+}
+
 const linkColors = `${colors.link} dark:${colors.darkLink} hover:${colors.linkHover} dark:hover:${colors.darkLinkHover} hover:underline`
 
 const ListPost = ({post : { join, kind, slug, image, emoji, title, subtitle, link, date, showDate}, showJoin = false, showKind = false}: PostListProps) => {
@@ -27,17 +32,30 @@ const ListPost = ({post : { join, kind, slug, image, emoji, title, subtitle, lin
 
   const ListPostSide = ({children}: UtilDOMChildrenProps) => {
     return (
-      <div className={`flex flex-col gap-5`}>
+      <div className={`flex flex-col`}>
         {children}
       </div>
     )
   }
 
-  const ListPostImage = () => {
+  const ListPostImage = () => { 
+
+    let emojiSize
+    console.log(title, countEmojis(emoji))
+    switch (countEmojis(emoji)) {
+      case 2:
+        emojiSize = 'text-4xl'
+        break
+      case 3:
+        emojiSize = 'text-2xl'
+        break
+      default:
+        emojiSize = 'text-7xl mb-5'
+    }
 
     return (
       <div className={`
-        text-7xl max-w-[80px] min-h-[80px] w-[80px] h-[80px] max-h-[80px] min-h-[80px] rounded-full
+        ${emojiSize} max-w-[80px] min-h-[80px] w-[80px] h-[80px] max-h-[80px] min-h-[80px] rounded-full text-center 
       `}>
         {image &&
           <Image
@@ -55,9 +73,9 @@ const ListPost = ({post : { join, kind, slug, image, emoji, title, subtitle, lin
             aria-hidden="true"
             className={`w-full h-full min-h-[80px] min-w-[80px]`}
           >
-            {emoji}
+            {(countEmojis(emoji) == 0 || countEmojis(emoji) > 3) ? "📓" : emoji}
           </p>
-        }
+        }        
       </div>
     )
   }

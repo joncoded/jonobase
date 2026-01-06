@@ -30,7 +30,7 @@ const schema = {
     {
       name: 'emoji',
       title: 'Emoji',
-      description: 'required: an emoji or a letter that could stand in as the post\'s thumbnail',
+      description: 'required: an emoji or a letter that could stand in as the post\'s thumbnail, limit 3',
       type: 'string',
     },
     {
