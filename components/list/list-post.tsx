@@ -11,7 +11,7 @@ import { UtilDOMChildrenProps, PostListProps } from "@/sanity/myprops"
 import { text } from "@/app/config"
 import { timezone, colors, styling } from "@/app/config"
 
-function countEmojis(str: String) {  
+function countEmojis(str: string) {  
   const segmenter = new Intl.Segmenter('en', { granularity: 'grapheme' });  
   return [...segmenter.segment(str)].length;
 }
