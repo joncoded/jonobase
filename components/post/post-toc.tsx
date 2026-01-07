@@ -102,8 +102,8 @@ export default function PostToc() {
             ${heading.level === 4 ? 'pl-6 text-xs' : ''}
             ${
               activeId === heading.id
-                ? 'bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 font-semibold'
-                : 'hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300'
+                ? 'bg-gray-700 dark:bg-black text-white dark:text-gray-300 font-semibold'
+                : 'hover:bg-gray-300 dark:hover:bg-gray-700 text-black dark:text-gray-300'
             }
           `}
         >
