@@ -1,6 +1,6 @@
 
 /*
-jonobase by @jonchius
+jonobase by @joncoded (aka @jonchius)
 /app/components/list/list-line.tsx
 the list of posts
 */

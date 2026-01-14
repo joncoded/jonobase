@@ -1,7 +1,7 @@
 'use client'
 
 /*
-jonobase by @jonchius
+jonobase by @joncoded (aka @jonchius)
 /components/post/post-toc.tsx
 Table of Contents navigation component for posts
 */
@@ -15,7 +15,11 @@ interface TocItem {
   level: number
 }
 
-export default function PostToc() {
+interface PostTocProps {
+  title?: string
+}
+
+export default function PostToc({ title }: PostTocProps) {
   const [headings, setHeadings] = useState<TocItem[]>([])
   const [activeId, setActiveId] = useState<string>('')
   const [isOpen, setIsOpen] = useState(false)
@@ -116,12 +120,12 @@ export default function PostToc() {
   return (
     <>
       {/* Desktop TOC - Right sidebar */}
-      <div className="hidden lg:block fixed right-4 top-24 w-64 max-h-[calc(100vh-120px)] overflow-y-auto z-40">
+      <div className="hidden xl:block fixed right-4 top-24 w-64 max-h-[calc(100vh-120px)] overflow-y-auto z-40">
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 p-4">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white">
-              On this page
-            </h3>
+            <span className="text-lg font-bold text-gray-900 dark:text-white">
+              {title ?? 'On this page'}
+            </span>
             <button
               onClick={() => setIsCollapsed(!isCollapsed)}
               className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
@@ -139,7 +143,7 @@ export default function PostToc() {
       </div>
 
       {/* Mobile TOC - Fixed button + Modal */}
-      <div className="lg:hidden">
+      <div className="xl:hidden">
         {/* Fixed button */}
         <button
           onClick={() => setIsOpen(true)}
@@ -162,7 +166,7 @@ export default function PostToc() {
             >
               <div className="sticky top-0 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 p-4 flex items-center justify-between z-10">
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white">
-                  On this page
+                  {title ?? 'On this page'}
                 </h3>
                 <button
                   onClick={() => setIsOpen(false)}

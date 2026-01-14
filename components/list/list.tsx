@@ -1,5 +1,5 @@
 /*
-jonobase by @jonchius
+jonobase by @joncoded (aka @jonchius)
 /app/components/list/list.tsx
 a list, a horizontal section of a heap (i.e. "back-end" driven page of a list of posts)
 */

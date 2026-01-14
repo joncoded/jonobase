@@ -1,5 +1,5 @@
 /*
-jonobase by @jonchius
+jonobase by @joncoded (aka @jonchius)
 /app/components/util/date-form.tsx
 date formatting functions
 */

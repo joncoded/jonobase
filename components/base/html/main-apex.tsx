@@ -1,5 +1,5 @@
 /*
-jonobase by @jonchius
+jonobase by @joncoded (aka @jonchius)
 /app/components/base/html/main-apex.tsx
 breadcrumbs for top of each page
 "first" refers to first-level "subfolder" of domain

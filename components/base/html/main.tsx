@@ -1,6 +1,6 @@
 
 /*
-jonobase by @jonchius
+jonobase by @joncoded (aka @jonchius)
 /app/components/base/html/main.tsx
 the "main" section template of each page
 */

@@ -1,6 +1,6 @@
 
 /*
-jonobase by @jonchius
+jonobase by @joncoded (aka @jonchius)
 /app/(root)/(posts)/[join]/page.tsx
 the join (the first level category list of posts)
 */

@@ -1,6 +1,6 @@
 
 /*
-jonobase by @jonchius
+jonobase by @joncoded (aka @jonchius)
 /app/(root)/finds/page.tsx
 the finds (search) page
 */

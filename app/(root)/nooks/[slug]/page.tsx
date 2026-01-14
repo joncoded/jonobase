@@ -1,6 +1,6 @@
 
 /*
-jonobase by @jonchius
+jonobase by @joncoded (aka @jonchius)
 /app/(root)/nooks/[slug]/page.tsx
 the nooks (lists of "posts from nook (tag) X") page
 (replacement for nooks)

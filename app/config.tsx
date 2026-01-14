@@ -1,6 +1,6 @@
 
 /*
-jonobase by @jonchius
+jonobase by @joncoded (aka @jonchius)
 /app/config.tsx
 developer configuration
 stretch goal: try to make this updatable via backend?

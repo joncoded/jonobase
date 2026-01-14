@@ -1,6 +1,6 @@
 
 /*
-jonobase by @jonchius
+jonobase by @joncoded (aka @jonchius)
 /app/(root)/heaps/[slug]/page.tsx
 the heaps (stacked custom sections) page
 */

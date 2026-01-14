@@ -1,7 +1,7 @@
 'use client'
 
 /*
-jonobase by @jonchius
+jonobase by @joncoded (aka @jonchius)
 /app/components/base/html/menu-find.tsx
 the find (search) UI for the head menu
 */

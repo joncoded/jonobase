@@ -1,5 +1,5 @@
 /*
-jonobase by @jonchius
+jonobase by @joncoded (aka @jonchius)
 /app/components/post/post-nook.tsx
 displays all "nooks" (tags) of a "post"
 */

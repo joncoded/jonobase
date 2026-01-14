@@ -1,6 +1,6 @@
 
 /*
-jonobase by @jonchius
+jonobase by @joncoded (aka @jonchius)
 /app/components/post/post-head.tsx
 the head of each post page
 shows the emoji (or background image) + title + subtitle + date

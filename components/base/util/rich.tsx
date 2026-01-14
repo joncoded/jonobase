@@ -1,6 +1,6 @@
 
 /*
-jonobase by @jonchius
+jonobase by @joncoded (aka @jonchius)
 /app/components/util/rich.tsx
 serializers for rich text editor generated content
 */

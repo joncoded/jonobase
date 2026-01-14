@@ -1,5 +1,5 @@
 /*
-jonobase by @jonchius
+jonobase by @joncoded (aka @jonchius)
 /app/components/post/post-turn.tsx
 the "prev/next" (page turner) links for posts
 just takes in the newer (post) and older (post) as parameters

@@ -1,5 +1,5 @@
 /*
-jonobase by @jonchius
+jonobase by @joncoded (aka @jonchius)
 /app/components/base/html/over-head.tsx
 beams things up to the <head> tag, e.g.:
 - favicon

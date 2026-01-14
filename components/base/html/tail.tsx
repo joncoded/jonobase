@@ -1,7 +1,7 @@
 "use client"
 
 /*
-jonobase by @jonchius
+jonobase by @joncoded (aka @jonchius)
 /app/components/base/html/tail.tsx
 the footer of each page
 */

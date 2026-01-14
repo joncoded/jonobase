@@ -1,7 +1,7 @@
 "use client"
 
 /*
-jonobase by @jonchius
+jonobase by @joncoded (aka @jonchius)
 /app/components/base/util/lite-dark.tsx
 the next.js themes to lite/dark mode provider
 */

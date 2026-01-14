@@ -1,6 +1,6 @@
 
 /*
-jonobase by @jonchius
+jonobase by @joncoded (aka @jonchius)
 /app/(root)/(posts)/[join]/[kind]/[slug]/page.tsx
 the post (single article) template
 */
@@ -72,7 +72,7 @@ export default async function Main({ params } : any) {
     <main id="main" tabIndex={-1}>
 
       <ScrollToTop />
-      <PostToc />
+      <PostToc title={post.title} />
 
       <Sect id="post-apex">
         <Apex first={join} second={kind} post={true} />

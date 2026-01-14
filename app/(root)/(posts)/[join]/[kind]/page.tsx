@@ -1,6 +1,6 @@
 
 /*
-jonobase by @jonchius
+jonobase by @joncoded (aka @jonchius)
 /app/(root)/(posts)/[join]/[kind]/page.tsx
 the kind (the second level sub-category list of posts)
 */

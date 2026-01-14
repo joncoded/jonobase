@@ -1,6 +1,6 @@
 
 /*
-jonobase by @jonchius
+jonobase by @joncoded (aka @jonchius)
 /sanity/actions.ts
 a collection of various functions that gets content from the sanity back-end
 (use with /sanity/fields.ts)

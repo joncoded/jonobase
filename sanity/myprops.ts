@@ -1,6 +1,6 @@
 
 /*
-jonobase by @jonchius
+jonobase by @joncoded (aka @jonchius)
 /sanity/myprops.ts
 a set of restrictions for various props and parameters
 (used everywhere - in app, components, sanity, schema!)

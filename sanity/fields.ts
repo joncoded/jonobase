@@ -1,6 +1,6 @@
 
 /*
-jonobase by @jonchius
+jonobase by @joncoded (aka @jonchius)
 /sanity/fields.ts
 field enumerations for the queries
 (used only with /sanity/actions.ts)

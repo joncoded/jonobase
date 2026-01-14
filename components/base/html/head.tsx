@@ -1,7 +1,7 @@
 "use client"
 
 /*
-jonobase by @jonchius
+jonobase by @joncoded (aka @jonchius)
 /app/components/base/html/head.tsx
 the site header
 */

@@ -1,5 +1,5 @@
 /*
-jonobase by @jonchius
+jonobase by @joncoded (aka @jonchius)
 /app/components/util/rich-code.tsx
 code block component with copy functionality for rich text
 */

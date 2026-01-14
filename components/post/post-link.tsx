@@ -1,6 +1,6 @@
 
 /*
-jonobase by @jonchius
+jonobase by @joncoded (aka @jonchius)
 /app/components/post/post-link.tsx
 the external link button of each post 
 just takes in a link with "visit URL" as a label

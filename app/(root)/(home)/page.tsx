@@ -1,5 +1,5 @@
 /*
-jonobase by @jonchius
+jonobase by @joncoded (aka @jonchius)
 /app/(root)/(home)/page.tsx
 the root homepage (adjustable in sanity back-end via the "base" entry in the "home heap" field) 
 */
