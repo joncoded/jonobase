@@ -40,8 +40,7 @@ const ListPost = ({post : { join, kind, slug, image, emoji, title, subtitle, lin
 
   const ListPostImage = () => { 
 
-    let emojiSize
-    console.log(title, countEmojis(emoji))
+    let emojiSize    
     switch (countEmojis(emoji)) {
       case 2:
         emojiSize = 'text-4xl'
