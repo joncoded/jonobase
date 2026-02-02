@@ -14,8 +14,7 @@ import Apex from "@/components/base/html/main-apex"
 import List from "@/components/list/list"
 import None from "@/components/base/util/none"
 
-export const dynamic = 'force-dynamic'
-export const fetchCache = 'force-no-store'
+export const revalidate = 60
 
 export async function generateMetadata({ params }: HeapProps) {
 

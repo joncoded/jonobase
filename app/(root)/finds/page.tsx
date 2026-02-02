@@ -14,8 +14,7 @@ import ScrollToTop from "@/components/base/util/ttop"
 import Find from "@/components/find/find"
 import Paginate from "@/components/base/util/pagi"
 
-export const dynamic = 'force-dynamic'
-export const fetchCache = 'force-no-store'
+export const revalidate = 60
 
 export async function generateMetadata({searchParams}: any) {
 

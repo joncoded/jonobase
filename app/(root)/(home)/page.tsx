@@ -8,8 +8,7 @@ import { headers } from "next/headers"
 import { getBase } from "@/sanity/actions"
 import Heap from "../heaps/[slug]/page"
 
-export const dynamic = 'force-dynamic'
-export const fetchCache = 'force-no-store'
+export const revalidate = 60
 
 export async function generateMetadata() {
 

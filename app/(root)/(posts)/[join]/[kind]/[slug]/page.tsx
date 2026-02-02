@@ -20,8 +20,7 @@ import PostNook from "@/components/post/post-nook"
 import PostTurn from "@/components/post/post-turn"
 import PostToc from "@/components/post/post-toc"
 
-export const dynamic = 'force-dynamic'
-export const fetchCache = 'force-no-store'
+export const revalidate = 60
 
 export async function generateMetadata({params}: any) {
 
