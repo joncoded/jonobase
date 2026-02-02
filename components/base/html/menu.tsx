@@ -23,8 +23,8 @@ export default function Menu({base} : any) {
   const [ menuOpenedAlready, setMenuOpenedAlready ] = useState(false)
 
   /* def hot keys */
-  useHotkeys("ctrl+k, meta+k", () => document.getElementById("desktop-search-in-nav")?.focus())
-  useHotkeys("ctrl+/, meta+/", () => document.getElementById("open-menu")?.click())
+  useHotkeys(["ctrl+k", "meta+k"], () => document.getElementById("desktop-search-in-nav")?.focus())
+  useHotkeys(["ctrl+slash", "meta+slash"], () => document.getElementById("open-menu")?.click())
   useHotkeys("escape", () => closeMenu())
   /* end hot keys */
 
