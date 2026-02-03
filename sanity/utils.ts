@@ -36,11 +36,17 @@ export function buildQuery(params: UtilQueryBuildingProps) {
   else
     conditions.push(`count(*[`)
 
-  // by query (keyword)
-  if (query)
-    conditions.push(`
-      [title, subtitle, content[].children[].text, extra[].children[].text, nooks] match '*${query.toLowerCase()}*'
-    `)
+  // by query (keyword) - search across multiple fields
+  if (query && query !== '*') {
+    const searchTerm = query.toLowerCase()
+    conditions.push(`(
+      title match '*${searchTerm}*' ||
+      subtitle match '*${searchTerm}*' ||
+      nooks match '*${searchTerm}*' ||
+      pt::text(content) match '*${searchTerm}*' ||
+      pt::text(extra) match '*${searchTerm}*'
+    )`)
+  }
 
   // by join
   if (join !== '') {
@@ -77,7 +83,6 @@ export function buildQuery(params: UtilQueryBuildingProps) {
   } else {
     final += `]| order(${order} ${ascDesc})[${offset}...${limit}]`
   }
-
 
   return final
 

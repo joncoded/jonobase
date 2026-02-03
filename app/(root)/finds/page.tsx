@@ -41,7 +41,7 @@ export default async function Main({ searchParams }: FindProps) {
     query: rSearchParams?.query || '',
     type: rSearchParams?.type || '',      
     kind: rSearchParams?.kind || '',     
-    nook: rSearchParams?.nook || '', 
+    nook: '', 
     page: rSearchParams?.page || '1',
     perPage: rSearchParams?.perPage || myBase.perPage || '6'
   })  
@@ -51,7 +51,7 @@ export default async function Main({ searchParams }: FindProps) {
     type: rSearchParams?.type || '', 
     query: rSearchParams?.query || '', 
     kind: rSearchParams?.kind || '', 
-    nook: rSearchParams?.nook || ''
+    nook: ''
   })
 
   return (
