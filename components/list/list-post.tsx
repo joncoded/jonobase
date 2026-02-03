@@ -8,17 +8,18 @@ the link to each post (used for lists)
 import Image from "next/image"
 import Link from "next/link"
 import { UtilDOMChildrenProps, PostListProps } from "@/sanity/myprops"
-import { text } from "@/app/config"
-import { timezone, colors, styling } from "@/app/config"
+import { text, timezone, getColors, getStyling } from "@/app/config"
 
 function countEmojis(str: string) {  
   const segmenter = new Intl.Segmenter('en', { granularity: 'grapheme' });  
   return [...segmenter.segment(str)].length;
 }
 
-const linkColors = `${colors.link} dark:${colors.darkLink} hover:${colors.linkHover} dark:hover:${colors.darkLinkHover} hover:underline`
+const ListPost = ({post : { join, kind, slug, image, emoji, title, subtitle, link, date, showDate}, showJoin = false, showKind = false, colorScheme = 'green'}: PostListProps & { colorScheme?: string }) => {
 
-const ListPost = ({post : { join, kind, slug, image, emoji, title, subtitle, link, date, showDate}, showJoin = false, showKind = false}: PostListProps) => {
+  const colors = getColors(colorScheme)
+  const styling = getStyling(colorScheme)
+  const linkColors = `${colors.link} dark:${colors.darkLink} hover:${colors.linkHover} dark:hover:${colors.darkLinkHover} hover:underline`
 
   const ListPostContainer = ({children} : UtilDOMChildrenProps) => {
     return (

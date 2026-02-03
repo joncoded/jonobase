@@ -7,7 +7,7 @@ the post (single article) template
 
 import { headers } from "next/headers"
 import BlockContent from "@sanity/block-content-to-react"
-import { text, styling } from "@/app/config"
+import { text, getStyling } from "@/app/config"
 import { getBase, getPost, getPostAdjacent } from "@/sanity/actions"
 import { serializers } from "@/components/base/util/rich"
 import { Sect } from "@/components/base/html/main"
@@ -46,12 +46,14 @@ export default async function Main({ params } : any) {
   const hostname = headersList.get("x-forwarded-host") || headersList.get("host") || ""
   const { join, kind, slug } = await params
   
-  // get post data
+  // get base and post data
+  const myBase = await getBase(hostname)
+  const styling = getStyling(myBase?.colorScheme || 'green')
   const post = await getPost({ slug })
 
   if (!post) return (
     <main id="main">
-      <None />
+      <None colorScheme={myBase?.colorScheme} />
     </main>
   )
 
@@ -74,12 +76,12 @@ export default async function Main({ params } : any) {
       <PostToc title={post.title} />
 
       <Sect id="post-apex">
-        <Apex first={join} second={kind} post={true} />
+        <Apex first={join} second={kind} post={true} colorScheme={myBase?.colorScheme} />
       </Sect>
 
       <Sect id="post-head" className={`${post.image ? `py-0` : `${styling['post-head-sect']}`}`} {...(post.image ? { bgImage: post.image } : {})}>
         <PostHead post={post} />
-        { post.link && <PostLink link={post.link} />}
+        { post.link && <PostLink link={post.link} colorScheme={myBase?.colorScheme} />}
       </Sect>
 
       <Sect id="post-main" className={`${styling['post-main-sect']}`}>
@@ -104,16 +106,16 @@ export default async function Main({ params } : any) {
 
       { nooks &&
       <Sect id="post-nook" className={`${styling['post-nook-sect']}`}>        
-        <PostNook nooks={nooks} />
+        <PostNook nooks={nooks} colorScheme={myBase?.colorScheme} />
       </Sect>
       }
 
       {(olderInKind || newerInKind) && <Sect id="post-turn-kind" className={`p-5 text-lg md:text-xl bg-gray-100 dark:bg-gray-800`}>
-        <PostTurn newer={newerInKind ?? null} turnTitle={`in ${kind}`} older={olderInKind ?? null} />
+        <PostTurn newer={newerInKind ?? null} turnTitle={`in ${kind}`} older={olderInKind ?? null} colorScheme={myBase?.colorScheme} />
       </Sect>}
 
       {(olderInOmni || newerInOmni) && <Sect id="post-turn-omni" className={`p-5 text-md md:text-lg`}>
-        <PostTurn newer={newerInOmni ?? null} turnTitle={`${text['posts']}`} older={olderInOmni ?? null} />
+        <PostTurn newer={newerInOmni ?? null} turnTitle={`${text['posts']}`} older={olderInOmni ?? null} colorScheme={myBase?.colorScheme} />
       </Sect>}
 
     </main>

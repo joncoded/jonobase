@@ -31,7 +31,16 @@ const schema = {
       description: 'domain name of the site', 
       type: 'string',
       validation: (Rule: any) => Rule.required()
-    },          
+    },
+    {
+      name: 'colorScheme',
+      title: 'Color scheme',
+      description: 'optional: choose an accent (default)',
+      type: 'string',
+      options: {
+        list:  ['red', 'yellow', 'orange', 'green', 'sky', 'blue', 'purple', 'pink', 'gray']
+      }
+    },
     {
       name: 'tagline',
       title: 'Tagline',

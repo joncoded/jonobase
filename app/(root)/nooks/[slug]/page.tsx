@@ -9,7 +9,7 @@ the nooks (lists of "posts from nook (tag) X") page
 import { headers } from "next/headers"
 import { getBase, getPosts, getPostsCount } from "@/sanity/actions"
 import { NookProps } from "@/sanity/myprops"
-import { text, styling } from "@/app/config"
+import { text, getStyling } from "@/app/config"
 import { Sect } from "@/components/base/html/main"
 import ScrollToTop from "@/components/base/util/ttop"
 import Apex from "@/components/base/html/main-apex"
@@ -37,6 +37,7 @@ export default async function Main({ params, searchParams }: NookProps) {
   const headersList = await headers()
   const hostname = headersList.get("x-forwarded-host") || headersList.get("host") || ""
   const myBase = await getBase(hostname) || {}
+  const styling = getStyling(myBase?.colorScheme || 'green')
 
   const { slug } = await params
   const { page } = await searchParams
@@ -61,11 +62,11 @@ export default async function Main({ params, searchParams }: NookProps) {
       <ScrollToTop />
 
       <Sect id="nook-apex" className={`${styling['main-apex']}`}>
-        <Apex first={text['nooks']} second={decodeURIComponent(slug!)} />        
+        <Apex first={text['nooks']} second={decodeURIComponent(slug!)} colorScheme={myBase?.colorScheme} />        
       </Sect>
 
       <Sect id="nook-list" className={`nook-list`}>
-        <ListLine posts={posts} showJoin={true} showKind={true} />
+        <ListLine posts={posts} showJoin={true} showKind={true} colorScheme={myBase?.colorScheme} />
       </Sect>    
 
       <Paginate myBase={myBase} totalPostsCount={totalPostsCount} searchParams={searchParams} />     

@@ -9,9 +9,11 @@ the find (search) UI for the head menu
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { UtilMenuFindProps } from "@/sanity/myprops"
-import { styling, text } from "@/app/config"
+import { getStyling, text } from "@/app/config"
 
-export default function MenuFind({showMenu, inputName, placeholder = "🔎"}: UtilMenuFindProps) {
+export default function MenuFind({showMenu, inputName, placeholder = "🔎", colorScheme = 'green'}: UtilMenuFindProps & {colorScheme?: string}) {
+
+  const styling = getStyling(colorScheme)
 
   const [ findTerm, setFindTerm ] = useState("")
   const router = useRouter()

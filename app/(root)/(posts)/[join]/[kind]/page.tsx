@@ -7,7 +7,7 @@ the kind (the second level sub-category list of posts)
 
 import { headers } from "next/headers"
 import { getBase, getPosts, getPostsCount } from "@/sanity/actions"
-import { styling } from "@/app/config"
+import { getStyling } from "@/app/config"
 import { Sect } from "@/components/base/html/main"
 import ScrollToTop from "@/components/base/util/ttop"
 import None from "@/components/base/util/none"
@@ -40,10 +40,11 @@ export default async function Main({ searchParams, params } : any) {
   const resolvedSearchParams = await searchParams
   const { page, perPage } = resolvedSearchParams
   const myBase = await getBase(hostname)
+  const styling = getStyling(myBase?.colorScheme || 'green')
   const myPosts = await getPosts({domain: hostname, join, kind, page, perPage: perPage || myBase.perPage || 6, ascDesc: kind.includes('book') ? 'asc' : 'desc'})
   const myPostsCount = await getPostsCount({domain: hostname, join, kind})
 
-  if (!myPosts || myPosts.length === 0) return <None />
+  if (!myPosts || myPosts.length === 0) return <None colorScheme={myBase?.colorScheme} />
 
   return (
 
@@ -52,11 +53,11 @@ export default async function Main({ searchParams, params } : any) {
       <ScrollToTop />
 
       <Sect id="kind-apex" className={styling['main-apex']}>
-        <Apex first={join} second={kind} post={false} />
+        <Apex first={join} second={kind} post={false} colorScheme={myBase?.colorScheme} />
       </Sect>
 
       <Sect id="kind-main">
-        <ListLine posts={myPosts} showJoin={false} showKind={false} />
+        <ListLine posts={myPosts} showJoin={false} showKind={false} colorScheme={myBase?.colorScheme} />
       </Sect>
 
       <Paginate myBase={myBase} totalPostsCount={myPostsCount} searchParams={resolvedSearchParams} />

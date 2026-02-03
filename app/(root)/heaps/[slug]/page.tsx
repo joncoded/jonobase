@@ -37,9 +37,12 @@ export async function generateMetadata({ params }: HeapProps) {
 export default async function Heap({ params }: HeapProps) {
 
   const { slug } = await params
+  const headersList = await headers()
+  const hostname = headersList.get("x-forwarded-host") || headersList.get("host") || ""
+  const myBase = await getBase(hostname)
   const myHeap = await getHeap(slug)
 
-  if (!myHeap) return <None />
+  if (!myHeap) return <None colorScheme={myBase?.colorScheme} />
 
   const getHeapLists = async () => {
   
@@ -56,7 +59,7 @@ export default async function Heap({ params }: HeapProps) {
 
   const heapLists = await getHeapLists()  
 
-  if (!heapLists) return <None />
+  if (!heapLists) return <None colorScheme={myBase?.colorScheme} />
 
   return (
     
@@ -66,7 +69,7 @@ export default async function Heap({ params }: HeapProps) {
 
       {myHeap.showapex === true && 
         <Sect id="heap-apex">        
-          <Apex first={myHeap.title} />
+          <Apex first={myHeap.title} colorScheme={myBase?.colorScheme} />
         </Sect>
       }
             

@@ -7,7 +7,7 @@ the join (the first level category list of posts)
 
 import { headers } from "next/headers"
 import { getBase, getPosts, getPostsCount } from "@/sanity/actions"
-import { styling } from "@/app/config"
+import { getStyling } from "@/app/config"
 import { Sect } from "@/components/base/html/main"
 import ScrollToTop from "@/components/base/util/ttop"
 import None from "@/components/base/util/none"
@@ -39,10 +39,11 @@ export default async function Main({ params, searchParams } : any) {
   const { join } = await params
   const { page, perPage } = await searchParams
   const myBase = await getBase(hostname)  
+  const styling = getStyling(myBase?.colorScheme || 'green')
   const myPosts = await getPosts({domain: hostname, join, page: page, perPage: perPage || myBase.perPage || "6"})
   const myPostsCount = await getPostsCount({ domain: hostname,  join })
   
-  if (!myPosts || myPosts.length === 0) return <None />
+  if (!myPosts || myPosts.length === 0) return <None colorScheme={myBase?.colorScheme} />
 
   return (
 
@@ -51,11 +52,11 @@ export default async function Main({ params, searchParams } : any) {
       <ScrollToTop />
 
       <Sect id="join-apex" className={`${styling['main-apex']}`}>
-        <Apex first={join} />
+        <Apex first={join} colorScheme={myBase?.colorScheme} />
       </Sect>
 
       <Sect id="join-main">
-        <ListLine posts={myPosts} showJoin={false} showKind={true} />    
+        <ListLine posts={myPosts} showJoin={false} showKind={true} colorScheme={myBase?.colorScheme} />    
       </Sect>
 
       <Paginate myBase={myBase} totalPostsCount={myPostsCount} searchParams={searchParams} />

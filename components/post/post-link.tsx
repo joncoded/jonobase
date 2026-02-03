@@ -7,10 +7,12 @@ just takes in a link with "visit URL" as a label
 */
 
 import Link from "next/link"
-import { styling } from "@/app/config"
+import { getStyling } from "@/app/config"
 import { text } from "@/app/config"
 
-export default function PostLink( {link} : { link : URL } ) {
+export default function PostLink( {link, colorScheme = 'green'} : { link : URL, colorScheme?: string } ) {
+
+  const styling = getStyling(colorScheme)
 
   return (
     <div className={`my-5`}>

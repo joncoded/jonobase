@@ -129,5 +129,6 @@ export const base = `
   perPage,
   "homeheap": homeHeap->slug.current, 
   colophon1,
-  colophon2
+  colophon2,
+  colorScheme
 `

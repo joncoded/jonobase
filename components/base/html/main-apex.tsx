@@ -10,10 +10,12 @@ breadcrumbs for top of each page
 
 import Link from "next/link"
 import { Span } from "./main"
-import { colors, styling } from "@/app/config"
+import { getColors, getStyling } from "@/app/config"
 
-export default function Apex( { first, second, post = false } : { first: string, second?: string, post?: boolean }) {
+export default function Apex( { first, second, post = false, colorScheme = 'green' } : { first: string, second?: string, post?: boolean, colorScheme?: string }) {
 
+  const colors = getColors(colorScheme)
+  const styling = getStyling(colorScheme)
   const linkColors = `${colors.link} dark:${colors.darkLink} hover:${colors.linkHover} hover:underline dark:hover:${colors.darkLinkHover}`
 
   return (

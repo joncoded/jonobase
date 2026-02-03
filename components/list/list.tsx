@@ -8,7 +8,7 @@ import { headers } from "next/headers"
 import Link from "next/link"
 import BlockContent from "@sanity/block-content-to-react"
 import { getPosts, getPostsRandomly } from "@/sanity/actions"
-import { styling } from "@/app/config"
+import { getStyling } from "@/app/config"
 import { serializers } from "../base/util/rich"
 import { Sect } from "../base/html/main"
 import ListLine from "./list-line"
@@ -42,6 +42,11 @@ export default async function List({ heapList, preLoadedPosts }: any) {
 
   const headersList = await headers()
   const hostname = headersList.get("x-forwarded-host") || headersList.get("host") || ""
+  
+  // Import base to get colorScheme
+  const { getBase } = await import("@/sanity/actions")
+  const base = await getBase(hostname)
+  const styling = getStyling(base?.colorScheme || 'green')
   
   // Use preloaded posts if available, otherwise fetch them
   let posts = preLoadedPosts || []
@@ -120,7 +125,7 @@ export default async function List({ heapList, preLoadedPosts }: any) {
       </div>}
 
       {showposts &&
-        <ListLine posts={posts} showJoin={showjoin} showKind={showkind} />
+        <ListLine posts={posts} showJoin={showjoin} showKind={showkind} colorScheme={base?.colorScheme} />
       }
 
       {postcontent && <div id={`list-posc-${slug}`} className={`text-center my-5 ${styling['list-text']}`}>

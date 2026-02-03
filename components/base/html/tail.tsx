@@ -9,11 +9,12 @@ the footer of each page
 import { getBase } from "@/sanity/actions"
 import BlockContent from "@sanity/block-content-to-react"
 import { serializers } from "../util/rich"
-import { styling } from "@/app/config"
+import { getStyling } from "@/app/config"
 
 export default function Tail({ base }: { base: any }) {
 
   const { colophon1, colophon2 } = base || ""
+  const styling = getStyling(base?.colorScheme || 'green')
 
   const Colophon1 = () => {
     return (

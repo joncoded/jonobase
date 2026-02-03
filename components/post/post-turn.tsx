@@ -6,12 +6,13 @@ just takes in the newer (post) and older (post) as parameters
 */
 
 import Link from "next/link"
-import { colors, text } from "@/app/config"
+import { getColors, text } from "@/app/config"
 
 import { PostAdjacentProps } from "@/sanity/myprops"
 
-export default function PostTurn( { newer, turnTitle, older } : { newer?: PostAdjacentProps, turnTitle: string, older?: PostAdjacentProps } ) {
+export default function PostTurn( { newer, turnTitle, older, colorScheme = 'green' } : { newer?: PostAdjacentProps, turnTitle: string, older?: PostAdjacentProps, colorScheme?: string } ) {
 
+  const colors = getColors(colorScheme)
   const linkColors = `${colors.link} dark:${colors.darkLink} hover:${colors.linkHover} dark:hover:${colors.darkLinkHover} hover:underline`
 
   return (

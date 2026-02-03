@@ -21,6 +21,21 @@ export default function Menu({base} : any) {
 
   const [ showMenu, setShowMenu ] = useState(false)
   const [ menuOpenedAlready, setMenuOpenedAlready ] = useState(false)
+  
+  // Map complete prose color classes for Tailwind JIT
+  const menuProseColorMap: Record<string, string> = {
+    'red': 'prose-a:text-red-700 dark:prose-a:text-red-300 prose-a:hover:text-black dark:prose-a:hover:text-white',
+    'yellow': 'prose-a:text-yellow-700 dark:prose-a:text-yellow-300 prose-a:hover:text-black dark:prose-a:hover:text-white',
+    'orange': 'prose-a:text-orange-700 dark:prose-a:text-orange-300 prose-a:hover:text-black dark:prose-a:hover:text-white',
+    'green': 'prose-a:text-green-700 dark:prose-a:text-green-300 prose-a:hover:text-black dark:prose-a:hover:text-white',
+    'sky': 'prose-a:text-sky-700 dark:prose-a:text-sky-300 prose-a:hover:text-black dark:prose-a:hover:text-white',
+    'blue': 'prose-a:text-blue-700 dark:prose-a:text-blue-300 prose-a:hover:text-black dark:prose-a:hover:text-white',
+    'purple': 'prose-a:text-purple-700 dark:prose-a:text-purple-300 prose-a:hover:text-black dark:prose-a:hover:text-white',
+    'pink': 'prose-a:text-pink-700 dark:prose-a:text-pink-300 prose-a:hover:text-black dark:prose-a:hover:text-white',
+    'gray': 'prose-a:text-gray-700 dark:prose-a:text-gray-300 prose-a:hover:text-black dark:prose-a:hover:text-white',
+  }
+  
+  const proseColors = menuProseColorMap[base?.colorScheme || 'green']
 
   /* def hot keys */
   useHotkeys(["ctrl+k", "meta+k"], () => document.getElementById("desktop-search-in-nav")?.focus())
@@ -178,8 +193,7 @@ export default function Menu({base} : any) {
         className={`menu-content pb-10 md:pb-5 text-center 
           prose prose-a:no-underline prose-a:hover:underline 
           prose-h2:text-4xl! prose-h3:text-3xl! text-lg dark:text-gray-300
-          prose-a:text-green-700 dark:prose-a:text-green-300
-          prose-a:hover:text-black dark:prose-a:hover:text-white`}
+          ${proseColors}`}
       >
         <BlockContent
           blocks={base.menu}
@@ -212,6 +226,7 @@ export default function Menu({base} : any) {
           showMenu={setShowMenu}
           inputName={`desktop-search-in-nav`}
           placeholder={`🔎 ${text.search} (⌘K)`}
+          colorScheme={base?.colorScheme}
         />
       </MenuFindWrapper>
       <MenuButton />
@@ -233,6 +248,7 @@ export default function Menu({base} : any) {
                     showMenu={setShowMenu}
                     inputName={`mobile-search-in-menu`}
                     placeholder={`🔎 ${text["search"]}`}
+                    colorScheme={base?.colorScheme}
                   />
                 </MenuFindWrapper>
                 <MenuContent />

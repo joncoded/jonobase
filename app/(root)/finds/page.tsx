@@ -64,7 +64,8 @@ export default async function Main({ searchParams }: FindProps) {
         <Find                     
           posts={posts} 
           totalPostsCount={totalPostsCount} 
-          urlParams={searchParams} 
+          urlParams={searchParams}
+          colorScheme={myBase?.colorScheme}
         />
         <Paginate 
           myBase={myBase} 

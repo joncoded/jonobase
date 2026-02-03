@@ -7,9 +7,11 @@ displays all "nooks" (tags) of a "post"
 'use client'
 
 import Link from "next/link"
-import { styling } from "@/app/config"
+import { getStyling } from "@/app/config"
 
-export default function PostNook({nooks}: any) {
+export default function PostNook({nooks, colorScheme = 'green'}: any) {
+
+  const styling = getStyling(colorScheme)
 
   return (
     <div className="flex flex-wrap items-center gap-5">

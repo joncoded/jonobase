@@ -10,12 +10,14 @@ import { useEffect, useState } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { formUrlQuery } from "@/sanity/utils"
 import { FindPageParams } from "@/sanity/myprops"
-import { text, styling } from "@/app/config"
+import { text, getStyling } from "@/app/config"
 import { Span } from "../base/html/main"
 import FindHead from "./find-head"
 import ListPost from "../list/list-post"
 
-export default function Find({ posts, totalPostsCount, urlParams }: FindPageParams) {
+export default function Find({ posts, totalPostsCount, urlParams, colorScheme = 'green' }: FindPageParams & { colorScheme?: string }) {
+
+  const styling = getStyling(colorScheme)
 
   const searchParams = useSearchParams()
   const router = useRouter()
@@ -99,7 +101,7 @@ export default function Find({ posts, totalPostsCount, urlParams }: FindPagePara
               ${posts?.length >= 5 ? `md:grid-cols-2 lg:grid-cols-3` : ``}`}
           >
             {posts.map((post: any) => (
-              <ListPost key={post._id} post={post} showJoin={true} showKind={true} />
+              <ListPost key={post._id} post={post} showJoin={true} showKind={true} colorScheme={colorScheme} />
             ))}
           </div>
           )}

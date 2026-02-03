@@ -11,11 +11,12 @@ import Link from "next/link"
 import { UtilDOMChildrenProps } from "@/sanity/myprops"
 import Menu from "./menu"
 import { Span } from "./main"
-import { styling } from "@/app/config"
+import { getStyling } from "@/app/config"
 
 export default function Head({ base }: { base: any }) {
     
   const { logo, title, tagline } = base || ""
+  const styling = getStyling(base?.colorScheme || 'green')
 
   const HeadWrap = ({children}: UtilDOMChildrenProps) => {
     return (
