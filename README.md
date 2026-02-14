@@ -1,55 +1,68 @@
 # Jonobase
 
+jamming up the cold networks with a web framework
+
 ![home page of a jonobase site](./public/readme/screenshot1.png)
 
-a website (blogging and portfolio) template made with a Next.js front-end and a Sanity (headless "CMS") back-end, used on:
+## Forewords
 
-* [joncoded.com](https://www.joncoded.com)
-* [jonchius.com](https://www.jonchius.com) or [jonchius.vercel.app](https://jonchius.vercel.app)
+WordPress (that "infamous blogging platform") did its job well into the late 2000s and early 2010s, having a straightforward "developer experience". However, things slowly "enshittified" when WordPress "developers" made things more tangled-up than necessary!
 
-![post page of a jonobase site](./public/readme/screenshot2.png)
+So, I spent too much time looking for a new "content management system" (perhaps years). In 2020, I settled on Sanity (an apt name!) for a headless (no front-end) path. I wanted someone to take care of the back-end (all the "data storage") in a straightforward way. Meanwhile, I could build a front-end on my own. Also, I wanted to start with something small (a list of entries and a page for each individual entry), but build up into whatever I could think of!
 
-## Features
+## Runtimes
 
-it's essentially a template with many thought-out features, some dating back to 2020:
+Thus, I ended up with a website ("blogging and portfolio") framework made with a Next.js front-end and a Sanity (headless "CMS") back-end:
 
-*   **accessible hotkeys**
+<a href="https://www.joncoded.com" target="_blank"><button>joncoded.com</button></a>
+
+and
+
+<a href="https://www.jonchius.com" target="_blank"><button>jonchius.com</button></a>
+
+## Hallmarks
+
+A boat-load of stuff comes with this:
+
+*   **"accessible hotkeys"**
     
-    *   command+K for search
+    *   command+K for "search""
         
-    *   command+/ for menu
+    *   command+/ for "menu"
         
-*   **light-to-dark mode theme toggle**
+*   **light-to-dark "theme toggle"**
 
 ![dark mode of a jonobase site](./public/readme/screenshot3.png)
     
-*   **fully-functional search** (known as "**finds**")
+*   **fully working search** (known as "**finds**")
     
-*   **full-screen modal menu**
+*   **full-screen "menu"**
     
-*   **home page** with full-width sections (known as "**lists**")
+*   **home page** with full-width "sections" (known as "**lists**")
     
-    *   include only text
+    *   having only words
         
-    *   ...or a list of posts sorted by date or title or randomly
+    *   ...or a list of posts lined up by "date" or "title" or "randomly"
         
-    *   ...add text before and after the list
+    *   words can show up before and/or after the list
         
-*   **summary pages** that allow stacked lists (known as "**heaps**")
+*   **"summary" pages** with stacked lists (known as "**heaps**")
     
-    *   great for arranging content in a variety of ways!
+    *   great for lining up stuff in many ways!
         
-*   **heading-based "table of contents" post menus**
+*   **heading-based "table of contents"**
     
-    *   both for desktop and mobile
+    *   both for "desktop" and "mobile"
+  
+![post page of a jonobase site](./public/readme/screenshot2.png)
         
-*   **category-based routing** of posts
+*   **"category post routing"** 
     
-    *   clean URLs like /code/snippets/post-page
+    *   clean URLs like `/code/snippets/post-page`
         
-*   **tagging system** for posts (known as "nooks")
+*   **"post tagging system"** (known as "**nooks**")
     
-*   **posts with embeddable content**
+*   **"embeddable content"**
     
     *   YouTube videos
         
@@ -59,31 +72,43 @@ it's essentially a template with many thought-out features, some dating back to 
         
     *   tables
         
-*   **follow-up link** optional on each page
+*   **"follow-up link"** 
+    *   show a link to an outside URL (or hide it!)
     
-*   **previous-and-next post navigation**
+*   **"older-and-newer post navigation"**
+    *   show the last or the next
     
-*   **footer** modifiable via back-end with rich text editor
+*   **footer** 
+    *   tweakable from the back-end with "rich text editor"
     
-*   **responsive** in desktop and mobile
+*   **responsive** 
+    *   in desktop and mobile
     
-*   **multi-site** capability (more on this later!)
+*   **multi-site** 
+    *   (more on this later!)
+  
+This web work makes use of:
 
-## Needs
+* `next.js`
+* `sanity`
+
+...and a whole of [other things](./package.json)!
+
+## Setup
+
+This needs:
 
 * Node.js and npm
 * Sanity (CMS) account and API key
 
-## Setup
-
-I have not yet installed a second instance (never needed to, since a single instance functions as a _multi-site_), so I can't guarantee that this will work for you but:
+### clone repo
 
 ```
-git clone https://github.com/joncoded/jonobase.git yourfolder
-cd yourfolder
+% git clone https://github.com/joncoded/jonobase.git yourfolder
+% cd yourfolder
 ```
 
-Create a `.env` file with the following:
+Then, make a `.env` file with the following:
 
 ```
 SANITY_STUDIO_PROJECT_ID="your_project_id"
@@ -91,12 +116,10 @@ SANITY_STUDIO_TOKEN="your_api_key"
 SANITY_STUDIO_BASE_SLUG="your_base_slug"
 ```
 
-You will have to create a "base" (i.e. a website object) in Sanity Studio (the CMS admin panel) first, to get this slug! 
+You will first have to make a "base" (i.e. a website object) in "Sanity Studio" (the CMS admin panel)  to get this slug! 
 
-Run on local:
+### run it!
 
 ```
 npm run dev
 ```
-
-I will write more on this in the wiki when time permits!
