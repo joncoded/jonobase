@@ -1,6 +1,6 @@
 # Jonobase
 
-jamming up the cold networks with a web framework
+jamming up the blogging world with a web framework
 
 ![home page of a jonobase site](./public/readme/screenshot1.png)
 
@@ -87,12 +87,19 @@ A boat-load of stuff comes with this:
 *   **multi-site** 
     *   (more on this later!)
   
-This web work makes use of:
+Making note of:
 
-* `next.js`
-* `sanity`
+* front-end frameworks:
+  * `next.js`
+* third-party packages:
+  * `focus-trap-react`
+  * `next-themes`
+  * `react-hotkeys-hook`
+  * `react-syntax-highlighter`
+* back-end framework (CMS):
+  * `sanity`
 
-...and a whole of [other things](./package.json)!
+...[full list of packages](./package.json)!
 
 ## Setup
 
