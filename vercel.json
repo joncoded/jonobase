@@ -5,11 +5,7 @@
       "maxDuration": 5,
       "memory": 128
     },
-    "blog/**": {
-      "maxDuration": 5,
-      "memory": 128
-    },
-    "**": {
+    "**/**/**": {
       "maxDuration": 5,
       "memory": 128
     }
