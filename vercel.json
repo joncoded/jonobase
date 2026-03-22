@@ -1,28 +1,3 @@
 {
-  "version": 2,
-  "functions": {
-    "blog/**/**": {
-        "maxDuration": 5,
-        "memory": 128
-    }, 
-    "code/**/**": {
-        "maxDuration": 5,
-        "memory": 128
-    },
-    "text/**/**": {
-        "maxDuration": 5,
-        "memory": 128
-    },
-    "finds/**": {
-        "maxDuration": 5,
-        "memory": 128   
-    },
-    "nooks/**": {
-        "maxDuration": 5,
-        "memory": 128
-    }
-  },
-  "rewrites": [    
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
+  "version": 2
 }

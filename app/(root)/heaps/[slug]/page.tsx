@@ -14,7 +14,7 @@ import Apex from "@/components/base/html/main-apex"
 import List from "@/components/list/list"
 import None from "@/components/base/util/none"
 
-export const revalidate = 60
+export const revalidate = 3600
 
 export async function generateMetadata({ params }: HeapProps) {
 

@@ -20,7 +20,7 @@ import PostNook from "@/components/post/post-nook"
 import PostTurn from "@/components/post/post-turn"
 import PostToc from "@/components/post/post-toc"
 
-export const revalidate = 60
+export const revalidate = 3600
 
 export async function generateMetadata({params}: any) {
 
