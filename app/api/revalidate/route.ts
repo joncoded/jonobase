@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
           revalidatePath(`/${join}`)
         }
         // Revalidate all posts listing pages
-        revalidateTag("posts")
+        revalidateTag("posts", { expire: 0 })
         break
 
       case "nook":
@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
           revalidatePath(`/nooks/${slug.current}`)
         }
         revalidatePath("/nooks")
-        revalidateTag("nooks")
+        revalidateTag("nooks", { expire: 0 })
         break
 
       case "heap":
@@ -63,18 +63,18 @@ export async function POST(req: NextRequest) {
           revalidatePath(`/heaps/${slug.current}`)
         }
         revalidatePath("/heaps")
-        revalidateTag("heaps")
+        revalidateTag("heaps", { expire: 0 })
         break
 
       case "base":
         // Revalidate everything for base config changes
-        revalidatePath("/", "layout")
-        revalidateTag("base")
+        revalidatePath("/")
+        revalidateTag("base", { expire: 0 })
         break
 
       default:
         // For unknown types, revalidate everything
-        revalidatePath("/", "layout")
+        revalidatePath("/")
     }
 
     return NextResponse.json({
