@@ -15,7 +15,7 @@ import Apex from "@/components/base/html/main-apex"
 import ListLine from "@/components/list/list-line"
 import Paginate from "@/components/base/util/pagi"
 
-export const revalidate = 60
+export const revalidate = 3600
 
 export async function generateMetadata({params}: any) {
 

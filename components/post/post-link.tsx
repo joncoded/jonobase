@@ -15,7 +15,7 @@ export default function PostLink( {link, colorScheme = 'green'} : { link : URL, 
   const styling = getStyling(colorScheme)
 
   return (
-    <div className={`my-5`}>
+    <div className={`flex justify-end mt-5`}>
       <Link 
         className={`${styling['button']}`}
         href={link} 
