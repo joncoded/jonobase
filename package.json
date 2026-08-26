@@ -2,6 +2,9 @@
   "name": "jonobase",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -13,6 +16,7 @@
     "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/client": "^7.13.1",
     "@sanity/code-input": "^6.0.3",
+    "@sanity/export": "^6.1.0",
     "@sanity/image-url": "^2.0.1",
     "@sanity/table": "^2.0.0",
     "@sanity/vision": "^4.20.0",
@@ -35,6 +39,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@sanity/cli": "^5.12.0",
     "@tailwindcss/postcss": "^4.1.17",
     "@tailwindcss/typography": "^0.5.19",
     "@types/node": "^24",
@@ -45,5 +50,8 @@
     "postcss": "^8",
     "tailwindcss": "^4.1.17",
     "typescript": "^5"
+  },
+  "overrides": {
+    "@sanity/export": "^6.1.0"
   }
 }
