@@ -22,7 +22,7 @@ html {
 body {
   scroll-padding-top: auto;
   font-family: "Spectral", serif;
-  font-size: 14pt;
+  font-size: 12pt;
 }
 
 header, nav, footer, h1, h2, h3, h4, h5, h6, th, aside, #post-head, #post-nook, [id^="post-turn"], .button {
@@ -152,7 +152,7 @@ main img {
 }
 
 .post-main p {  
-  margin: 15px 0;
+  margin: 15px 0 30px 0;
 }
 
 nav.menu-content h2, nav.menu-content h3 {

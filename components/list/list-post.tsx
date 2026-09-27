@@ -105,7 +105,7 @@ const ListPost = ({post : { join, kind, slug, image, emoji, title, subtitle, lin
   const ListPostTitle = () => {
     return (
       <div className={``}>
-        <h3 className={`mt-2! ${linkColors} hover:underline text-lg md:text-2xl font-semibold`}>
+        <h3 className={`mt-2! ${linkColors} hover:underline text-2xl font-semibold`}>
           {title}
         </h3>
       </div>
@@ -115,7 +115,7 @@ const ListPost = ({post : { join, kind, slug, image, emoji, title, subtitle, lin
   const ListPostSubtitle = () => {
     return (
       <div className={``}>
-        <p className={`mt-2! text-sm md:text-lg`}>
+        <p className={`mt-2! text-lg`}>
           {subtitle}
         </p>
       </div>

@@ -159,7 +159,7 @@ export const getStyling = (colorScheme: string = 'green') => {
     !bg-gradient-to-b from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900 dark:text-white py-5 border-t border-t-gray-200 dark:border-t-gray-600
   `,
 
-  "post-head-title" : `text-3xl md:text-5xl font-bold`,
+  "post-head-title" : `text-5xl font-bold`,
 
   "post-head-subtitle" : `text-xl md:text-2xl`,
 

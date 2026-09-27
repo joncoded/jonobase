@@ -44,7 +44,7 @@ export default function PostHead( { post } : { post : PostProps } ) {
         <div className={`${styling['post-head-date']}`}>
           {showDate && <span>{formattedDate}</span>}
           {_updatedAt && (date !== _updatedAt) &&          
-            <span className="text-sm md:text-lg"> // {text['updated']} {formattedUpdated}</span>            
+            <span className="text-lg"> // {text['updated']} {formattedUpdated}</span>            
           }
         </div>
       </div>
