@@ -26,7 +26,7 @@ export const Sect = ({children, className, id, bgImage}: UtilDOMSectProps) => {
       style={background}
       className={`post-main w-full ${className ?? ''}`}
     >
-      <div className="max-w-screen-lg mx-auto p-5">
+      <div className="max-w-screen-lg mx-auto p-5 text-sm md:text-base">
         {children}
       </div>
     </section>
