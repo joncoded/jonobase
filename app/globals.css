@@ -22,7 +22,7 @@ html {
 body {
   scroll-padding-top: auto;
   font-family: "Spectral", serif;
-  font-size: 12pt;
+  font-size: 14pt;
 }
 
 header, nav, footer, h1, h2, h3, h4, h5, h6, th, aside, #post-head, #post-nook, [id^="post-turn"], .button {
