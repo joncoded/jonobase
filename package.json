@@ -52,6 +52,8 @@
     "typescript": "^5"
   },
   "overrides": {
-    "@sanity/export": "^6.1.0"
+    "@sanity/export": "^6.1.0",
+    "jsdom": "25.0.1",
+    "parse5": "7.1.2"
   }
 }
