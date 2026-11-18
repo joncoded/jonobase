@@ -50,7 +50,7 @@ export default function PostHead( { post } : { post : PostProps } ) {
           {_updatedAt && (date !== _updatedAt) &&
             <>
               <br className="visible md:hidden" />
-              <span aria-hidden="true" className="md:ml-4">⏱️</span> 
+              <span aria-hidden="true" className="md:ml-4">⏱️ </span> 
               <span className="sr-only"> last updated on: </span>
               {formattedUpdated}
             </>

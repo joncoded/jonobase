@@ -1,4 +1,3 @@
-
 /*
 jonobase by @joncoded (aka @jonchius)
 /app/(root)/(posts)/[join]/[kind]/[slug]/page.tsx
@@ -84,7 +83,7 @@ export default async function Main({ params } : any) {
         { post.link && <PostLink link={post.link} colorScheme={myBase?.colorScheme} />}
       </Sect>
 
-      <Sect id="post-main" className={`${styling['post-main-sect']}`}>
+      <Sect id="post-main" className={`${styling['post-main-sect']} ${kind === 'jottings' ? 'whitespace-pre overflow-x-auto' : ''}`}>
         <BlockContent
           blocks={content}
           serializers={serializers}
