@@ -42,11 +42,17 @@ export default function PostHead( { post } : { post : PostProps } ) {
         </div>
         }
         <div className={`${styling['post-head-date']}`}>
-          {showDate && <span> <span aria-hidden="true">🗓️ </span>{formattedDate}</span>}
+          {showDate && <span> 
+            <span aria-hidden="true">🗓️ </span>
+            <span className="sr-only"> first posted on: </span>
+            {formattedDate}
+          </span>}
           {_updatedAt && (date !== _updatedAt) &&
             <>
               <br className="visible md:hidden" />
-              <span aria-hidden="true" className="md:ml-4">⏱️</span> {formattedUpdated}
+              <span aria-hidden="true" className="md:ml-4">⏱️</span> 
+              <span className="sr-only"> last updated on: </span>
+              {formattedUpdated}
             </>
           }
         </div>
