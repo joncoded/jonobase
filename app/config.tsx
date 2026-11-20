@@ -226,13 +226,13 @@ export const colors = getColors('green')
 export const text = {
 
   "close menu"
-  : "close menu",
+  : "close the menu",
 
   "current page"
-  : "current page",
+  : "the page now",
 
   "go to the home page"
-  : "go to the home page",
+  : "back to home",
 
   "finds"
   : "finds",
@@ -247,7 +247,7 @@ export const text = {
   : "loading",
 
   "loading message"
-  : "page will load shortly ... thanks for your patience!",
+  : "this will load shortly ... thanks for staying with us!",
 
   "menu"
   : "Menu",
@@ -268,13 +268,13 @@ export const text = {
   : "older",
 
   "page"
-  : "page",
+  : "sheet",
 
   "page number"
-  : "page number",
+  : "sheet number",
 
   "page not found"
-  : "page not found",
+  : "not found",
 
   "post newer"
   : "newer post",
@@ -286,25 +286,25 @@ export const text = {
   : "posts",
 
   "result"
-  : "result",
+  : "outcome",
 
   "results"
-  : "results",
+  : "outcomes",
 
   "result for query"
-  : "result for query",
+  : "outcome",
 
   "results for query"
-  : "results for query",
+  : "outcomes",
 
   "result for kind"
-  : "result for kind",
+  : "outcome for kind",
 
   "results for kind"
-  : "results for kind",
+  : "outcomes for kind",
 
   "results found none"
-  : "no result(s) found",
+  : "nothing found",
 
   "search"
   : "find",
@@ -319,7 +319,7 @@ export const text = {
   : "sides",
 
   "skip to main content"
-  : "skip to main content",
+  : "skip to the main stuff",
 
   "switch to dark mode"
   : "switch to dark mode",
@@ -331,7 +331,7 @@ export const text = {
   : "updated",
 
   "visit url"
-  : "visit URL",
+  : "go there",
 
   "wikis"
   : "wikis",
